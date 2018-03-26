@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 26/03/2018 09:10:49
+ Date: 26/03/2018 14:05:32
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,26 @@ CREATE TABLE `academic`  (
   `category` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类别\r\n',
   `authorID` int(11) NULL DEFAULT NULL COMMENT '关联member表',
   `fileID` int(11) NULL DEFAULT NULL COMMENT '关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for academic-report
+-- ----------------------------
+DROP TABLE IF EXISTS `academic-report`;
+CREATE TABLE `academic-report`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学术报告',
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `reportTitle` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学术报告标题',
+  `beginTime` datetime(0) NULL DEFAULT NULL COMMENT '学术报告开始的时间',
+  `overTime` datetime(0) NULL DEFAULT NULL COMMENT '结束的时间',
+  `hostUnit` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '举办单位',
+  `hostPlace` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '举办地点',
+  `attendNum` int(11) NULL DEFAULT NULL COMMENT '参加人数',
+  `reporterID` int(11) NULL DEFAULT NULL COMMENT '报告人，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -80,6 +100,44 @@ CREATE TABLE `award`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Table structure for copyright
+-- ----------------------------
+DROP TABLE IF EXISTS `copyright`;
+CREATE TABLE `copyright`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '软件著作权',
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `rightName` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '著作权名称',
+  `rank` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '排名',
+  `awardTime` datetime(0) NULL DEFAULT NULL COMMENT '颁发时间',
+  `rightNum` int(11) NULL DEFAULT NULL COMMENT '证书编号',
+  `memberID` int(11) NULL DEFAULT NULL COMMENT '软件著作权所属人，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for editbook
+-- ----------------------------
+DROP TABLE IF EXISTS `editbook`;
+CREATE TABLE `editbook`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '参与教材表',
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `bookName` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '教材名称',
+  `editRank` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '编辑排名',
+  `ISBN` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '书号',
+  `publishUnit` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '出版单位',
+  `publishTime` datetime(0) NULL DEFAULT NULL COMMENT '出版时间',
+  `byte` int(25) NULL DEFAULT NULL COMMENT '字数',
+  `memberID` int(11) NULL DEFAULT NULL COMMENT '编辑人，关联member 表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
 -- Table structure for filepath
 -- ----------------------------
 DROP TABLE IF EXISTS `filepath`;
@@ -91,6 +149,24 @@ CREATE TABLE `filepath`  (
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for investigate
+-- ----------------------------
+DROP TABLE IF EXISTS `investigate`;
+CREATE TABLE `investigate`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '外出考察',
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `beginTime` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
+  `overTime` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
+  `investigatePlace` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '考察地点',
+  `investigateContent` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '考察内容',
+  `investigatorID` int(11) NULL DEFAULT NULL COMMENT '考察者id，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for member
@@ -106,6 +182,26 @@ CREATE TABLE `member`  (
   `createTime` datetime(0) NULL DEFAULT NULL,
   `updateTime` datetime(0) NULL DEFAULT NULL,
   `deleteTime` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for patent
+-- ----------------------------
+DROP TABLE IF EXISTS `patent`;
+CREATE TABLE `patent`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '专利表',
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `patentName` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '专利名称',
+  `patentRank` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '专利排名',
+  `patentForm` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型',
+  `authority` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '授权',
+  `registrationEnterprise` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登记单位',
+  `patentNum` int(11) NULL DEFAULT NULL COMMENT '证书编号',
+  `memberID` int(11) NULL DEFAULT NULL COMMENT '专利人id，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -132,6 +228,60 @@ CREATE TABLE `project`  (
   `updateTime` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for speech
+-- ----------------------------
+DROP TABLE IF EXISTS `speech`;
+CREATE TABLE `speech`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '受聘讲学',
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `inviteTime` datetime(0) NULL DEFAULT NULL COMMENT '邀请时间',
+  `beginTime` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
+  `overTime` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
+  `speechForm` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '演讲形式',
+  `speakerID` int(11) NULL DEFAULT NULL COMMENT '演讲者id，与member表关联',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，与filepath表关联',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for study
+-- ----------------------------
+DROP TABLE IF EXISTS `study`;
+CREATE TABLE `study`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '进修学习',
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `beginTime` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
+  `overTime` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
+  `school` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '进修学校',
+  `studyContent` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学习内容',
+  `learnerID` int(11) NULL DEFAULT NULL COMMENT '进修者id，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for unit
+-- ----------------------------
+DROP TABLE IF EXISTS `unit`;
+CREATE TABLE `unit`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学术团体',
+  `deleteTime` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL,
+  `createTime` datetime(0) NULL DEFAULT NULL,
+  `unitName` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学术团体名称',
+  `hostUnit` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '主办单位',
+  `duty` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职务',
+  `term` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任期',
+  `memberID` int(11) NULL DEFAULT NULL COMMENT '成员id，关联member表',
+  `fileID` int(11) NULL DEFAULT NULL COMMENT '附件id，关联filepath表',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for user
