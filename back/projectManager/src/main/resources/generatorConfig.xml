@@ -38,8 +38,8 @@
         <!-- 必须的（1 required） -->
         <!-- java模型生成器 -->
         <!-- targetProject:自动生成代码的位置 -->
-        <javaModelGenerator targetPackage="cn.edu.hstc.attend.entity"
-                            targetProject="D:\ProjectCollection\idea\projectManager\src\main\java"
+        <javaModelGenerator targetPackage="cn.edu.hstc.filepath.entity"
+                            targetProject="D:\ProjectCollection\idea\projectManager\projectManager\back\projectManager\src\main\java"
                              >
             <!-- TODO enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true" />
@@ -49,15 +49,15 @@
 
         <!-- 必须的（1 required） -->
         <!-- map xml 生成器 -->
-        <sqlMapGenerator targetPackage="cn.edu.hstc.attend.dao"
-                         targetProject="D:\ProjectCollection\idea\projectManager\src\main\java">
+        <sqlMapGenerator targetPackage="cn.edu.hstc.filepath.dao"
+                         targetProject="D:\ProjectCollection\idea\projectManager\projectManager\back\projectManager\src\main\java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 可选的（0 or 1） -->
         <!-- mapper 或者就是dao接口生成器 -->
-        <javaClientGenerator targetPackage="cn.edu.hstc.attend.dao"
-                             targetProject="D:\ProjectCollection\idea\projectManager\src\main\java"
+        <javaClientGenerator targetPackage="cn.edu.hstc.filepath.dao"
+                             targetProject="D:\ProjectCollection\idea\projectManager\projectManager\back\projectManager\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
@@ -66,7 +66,7 @@
         <!-- pojo 实体生成器 -->
         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
         <!-- schema即为数据库名 可不写 -->
-        <table  tableName="user" domainObjectName="User"
+        <table  tableName="filepath" domainObjectName="Filepath"
                 enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 忽略字段 可选的（0 or 1） -->
