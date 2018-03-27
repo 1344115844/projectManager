@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
 
 public interface UserService {
 
-    User findUserByUsername();
+    User findUserByUsername(String username);
 }

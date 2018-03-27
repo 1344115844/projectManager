@@ -1,5 +1,7 @@
 package cn.edu.hstc.user.entity;
 
+
+
 import java.util.Date;
 
 public class User {

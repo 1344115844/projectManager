@@ -85,7 +85,13 @@
                     url:"/login/check",
                     data:{"username":user,"password":pwd},
                     success:function (data) {
-                        alert("sucess");
+                        var user=data;
+                        if(data)
+                        if (data!=null){
+                            window.location.href="/user/index";
+                        }else {
+                            alert("登录失败");
+                        }
                     }
                 });
             }

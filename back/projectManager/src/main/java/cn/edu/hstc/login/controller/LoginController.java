@@ -2,6 +2,7 @@ package cn.edu.hstc.login.controller;
 
 import cn.edu.hstc.user.entity.User;
 import cn.edu.hstc.user.service.UserService;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,10 +36,8 @@ public class LoginController {
     @RequestMapping("/check")
     @ResponseBody
     public User check(@RequestParam String username,@RequestParam String password) {
-        User user = new User();
-        user=userService.findUserByUsername();
-
-
+        User user = null;
+        user=userService.findUserByUsername(username);
         return user;
     }
 }

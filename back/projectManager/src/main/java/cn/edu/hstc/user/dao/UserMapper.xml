@@ -104,10 +104,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where username = #{username,jdbcType=VARCHAR}
+  <select id="selectByUsername" parameterType="String"
+          resultType="cn.edu.hstc.user.entity.User">
+    SELECT *
+    FROM USER
+    WHERE username = #{username}
   </select>
 </mapper>
