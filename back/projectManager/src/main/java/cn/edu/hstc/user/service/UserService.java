@@ -1,5 +1,6 @@
 package cn.edu.hstc.user.service;
 
+import cn.edu.hstc.user.entity.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,4 +10,5 @@ import org.springframework.stereotype.Service;
 
 public interface UserService {
 
+    User findUserByUsername();
 }
