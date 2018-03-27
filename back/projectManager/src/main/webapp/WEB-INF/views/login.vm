@@ -37,7 +37,7 @@
           <input id="password" name="username" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
-      
+
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <label for="online">
@@ -86,11 +86,11 @@
                     data:{"username":user,"password":pwd},
                     success:function (data) {
                         var user=data;
-                        if(data)
-                        if (data!=null){
-                            window.location.href="/user/index";
-                        }else {
+
+                        if (data==""){
                             alert("登录失败");
+                        }else {
+                            window.location.href="/user/index";
                         }
                     }
                 });
