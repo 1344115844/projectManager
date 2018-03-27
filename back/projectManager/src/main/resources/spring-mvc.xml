@@ -32,9 +32,9 @@
     <mvc:default-servlet-handler/>
 
 
-    <mvc:interceptors>
-        <bean class="cn.edu.hstc.common.interceptor.SessionInterceptor"/>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<bean class="cn.edu.hstc.common.interceptor.SessionInterceptor"/>-->
+    <!--</mvc:interceptors>-->
 
 
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
