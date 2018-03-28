@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Veng Su 1344114844@qq.com
  * @date 2018/3/27 8:49
@@ -35,9 +37,12 @@ public class LoginController {
      */
     @RequestMapping("/check")
     @ResponseBody
-    public User check(@RequestParam String username,@RequestParam String password) {
+    public User check(HttpServletRequest request) {
         User user = null;
-        user=userService.findUserByUsername(username);
+        user=userService.findUserByUsername(request.getParameter("username"));
+        if(user!=null){
+            request.getSession().setAttribute("userinfo",user);
+        }
         return user;
     }
 }

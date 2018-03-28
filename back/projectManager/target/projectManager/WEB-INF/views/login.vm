@@ -24,7 +24,7 @@
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="#" method="post">
+    <form class="form form-horizontal">
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
@@ -37,7 +37,7 @@
           <input id="password" name="username" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
-      
+
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <label for="online">
@@ -60,35 +60,25 @@
 
 ##伟东写
 ##这里开始写 “ajax提交数据，访问接口/login/check接口，带数据username和password” git提交时候标签写这个
-<script>
+<script type="text/javascript">
     $(function () {
         $("#submitId").click(function () {
             var user=$("#username").val();
             var pwd=$("#password").val();
             var veryfiy=true;
-            if(user.length==0){
-                $("#user_alert").css("visibility","visible");
-                veryfiy=false;
-            }else {
-                $("#user_alert").css("visibility","hidden");
-            }
-            if(pwd.length==0){
-                $("#pwd_alert").css("visibility","visible");
-                veryfiy=false;
-            }else {
-                $("#pwd_alert").css("visibility","hidden");
-            }
             if(veryfiy){
                 //ajax提交表单
                 $.ajax({
                     type:"POST",
                     url:"/login/check",
                     data:{"username":user,"password":pwd},
-                    success:function (data) {
-                        if (data!=null){
-                            window.location.href="/user/index";
-                        }else {
+                    success: function (data) {
+                        var user=data;
+
+                        if (data==""){
                             alert("登录失败");
+                        }else {
+                            window.location.href="/user/index";
                         }
                     }
                 });
