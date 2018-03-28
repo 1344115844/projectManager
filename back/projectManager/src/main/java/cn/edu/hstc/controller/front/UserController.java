@@ -1,8 +1,11 @@
 package cn.edu.hstc.controller.front;
 
 import cn.edu.hstc.pojo.User;
+import cn.edu.hstc.service.UserService;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,7 +27,8 @@ public class UserController {
      *@return java.lang.String
      *方法作用：跳转index页面
      **/
-
+@Autowired
+    UserService userService;
     @RequestMapping("/index")
         public String show() {
         return "index";

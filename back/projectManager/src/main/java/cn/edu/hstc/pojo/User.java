@@ -12,7 +12,7 @@ public class User implements Serializable {
 
     private Date createtime;
 
-    private Date daeletetime;
+    private Date deletetime;
 
     private Date updatetime;
 
@@ -50,12 +50,12 @@ public class User implements Serializable {
         this.createtime = createtime;
     }
 
-    public Date getDaeletetime() {
-        return daeletetime;
+    public Date getDeletetime() {
+        return deletetime;
     }
 
-    public void setDaeletetime(Date daeletetime) {
-        this.daeletetime = daeletetime;
+    public void setDeletetime(Date deletetime) {
+        this.deletetime = deletetime;
     }
 
     public Date getUpdatetime() {

@@ -11,8 +11,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e046e36d-0388-414c-9515-7ad46d62f672" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/JSONResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/ResponseCode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/impl/UserServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/projectManager_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/projectManager_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/interceptor/SessionInterceptor.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/projectManager.iml" afterPath="$PROJECT_DIR$/projectManager.iml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/AcademicMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/AcademicReportMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/AttendConferenceMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/AwardMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/CopyrightMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/EditBookMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/FilepathMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/InvestigateMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/MemberMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/ProjectMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/SpeechMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/StudyMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/UnitMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/UserMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Academic.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/AcademicReport.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/AttendConference.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Award.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Copyright.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/EditBook.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Filepath.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Investigate.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Member.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Project.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Speech.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Study.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/Unit.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/User.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AcademicMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AcademicReportMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AttendConferenceMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AwardMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/CopyrightMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/EditBookMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/FilepathMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/InvestigateMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/MemberMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ProjectMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/SpeechMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/StudyMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UnitMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +81,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,6 +90,8 @@
     <findStrings>
       <find>我的</find>
       <find>user_alert</find>
+      <find>updateByPrimaryKeySelective</find>
+      <find>ServerResponse</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,14 +112,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/spring-cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/hstc/GenMain.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/GenMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/interceptor/SessionInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mbgConfiguration.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/JSONResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/ResponseCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/MD5Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -168,7 +229,19 @@
               <item name="cn" type="462c0819:PsiDirectoryNode" />
               <item name="edu" type="462c0819:PsiDirectoryNode" />
               <item name="hstc" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+              <item name="hstc" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectManager" type="b2602c69:ProjectViewProjectNode" />
@@ -176,6 +249,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mappers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -197,8 +278,8 @@
       <recent name="cn.edu.hstc.controller.front" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ideaworkplace\projectManager\back\projectManager\src\main\java\cn\edu\hstc\interceptor" />
       <recent name="E:\ideaworkplace\projectManager\back\projectManager\src\main\java\cn\edu\hstc\util" />
+      <recent name="E:\ideaworkplace\projectManager\back\projectManager\src\main\java\cn\edu\hstc\interceptor" />
       <recent name="E:\ideaworkplace\projectManager\back\projectManager\src\test\java\cn\edu\hstc" />
       <recent name="E:\ideaworkplace\projectManager\back\projectManager\src\main\resources" />
     </key>
@@ -481,7 +562,7 @@
       <updated>1522161860166</updated>
       <workItem from="1522161863722" duration="2696000" />
       <workItem from="1522195872511" duration="3647000" />
-      <workItem from="1522202161196" duration="11648000" />
+      <workItem from="1522202161196" duration="18198000" />
     </task>
     <task id="LOCAL-00001" summary="完成跳转到index">
       <created>1522162837719</created>
@@ -504,17 +585,24 @@
       <option name="project" value="LOCAL" />
       <updated>1522214109571</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="框架被我改了。。">
+      <created>1522214587202</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1522214587202</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17991000" />
+    <option name="totallyTimeSpent" value="24541000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934713" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -530,13 +618,13 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.49633968" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.284041" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27452415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.49707174" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -811,14 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="193" column="11" lean-forward="false" selection-start-line="193" selection-start-column="11" selection-end-line="193" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1180">
@@ -837,52 +917,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-798">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mbgConfiguration.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
           <caret line="66" column="56" lean-forward="false" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/GenMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -895,21 +933,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        <state relative-caret-position="225">
+          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UnitMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4847">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/pojo/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/GenMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/MD5Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+          <folding>
+            <marker date="1522234798110" expanded="true" signature="907:1007" ph="select from user" />
+            <marker date="1522234798110" expanded="true" signature="1093:1147" ph="delete from user... " />
+            <marker date="1522234798110" expanded="true" signature="1225:1528" ph="insert into user... " />
+            <marker date="1522234798110" expanded="true" signature="2773:3347" ph="update user... " />
+            <marker date="1522234798110" expanded="true" signature="3437:3740" ph="update user... " />
+            <marker date="1522234798110" expanded="true" signature="3830:3888" ph="select count... user" />
+            <marker date="1522234798110" expanded="true" signature="3980:4105" ph="SELECT from user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/dao/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+        <state relative-caret-position="182">
+          <caret line="199" column="21" lean-forward="false" selection-start-line="199" selection-start-column="21" selection-end-line="199" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/ResponseCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/JSONResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
