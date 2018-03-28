@@ -24,8 +24,8 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--包扫描-->
-    <context:component-scan base-package="cn.edu.hstc.*.controller">
-    </context:component-scan>
+    <context:component-scan base-package="cn.edu.hstc.controller" />
+
     <!--开启注解扫描-->
     <mvc:annotation-driven/>
     <!--处理静态资源-->
@@ -33,7 +33,7 @@
 
 
     <mvc:interceptors>
-        <bean class="cn.edu.hstc.common.interceptor.SessionInterceptor"/>
+        <bean class="cn.edu.hstc.interceptor.SessionInterceptor"/>
     </mvc:interceptors>
 
 

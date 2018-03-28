@@ -24,18 +24,18 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--包扫描-->
-    <context:component-scan base-package="cn.edu.hstc.*.controller">
-    </context:component-scan>
+    <context:component-scan base-package="cn.edu.hstc.controller" />
+
     <!--开启注解扫描-->
     <mvc:annotation-driven/>
     <!--处理静态资源-->
     <mvc:default-servlet-handler/>
 
-
-    <!--<mvc:interceptors>-->
-        <!--<bean class="cn.edu.hstc.common.interceptor.SessionInterceptor"/>-->
-    <!--</mvc:interceptors>-->
-
+    <!--
+    <mvc:interceptors>
+        <bean class="cn.edu.hstc.common.interceptor.SessionInterceptor"/>
+    </mvc:interceptors>
+-->
 
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/views"/>
