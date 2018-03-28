@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hstc.dao.MemberMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Member">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="jobTitle" jdbcType="VARCHAR" property="jobtitle" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="researchDirection" jdbcType="VARCHAR" property="researchdirection" />
+    <result column="AcademicTitle" jdbcType="VARCHAR" property="academictitle" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, jobTitle, education, researchDirection, AcademicTitle, createTime, updateTime, 
+    deleteTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from member
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.hstc.pojo.Member">
+    insert into member (id, name, jobTitle, 
+      education, researchDirection, AcademicTitle, 
+      createTime, updateTime, deleteTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{jobtitle,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{researchdirection,jdbcType=VARCHAR}, #{academictitle,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{deletetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Member">
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="jobtitle != null">
+        jobTitle,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="researchdirection != null">
+        researchDirection,
+      </if>
+      <if test="academictitle != null">
+        AcademicTitle,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="deletetime != null">
+        deleteTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtitle != null">
+        #{jobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="researchdirection != null">
+        #{researchdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="academictitle != null">
+        #{academictitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deletetime != null">
+        #{deletetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.Member">
+    update member
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtitle != null">
+        jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="researchdirection != null">
+        researchDirection = #{researchdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="academictitle != null">
+        AcademicTitle = #{academictitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deletetime != null">
+        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Member">
+    update member
+    set name = #{name,jdbcType=VARCHAR},
+      jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      researchDirection = #{researchdirection,jdbcType=VARCHAR},
+      AcademicTitle = #{academictitle,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      deleteTime = #{deletetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

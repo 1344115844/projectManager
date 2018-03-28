@@ -11,39 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e046e36d-0388-414c-9515-7ad46d62f672" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/controller/front/UserController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/interceptor/SessionInterceptor.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/service/UserService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/util/GenMain.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mbgConfiguration.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/projectManager_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/projectManager_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_6.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/projectManager.iml" afterPath="$PROJECT_DIR$/projectManager.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/login/controller/LoginController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/controller/UserController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/dao/UserMapper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/dao/UserMapper.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/entity/User.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/service/UserService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/user/service/UserServiceImpl.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/login/controller/LoginController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/controller/UserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/dao/UserMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/dao/UserMapper.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/entity/User.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/service/UserService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/hstc/user/service/UserServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" afterPath="$PROJECT_DIR$/target/classes/jdbc.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-cfg.xml" afterPath="$PROJECT_DIR$/target/classes/spring-cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" />
-      <change beforePath="$PROJECT_DIR$/target/projectManager.war" afterPath="$PROJECT_DIR$/target/projectManager.war" />
-      <change beforePath="$PROJECT_DIR$/target/projectManager/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/projectManager/META-INF/MANIFEST.MF" />
-      <change beforePath="$PROJECT_DIR$/target/projectManager/WEB-INF/classes/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/projectManager/WEB-INF/classes/spring-mvc.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/hstc/common/interceptor/SessionInterceptor.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -189,6 +158,17 @@
               <item name="cn" type="462c0819:PsiDirectoryNode" />
               <item name="edu" type="462c0819:PsiDirectoryNode" />
               <item name="hstc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+              <item name="hstc" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectManager" type="b2602c69:ProjectViewProjectNode" />
@@ -501,7 +481,7 @@
       <updated>1522161860166</updated>
       <workItem from="1522161863722" duration="2696000" />
       <workItem from="1522195872511" duration="3647000" />
-      <workItem from="1522202161196" duration="11219000" />
+      <workItem from="1522202161196" duration="11648000" />
     </task>
     <task id="LOCAL-00001" summary="完成跳转到index">
       <created>1522162837719</created>
@@ -517,11 +497,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522200017685</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="框架被我改了。。">
+      <created>1522214109571</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1522214109571</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17562000" />
+    <option name="totallyTimeSpent" value="17991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -594,7 +581,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成跳转到index" />
     <MESSAGE value="拦截器拦截不了" />
-    <option name="LAST_COMMIT_MESSAGE" value="拦截器拦截不了" />
+    <MESSAGE value="框架被我改了。。" />
+    <option name="LAST_COMMIT_MESSAGE" value="框架被我改了。。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
