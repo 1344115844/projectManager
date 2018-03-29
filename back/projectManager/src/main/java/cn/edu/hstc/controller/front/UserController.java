@@ -21,11 +21,18 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class UserController {
 
+
     @Autowired
     UserService userService;
 
 
-
+/*
+ *@author suveng
+ *@date 2018/3/29 19:07
+ *@param []
+ *@return java.lang.String
+ *方法作用：跳转到主页
+ **/
     @RequestMapping("/index")
     public String show() {
         return "index";
@@ -36,40 +43,14 @@ public class UserController {
         return "login";
     }
 
-//    @RequestMapping("/check")
-//    @ResponseBody
-//    public String checkLogin(HttpServletRequest request) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        String username = request.getParameter("username");
-//        String pwd=request.getParameter("password");
-//        //查数据库 如果查到数据  调用MD5加密对比密码
-//        User user = userService.findUserByUserName(username);
-//        if(user!=null){
-//            if(SecurityUtils.checkPassword(pwd,user.getPassword())){
-//                //校验成功  设置session
-//                request.getSession().setAttribute("userinfo",user);
-//                return "login_succ";
-//            }else{
-//                // 校验失败  返回校验失败signal
-//                return "login_fail";
-//            }
-//        }else {
-//            // 校验失败  返回校验失败signal
-//            return "login_fail";
-//        }
-//
-//    }
 
-
-//    @RequestMapping("/register")
-////    @ResponseBody
-////    public String register(@RequestBody User user) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-////
-////        userService.createUser(user);
-////
-////        return "succ";
-////    }
-
-
+/*
+ *@author suveng
+ *@date 2018/3/29 19:07
+ *@param [username, password, session]
+ *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+ *方法作用：y验证登录
+ **/
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     @ResponseBody
     public JSONResponse<User> login(String username, String password, HttpSession session) {
@@ -80,6 +61,13 @@ public class UserController {
         return response;
     }
 
+    /*
+     *@author suveng
+     *@date 2018/3/29 19:07
+     *@param [session]
+     *@return cn.edu.hstc.common.JSONResponse<java.lang.String>
+     *方法作用：退出登录
+     **/
     @RequestMapping(value = "/logout.do", method = RequestMethod.POST)
     @ResponseBody
     public JSONResponse<String> logout(HttpSession session) {
