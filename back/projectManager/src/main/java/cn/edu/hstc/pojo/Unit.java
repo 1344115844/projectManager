@@ -6,23 +6,23 @@ import java.util.Date;
 public class Unit implements Serializable {
     private Integer id;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date createtime;
+    private Date createTime;
 
-    private String unitname;
+    private String unitName;
 
-    private String hostunit;
+    private String hostUnit;
 
     private String duty;
 
     private String term;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,44 +34,44 @@ public class Unit implements Serializable {
         this.id = id;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getUnitname() {
-        return unitname;
+    public String getUnitName() {
+        return unitName;
     }
 
-    public void setUnitname(String unitname) {
-        this.unitname = unitname == null ? null : unitname.trim();
+    public void setUnitName(String unitName) {
+        this.unitName = unitName == null ? null : unitName.trim();
     }
 
-    public String getHostunit() {
-        return hostunit;
+    public String getHostUnit() {
+        return hostUnit;
     }
 
-    public void setHostunit(String hostunit) {
-        this.hostunit = hostunit == null ? null : hostunit.trim();
+    public void setHostUnit(String hostUnit) {
+        this.hostUnit = hostUnit == null ? null : hostUnit.trim();
     }
 
     public String getDuty() {
@@ -90,19 +90,19 @@ public class Unit implements Serializable {
         this.term = term == null ? null : term.trim();
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

@@ -70,15 +70,15 @@
                 //ajax提交表单
                 $.ajax({
                     type:"POST",
-                    url:"/login/check",
+                    url:"/user/login.do",
                     data:{"username":user,"password":pwd},
                     success: function (data) {
-                        var user=data;
+                        var user=$(data);
 
-                        if (data==""){
-                            alert("登录失败");
-                        }else {
+                        if (data['msg']=="login success"){
                             window.location.href="/user/index";
+                        }else {
+                           alert("login fail");
                         }
                     }
                 });

@@ -19,13 +19,13 @@ public class UserServiceImpl implements UserService {
             return JSONResponse.createByErrorMessage("用户名不存在");
         }
 
-        String md5Password = MD5Util.MD5EncodeUtf8(password);
-        User user  = userMapper.selectLogin(username,md5Password);
+        //String md5Password = MD5Util.MD5EncodeUtf8(password);
+        User user  = userMapper.selectLogin(username,password);
         if(user == null){
             return JSONResponse.createByErrorMessage("密码错误");
         }
 
         user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
-        return JSONResponse.createBySuccess("登录成功",user);
+        return JSONResponse.createBySuccess("login success",user);
     }
 }

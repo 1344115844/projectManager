@@ -5,12 +5,13 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, createTime, deleteTime, updateTime
+    id, username, password, create_time, delete, update_time, member_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,11 +25,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.User">
     insert into user (id, username, password, 
-      createTime, deleteTime, updateTime
-      )
+      create_time, delete, update_time, 
+      member_id)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{deletetime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
-      )
+      #{createTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{memberId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.User">
     insert into user
@@ -42,14 +43,17 @@
       <if test="password != null">
         password,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="memberId != null">
+        member_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -62,14 +66,17 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -82,14 +89,17 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -98,24 +108,28 @@
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      member_id = #{memberId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
 
-  <select id="checkUsername" resultType="int" parameterType="string" >
-    select count(1) from user
-    where username = #{username}
-  </select>
-
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
-    SELECT
+    select
     <include refid="Base_Column_List" />
     from user
     where username = #{username}
     and password = #{password}
   </select>
+
+
+  <select id="checkUsername" resultType="int" parameterType="String">
+    select count(1)
+    from user
+    where username=#{username}
+  </select>
+
 
 </mapper>

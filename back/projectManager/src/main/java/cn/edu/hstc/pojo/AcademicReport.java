@@ -6,27 +6,27 @@ import java.util.Date;
 public class AcademicReport implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String reporttitle;
+    private String reportTitle;
 
-    private Date begintime;
+    private Date beginTime;
 
-    private Date overtime;
+    private Date overTime;
 
-    private String hostunit;
+    private String hostUnit;
 
-    private String hostplace;
+    private String hostPlace;
 
-    private Integer attendnum;
+    private Integer attendNum;
 
-    private Integer reporterid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -38,91 +38,91 @@ public class AcademicReport implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getReporttitle() {
-        return reporttitle;
+    public String getReportTitle() {
+        return reportTitle;
     }
 
-    public void setReporttitle(String reporttitle) {
-        this.reporttitle = reporttitle == null ? null : reporttitle.trim();
+    public void setReportTitle(String reportTitle) {
+        this.reportTitle = reportTitle == null ? null : reportTitle.trim();
     }
 
-    public Date getBegintime() {
-        return begintime;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setBegintime(Date begintime) {
-        this.begintime = begintime;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public Date getOvertime() {
-        return overtime;
+    public Date getOverTime() {
+        return overTime;
     }
 
-    public void setOvertime(Date overtime) {
-        this.overtime = overtime;
+    public void setOverTime(Date overTime) {
+        this.overTime = overTime;
     }
 
-    public String getHostunit() {
-        return hostunit;
+    public String getHostUnit() {
+        return hostUnit;
     }
 
-    public void setHostunit(String hostunit) {
-        this.hostunit = hostunit == null ? null : hostunit.trim();
+    public void setHostUnit(String hostUnit) {
+        this.hostUnit = hostUnit == null ? null : hostUnit.trim();
     }
 
-    public String getHostplace() {
-        return hostplace;
+    public String getHostPlace() {
+        return hostPlace;
     }
 
-    public void setHostplace(String hostplace) {
-        this.hostplace = hostplace == null ? null : hostplace.trim();
+    public void setHostPlace(String hostPlace) {
+        this.hostPlace = hostPlace == null ? null : hostPlace.trim();
     }
 
-    public Integer getAttendnum() {
-        return attendnum;
+    public Integer getAttendNum() {
+        return attendNum;
     }
 
-    public void setAttendnum(Integer attendnum) {
-        this.attendnum = attendnum;
+    public void setAttendNum(Integer attendNum) {
+        this.attendNum = attendNum;
     }
 
-    public Integer getReporterid() {
-        return reporterid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setReporterid(Integer reporterid) {
-        this.reporterid = reporterid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

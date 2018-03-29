@@ -1,9 +1,5 @@
 
 package cn.edu.hstc.util;
-/**
- * 
- */
-
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +13,6 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
-
 
 /**************************************
 * 类说明:

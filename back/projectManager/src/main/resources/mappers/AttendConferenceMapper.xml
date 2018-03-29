@@ -3,21 +3,21 @@
 <mapper namespace="cn.edu.hstc.dao.AttendConferenceMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.AttendConference">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="conferenceName" jdbcType="VARCHAR" property="conferencename" />
-    <result column="paperTitle" jdbcType="VARCHAR" property="papertitle" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="conference_name" jdbcType="VARCHAR" property="conferenceName" />
+    <result column="paper_title" jdbcType="VARCHAR" property="paperTitle" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="hostUnit" jdbcType="VARCHAR" property="hostunit" />
-    <result column="conferenceCategory" jdbcType="VARCHAR" property="conferencecategory" />
-    <result column="attendID" jdbcType="INTEGER" property="attendid" />
-    <result column="fileID" jdbcType="INTEGER" property="fileid" />
+    <result column="host_unit" jdbcType="VARCHAR" property="hostUnit" />
+    <result column="conference_category" jdbcType="VARCHAR" property="conferenceCategory" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, createTime, updateTime, deleteTime, conferenceName, paperTitle, time, place, 
-    hostUnit, conferenceCategory, attendID, fileID
+    id, create_time, update_time, delete, conference_name, paper_title, time, place, 
+    host_unit, conference_category, member_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -30,15 +30,15 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AttendConference">
-    insert into attendconference (id, createTime, updateTime, 
-      deleteTime, conferenceName, paperTitle, 
-      time, place, hostUnit, 
-      conferenceCategory, attendID, fileID
+    insert into attendconference (id, create_time, update_time, 
+      delete, conference_name, paper_title, 
+      time, place, host_unit, 
+      conference_category, member_id, file_id
       )
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{deletetime,jdbcType=TIMESTAMP}, #{conferencename,jdbcType=VARCHAR}, #{papertitle,jdbcType=VARCHAR}, 
-      #{time,jdbcType=TIMESTAMP}, #{place,jdbcType=VARCHAR}, #{hostunit,jdbcType=VARCHAR}, 
-      #{conferencecategory,jdbcType=VARCHAR}, #{attendid,jdbcType=INTEGER}, #{fileid,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delete,jdbcType=INTEGER}, #{conferenceName,jdbcType=VARCHAR}, #{paperTitle,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{place,jdbcType=VARCHAR}, #{hostUnit,jdbcType=VARCHAR}, 
+      #{conferenceCategory,jdbcType=VARCHAR}, #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.AttendConference">
@@ -47,20 +47,20 @@
       <if test="id != null">
         id,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
-      <if test="conferencename != null">
-        conferenceName,
+      <if test="conferenceName != null">
+        conference_name,
       </if>
-      <if test="papertitle != null">
-        paperTitle,
+      <if test="paperTitle != null">
+        paper_title,
       </if>
       <if test="time != null">
         time,
@@ -68,37 +68,37 @@
       <if test="place != null">
         place,
       </if>
-      <if test="hostunit != null">
-        hostUnit,
+      <if test="hostUnit != null">
+        host_unit,
       </if>
-      <if test="conferencecategory != null">
-        conferenceCategory,
+      <if test="conferenceCategory != null">
+        conference_category,
       </if>
-      <if test="attendid != null">
-        attendID,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="fileid != null">
-        fileID,
+      <if test="fileId != null">
+        file_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
-      <if test="conferencename != null">
-        #{conferencename,jdbcType=VARCHAR},
+      <if test="conferenceName != null">
+        #{conferenceName,jdbcType=VARCHAR},
       </if>
-      <if test="papertitle != null">
-        #{papertitle,jdbcType=VARCHAR},
+      <if test="paperTitle != null">
+        #{paperTitle,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
         #{time,jdbcType=TIMESTAMP},
@@ -106,37 +106,37 @@
       <if test="place != null">
         #{place,jdbcType=VARCHAR},
       </if>
-      <if test="hostunit != null">
-        #{hostunit,jdbcType=VARCHAR},
+      <if test="hostUnit != null">
+        #{hostUnit,jdbcType=VARCHAR},
       </if>
-      <if test="conferencecategory != null">
-        #{conferencecategory,jdbcType=VARCHAR},
+      <if test="conferenceCategory != null">
+        #{conferenceCategory,jdbcType=VARCHAR},
       </if>
-      <if test="attendid != null">
-        #{attendid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.AttendConference">
     update attendconference
     <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
-      <if test="conferencename != null">
-        conferenceName = #{conferencename,jdbcType=VARCHAR},
+      <if test="conferenceName != null">
+        conference_name = #{conferenceName,jdbcType=VARCHAR},
       </if>
-      <if test="papertitle != null">
-        paperTitle = #{papertitle,jdbcType=VARCHAR},
+      <if test="paperTitle != null">
+        paper_title = #{paperTitle,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
         time = #{time,jdbcType=TIMESTAMP},
@@ -144,34 +144,34 @@
       <if test="place != null">
         place = #{place,jdbcType=VARCHAR},
       </if>
-      <if test="hostunit != null">
-        hostUnit = #{hostunit,jdbcType=VARCHAR},
+      <if test="hostUnit != null">
+        host_unit = #{hostUnit,jdbcType=VARCHAR},
       </if>
-      <if test="conferencecategory != null">
-        conferenceCategory = #{conferencecategory,jdbcType=VARCHAR},
+      <if test="conferenceCategory != null">
+        conference_category = #{conferenceCategory,jdbcType=VARCHAR},
       </if>
-      <if test="attendid != null">
-        attendID = #{attendid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        fileID = #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.AttendConference">
     update attendconference
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      conferenceName = #{conferencename,jdbcType=VARCHAR},
-      paperTitle = #{papertitle,jdbcType=VARCHAR},
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER},
+      conference_name = #{conferenceName,jdbcType=VARCHAR},
+      paper_title = #{paperTitle,jdbcType=VARCHAR},
       time = #{time,jdbcType=TIMESTAMP},
       place = #{place,jdbcType=VARCHAR},
-      hostUnit = #{hostunit,jdbcType=VARCHAR},
-      conferenceCategory = #{conferencecategory,jdbcType=VARCHAR},
-      attendID = #{attendid,jdbcType=INTEGER},
-      fileID = #{fileid,jdbcType=INTEGER}
+      host_unit = #{hostUnit,jdbcType=VARCHAR},
+      conference_category = #{conferenceCategory,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

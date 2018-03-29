@@ -4,17 +4,17 @@
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Member">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="jobTitle" jdbcType="VARCHAR" property="jobtitle" />
+    <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
     <result column="education" jdbcType="VARCHAR" property="education" />
-    <result column="researchDirection" jdbcType="VARCHAR" property="researchdirection" />
-    <result column="AcademicTitle" jdbcType="VARCHAR" property="academictitle" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
+    <result column="research_direction" jdbcType="VARCHAR" property="researchDirection" />
+    <result column="academic_title" jdbcType="VARCHAR" property="academicTitle" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, jobTitle, education, researchDirection, AcademicTitle, createTime, updateTime, 
-    deleteTime
+    id, name, job_title, education, research_direction, academic_title, create_time, 
+    update_time, delete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -27,13 +27,13 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Member">
-    insert into member (id, name, jobTitle, 
-      education, researchDirection, AcademicTitle, 
-      createTime, updateTime, deleteTime
+    insert into member (id, name, job_title, 
+      education, research_direction, academic_title, 
+      create_time, update_time, delete
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{jobtitle,jdbcType=VARCHAR}, 
-      #{education,jdbcType=VARCHAR}, #{researchdirection,jdbcType=VARCHAR}, #{academictitle,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{deletetime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{researchDirection,jdbcType=VARCHAR}, #{academicTitle,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Member">
@@ -45,26 +45,26 @@
       <if test="name != null">
         name,
       </if>
-      <if test="jobtitle != null">
-        jobTitle,
+      <if test="jobTitle != null">
+        job_title,
       </if>
       <if test="education != null">
         education,
       </if>
-      <if test="researchdirection != null">
-        researchDirection,
+      <if test="researchDirection != null">
+        research_direction,
       </if>
-      <if test="academictitle != null">
-        AcademicTitle,
+      <if test="academicTitle != null">
+        academic_title,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -74,26 +74,26 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="jobtitle != null">
-        #{jobtitle,jdbcType=VARCHAR},
+      <if test="jobTitle != null">
+        #{jobTitle,jdbcType=VARCHAR},
       </if>
       <if test="education != null">
         #{education,jdbcType=VARCHAR},
       </if>
-      <if test="researchdirection != null">
-        #{researchdirection,jdbcType=VARCHAR},
+      <if test="researchDirection != null">
+        #{researchDirection,jdbcType=VARCHAR},
       </if>
-      <if test="academictitle != null">
-        #{academictitle,jdbcType=VARCHAR},
+      <if test="academicTitle != null">
+        #{academicTitle,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -103,26 +103,26 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="jobtitle != null">
-        jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      <if test="jobTitle != null">
+        job_title = #{jobTitle,jdbcType=VARCHAR},
       </if>
       <if test="education != null">
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="researchdirection != null">
-        researchDirection = #{researchdirection,jdbcType=VARCHAR},
+      <if test="researchDirection != null">
+        research_direction = #{researchDirection,jdbcType=VARCHAR},
       </if>
-      <if test="academictitle != null">
-        AcademicTitle = #{academictitle,jdbcType=VARCHAR},
+      <if test="academicTitle != null">
+        academic_title = #{academicTitle,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -130,13 +130,13 @@
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Member">
     update member
     set name = #{name,jdbcType=VARCHAR},
-      jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
-      researchDirection = #{researchdirection,jdbcType=VARCHAR},
-      AcademicTitle = #{academictitle,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP}
+      research_direction = #{researchDirection,jdbcType=VARCHAR},
+      academic_title = #{academicTitle,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

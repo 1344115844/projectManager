@@ -3,21 +3,21 @@
 <mapper namespace="cn.edu.hstc.dao.AcademicReportMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.AcademicReport">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="reportTitle" jdbcType="VARCHAR" property="reporttitle" />
-    <result column="beginTime" jdbcType="TIMESTAMP" property="begintime" />
-    <result column="overTime" jdbcType="TIMESTAMP" property="overtime" />
-    <result column="hostUnit" jdbcType="VARCHAR" property="hostunit" />
-    <result column="hostPlace" jdbcType="VARCHAR" property="hostplace" />
-    <result column="attendNum" jdbcType="INTEGER" property="attendnum" />
-    <result column="reporterID" jdbcType="INTEGER" property="reporterid" />
-    <result column="fileID" jdbcType="INTEGER" property="fileid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="report_title" jdbcType="VARCHAR" property="reportTitle" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
+    <result column="host_unit" jdbcType="VARCHAR" property="hostUnit" />
+    <result column="host_place" jdbcType="VARCHAR" property="hostPlace" />
+    <result column="attend_num" jdbcType="INTEGER" property="attendNum" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, createTime, updateTime, deleteTime, reportTitle, beginTime, overTime, hostUnit, 
-    hostPlace, attendNum, reporterID, fileID
+    id, create_time, update_time, delete, report_title, begin_time, over_time, host_unit, 
+    host_place, attend_num, member_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -30,15 +30,15 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AcademicReport">
-    insert into academicreport (id, createTime, updateTime, 
-      deleteTime, reportTitle, beginTime, 
-      overTime, hostUnit, hostPlace, 
-      attendNum, reporterID, fileID
+    insert into academicreport (id, create_time, update_time, 
+      delete, report_title, begin_time, 
+      over_time, host_unit, host_place, 
+      attend_num, member_id, file_id
       )
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{deletetime,jdbcType=TIMESTAMP}, #{reporttitle,jdbcType=VARCHAR}, #{begintime,jdbcType=TIMESTAMP}, 
-      #{overtime,jdbcType=TIMESTAMP}, #{hostunit,jdbcType=VARCHAR}, #{hostplace,jdbcType=VARCHAR}, 
-      #{attendnum,jdbcType=INTEGER}, #{reporterid,jdbcType=INTEGER}, #{fileid,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delete,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
+      #{overTime,jdbcType=TIMESTAMP}, #{hostUnit,jdbcType=VARCHAR}, #{hostPlace,jdbcType=VARCHAR}, 
+      #{attendNum,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.AcademicReport">
@@ -47,131 +47,131 @@
       <if test="id != null">
         id,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
-      <if test="reporttitle != null">
-        reportTitle,
+      <if test="reportTitle != null">
+        report_title,
       </if>
-      <if test="begintime != null">
-        beginTime,
+      <if test="beginTime != null">
+        begin_time,
       </if>
-      <if test="overtime != null">
-        overTime,
+      <if test="overTime != null">
+        over_time,
       </if>
-      <if test="hostunit != null">
-        hostUnit,
+      <if test="hostUnit != null">
+        host_unit,
       </if>
-      <if test="hostplace != null">
-        hostPlace,
+      <if test="hostPlace != null">
+        host_place,
       </if>
-      <if test="attendnum != null">
-        attendNum,
+      <if test="attendNum != null">
+        attend_num,
       </if>
-      <if test="reporterid != null">
-        reporterID,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="fileid != null">
-        fileID,
+      <if test="fileId != null">
+        file_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
-      <if test="reporttitle != null">
-        #{reporttitle,jdbcType=VARCHAR},
+      <if test="reportTitle != null">
+        #{reportTitle,jdbcType=VARCHAR},
       </if>
-      <if test="begintime != null">
-        #{begintime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="overtime != null">
-        #{overtime,jdbcType=TIMESTAMP},
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="hostunit != null">
-        #{hostunit,jdbcType=VARCHAR},
+      <if test="hostUnit != null">
+        #{hostUnit,jdbcType=VARCHAR},
       </if>
-      <if test="hostplace != null">
-        #{hostplace,jdbcType=VARCHAR},
+      <if test="hostPlace != null">
+        #{hostPlace,jdbcType=VARCHAR},
       </if>
-      <if test="attendnum != null">
-        #{attendnum,jdbcType=INTEGER},
+      <if test="attendNum != null">
+        #{attendNum,jdbcType=INTEGER},
       </if>
-      <if test="reporterid != null">
-        #{reporterid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.AcademicReport">
     update academicreport
     <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
-      <if test="reporttitle != null">
-        reportTitle = #{reporttitle,jdbcType=VARCHAR},
+      <if test="reportTitle != null">
+        report_title = #{reportTitle,jdbcType=VARCHAR},
       </if>
-      <if test="begintime != null">
-        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="overtime != null">
-        overTime = #{overtime,jdbcType=TIMESTAMP},
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="hostunit != null">
-        hostUnit = #{hostunit,jdbcType=VARCHAR},
+      <if test="hostUnit != null">
+        host_unit = #{hostUnit,jdbcType=VARCHAR},
       </if>
-      <if test="hostplace != null">
-        hostPlace = #{hostplace,jdbcType=VARCHAR},
+      <if test="hostPlace != null">
+        host_place = #{hostPlace,jdbcType=VARCHAR},
       </if>
-      <if test="attendnum != null">
-        attendNum = #{attendnum,jdbcType=INTEGER},
+      <if test="attendNum != null">
+        attend_num = #{attendNum,jdbcType=INTEGER},
       </if>
-      <if test="reporterid != null">
-        reporterID = #{reporterid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        fileID = #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.AcademicReport">
     update academicreport
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      reportTitle = #{reporttitle,jdbcType=VARCHAR},
-      beginTime = #{begintime,jdbcType=TIMESTAMP},
-      overTime = #{overtime,jdbcType=TIMESTAMP},
-      hostUnit = #{hostunit,jdbcType=VARCHAR},
-      hostPlace = #{hostplace,jdbcType=VARCHAR},
-      attendNum = #{attendnum,jdbcType=INTEGER},
-      reporterID = #{reporterid,jdbcType=INTEGER},
-      fileID = #{fileid,jdbcType=INTEGER}
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER},
+      report_title = #{reportTitle,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      host_unit = #{hostUnit,jdbcType=VARCHAR},
+      host_place = #{hostPlace,jdbcType=VARCHAR},
+      attend_num = #{attendNum,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -6,11 +6,11 @@ import java.util.Date;
 public class Filepath implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
     private String url;
 
@@ -24,28 +24,28 @@ public class Filepath implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
     public String getUrl() {

@@ -3,25 +3,25 @@
 <mapper namespace="cn.edu.hstc.dao.AcademicMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Academic">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="thesisName" jdbcType="VARCHAR" property="thesisname" />
-    <result column="Novon" jdbcType="VARCHAR" property="novon" />
-    <result column="releasingCode" jdbcType="VARCHAR" property="releasingcode" />
-    <result column="publicationLevel" jdbcType="VARCHAR" property="publicationlevel" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="thesis_name" jdbcType="VARCHAR" property="thesisName" />
+    <result column="novon" jdbcType="VARCHAR" property="novon" />
+    <result column="releasing_code" jdbcType="VARCHAR" property="releasingCode" />
+    <result column="publication_level" jdbcType="VARCHAR" property="publicationLevel" />
     <result column=" periodical" jdbcType="VARCHAR" property="periodical" />
-    <result column="publishJournals" jdbcType="VARCHAR" property="publishjournals" />
-    <result column="collectionSituation" jdbcType="VARCHAR" property="collectionsituation" />
-    <result column="authorRank" jdbcType="VARCHAR" property="authorrank" />
+    <result column="publish_journals" jdbcType="VARCHAR" property="publishJournals" />
+    <result column="collection_situation" jdbcType="VARCHAR" property="collectionSituation" />
+    <result column="author_rank" jdbcType="VARCHAR" property="authorRank" />
     <result column="category" jdbcType="VARCHAR" property="category" />
-    <result column="authorID" jdbcType="INTEGER" property="authorid" />
-    <result column="fileID" jdbcType="INTEGER" property="fileid" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column=" file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, createTime, updateTime, deleteTime, thesisName, Novon, releasingCode, publicationLevel, 
-    " periodical", publishJournals, collectionSituation, authorRank, category, authorID, 
-    fileID
+    id, create_time, update_time, delete, thesis_name, novon, releasing_code, publication_level, 
+    " periodical", publish_journals, collection_situation, author_rank, category, member_id, 
+    " file_id"
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -34,17 +34,17 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Academic">
-    insert into academic (id, createTime, updateTime, 
-      deleteTime, thesisName, Novon, 
-      releasingCode, publicationLevel, " periodical", 
-      publishJournals, collectionSituation, authorRank, 
-      category, authorID, fileID
+    insert into academic (id, create_time, update_time, 
+      delete, thesis_name, novon, 
+      releasing_code, publication_level, " periodical", 
+      publish_journals, collection_situation, author_rank, 
+      category, member_id, " file_id"
       )
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{deletetime,jdbcType=TIMESTAMP}, #{thesisname,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR}, 
-      #{releasingcode,jdbcType=VARCHAR}, #{publicationlevel,jdbcType=VARCHAR}, #{periodical,jdbcType=VARCHAR}, 
-      #{publishjournals,jdbcType=VARCHAR}, #{collectionsituation,jdbcType=VARCHAR}, #{authorrank,jdbcType=VARCHAR}, 
-      #{category,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, #{fileid,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delete,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR}, 
+      #{releasingCode,jdbcType=VARCHAR}, #{publicationLevel,jdbcType=VARCHAR}, #{periodical,jdbcType=VARCHAR}, 
+      #{publishJournals,jdbcType=VARCHAR}, #{collectionSituation,jdbcType=VARCHAR}, #{authorRank,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Academic">
@@ -53,161 +53,161 @@
       <if test="id != null">
         id,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
-      <if test="thesisname != null">
-        thesisName,
+      <if test="thesisName != null">
+        thesis_name,
       </if>
       <if test="novon != null">
-        Novon,
+        novon,
       </if>
-      <if test="releasingcode != null">
-        releasingCode,
+      <if test="releasingCode != null">
+        releasing_code,
       </if>
-      <if test="publicationlevel != null">
-        publicationLevel,
+      <if test="publicationLevel != null">
+        publication_level,
       </if>
       <if test="periodical != null">
         " periodical",
       </if>
-      <if test="publishjournals != null">
-        publishJournals,
+      <if test="publishJournals != null">
+        publish_journals,
       </if>
-      <if test="collectionsituation != null">
-        collectionSituation,
+      <if test="collectionSituation != null">
+        collection_situation,
       </if>
-      <if test="authorrank != null">
-        authorRank,
+      <if test="authorRank != null">
+        author_rank,
       </if>
       <if test="category != null">
         category,
       </if>
-      <if test="authorid != null">
-        authorID,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="fileid != null">
-        fileID,
+      <if test="fileId != null">
+        " file_id",
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
-      <if test="thesisname != null">
-        #{thesisname,jdbcType=VARCHAR},
+      <if test="thesisName != null">
+        #{thesisName,jdbcType=VARCHAR},
       </if>
       <if test="novon != null">
         #{novon,jdbcType=VARCHAR},
       </if>
-      <if test="releasingcode != null">
-        #{releasingcode,jdbcType=VARCHAR},
+      <if test="releasingCode != null">
+        #{releasingCode,jdbcType=VARCHAR},
       </if>
-      <if test="publicationlevel != null">
-        #{publicationlevel,jdbcType=VARCHAR},
+      <if test="publicationLevel != null">
+        #{publicationLevel,jdbcType=VARCHAR},
       </if>
       <if test="periodical != null">
         #{periodical,jdbcType=VARCHAR},
       </if>
-      <if test="publishjournals != null">
-        #{publishjournals,jdbcType=VARCHAR},
+      <if test="publishJournals != null">
+        #{publishJournals,jdbcType=VARCHAR},
       </if>
-      <if test="collectionsituation != null">
-        #{collectionsituation,jdbcType=VARCHAR},
+      <if test="collectionSituation != null">
+        #{collectionSituation,jdbcType=VARCHAR},
       </if>
-      <if test="authorrank != null">
-        #{authorrank,jdbcType=VARCHAR},
+      <if test="authorRank != null">
+        #{authorRank,jdbcType=VARCHAR},
       </if>
       <if test="category != null">
         #{category,jdbcType=VARCHAR},
       </if>
-      <if test="authorid != null">
-        #{authorid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.Academic">
     update academic
     <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
-      <if test="thesisname != null">
-        thesisName = #{thesisname,jdbcType=VARCHAR},
+      <if test="thesisName != null">
+        thesis_name = #{thesisName,jdbcType=VARCHAR},
       </if>
       <if test="novon != null">
-        Novon = #{novon,jdbcType=VARCHAR},
+        novon = #{novon,jdbcType=VARCHAR},
       </if>
-      <if test="releasingcode != null">
-        releasingCode = #{releasingcode,jdbcType=VARCHAR},
+      <if test="releasingCode != null">
+        releasing_code = #{releasingCode,jdbcType=VARCHAR},
       </if>
-      <if test="publicationlevel != null">
-        publicationLevel = #{publicationlevel,jdbcType=VARCHAR},
+      <if test="publicationLevel != null">
+        publication_level = #{publicationLevel,jdbcType=VARCHAR},
       </if>
       <if test="periodical != null">
         " periodical" = #{periodical,jdbcType=VARCHAR},
       </if>
-      <if test="publishjournals != null">
-        publishJournals = #{publishjournals,jdbcType=VARCHAR},
+      <if test="publishJournals != null">
+        publish_journals = #{publishJournals,jdbcType=VARCHAR},
       </if>
-      <if test="collectionsituation != null">
-        collectionSituation = #{collectionsituation,jdbcType=VARCHAR},
+      <if test="collectionSituation != null">
+        collection_situation = #{collectionSituation,jdbcType=VARCHAR},
       </if>
-      <if test="authorrank != null">
-        authorRank = #{authorrank,jdbcType=VARCHAR},
+      <if test="authorRank != null">
+        author_rank = #{authorRank,jdbcType=VARCHAR},
       </if>
       <if test="category != null">
         category = #{category,jdbcType=VARCHAR},
       </if>
-      <if test="authorid != null">
-        authorID = #{authorid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        fileID = #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        " file_id" = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Academic">
     update academic
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      thesisName = #{thesisname,jdbcType=VARCHAR},
-      Novon = #{novon,jdbcType=VARCHAR},
-      releasingCode = #{releasingcode,jdbcType=VARCHAR},
-      publicationLevel = #{publicationlevel,jdbcType=VARCHAR},
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER},
+      thesis_name = #{thesisName,jdbcType=VARCHAR},
+      novon = #{novon,jdbcType=VARCHAR},
+      releasing_code = #{releasingCode,jdbcType=VARCHAR},
+      publication_level = #{publicationLevel,jdbcType=VARCHAR},
       " periodical" = #{periodical,jdbcType=VARCHAR},
-      publishJournals = #{publishjournals,jdbcType=VARCHAR},
-      collectionSituation = #{collectionsituation,jdbcType=VARCHAR},
-      authorRank = #{authorrank,jdbcType=VARCHAR},
+      publish_journals = #{publishJournals,jdbcType=VARCHAR},
+      collection_situation = #{collectionSituation,jdbcType=VARCHAR},
+      author_rank = #{authorRank,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
-      authorID = #{authorid,jdbcType=INTEGER},
-      fileID = #{fileid,jdbcType=INTEGER}
+      member_id = #{memberId,jdbcType=INTEGER},
+      " file_id" = #{fileId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

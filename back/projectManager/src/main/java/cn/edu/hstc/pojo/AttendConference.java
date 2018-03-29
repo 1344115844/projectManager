@@ -6,27 +6,27 @@ import java.util.Date;
 public class AttendConference implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String conferencename;
+    private String conferenceName;
 
-    private String papertitle;
+    private String paperTitle;
 
     private Date time;
 
     private String place;
 
-    private String hostunit;
+    private String hostUnit;
 
-    private String conferencecategory;
+    private String conferenceCategory;
 
-    private Integer attendid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -38,44 +38,44 @@ public class AttendConference implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getConferencename() {
-        return conferencename;
+    public String getConferenceName() {
+        return conferenceName;
     }
 
-    public void setConferencename(String conferencename) {
-        this.conferencename = conferencename == null ? null : conferencename.trim();
+    public void setConferenceName(String conferenceName) {
+        this.conferenceName = conferenceName == null ? null : conferenceName.trim();
     }
 
-    public String getPapertitle() {
-        return papertitle;
+    public String getPaperTitle() {
+        return paperTitle;
     }
 
-    public void setPapertitle(String papertitle) {
-        this.papertitle = papertitle == null ? null : papertitle.trim();
+    public void setPaperTitle(String paperTitle) {
+        this.paperTitle = paperTitle == null ? null : paperTitle.trim();
     }
 
     public Date getTime() {
@@ -94,35 +94,35 @@ public class AttendConference implements Serializable {
         this.place = place == null ? null : place.trim();
     }
 
-    public String getHostunit() {
-        return hostunit;
+    public String getHostUnit() {
+        return hostUnit;
     }
 
-    public void setHostunit(String hostunit) {
-        this.hostunit = hostunit == null ? null : hostunit.trim();
+    public void setHostUnit(String hostUnit) {
+        this.hostUnit = hostUnit == null ? null : hostUnit.trim();
     }
 
-    public String getConferencecategory() {
-        return conferencecategory;
+    public String getConferenceCategory() {
+        return conferenceCategory;
     }
 
-    public void setConferencecategory(String conferencecategory) {
-        this.conferencecategory = conferencecategory == null ? null : conferencecategory.trim();
+    public void setConferenceCategory(String conferenceCategory) {
+        this.conferenceCategory = conferenceCategory == null ? null : conferenceCategory.trim();
     }
 
-    public Integer getAttendid() {
-        return attendid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setAttendid(Integer attendid) {
-        this.attendid = attendid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

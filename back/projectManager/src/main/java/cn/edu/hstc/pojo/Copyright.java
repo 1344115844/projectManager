@@ -6,23 +6,23 @@ import java.util.Date;
 public class Copyright implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String rightname;
+    private String rightName;
 
     private String rank;
 
-    private Date awardtime;
+    private Date awardTime;
 
-    private Integer rightnum;
+    private Integer rightNum;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,36 +34,36 @@ public class Copyright implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getRightname() {
-        return rightname;
+    public String getRightName() {
+        return rightName;
     }
 
-    public void setRightname(String rightname) {
-        this.rightname = rightname == null ? null : rightname.trim();
+    public void setRightName(String rightName) {
+        this.rightName = rightName == null ? null : rightName.trim();
     }
 
     public String getRank() {
@@ -74,35 +74,35 @@ public class Copyright implements Serializable {
         this.rank = rank == null ? null : rank.trim();
     }
 
-    public Date getAwardtime() {
-        return awardtime;
+    public Date getAwardTime() {
+        return awardTime;
     }
 
-    public void setAwardtime(Date awardtime) {
-        this.awardtime = awardtime;
+    public void setAwardTime(Date awardTime) {
+        this.awardTime = awardTime;
     }
 
-    public Integer getRightnum() {
-        return rightnum;
+    public Integer getRightNum() {
+        return rightNum;
     }
 
-    public void setRightnum(Integer rightnum) {
-        this.rightnum = rightnum;
+    public void setRightNum(Integer rightNum) {
+        this.rightNum = rightNum;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

@@ -8,19 +8,19 @@ public class Member implements Serializable {
 
     private String name;
 
-    private String jobtitle;
+    private String jobTitle;
 
     private String education;
 
-    private String researchdirection;
+    private String researchDirection;
 
-    private String academictitle;
+    private String academicTitle;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
     private static final long serialVersionUID = 1L;
 
@@ -40,12 +40,12 @@ public class Member implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getJobtitle() {
-        return jobtitle;
+    public String getJobTitle() {
+        return jobTitle;
     }
 
-    public void setJobtitle(String jobtitle) {
-        this.jobtitle = jobtitle == null ? null : jobtitle.trim();
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle == null ? null : jobTitle.trim();
     }
 
     public String getEducation() {
@@ -56,43 +56,43 @@ public class Member implements Serializable {
         this.education = education == null ? null : education.trim();
     }
 
-    public String getResearchdirection() {
-        return researchdirection;
+    public String getResearchDirection() {
+        return researchDirection;
     }
 
-    public void setResearchdirection(String researchdirection) {
-        this.researchdirection = researchdirection == null ? null : researchdirection.trim();
+    public void setResearchDirection(String researchDirection) {
+        this.researchDirection = researchDirection == null ? null : researchDirection.trim();
     }
 
-    public String getAcademictitle() {
-        return academictitle;
+    public String getAcademicTitle() {
+        return academicTitle;
     }
 
-    public void setAcademictitle(String academictitle) {
-        this.academictitle = academictitle == null ? null : academictitle.trim();
+    public void setAcademicTitle(String academicTitle) {
+        this.academicTitle = academicTitle == null ? null : academicTitle.trim();
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 }

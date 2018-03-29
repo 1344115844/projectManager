@@ -6,35 +6,35 @@ import java.util.Date;
 public class Project implements Serializable {
     private Integer id;
 
-    private String projectname;
+    private String projectName;
 
-    private Integer projectnumber;
+    private Integer projectNumber;
 
-    private String projectsource;
+    private String projectSource;
 
-    private Date begintime;
+    private Date beginTime;
 
-    private Date overtime;
+    private Date overTime;
 
     private Double funds;
 
     private String level;
 
-    private Integer isteamwork;
+    private Integer isTeamwork;
 
     private String state;
 
-    private String projectdirector;
+    private String projectDirector;
 
-    private Integer fileid;
+    private Integer fileId;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private Date creattime;
+    private Date creatTime;
 
-    private Date deletetime;
+    private Date deleteTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -46,44 +46,44 @@ public class Project implements Serializable {
         this.id = id;
     }
 
-    public String getProjectname() {
-        return projectname;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname == null ? null : projectname.trim();
+    public void setProjectName(String projectName) {
+        this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public Integer getProjectnumber() {
-        return projectnumber;
+    public Integer getProjectNumber() {
+        return projectNumber;
     }
 
-    public void setProjectnumber(Integer projectnumber) {
-        this.projectnumber = projectnumber;
+    public void setProjectNumber(Integer projectNumber) {
+        this.projectNumber = projectNumber;
     }
 
-    public String getProjectsource() {
-        return projectsource;
+    public String getProjectSource() {
+        return projectSource;
     }
 
-    public void setProjectsource(String projectsource) {
-        this.projectsource = projectsource == null ? null : projectsource.trim();
+    public void setProjectSource(String projectSource) {
+        this.projectSource = projectSource == null ? null : projectSource.trim();
     }
 
-    public Date getBegintime() {
-        return begintime;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setBegintime(Date begintime) {
-        this.begintime = begintime;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public Date getOvertime() {
-        return overtime;
+    public Date getOverTime() {
+        return overTime;
     }
 
-    public void setOvertime(Date overtime) {
-        this.overtime = overtime;
+    public void setOverTime(Date overTime) {
+        this.overTime = overTime;
     }
 
     public Double getFunds() {
@@ -102,12 +102,12 @@ public class Project implements Serializable {
         this.level = level == null ? null : level.trim();
     }
 
-    public Integer getIsteamwork() {
-        return isteamwork;
+    public Integer getIsTeamwork() {
+        return isTeamwork;
     }
 
-    public void setIsteamwork(Integer isteamwork) {
-        this.isteamwork = isteamwork;
+    public void setIsTeamwork(Integer isTeamwork) {
+        this.isTeamwork = isTeamwork;
     }
 
     public String getState() {
@@ -118,51 +118,51 @@ public class Project implements Serializable {
         this.state = state == null ? null : state.trim();
     }
 
-    public String getProjectdirector() {
-        return projectdirector;
+    public String getProjectDirector() {
+        return projectDirector;
     }
 
-    public void setProjectdirector(String projectdirector) {
-        this.projectdirector = projectdirector == null ? null : projectdirector.trim();
+    public void setProjectDirector(String projectDirector) {
+        this.projectDirector = projectDirector == null ? null : projectDirector.trim();
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Date getCreattime() {
-        return creattime;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public void setCreattime(Date creattime) {
-        this.creattime = creattime;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Date getDeleteTime() {
+        return deleteTime;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDeleteTime(Date deleteTime) {
+        this.deleteTime = deleteTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

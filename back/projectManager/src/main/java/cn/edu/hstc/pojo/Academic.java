@@ -6,33 +6,33 @@ import java.util.Date;
 public class Academic implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String thesisname;
+    private String thesisName;
 
     private String novon;
 
-    private String releasingcode;
+    private String releasingCode;
 
-    private String publicationlevel;
+    private String publicationLevel;
 
     private String periodical;
 
-    private String publishjournals;
+    private String publishJournals;
 
-    private String collectionsituation;
+    private String collectionSituation;
 
-    private String authorrank;
+    private String authorRank;
 
     private String category;
 
-    private Integer authorid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -44,36 +44,36 @@ public class Academic implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getThesisname() {
-        return thesisname;
+    public String getThesisName() {
+        return thesisName;
     }
 
-    public void setThesisname(String thesisname) {
-        this.thesisname = thesisname == null ? null : thesisname.trim();
+    public void setThesisName(String thesisName) {
+        this.thesisName = thesisName == null ? null : thesisName.trim();
     }
 
     public String getNovon() {
@@ -84,20 +84,20 @@ public class Academic implements Serializable {
         this.novon = novon == null ? null : novon.trim();
     }
 
-    public String getReleasingcode() {
-        return releasingcode;
+    public String getReleasingCode() {
+        return releasingCode;
     }
 
-    public void setReleasingcode(String releasingcode) {
-        this.releasingcode = releasingcode == null ? null : releasingcode.trim();
+    public void setReleasingCode(String releasingCode) {
+        this.releasingCode = releasingCode == null ? null : releasingCode.trim();
     }
 
-    public String getPublicationlevel() {
-        return publicationlevel;
+    public String getPublicationLevel() {
+        return publicationLevel;
     }
 
-    public void setPublicationlevel(String publicationlevel) {
-        this.publicationlevel = publicationlevel == null ? null : publicationlevel.trim();
+    public void setPublicationLevel(String publicationLevel) {
+        this.publicationLevel = publicationLevel == null ? null : publicationLevel.trim();
     }
 
     public String getPeriodical() {
@@ -108,28 +108,28 @@ public class Academic implements Serializable {
         this.periodical = periodical == null ? null : periodical.trim();
     }
 
-    public String getPublishjournals() {
-        return publishjournals;
+    public String getPublishJournals() {
+        return publishJournals;
     }
 
-    public void setPublishjournals(String publishjournals) {
-        this.publishjournals = publishjournals == null ? null : publishjournals.trim();
+    public void setPublishJournals(String publishJournals) {
+        this.publishJournals = publishJournals == null ? null : publishJournals.trim();
     }
 
-    public String getCollectionsituation() {
-        return collectionsituation;
+    public String getCollectionSituation() {
+        return collectionSituation;
     }
 
-    public void setCollectionsituation(String collectionsituation) {
-        this.collectionsituation = collectionsituation == null ? null : collectionsituation.trim();
+    public void setCollectionSituation(String collectionSituation) {
+        this.collectionSituation = collectionSituation == null ? null : collectionSituation.trim();
     }
 
-    public String getAuthorrank() {
-        return authorrank;
+    public String getAuthorRank() {
+        return authorRank;
     }
 
-    public void setAuthorrank(String authorrank) {
-        this.authorrank = authorrank == null ? null : authorrank.trim();
+    public void setAuthorRank(String authorRank) {
+        this.authorRank = authorRank == null ? null : authorRank.trim();
     }
 
     public String getCategory() {
@@ -140,19 +140,19 @@ public class Academic implements Serializable {
         this.category = category == null ? null : category.trim();
     }
 
-    public Integer getAuthorid() {
-        return authorid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setAuthorid(Integer authorid) {
-        this.authorid = authorid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

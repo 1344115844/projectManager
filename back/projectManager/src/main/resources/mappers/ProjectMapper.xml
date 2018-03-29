@@ -3,25 +3,26 @@
 <mapper namespace="cn.edu.hstc.dao.ProjectMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Project">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="projectName" jdbcType="VARCHAR" property="projectname" />
-    <result column="projectNumber" jdbcType="INTEGER" property="projectnumber" />
-    <result column=" projectSource" jdbcType="VARCHAR" property="projectsource" />
-    <result column="beginTime" jdbcType="TIMESTAMP" property="begintime" />
-    <result column="overTime" jdbcType="TIMESTAMP" property="overtime" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="project_number" jdbcType="INTEGER" property="projectNumber" />
+    <result column=" project_source" jdbcType="VARCHAR" property="projectSource" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
     <result column="funds" jdbcType="DOUBLE" property="funds" />
     <result column="level" jdbcType="VARCHAR" property="level" />
-    <result column="isTeamWork" jdbcType="INTEGER" property="isteamwork" />
+    <result column="is_teamwork" jdbcType="INTEGER" property="isTeamwork" />
     <result column="state" jdbcType="VARCHAR" property="state" />
-    <result column="projectDirector" jdbcType="VARCHAR" property="projectdirector" />
-    <result column="fileID" jdbcType="INTEGER" property="fileid" />
-    <result column="memberID" jdbcType="INTEGER" property="memberid" />
-    <result column="creatTime" jdbcType="TIMESTAMP" property="creattime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="project_director" jdbcType="VARCHAR" property="projectDirector" />
+    <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, projectName, projectNumber, " projectSource", beginTime, overTime, funds, level, 
-    isTeamWork, state, projectDirector, fileID, memberID, creatTime, deleteTime, updateTime
+    id, project_name, project_number, " project_source", begin_time, over_time, funds, 
+    level, is_teamwork, state, project_director, file_id, member_id, creat_time, delete_time, 
+    update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -34,18 +35,18 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Project">
-    insert into project (id, projectName, projectNumber, 
-      " projectSource", beginTime, overTime, 
-      funds, level, isTeamWork, 
-      state, projectDirector, fileID, 
-      memberID, creatTime, deleteTime, 
-      updateTime)
-    values (#{id,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{projectnumber,jdbcType=INTEGER}, 
-      #{projectsource,jdbcType=VARCHAR}, #{begintime,jdbcType=TIMESTAMP}, #{overtime,jdbcType=TIMESTAMP}, 
-      #{funds,jdbcType=DOUBLE}, #{level,jdbcType=VARCHAR}, #{isteamwork,jdbcType=INTEGER}, 
-      #{state,jdbcType=VARCHAR}, #{projectdirector,jdbcType=VARCHAR}, #{fileid,jdbcType=INTEGER}, 
-      #{memberid,jdbcType=INTEGER}, #{creattime,jdbcType=TIMESTAMP}, #{deletetime,jdbcType=TIMESTAMP}, 
-      #{updatetime,jdbcType=TIMESTAMP})
+    insert into project (id, project_name, project_number, 
+      " project_source", begin_time, over_time, 
+      funds, level, is_teamwork, 
+      state, project_director, file_id, 
+      member_id, creat_time, delete_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectNumber,jdbcType=INTEGER}, 
+      #{projectSource,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
+      #{funds,jdbcType=DOUBLE}, #{level,jdbcType=VARCHAR}, #{isTeamwork,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR}, #{projectDirector,jdbcType=VARCHAR}, #{fileId,jdbcType=INTEGER}, 
+      #{memberId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Project">
     insert into project
@@ -53,20 +54,20 @@
       <if test="id != null">
         id,
       </if>
-      <if test="projectname != null">
-        projectName,
+      <if test="projectName != null">
+        project_name,
       </if>
-      <if test="projectnumber != null">
-        projectNumber,
+      <if test="projectNumber != null">
+        project_number,
       </if>
-      <if test="projectsource != null">
-        " projectSource",
+      <if test="projectSource != null">
+        " project_source",
       </if>
-      <if test="begintime != null">
-        beginTime,
+      <if test="beginTime != null">
+        begin_time,
       </if>
-      <if test="overtime != null">
-        overTime,
+      <if test="overTime != null">
+        over_time,
       </if>
       <if test="funds != null">
         funds,
@@ -74,49 +75,49 @@
       <if test="level != null">
         level,
       </if>
-      <if test="isteamwork != null">
-        isTeamWork,
+      <if test="isTeamwork != null">
+        is_teamwork,
       </if>
       <if test="state != null">
         state,
       </if>
-      <if test="projectdirector != null">
-        projectDirector,
+      <if test="projectDirector != null">
+        project_director,
       </if>
-      <if test="fileid != null">
-        fileID,
+      <if test="fileId != null">
+        file_id,
       </if>
-      <if test="memberid != null">
-        memberID,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="creattime != null">
-        creatTime,
+      <if test="creatTime != null">
+        creat_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="deleteTime != null">
+        delete_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="projectname != null">
-        #{projectname,jdbcType=VARCHAR},
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
       </if>
-      <if test="projectnumber != null">
-        #{projectnumber,jdbcType=INTEGER},
+      <if test="projectNumber != null">
+        #{projectNumber,jdbcType=INTEGER},
       </if>
-      <if test="projectsource != null">
-        #{projectsource,jdbcType=VARCHAR},
+      <if test="projectSource != null">
+        #{projectSource,jdbcType=VARCHAR},
       </if>
-      <if test="begintime != null">
-        #{begintime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="overtime != null">
-        #{overtime,jdbcType=TIMESTAMP},
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
       </if>
       <if test="funds != null">
         #{funds,jdbcType=DOUBLE},
@@ -124,49 +125,49 @@
       <if test="level != null">
         #{level,jdbcType=VARCHAR},
       </if>
-      <if test="isteamwork != null">
-        #{isteamwork,jdbcType=INTEGER},
+      <if test="isTeamwork != null">
+        #{isTeamwork,jdbcType=INTEGER},
       </if>
       <if test="state != null">
         #{state,jdbcType=VARCHAR},
       </if>
-      <if test="projectdirector != null">
-        #{projectdirector,jdbcType=VARCHAR},
+      <if test="projectDirector != null">
+        #{projectDirector,jdbcType=VARCHAR},
       </if>
-      <if test="fileid != null">
-        #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="creattime != null">
-        #{creattime,jdbcType=TIMESTAMP},
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.Project">
     update project
     <set>
-      <if test="projectname != null">
-        projectName = #{projectname,jdbcType=VARCHAR},
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
       </if>
-      <if test="projectnumber != null">
-        projectNumber = #{projectnumber,jdbcType=INTEGER},
+      <if test="projectNumber != null">
+        project_number = #{projectNumber,jdbcType=INTEGER},
       </if>
-      <if test="projectsource != null">
-        " projectSource" = #{projectsource,jdbcType=VARCHAR},
+      <if test="projectSource != null">
+        " project_source" = #{projectSource,jdbcType=VARCHAR},
       </if>
-      <if test="begintime != null">
-        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="overtime != null">
-        overTime = #{overtime,jdbcType=TIMESTAMP},
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=TIMESTAMP},
       </if>
       <if test="funds != null">
         funds = #{funds,jdbcType=DOUBLE},
@@ -174,50 +175,50 @@
       <if test="level != null">
         level = #{level,jdbcType=VARCHAR},
       </if>
-      <if test="isteamwork != null">
-        isTeamWork = #{isteamwork,jdbcType=INTEGER},
+      <if test="isTeamwork != null">
+        is_teamwork = #{isTeamwork,jdbcType=INTEGER},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=VARCHAR},
       </if>
-      <if test="projectdirector != null">
-        projectDirector = #{projectdirector,jdbcType=VARCHAR},
+      <if test="projectDirector != null">
+        project_director = #{projectDirector,jdbcType=VARCHAR},
       </if>
-      <if test="fileid != null">
-        fileID = #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        memberID = #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="creattime != null">
-        creatTime = #{creattime,jdbcType=TIMESTAMP},
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Project">
     update project
-    set projectName = #{projectname,jdbcType=VARCHAR},
-      projectNumber = #{projectnumber,jdbcType=INTEGER},
-      " projectSource" = #{projectsource,jdbcType=VARCHAR},
-      beginTime = #{begintime,jdbcType=TIMESTAMP},
-      overTime = #{overtime,jdbcType=TIMESTAMP},
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      project_number = #{projectNumber,jdbcType=INTEGER},
+      " project_source" = #{projectSource,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
       funds = #{funds,jdbcType=DOUBLE},
       level = #{level,jdbcType=VARCHAR},
-      isTeamWork = #{isteamwork,jdbcType=INTEGER},
+      is_teamwork = #{isTeamwork,jdbcType=INTEGER},
       state = #{state,jdbcType=VARCHAR},
-      projectDirector = #{projectdirector,jdbcType=VARCHAR},
-      fileID = #{fileid,jdbcType=INTEGER},
-      memberID = #{memberid,jdbcType=INTEGER},
-      creatTime = #{creattime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      project_director = #{projectDirector,jdbcType=VARCHAR},
+      file_id = #{fileId,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

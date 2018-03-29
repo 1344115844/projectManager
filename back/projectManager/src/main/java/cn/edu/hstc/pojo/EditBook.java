@@ -6,27 +6,27 @@ import java.util.Date;
 public class EditBook implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String bookname;
+    private String bookName;
 
-    private String editrank;
+    private String editRank;
 
     private String isbn;
 
-    private String publishunit;
+    private String publishUnit;
 
-    private Date publishtime;
+    private Date publishTime;
 
-    private Integer bytenum;
+    private Integer byteNum;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -38,44 +38,44 @@ public class EditBook implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getBookname() {
-        return bookname;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname == null ? null : bookname.trim();
+    public void setBookName(String bookName) {
+        this.bookName = bookName == null ? null : bookName.trim();
     }
 
-    public String getEditrank() {
-        return editrank;
+    public String getEditRank() {
+        return editRank;
     }
 
-    public void setEditrank(String editrank) {
-        this.editrank = editrank == null ? null : editrank.trim();
+    public void setEditRank(String editRank) {
+        this.editRank = editRank == null ? null : editRank.trim();
     }
 
     public String getIsbn() {
@@ -86,43 +86,43 @@ public class EditBook implements Serializable {
         this.isbn = isbn == null ? null : isbn.trim();
     }
 
-    public String getPublishunit() {
-        return publishunit;
+    public String getPublishUnit() {
+        return publishUnit;
     }
 
-    public void setPublishunit(String publishunit) {
-        this.publishunit = publishunit == null ? null : publishunit.trim();
+    public void setPublishUnit(String publishUnit) {
+        this.publishUnit = publishUnit == null ? null : publishUnit.trim();
     }
 
-    public Date getPublishtime() {
-        return publishtime;
+    public Date getPublishTime() {
+        return publishTime;
     }
 
-    public void setPublishtime(Date publishtime) {
-        this.publishtime = publishtime;
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 
-    public Integer getBytenum() {
-        return bytenum;
+    public Integer getByteNum() {
+        return byteNum;
     }
 
-    public void setBytenum(Integer bytenum) {
-        this.bytenum = bytenum;
+    public void setByteNum(Integer byteNum) {
+        this.byteNum = byteNum;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

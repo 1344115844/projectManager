@@ -3,20 +3,20 @@
 <mapper namespace="cn.edu.hstc.dao.AwardMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Award">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="deleteTime" jdbcType="TIMESTAMP" property="deletetime" />
-    <result column="projectName" jdbcType="VARCHAR" property="projectname" />
-    <result column="awardName" jdbcType="VARCHAR" property="awardname" />
-    <result column="awardLevel" jdbcType="VARCHAR" property="awardlevel" />
-    <result column="awardTime" jdbcType="TIMESTAMP" property="awardtime" />
-    <result column="awardRank" jdbcType="VARCHAR" property="awardrank" />
-    <result column="awardID" jdbcType="INTEGER" property="awardid" />
-    <result column="fileID" jdbcType="INTEGER" property="fileid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="award_name" jdbcType="VARCHAR" property="awardName" />
+    <result column="award_level" jdbcType="VARCHAR" property="awardLevel" />
+    <result column="award_time" jdbcType="TIMESTAMP" property="awardTime" />
+    <result column="award_rank" jdbcType="VARCHAR" property="awardRank" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, createTime, updateTime, deleteTime, projectName, awardName, awardLevel, awardTime, 
-    awardRank, awardID, fileID
+    id, create_time, update_time, delete, project_name, award_name, award_level, award_time, 
+    award_rank, member_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,14 +29,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Award">
-    insert into award (id, createTime, updateTime, 
-      deleteTime, projectName, awardName, 
-      awardLevel, awardTime, awardRank, 
-      awardID, fileID)
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{deletetime,jdbcType=TIMESTAMP}, #{projectname,jdbcType=VARCHAR}, #{awardname,jdbcType=VARCHAR}, 
-      #{awardlevel,jdbcType=VARCHAR}, #{awardtime,jdbcType=TIMESTAMP}, #{awardrank,jdbcType=VARCHAR}, 
-      #{awardid,jdbcType=INTEGER}, #{fileid,jdbcType=INTEGER})
+    insert into award (id, create_time, update_time, 
+      delete, project_name, award_name, 
+      award_level, award_time, award_rank, 
+      member_id, file_id)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delete,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{awardName,jdbcType=VARCHAR}, 
+      #{awardLevel,jdbcType=VARCHAR}, #{awardTime,jdbcType=TIMESTAMP}, #{awardRank,jdbcType=VARCHAR}, 
+      #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Award">
     insert into award
@@ -44,121 +44,121 @@
       <if test="id != null">
         id,
       </if>
-      <if test="createtime != null">
-        createTime,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="updateTime != null">
+        update_time,
       </if>
-      <if test="deletetime != null">
-        deleteTime,
+      <if test="delete != null">
+        delete,
       </if>
-      <if test="projectname != null">
-        projectName,
+      <if test="projectName != null">
+        project_name,
       </if>
-      <if test="awardname != null">
-        awardName,
+      <if test="awardName != null">
+        award_name,
       </if>
-      <if test="awardlevel != null">
-        awardLevel,
+      <if test="awardLevel != null">
+        award_level,
       </if>
-      <if test="awardtime != null">
-        awardTime,
+      <if test="awardTime != null">
+        award_time,
       </if>
-      <if test="awardrank != null">
-        awardRank,
+      <if test="awardRank != null">
+        award_rank,
       </if>
-      <if test="awardid != null">
-        awardID,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="fileid != null">
-        fileID,
+      <if test="fileId != null">
+        file_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
-      <if test="projectname != null">
-        #{projectname,jdbcType=VARCHAR},
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
       </if>
-      <if test="awardname != null">
-        #{awardname,jdbcType=VARCHAR},
+      <if test="awardName != null">
+        #{awardName,jdbcType=VARCHAR},
       </if>
-      <if test="awardlevel != null">
-        #{awardlevel,jdbcType=VARCHAR},
+      <if test="awardLevel != null">
+        #{awardLevel,jdbcType=VARCHAR},
       </if>
-      <if test="awardtime != null">
-        #{awardtime,jdbcType=TIMESTAMP},
+      <if test="awardTime != null">
+        #{awardTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="awardrank != null">
-        #{awardrank,jdbcType=VARCHAR},
+      <if test="awardRank != null">
+        #{awardRank,jdbcType=VARCHAR},
       </if>
-      <if test="awardid != null">
-        #{awardid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.Award">
     update award
     <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deletetime != null">
-        deleteTime = #{deletetime,jdbcType=TIMESTAMP},
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
       </if>
-      <if test="projectname != null">
-        projectName = #{projectname,jdbcType=VARCHAR},
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
       </if>
-      <if test="awardname != null">
-        awardName = #{awardname,jdbcType=VARCHAR},
+      <if test="awardName != null">
+        award_name = #{awardName,jdbcType=VARCHAR},
       </if>
-      <if test="awardlevel != null">
-        awardLevel = #{awardlevel,jdbcType=VARCHAR},
+      <if test="awardLevel != null">
+        award_level = #{awardLevel,jdbcType=VARCHAR},
       </if>
-      <if test="awardtime != null">
-        awardTime = #{awardtime,jdbcType=TIMESTAMP},
+      <if test="awardTime != null">
+        award_time = #{awardTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="awardrank != null">
-        awardRank = #{awardrank,jdbcType=VARCHAR},
+      <if test="awardRank != null">
+        award_rank = #{awardRank,jdbcType=VARCHAR},
       </if>
-      <if test="awardid != null">
-        awardID = #{awardid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="fileid != null">
-        fileID = #{fileid,jdbcType=INTEGER},
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Award">
     update award
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      deleteTime = #{deletetime,jdbcType=TIMESTAMP},
-      projectName = #{projectname,jdbcType=VARCHAR},
-      awardName = #{awardname,jdbcType=VARCHAR},
-      awardLevel = #{awardlevel,jdbcType=VARCHAR},
-      awardTime = #{awardtime,jdbcType=TIMESTAMP},
-      awardRank = #{awardrank,jdbcType=VARCHAR},
-      awardID = #{awardid,jdbcType=INTEGER},
-      fileID = #{fileid,jdbcType=INTEGER}
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=INTEGER},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      award_name = #{awardName,jdbcType=VARCHAR},
+      award_level = #{awardLevel,jdbcType=VARCHAR},
+      award_time = #{awardTime,jdbcType=TIMESTAMP},
+      award_rank = #{awardRank,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

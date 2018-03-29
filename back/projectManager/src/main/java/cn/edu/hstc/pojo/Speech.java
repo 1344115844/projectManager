@@ -6,23 +6,23 @@ import java.util.Date;
 public class Speech implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private Date invitetime;
+    private Date inviteTime;
 
-    private Date begintime;
+    private Date beginTime;
 
-    private Date overtime;
+    private Date overTime;
 
-    private String speechform;
+    private String speechForm;
 
-    private Integer speakerid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,75 +34,75 @@ public class Speech implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public Date getInvitetime() {
-        return invitetime;
+    public Date getInviteTime() {
+        return inviteTime;
     }
 
-    public void setInvitetime(Date invitetime) {
-        this.invitetime = invitetime;
+    public void setInviteTime(Date inviteTime) {
+        this.inviteTime = inviteTime;
     }
 
-    public Date getBegintime() {
-        return begintime;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setBegintime(Date begintime) {
-        this.begintime = begintime;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public Date getOvertime() {
-        return overtime;
+    public Date getOverTime() {
+        return overTime;
     }
 
-    public void setOvertime(Date overtime) {
-        this.overtime = overtime;
+    public void setOverTime(Date overTime) {
+        this.overTime = overTime;
     }
 
-    public String getSpeechform() {
-        return speechform;
+    public String getSpeechForm() {
+        return speechForm;
     }
 
-    public void setSpeechform(String speechform) {
-        this.speechform = speechform == null ? null : speechform.trim();
+    public void setSpeechForm(String speechForm) {
+        this.speechForm = speechForm == null ? null : speechForm.trim();
     }
 
-    public Integer getSpeakerid() {
-        return speakerid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setSpeakerid(Integer speakerid) {
-        this.speakerid = speakerid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

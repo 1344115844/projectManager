@@ -6,25 +6,25 @@ import java.util.Date;
 public class Award implements Serializable {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private Date deletetime;
+    private Integer delete;
 
-    private String projectname;
+    private String projectName;
 
-    private String awardname;
+    private String awardName;
 
-    private String awardlevel;
+    private String awardLevel;
 
-    private Date awardtime;
+    private Date awardTime;
 
-    private String awardrank;
+    private String awardRank;
 
-    private Integer awardid;
+    private Integer memberId;
 
-    private Integer fileid;
+    private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
@@ -36,83 +36,83 @@ public class Award implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getDeletetime() {
-        return deletetime;
+    public Integer getDelete() {
+        return delete;
     }
 
-    public void setDeletetime(Date deletetime) {
-        this.deletetime = deletetime;
+    public void setDelete(Integer delete) {
+        this.delete = delete;
     }
 
-    public String getProjectname() {
-        return projectname;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname == null ? null : projectname.trim();
+    public void setProjectName(String projectName) {
+        this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public String getAwardname() {
-        return awardname;
+    public String getAwardName() {
+        return awardName;
     }
 
-    public void setAwardname(String awardname) {
-        this.awardname = awardname == null ? null : awardname.trim();
+    public void setAwardName(String awardName) {
+        this.awardName = awardName == null ? null : awardName.trim();
     }
 
-    public String getAwardlevel() {
-        return awardlevel;
+    public String getAwardLevel() {
+        return awardLevel;
     }
 
-    public void setAwardlevel(String awardlevel) {
-        this.awardlevel = awardlevel == null ? null : awardlevel.trim();
+    public void setAwardLevel(String awardLevel) {
+        this.awardLevel = awardLevel == null ? null : awardLevel.trim();
     }
 
-    public Date getAwardtime() {
-        return awardtime;
+    public Date getAwardTime() {
+        return awardTime;
     }
 
-    public void setAwardtime(Date awardtime) {
-        this.awardtime = awardtime;
+    public void setAwardTime(Date awardTime) {
+        this.awardTime = awardTime;
     }
 
-    public String getAwardrank() {
-        return awardrank;
+    public String getAwardRank() {
+        return awardRank;
     }
 
-    public void setAwardrank(String awardrank) {
-        this.awardrank = awardrank == null ? null : awardrank.trim();
+    public void setAwardRank(String awardRank) {
+        this.awardRank = awardRank == null ? null : awardRank.trim();
     }
 
-    public Integer getAwardid() {
-        return awardid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setAwardid(Integer awardid) {
-        this.awardid = awardid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public Integer getFileid() {
-        return fileid;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Integer fileid) {
-        this.fileid = fileid;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }
