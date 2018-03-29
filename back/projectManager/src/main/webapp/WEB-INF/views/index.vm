@@ -65,8 +65,8 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="/user/login" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+					<li><a data-href="https://www.baidu.com" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
 					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 				</ul>
 			</dd>
@@ -100,7 +100,7 @@
 		<div class="Hui-tabNav-wp">
 			<ul id="min_title_list" class="acrossTab cl">
 				<li class="active">
-					<span title="我的主页" data-href="welcome.vm">我的主页</span>
+					<span title="我的主页" data-href="/user/login">我的主页</span>
 					<em></em></li>
 		</ul>
 	</div>
@@ -109,7 +109,7 @@
 	<div id="iframe_box" class="Hui-article">
 		<div class="show_iframe">
 			<div style="display:none" class="loading"></div>
-			<iframe scrolling="yes" frameborder="0" src="welcome.vm"></iframe>
+			<iframe scrolling="yes" frameborder="0" src="/user/login"></iframe>
 	</div>
 </div>
 </section>
