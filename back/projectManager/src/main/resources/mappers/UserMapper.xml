@@ -116,9 +116,9 @@
   </update>
 
 
-  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+  <select id="selectLogin" resultMap="cn.edu.hstc.pojo.User" parameterType="map">
     select
-    <include refid="Base_Column_List" />
+    *
     from user
     where username = #{username}
     and password = #{password}
@@ -126,7 +126,7 @@
 
 
   <select id="checkUsername" resultType="int" parameterType="String">
-    select count(1)
+    select COUNT(1)
     from user
     where username=#{username}
   </select>
