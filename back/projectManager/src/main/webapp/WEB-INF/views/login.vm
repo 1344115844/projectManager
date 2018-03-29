@@ -75,10 +75,10 @@
                     success: function (data) {
                         var user=JSON.parse(data);
 
-                        if (user.msg =="login success"){
+                        if (user.status ==200){
                             window.location.href="/user/index";
                         }else {
-                           alert("login fail");
+                           alert(user.msg);
                         }
                     }
                 });
