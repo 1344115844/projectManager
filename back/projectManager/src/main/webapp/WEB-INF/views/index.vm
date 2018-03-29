@@ -204,7 +204,7 @@
             //ajax访问接口
             $.ajax({
                 type: "GET",
-                url: "/user/login.do",
+                url: "/user/logout.do",
                 data: {},
                 success: function (data) {
                 }
