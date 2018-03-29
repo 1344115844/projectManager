@@ -27,7 +27,7 @@ public class SessionInterceptor implements HandlerInterceptor{
 //            return true;
 //        }
         //转发到登录
-        request.getRequestDispatcher("/login").forward(request,response);
+//        request.getRequestDispatcher("/login").forward(request,response);
         return true;
     }
 

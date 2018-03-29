@@ -32,18 +32,16 @@ public class UserController {
      *@return java.lang.String
      *方法作用：跳转index页面
      **/
-@Autowired
+    @Autowired
     UserService userService;
+
     @RequestMapping("/index")
-        public String show() {
+    public String show() {
         return "index";
     }
 
     @RequestMapping("/login")
     public String userlogin() {
-
-        System.out.println("test..");
-
         return "login";
     }
 
@@ -71,7 +69,6 @@ public class UserController {
 //    }
 
 
-
 //    @RequestMapping("/register")
 ////    @ResponseBody
 ////    public String register(@RequestBody User user) throws UnsupportedEncodingException, NoSuchAlgorithmException {
@@ -82,19 +79,19 @@ public class UserController {
 ////    }
 
 
-    @RequestMapping(value = "/login.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     @ResponseBody
-    public JSONResponse<User> login(String username, String password, HttpSession session){
-        JSONResponse<User> response = userService.login(username,password);
-        if(response.isSuccess()){
-            session.setAttribute("currentUser",response.getData());
+    public JSONResponse<User> login(String username, String password, HttpSession session) {
+        JSONResponse<User> response = userService.login(username, password);
+        if (response.isSuccess()) {
+            session.setAttribute("currentUser", response.getData());
         }
         return response;
     }
 
-    @RequestMapping(value = "/logout.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/logout.do", method = RequestMethod.POST)
     @ResponseBody
-    public JSONResponse<String> logout(HttpSession session){
+    public JSONResponse<String> logout(HttpSession session) {
         session.removeAttribute("currentUser");
         return JSONResponse.createBySuccess();
     }

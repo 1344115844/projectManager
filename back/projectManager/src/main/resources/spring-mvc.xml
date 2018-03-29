@@ -32,21 +32,41 @@
     <mvc:default-servlet-handler/>
 
 
-    <!--<mvc:interceptors>-->
-        <!--<bean class="cn.edu.hstc.interceptor.SessionInterceptor"/>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <bean class="cn.edu.hstc.interceptor.SessionInterceptor"/>
+    </mvc:interceptors>
 
 
     <!-- 自动给后面do的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/WEB-INF/views/</value>
-        </property>
-        <property name="suffix">
-            <value>.vm</value>
+    <!--<bean id="viewResolver"-->
+          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/views/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.vm</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/views"/>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+                <prop key="file.resource.loader.cache">false</prop>
+                <prop key="file.resource.loader.modificationCheckInterval">1</prop>
+                <prop key="velocimacro.library.autoreload">false</prop>
+            </props>
         </property>
     </bean>
+
+    <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html;charset=utf-8"/>
+        <property name="dateToolAttribute" value="date"/><!--日期函数名称-->
+    </bean>
+
 
 
 </beans>
