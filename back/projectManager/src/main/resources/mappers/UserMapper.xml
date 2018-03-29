@@ -116,7 +116,7 @@
   </update>
 
 
-  <select id="selectLogin" resultMap="cn.edu.hstc.pojo.User" parameterType="map">
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     select
     *
     from user

@@ -73,9 +73,9 @@
                     url:"/user/login.do",
                     data:{"username":user,"password":pwd},
                     success: function (data) {
-                        var user=$(data);
+                        var user=JSON.parse(data);
 
-                        if (data['msg']=="login success"){
+                        if (user.msg =="login success"){
                             window.location.href="/user/index";
                         }else {
                            alert("login fail");
