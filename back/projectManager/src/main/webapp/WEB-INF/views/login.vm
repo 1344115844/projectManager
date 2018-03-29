@@ -58,8 +58,7 @@
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
 
-##伟东写
-##这里开始写 “ajax提交数据，访问接口/login/check接口，带数据username和password” git提交时候标签写这个
+##请求登录
 <script type="text/javascript">
     $(function () {
         $("#submitId").click(function () {
@@ -84,7 +83,7 @@
             }
         });
     });
-
 </script>
+
 </body>
 </html>

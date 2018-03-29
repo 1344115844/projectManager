@@ -12,22 +12,30 @@ import javax.servlet.http.HttpSession;
 /**
  * @author Veng Su 1344114844@qq.com
  * @date 2018/3/28 8:16
+ * 说明：uri拦截器
  */
 public class SessionInterceptor implements HandlerInterceptor{
 
+    /*
+     *@author suveng
+     *@date 2018/3/29 21:03
+     *@param [request, response, o]
+     *@return boolean
+     *方法作用：拦截所有请求，除了login接口，访问其他接口时，必须先登录设置session后，才能访问。
+     **/
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
-//        String uri = request.getRequestURI();
-//        if((uri.indexOf("login")>=0)||(uri.indexOf("sign")>=0)||(uri.indexOf("error")>=0)){
-//            return true;
-//        }
-//        HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute("userinfo");
-//        if(user!=null){
-//            return true;
-//        }
-        //转发到登录
-//        request.getRequestDispatcher("/login").forward(request,response);
+        String uri = request.getRequestURI();
+        if((uri.indexOf("login")>=0)||(uri.indexOf("error")>=0)){
+            return true;
+        }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userinfo");
+        if(user!=null){
+            return true;
+        }
+//        转发到登录
+        request.getRequestDispatcher("/login").forward(request,response);
         return true;
     }
 
