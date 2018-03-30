@@ -8,6 +8,12 @@ public class Member implements Serializable {
 
     private String name;
 
+    private Integer shortPhone;
+
+    private String email;
+
+    private Integer phone;
+
     private String jobTitle;
 
     private String education;
@@ -38,6 +44,30 @@ public class Member implements Serializable {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getShortPhone() {
+        return shortPhone;
+    }
+
+    public void setShortPhone(Integer shortPhone) {
+        this.shortPhone = shortPhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public String getJobTitle() {
