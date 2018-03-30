@@ -78,9 +78,30 @@ public class UserController {
         return JSONResponse.createBySuccess();
     }
 
+    /**
+    * @Description:处理注册提交的表单
+    * @param: [user]
+    * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+    * @author: yifang
+    * @Date: 2018/3/30 14:18
+    */
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
     @ResponseBody
     public JSONResponse<User> register(User user) {
         return userService.register(user);
+    }
+
+/**
+* @Description:修改密码
+* @param: [session, oldpassword, newpassword]
+* @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+* @author: yifang
+* @Date: 2018/3/30 15:31
+*/
+    @RequestMapping(value = "/updatepassword.do", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONResponse<User> updatePassword(HttpSession session,String oldpassword,String newpassword) {
+        User user=(User)session.getAttribute("currentUser");
+        return userService.updatePassword(user,oldpassword,newpassword);
     }
 }

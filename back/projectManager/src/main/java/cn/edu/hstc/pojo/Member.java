@@ -8,11 +8,11 @@ public class Member implements Serializable {
 
     private String name;
 
-    private Integer shortPhone;
+    private String shortPhone;
 
     private String email;
 
-    private Integer phone;
+    private String phone;
 
     private String jobTitle;
 
@@ -46,12 +46,12 @@ public class Member implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getShortPhone() {
+    public String getShortPhone() {
         return shortPhone;
     }
 
-    public void setShortPhone(Integer shortPhone) {
-        this.shortPhone = shortPhone;
+    public void setShortPhone(String shortPhone) {
+        this.shortPhone = shortPhone == null ? null : shortPhone.trim();
     }
 
     public String getEmail() {
@@ -62,12 +62,12 @@ public class Member implements Serializable {
         this.email = email == null ? null : email.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getJobTitle() {

@@ -16,9 +16,11 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User selectLogin(@Param("username") String username, @Param("password")String password);
+    User selectLogin(@Param("username") String username, @Param("password")String password);//登录验证
 
-    int checkUsername(String username);
+    int checkUsername(String username);//检查用户名
+
+
 
 
 

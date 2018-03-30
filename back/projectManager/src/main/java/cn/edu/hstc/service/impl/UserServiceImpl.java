@@ -13,27 +13,41 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
+    /**
+     * @Description:登录验证处理
+     * @param: [username, password]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+     * @author: yifang
+     * @Date: 2018/3/30 14:18
+     */
     @Override
     public JSONResponse<User> login(String username, String password) {
         int resultCount = userMapper.checkUsername(username);
-        if(resultCount == 0 ){
+        if (resultCount == 0) {
             return JSONResponse.createByErrorMessage("用户名不存在");
         }
 
         String md5Password = MD5Util.MD5EncodeUtf8(password);
-        User user  = userMapper.selectLogin(username,md5Password);
-        if(user == null){
+        User user = userMapper.selectLogin(username, md5Password);
+        if (user == null) {
             return JSONResponse.createByErrorMessage("密码错误");
         }
 
         user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
-        return JSONResponse.createBySuccess("login success",user);
+        return JSONResponse.createBySuccess("login success", user);
     }
 
+    /**
+     * @Description:注册处理
+     * @param: [user]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+     * @author: yifang
+     * @Date: 2018/3/30 14:17
+     */
     @Override
     public JSONResponse<User> register(User user) {
         int ifexists = userMapper.checkUsername(user.getUsername());
-        if(ifexists == 1 ){
+        if (ifexists == 1) {
             return JSONResponse.createByErrorMessage("用户名已经存在");
         }
 
@@ -42,11 +56,36 @@ public class UserServiceImpl implements UserService {
         //密码加密
         user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
         //添加到数据库
-        int reg=userMapper.insertSelective(user);
-        if(reg==1){
+        int reg = userMapper.insertSelective(user);
+        if (reg == 1) {
             return JSONResponse.createBySuccessMessage("注册成功");
-        }else{
+        } else {
             return JSONResponse.createByErrorMessage("注册失败");
         }
     }
+
+   /**
+   * @Description:修改密码，要求用户输入原密码
+   * @param: [user, oldpassword, newpassword]
+   * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+   * @author: yifang
+   * @Date: 2018/3/30 15:23
+   */
+    @Override
+    public JSONResponse<User> updatePassword(User user, String oldpassword, String newpassword) {
+
+        int resultCount = userMapper.selectLogin(user.getUsername(),MD5Util.MD5EncodeUtf8(oldpassword))==null?0:1;
+        if(resultCount == 0){
+            return JSONResponse.createByErrorMessage("原密码错误");
+        }
+        user.setPassword(MD5Util.MD5EncodeUtf8(newpassword));
+        int updateCount = userMapper.updateByPrimaryKeySelective(user);
+        if(updateCount > 0){
+            return JSONResponse.createBySuccessMessage("修改密码成功");
+        }
+        return JSONResponse.createByErrorMessage("修改密码失败");
+
+    }
+
+
 }

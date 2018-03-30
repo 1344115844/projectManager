@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Member">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="short_phone" jdbcType="INTEGER" property="shortPhone" />
+    <result column="short_phone" jdbcType="VARCHAR" property="shortPhone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
     <result column="education" jdbcType="VARCHAR" property="education" />
     <result column="research_direction" jdbcType="VARCHAR" property="researchDirection" />
@@ -35,8 +35,8 @@
       education, research_direction, academic_title, 
       create_time, update_time, delete
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shortPhone,jdbcType=INTEGER}, 
-      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{jobTitle,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shortPhone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
       #{education,jdbcType=VARCHAR}, #{researchDirection,jdbcType=VARCHAR}, #{academicTitle,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}
       )
@@ -89,13 +89,13 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="shortPhone != null">
-        #{shortPhone,jdbcType=INTEGER},
+        #{shortPhone,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="jobTitle != null">
         #{jobTitle,jdbcType=VARCHAR},
@@ -127,13 +127,13 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="shortPhone != null">
-        short_phone = #{shortPhone,jdbcType=INTEGER},
+        short_phone = #{shortPhone,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="jobTitle != null">
         job_title = #{jobTitle,jdbcType=VARCHAR},
@@ -162,9 +162,9 @@
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Member">
     update member
     set name = #{name,jdbcType=VARCHAR},
-      short_phone = #{shortPhone,jdbcType=INTEGER},
+      short_phone = #{shortPhone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       job_title = #{jobTitle,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
       research_direction = #{researchDirection,jdbcType=VARCHAR},
