@@ -26,10 +26,10 @@ public class UserController {
     UserService userService;
 
 
-/*
+/**
  *@author suveng
  *@date 2018/3/29 19:07
- *@param []
+ *@param
  *@return java.lang.String
  *方法作用：跳转到主页
  **/
@@ -47,10 +47,10 @@ public class UserController {
     public String userRegister() {
         return "register";
     }
-/*
+/**
  *@author suveng
  *@date 2018/3/29 19:07
- *@param [username, password, session]
+ *@param username, password, session
  *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
  *方法作用：y验证登录
  **/
@@ -64,10 +64,10 @@ public class UserController {
         return response;
     }
 
-    /*
+    /**
      *@author suveng
      *@date 2018/3/29 19:07
-     *@param [session]
+     *@param session
      *@return cn.edu.hstc.common.JSONResponse<java.lang.String>
      *方法作用：退出登录
      **/
