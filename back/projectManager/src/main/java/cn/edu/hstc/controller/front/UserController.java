@@ -39,11 +39,14 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String userlogin() {
+    public String userLogin() {
         return "login";
     }
 
-
+    @RequestMapping("/register")
+    public String userRegister() {
+        return "register";
+    }
 /*
  *@author suveng
  *@date 2018/3/29 19:07
@@ -75,5 +78,9 @@ public class UserController {
         return JSONResponse.createBySuccess();
     }
 
-
+    @RequestMapping(value = "/register.do", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONResponse<User> register(User user) {
+        return userService.register(user);
+    }
 }

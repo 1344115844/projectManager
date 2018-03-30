@@ -9,7 +9,7 @@ public interface UserService {
 
     JSONResponse<User> login(String username, String password);
 
-
+    JSONResponse<User> register(User user);
 
 
 }
