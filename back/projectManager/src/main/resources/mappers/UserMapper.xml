@@ -206,18 +206,18 @@
   </select>
 
 
-  <select id="checkUsername" resultType="int" parameterType="String">
+  <select id="checkUsername" resultType="java.lang.Integer" parameterType="java.lang.String">
     select COUNT(1)
     from user
     where username=#{username}
   </select>
 
 
-  <select id="Oldpassword" resultMap="int" parameterType="map">
+  <select id="checkOldpassword" resultType="java.lang.Integer" parameterType="map">
     select
     COUNT(1)
     from user
-    where u_id = #{user_id}
+    where user_id = #{user_id}
     and password = #{oldpassword}
   </select>
 

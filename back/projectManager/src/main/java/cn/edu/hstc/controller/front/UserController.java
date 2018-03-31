@@ -1,6 +1,7 @@
 package cn.edu.hstc.controller.front;
 
 import cn.edu.hstc.common.JSONResponse;
+import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.UserService;
 
@@ -102,6 +103,7 @@ public class UserController {
     @ResponseBody
     public JSONResponse<User> updatePassword(HttpSession session,String oldpassword,String newpassword) {
         User user=(User)session.getAttribute("currentUser");
+        if(user==null) return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录");
         return userService.updatePassword(user,oldpassword,newpassword);
     }
 }
