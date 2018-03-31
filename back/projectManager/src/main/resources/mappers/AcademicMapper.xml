@@ -210,4 +210,17 @@
       " file_id" = #{fileId,jdbcType=INTEGER}
     where acad_id = #{acadId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUserId" parameterType="int" resultType="cn.edu.hstc.pojo.Academic">
+    select *
+    from academic
+    where
+    user_id=#{user_id}
+  </select>
+
+  <select id="getCountByUserId" parameterType="int" resultType="int">
+    select COUNT(*)
+    from academic
+    WHERE user_id=#{user_id}
+  </select>
 </mapper>
