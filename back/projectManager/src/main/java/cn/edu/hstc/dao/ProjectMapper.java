@@ -3,13 +3,13 @@ package cn.edu.hstc.dao;
 import cn.edu.hstc.pojo.Project;
 
 public interface ProjectMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer proId);
 
     int insert(Project record);
 
     int insertSelective(Project record);
 
-    Project selectByPrimaryKey(Integer id);
+    Project selectByPrimaryKey(Integer proId);
 
     int updateByPrimaryKeySelective(Project record);
 

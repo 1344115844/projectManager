@@ -2,40 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.UserMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="short_phone" jdbcType="VARCHAR" property="shortPhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="research_direction" jdbcType="VARCHAR" property="researchDirection" />
+    <result column="academic_title" jdbcType="VARCHAR" property="academicTitle" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="INTEGER" property="delete" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="member_id" jdbcType="INTEGER" property="memberId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, create_time, delete, update_time, member_id
+    user_id, name, short_phone, email, phone, job_title, education, research_direction, 
+    academic_title, create_time, update_time, delete, username, password
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.User">
-    insert into user (id, username, password, 
-      create_time, delete, update_time, 
-      member_id)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{memberId,jdbcType=INTEGER})
+    insert into user (user_id, name, short_phone, 
+      email, phone, job_title, 
+      education, research_direction, academic_title, 
+      create_time, update_time, delete, 
+      username, password)
+    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shortPhone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{researchDirection,jdbcType=VARCHAR}, #{academicTitle,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shortPhone != null">
+        short_phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="jobTitle != null">
+        job_title,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="researchDirection != null">
+        research_direction,
+      </if>
+      <if test="academicTitle != null">
+        academic_title,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delete != null">
+        delete,
       </if>
       <if test="username != null">
         username,
@@ -43,22 +88,43 @@
       <if test="password != null">
         password,
       </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="delete != null">
-        delete,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="memberId != null">
-        member_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortPhone != null">
+        #{shortPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null">
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="researchDirection != null">
+        #{researchDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="academicTitle != null">
+        #{academicTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=INTEGER},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -66,72 +132,68 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="memberId != null">
-        #{memberId,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.User">
     update user
     <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortPhone != null">
+        short_phone = #{shortPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null">
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="researchDirection != null">
+        research_direction = #{researchDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="academicTitle != null">
+        academic_title = #{academicTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null">
+        delete = #{delete,jdbcType=INTEGER},
+      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="memberId != null">
-        member_id = #{memberId,jdbcType=INTEGER},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.User">
     update user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
+      short_phone = #{shortPhone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      research_direction = #{researchDirection,jdbcType=VARCHAR},
+      academic_title = #{academicTitle,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      member_id = #{memberId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      delete = #{delete,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
-
-
-  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
-    select
-    *
-    from user
-    where username = #{username}
-    and password = #{password}
-  </select>
-
-
-  <select id="checkUsername" resultType="int" parameterType="String">
-    select COUNT(1)
-    from user
-    where username=#{username}
-  </select>
-
-
-
-
 </mapper>

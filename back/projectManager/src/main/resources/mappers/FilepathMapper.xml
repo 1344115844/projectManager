@@ -2,36 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.FilepathMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Filepath">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="file_id" jdbcType="INTEGER" property="fileId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete" jdbcType="INTEGER" property="delete" />
     <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, create_time, update_time, delete, url
+    file_id, create_time, update_time, delete, url, user_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from filepath
-    where id = #{id,jdbcType=INTEGER}
+    where file_id = #{fileId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from filepath
-    where id = #{id,jdbcType=INTEGER}
+    where file_id = #{fileId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Filepath">
-    insert into filepath (id, create_time, update_time, 
-      delete, url)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR})
+    insert into filepath (file_id, create_time, update_time, 
+      delete, url, user_id
+      )
+    values (#{fileId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{delete,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Filepath">
     insert into filepath
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="fileId != null">
+        file_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -45,10 +48,13 @@
       <if test="url != null">
         url,
       </if>
+      <if test="userId != null">
+        user_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -61,6 +67,9 @@
       </if>
       <if test="url != null">
         #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -79,15 +88,19 @@
       <if test="url != null">
         url = #{url,jdbcType=VARCHAR},
       </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where file_id = #{fileId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Filepath">
     update filepath
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       delete = #{delete,jdbcType=INTEGER},
-      url = #{url,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      url = #{url,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
+    where file_id = #{fileId,jdbcType=INTEGER}
   </update>
 </mapper>

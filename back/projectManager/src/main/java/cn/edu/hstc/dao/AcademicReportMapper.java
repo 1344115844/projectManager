@@ -3,13 +3,13 @@ package cn.edu.hstc.dao;
 import cn.edu.hstc.pojo.AcademicReport;
 
 public interface AcademicReportMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer repId);
 
     int insert(AcademicReport record);
 
     int insertSelective(AcademicReport record);
 
-    AcademicReport selectByPrimaryKey(Integer id);
+    AcademicReport selectByPrimaryKey(Integer repId);
 
     int updateByPrimaryKeySelective(AcademicReport record);
 

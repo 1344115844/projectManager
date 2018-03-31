@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.AcademicReportMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.AcademicReport">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="rep_id" jdbcType="INTEGER" property="repId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete" jdbcType="INTEGER" property="delete" />
@@ -12,40 +12,40 @@
     <result column="host_unit" jdbcType="VARCHAR" property="hostUnit" />
     <result column="host_place" jdbcType="VARCHAR" property="hostPlace" />
     <result column="attend_num" jdbcType="INTEGER" property="attendNum" />
-    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, create_time, update_time, delete, report_title, begin_time, over_time, host_unit, 
-    host_place, attend_num, member_id, file_id
+    rep_id, create_time, update_time, delete, report_title, begin_time, over_time, host_unit, 
+    host_place, attend_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from academicreport
-    where id = #{id,jdbcType=INTEGER}
+    where rep_id = #{repId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from academicreport
-    where id = #{id,jdbcType=INTEGER}
+    where rep_id = #{repId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AcademicReport">
-    insert into academicreport (id, create_time, update_time, 
+    insert into academicreport (rep_id, create_time, update_time, 
       delete, report_title, begin_time, 
       over_time, host_unit, host_place, 
-      attend_num, member_id, file_id
+      attend_num, user_id, file_id
       )
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{repId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{delete,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
       #{overTime,jdbcType=TIMESTAMP}, #{hostUnit,jdbcType=VARCHAR}, #{hostPlace,jdbcType=VARCHAR}, 
-      #{attendNum,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
+      #{attendNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.AcademicReport">
     insert into academicreport
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="repId != null">
+        rep_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -74,16 +74,16 @@
       <if test="attendNum != null">
         attend_num,
       </if>
-      <if test="memberId != null">
-        member_id,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="fileId != null">
         file_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="repId != null">
+        #{repId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -112,8 +112,8 @@
       <if test="attendNum != null">
         #{attendNum,jdbcType=INTEGER},
       </if>
-      <if test="memberId != null">
-        #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="fileId != null">
         #{fileId,jdbcType=INTEGER},
@@ -150,14 +150,14 @@
       <if test="attendNum != null">
         attend_num = #{attendNum,jdbcType=INTEGER},
       </if>
-      <if test="memberId != null">
-        member_id = #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="fileId != null">
         file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where rep_id = #{repId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.AcademicReport">
     update academicreport
@@ -170,8 +170,8 @@
       host_unit = #{hostUnit,jdbcType=VARCHAR},
       host_place = #{hostPlace,jdbcType=VARCHAR},
       attend_num = #{attendNum,jdbcType=INTEGER},
-      member_id = #{memberId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       file_id = #{fileId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where rep_id = #{repId,jdbcType=INTEGER}
   </update>
 </mapper>

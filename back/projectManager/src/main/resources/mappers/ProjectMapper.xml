@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.ProjectMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Project">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="pro_id" jdbcType="INTEGER" property="proId" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="project_number" jdbcType="INTEGER" property="projectNumber" />
     <result column=" project_source" jdbcType="VARCHAR" property="projectSource" />
@@ -14,45 +14,45 @@
     <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="project_director" jdbcType="VARCHAR" property="projectDirector" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
-    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, project_name, project_number, " project_source", begin_time, over_time, funds, 
-    level, is_teamwork, state, project_director, file_id, member_id, creat_time, delete_time, 
+    pro_id, project_name, project_number, " project_source", begin_time, over_time, funds, 
+    level, is_teamwork, state, project_director, file_id, user_id, creat_time, delete_time, 
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from project
-    where id = #{id,jdbcType=INTEGER}
+    where pro_id = #{proId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from project
-    where id = #{id,jdbcType=INTEGER}
+    where pro_id = #{proId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Project">
-    insert into project (id, project_name, project_number, 
+    insert into project (pro_id, project_name, project_number, 
       " project_source", begin_time, over_time, 
       funds, level, is_teamwork, 
       state, project_director, file_id, 
-      member_id, creat_time, delete_time, 
+      user_id, creat_time, delete_time, 
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectNumber,jdbcType=INTEGER}, 
+    values (#{proId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectNumber,jdbcType=INTEGER}, 
       #{projectSource,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
       #{funds,jdbcType=DOUBLE}, #{level,jdbcType=VARCHAR}, #{isTeamwork,jdbcType=INTEGER}, 
       #{state,jdbcType=VARCHAR}, #{projectDirector,jdbcType=VARCHAR}, #{fileId,jdbcType=INTEGER}, 
-      #{memberId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Project">
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="proId != null">
+        pro_id,
       </if>
       <if test="projectName != null">
         project_name,
@@ -87,8 +87,8 @@
       <if test="fileId != null">
         file_id,
       </if>
-      <if test="memberId != null">
-        member_id,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="creatTime != null">
         creat_time,
@@ -101,8 +101,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
       </if>
       <if test="projectName != null">
         #{projectName,jdbcType=VARCHAR},
@@ -137,8 +137,8 @@
       <if test="fileId != null">
         #{fileId,jdbcType=INTEGER},
       </if>
-      <if test="memberId != null">
-        #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="creatTime != null">
         #{creatTime,jdbcType=TIMESTAMP},
@@ -187,8 +187,8 @@
       <if test="fileId != null">
         file_id = #{fileId,jdbcType=INTEGER},
       </if>
-      <if test="memberId != null">
-        member_id = #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="creatTime != null">
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
@@ -200,7 +200,7 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where pro_id = #{proId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Project">
     update project
@@ -215,10 +215,10 @@
       state = #{state,jdbcType=VARCHAR},
       project_director = #{projectDirector,jdbcType=VARCHAR},
       file_id = #{fileId,jdbcType=INTEGER},
-      member_id = #{memberId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       delete_time = #{deleteTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where pro_id = #{proId,jdbcType=INTEGER}
   </update>
 </mapper>

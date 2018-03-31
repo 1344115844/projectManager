@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class EditBook implements Serializable {
-    private Integer id;
+    private Integer editId;
 
     private Date createTime;
 
@@ -24,18 +24,18 @@ public class EditBook implements Serializable {
 
     private Integer byteNum;
 
-    private Integer memberId;
+    private Integer userId;
 
     private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getEditId() {
+        return editId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEditId(Integer editId) {
+        this.editId = editId;
     }
 
     public Date getCreateTime() {
@@ -110,12 +110,12 @@ public class EditBook implements Serializable {
         this.byteNum = byteNum;
     }
 
-    public Integer getMemberId() {
-        return memberId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFileId() {

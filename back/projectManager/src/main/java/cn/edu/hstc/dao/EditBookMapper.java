@@ -3,13 +3,13 @@ package cn.edu.hstc.dao;
 import cn.edu.hstc.pojo.EditBook;
 
 public interface EditBookMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer editId);
 
     int insert(EditBook record);
 
     int insertSelective(EditBook record);
 
-    EditBook selectByPrimaryKey(Integer id);
+    EditBook selectByPrimaryKey(Integer editId);
 
     int updateByPrimaryKeySelective(EditBook record);
 

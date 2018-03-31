@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class AttendConference implements Serializable {
-    private Integer id;
+    private Integer confId;
 
     private Date createTime;
 
@@ -24,18 +24,18 @@ public class AttendConference implements Serializable {
 
     private String conferenceCategory;
 
-    private Integer memberId;
+    private Integer userId;
 
     private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getConfId() {
+        return confId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setConfId(Integer confId) {
+        this.confId = confId;
     }
 
     public Date getCreateTime() {
@@ -110,12 +110,12 @@ public class AttendConference implements Serializable {
         this.conferenceCategory = conferenceCategory == null ? null : conferenceCategory.trim();
     }
 
-    public Integer getMemberId() {
-        return memberId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFileId() {

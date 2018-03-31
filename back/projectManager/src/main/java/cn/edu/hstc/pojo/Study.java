@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Study implements Serializable {
-    private Integer id;
+    private Integer stuId;
 
     private Date createTime;
 
@@ -20,18 +20,18 @@ public class Study implements Serializable {
 
     private String studyContent;
 
-    private Integer memberId;
+    private Integer userId;
 
     private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getStuId() {
+        return stuId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStuId(Integer stuId) {
+        this.stuId = stuId;
     }
 
     public Date getCreateTime() {
@@ -90,12 +90,12 @@ public class Study implements Serializable {
         this.studyContent = studyContent == null ? null : studyContent.trim();
     }
 
-    public Integer getMemberId() {
-        return memberId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFileId() {

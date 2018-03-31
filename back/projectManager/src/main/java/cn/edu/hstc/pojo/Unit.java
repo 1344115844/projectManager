@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Unit implements Serializable {
-    private Integer id;
+    private Integer unitId;
 
     private Integer delete;
 
@@ -20,18 +20,18 @@ public class Unit implements Serializable {
 
     private String term;
 
-    private Integer memberId;
+    private Integer userId;
 
     private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getUnitId() {
+        return unitId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUnitId(Integer unitId) {
+        this.unitId = unitId;
     }
 
     public Integer getDelete() {
@@ -90,12 +90,12 @@ public class Unit implements Serializable {
         this.term = term == null ? null : term.trim();
     }
 
-    public Integer getMemberId() {
-        return memberId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFileId() {

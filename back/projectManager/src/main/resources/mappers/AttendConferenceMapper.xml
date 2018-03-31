@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.AttendConferenceMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.AttendConference">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="conf_id" jdbcType="INTEGER" property="confId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete" jdbcType="INTEGER" property="delete" />
@@ -12,40 +12,40 @@
     <result column="place" jdbcType="VARCHAR" property="place" />
     <result column="host_unit" jdbcType="VARCHAR" property="hostUnit" />
     <result column="conference_category" jdbcType="VARCHAR" property="conferenceCategory" />
-    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, create_time, update_time, delete, conference_name, paper_title, time, place, 
-    host_unit, conference_category, member_id, file_id
+    conf_id, create_time, update_time, delete, conference_name, paper_title, time, place, 
+    host_unit, conference_category, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from attendconference
-    where id = #{id,jdbcType=INTEGER}
+    where conf_id = #{confId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from attendconference
-    where id = #{id,jdbcType=INTEGER}
+    where conf_id = #{confId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AttendConference">
-    insert into attendconference (id, create_time, update_time, 
+    insert into attendconference (conf_id, create_time, update_time, 
       delete, conference_name, paper_title, 
       time, place, host_unit, 
-      conference_category, member_id, file_id
+      conference_category, user_id, file_id
       )
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{confId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{delete,jdbcType=INTEGER}, #{conferenceName,jdbcType=VARCHAR}, #{paperTitle,jdbcType=VARCHAR}, 
       #{time,jdbcType=TIMESTAMP}, #{place,jdbcType=VARCHAR}, #{hostUnit,jdbcType=VARCHAR}, 
-      #{conferenceCategory,jdbcType=VARCHAR}, #{memberId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
+      #{conferenceCategory,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.AttendConference">
     insert into attendconference
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="confId != null">
+        conf_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -74,16 +74,16 @@
       <if test="conferenceCategory != null">
         conference_category,
       </if>
-      <if test="memberId != null">
-        member_id,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="fileId != null">
         file_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="confId != null">
+        #{confId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -112,8 +112,8 @@
       <if test="conferenceCategory != null">
         #{conferenceCategory,jdbcType=VARCHAR},
       </if>
-      <if test="memberId != null">
-        #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="fileId != null">
         #{fileId,jdbcType=INTEGER},
@@ -150,14 +150,14 @@
       <if test="conferenceCategory != null">
         conference_category = #{conferenceCategory,jdbcType=VARCHAR},
       </if>
-      <if test="memberId != null">
-        member_id = #{memberId,jdbcType=INTEGER},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="fileId != null">
         file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where conf_id = #{confId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.AttendConference">
     update attendconference
@@ -170,8 +170,8 @@
       place = #{place,jdbcType=VARCHAR},
       host_unit = #{hostUnit,jdbcType=VARCHAR},
       conference_category = #{conferenceCategory,jdbcType=VARCHAR},
-      member_id = #{memberId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       file_id = #{fileId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where conf_id = #{confId,jdbcType=INTEGER}
   </update>
 </mapper>

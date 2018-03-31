@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Copyright implements Serializable {
-    private Integer id;
+    private Integer copyId;
 
     private Date createTime;
 
@@ -20,18 +20,18 @@ public class Copyright implements Serializable {
 
     private Integer rightNum;
 
-    private Integer memberId;
+    private Integer userId;
 
     private Integer fileId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getCopyId() {
+        return copyId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCopyId(Integer copyId) {
+        this.copyId = copyId;
     }
 
     public Date getCreateTime() {
@@ -90,12 +90,12 @@ public class Copyright implements Serializable {
         this.rightNum = rightNum;
     }
 
-    public Integer getMemberId() {
-        return memberId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFileId() {

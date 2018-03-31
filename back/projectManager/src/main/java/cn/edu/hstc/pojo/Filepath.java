@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Filepath implements Serializable {
-    private Integer id;
+    private Integer fileId;
 
     private Date createTime;
 
@@ -14,14 +14,16 @@ public class Filepath implements Serializable {
 
     private String url;
 
+    private Integer userId;
+
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getFileId() {
+        return fileId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 
     public Date getCreateTime() {
@@ -54,5 +56,13 @@ public class Filepath implements Serializable {
 
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
