@@ -196,4 +196,30 @@
       password = #{password,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
+    *
+    from user
+    where username = #{username}
+    and password = #{password}
+  </select>
+
+
+  <select id="checkUsername" resultType="int" parameterType="String">
+    select COUNT(1)
+    from user
+    where username=#{username}
+  </select>
+
+
+  <select id="Oldpassword" resultMap="int" parameterType="map">
+    select
+    COUNT(1)
+    from user
+    where u_id = #{user_id}
+    and password = #{oldpassword}
+  </select>
+
+
 </mapper>

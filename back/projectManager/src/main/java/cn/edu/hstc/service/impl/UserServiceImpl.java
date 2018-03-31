@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONResponse<User> updatePassword(User user, String oldpassword, String newpassword) {
 
-        int resultCount = userMapper.selectLogin(user.getUsername(),MD5Util.MD5EncodeUtf8(oldpassword))==null?0:1;
+        int resultCount = userMapper.checkOldpassword(user.getUserId(),MD5Util.MD5EncodeUtf8(oldpassword));
         if(resultCount == 0){
             return JSONResponse.createByErrorMessage("原密码错误");
         }
