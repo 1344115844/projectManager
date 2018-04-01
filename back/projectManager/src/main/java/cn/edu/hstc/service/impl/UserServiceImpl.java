@@ -8,6 +8,8 @@ import cn.edu.hstc.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -96,7 +98,12 @@ public class UserServiceImpl implements UserService {
      **/
     @Override
     public JSONResponse<User> updateUser(User user) {
-        int result=userMapper.updateByPrimaryKeySelective(user);
+        int result=0;
+        try{
+        result=userMapper.updateByPrimaryKeySelective(user);}
+        catch (Exception e){
+            return JSONResponse.createByErrorCodeMessage(400,"更新失败，检查表单");
+        }
         if (result<0) {
             return JSONResponse.createByErrorCodeMessage(500,"内部错误，更新失败，请检查再提交");
         }else if (result==0){
@@ -114,5 +121,15 @@ public class UserServiceImpl implements UserService {
     public JSONResponse<Integer> deleteUserByUserId(int userId) {
         userMapper.deleteUserByUserId(userId);
         return JSONResponse.createBySuccessMessage("删除成功");
+    }
+
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 15:03
+     *方法作用：查询所有成员
+     **/
+    public JSONResponse<List> selectAllUser(){
+
+        return null;
     }
 }
