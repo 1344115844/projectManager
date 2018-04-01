@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -28,7 +29,7 @@ public class AcademicServiceImpl implements AcademicService {
 * @Date: 2018/3/31 21:10
 */
     @Override
-    public JSONResponse<Academic> addAcademic(Academic acad) {
+    public JSONResponse addAcademic(Academic acad) {
         int rs=academicMapper.insertSelective(acad);
         if(rs==1)return JSONResponse.createBySuccessMessage("添加学术论文成功");
         return JSONResponse.createByErrorMessage("添加学术论文失败");
@@ -42,7 +43,7 @@ public class AcademicServiceImpl implements AcademicService {
     * @Date: 2018/3/31 21:10
     */
     @Override
-    public JSONResponse<Academic> deleteAcademic(Integer acad_id) {
+    public JSONResponse deleteAcademic(Integer acad_id) {
         int rs=academicMapper.deleteByPrimaryKey(acad_id);
         if(rs==1)return JSONResponse.createBySuccessMessage("删除学术论文成功");
         return JSONResponse.createByErrorMessage("删除学术论文失败");
@@ -56,7 +57,7 @@ public class AcademicServiceImpl implements AcademicService {
 * @Date: 2018/3/31 21:09
 */
     @Override
-    public JSONResponse<Academic> updateAcademic(Academic acad) {
+    public JSONResponse updateAcademic(Academic acad) {
 
         int rs=academicMapper.updateByPrimaryKeySelective(acad);
         if(rs==1)return JSONResponse.createBySuccessMessage("修改学术论文成功");
@@ -88,12 +89,10 @@ public class AcademicServiceImpl implements AcademicService {
     * @Date: 2018/3/31 21:06
     */
     @Override
-    public JSONResponse<AcademicListVo> selectAcademicListByUserId(Integer user_id) {
+    public JSONResponse<List<Academic>> selectAcademicListByUserId(Integer user_id) {
         ArrayList<Academic> acads=academicMapper.selectByUserId(user_id);
-        AcademicListVo acadlist=new AcademicListVo();
-        acadlist.setAcadlist(acads);
-        acadlist.setUser_id(user_id);
-        return JSONResponse.createBySuccess(acadlist);//返回一个Academic的集合VO，带有用户信息
+
+        return JSONResponse.createBySuccess(acads);//返回一个Academic的集合VO，带有用户信息
 
     }
 

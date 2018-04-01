@@ -5,12 +5,12 @@ import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.AcademicService;
-import cn.edu.hstc.vo.AcademicListVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -33,7 +33,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:48
      */
     @RequestMapping("/add.do")
-    public JSONResponse<Academic> addAcademic(HttpSession session, Academic acad) {
+    public JSONResponse addAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
             return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
@@ -50,7 +50,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:52
      */
     @RequestMapping("/delete.do")
-    public JSONResponse<Academic> deleteAcademic(HttpSession session, Integer acad_id) {
+    public JSONResponse<Integer> deleteAcademic(HttpSession session, Integer acad_id) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
             return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
@@ -65,7 +65,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:58
      */
     @RequestMapping("/update.do")
-    public JSONResponse<Academic> updateAcademic(HttpSession session, Academic acad) {
+    public JSONResponse updateAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
             return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
@@ -96,7 +96,7 @@ public class AcademicController {
      * @Date: 2018/4/1 10:02
      */
     @RequestMapping("/selectByUserId.do")
-    public JSONResponse<AcademicListVo> selectAcademicListByUserId(HttpSession session) {
+    public JSONResponse<List<Academic>> selectAcademicListByUserId(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
             return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
