@@ -2,8 +2,11 @@ package cn.edu.hstc.controller.back;
 
 import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.pojo.User;
+import cn.edu.hstc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Veng Su 1344114844@qq.com
@@ -12,24 +15,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("admin")
 public class AdminController {
-
+    @Autowired
+    UserService userService;
 
     /**
      *@author Veng Su
      *@date 2018/3/31 19:32
-     *@param []
+     *@param
      *@return java.lang.String
      *方法作用：跳转到member-list页面
      **/
     @RequestMapping("/show/user-list")
+    @ResponseBody
     public String showMember(){
         return "member-list";
     }
 
-    @RequestMapping("add/user")
-    public JSONResponse<User> addUser(){
-        return null;
-    }
 
+/**
+ *@author Veng Su
+ *@date 2018/4/1 9:21
+ *@param [user]
+ *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+ *方法作用：管理员添加成员
+ **/
+@RequestMapping("add/user")
+@ResponseBody
+public JSONResponse<User> addUser(User user){
+    return userService.register(user);
+}
+
+@RequestMapping("update/user")
+@ResponseBody
+public JSONResponse<User> updateUser(User user){
+    return userService.updateUser(user);
+}
 
 }

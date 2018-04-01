@@ -87,5 +87,17 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public JSONResponse<User> updateUser(User user) {
+        int result=userMapper.updateByPrimaryKeySelective(user);
+        if (result<0) {
+            return JSONResponse.createByErrorCodeMessage(500,"内部错误，更新失败，请检查再提交");
+        }else if (result==0){
+            return JSONResponse.createByErrorCodeMessage(400,"更新失败，客户端传参失败");
+        }else{
+            return JSONResponse.createBySuccessMessage("更新成功");
+        }
+    }
+
 
 }
