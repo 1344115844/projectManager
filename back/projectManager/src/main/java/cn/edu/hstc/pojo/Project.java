@@ -32,7 +32,7 @@ public class Project implements Serializable {
 
     private Date creatTime;
 
-    private Date deleteTime;
+    private Integer deleted;
 
     private Date updateTime;
 
@@ -150,12 +150,12 @@ public class Project implements Serializable {
         this.creatTime = creatTime;
     }
 
-    public Date getDeleteTime() {
-        return deleteTime;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setDeleteTime(Date deleteTime) {
-        this.deleteTime = deleteTime;
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public Date getUpdateTime() {

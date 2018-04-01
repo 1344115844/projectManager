@@ -3,7 +3,7 @@
 <mapper namespace="cn.edu.hstc.dao.UnitMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Unit">
     <id column="unit_id" jdbcType="INTEGER" property="unitId" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
@@ -14,7 +14,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    unit_id, delete, update_time, create_time, unit_name, host_unit, duty, term, user_id, 
+    unit_id, deleted, update_time, create_time, unit_name, host_unit, duty, term, user_id,
     file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -28,11 +28,11 @@
     where unit_id = #{unitId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Unit">
-    insert into unit (unit_id, delete, update_time, 
+    insert into unit (unit_id, deleted, update_time,
       create_time, unit_name, host_unit, 
       duty, term, user_id, 
       file_id)
-    values (#{unitId,jdbcType=INTEGER}, #{delete,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{unitId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP},
       #{createTime,jdbcType=TIMESTAMP}, #{unitName,jdbcType=VARCHAR}, #{hostUnit,jdbcType=VARCHAR}, 
       #{duty,jdbcType=VARCHAR}, #{term,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{fileId,jdbcType=INTEGER})
@@ -43,8 +43,8 @@
       <if test="unitId != null">
         unit_id,
       </if>
-      <if test="delete != null">
-        delete,
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -75,8 +75,8 @@
       <if test="unitId != null">
         #{unitId,jdbcType=INTEGER},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -107,8 +107,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.Unit">
     update unit
     <set>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -139,7 +139,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Unit">
     update unit
-    set delete = #{delete,jdbcType=INTEGER},
+    set deleted = #{deleted,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       unit_name = #{unitName,jdbcType=VARCHAR},

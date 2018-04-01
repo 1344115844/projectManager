@@ -13,13 +13,13 @@
         <result column="academic_title" jdbcType="VARCHAR" property="academicTitle"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
-        <result column="delete" jdbcType="INTEGER" property="delete"/>
+        <result column="deleted" jdbcType="INTEGER" property="deleted"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     <sql id="Base_Column_List">
     user_id, name, short_phone, email, phone, job_title, education, research_direction, 
-    academic_title, create_time, update_time, delete, username, password
+    academic_title, create_time, update_time, deleted, username, password
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -35,12 +35,12 @@
     insert into user (user_id, name, short_phone, 
       email, phone, job_title, 
       education, research_direction, academic_title, 
-      create_time, update_time, delete, 
+      create_time, update_time, deleted,
       username, password)
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shortPhone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
       #{education,jdbcType=VARCHAR}, #{researchDirection,jdbcType=VARCHAR}, #{academicTitle,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER},
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.User">
@@ -79,8 +79,8 @@
             <if test="updateTime != null">
                 update_time,
             </if>
-            <if test="delete != null">
-                delete,
+            <if test="deleted != null">
+                deleted,
             </if>
             <if test="username != null">
                 username,
@@ -123,8 +123,8 @@
             <if test="updateTime != null">
                 #{updateTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="delete != null">
-                #{delete,jdbcType=INTEGER},
+            <if test="deleted != null">
+                #{deleted,jdbcType=INTEGER},
             </if>
             <if test="username != null">
                 #{username,jdbcType=VARCHAR},
@@ -167,8 +167,8 @@
             <if test="updateTime != null">
                 update_time = #{updateTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="delete != null">
-                delete = #{delete,jdbcType=INTEGER},
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=INTEGER},
             </if>
             <if test="username != null">
                 username = #{username,jdbcType=VARCHAR},
@@ -191,7 +191,7 @@
       academic_title = #{academicTitle,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}

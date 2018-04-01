@@ -6,7 +6,7 @@ import java.util.Date;
 public class Unit implements Serializable {
     private Integer unitId;
 
-    private Integer delete;
+    private Integer deleted;
 
     private Date updateTime;
 
@@ -35,11 +35,11 @@ public class Unit implements Serializable {
     }
 
     public Integer getDelete() {
-        return delete;
+        return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setDelete(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public Date getUpdateTime() {
