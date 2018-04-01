@@ -19,5 +19,5 @@ public interface AcademicMapper {
 
     ArrayList<Academic> selectByUserId(Integer user_id);//查询用户拥有的学术论文
 
-    Integer getCountByUserId(Integer user_id);//查询用户拥有学术论文数目
+    Integer getAcademicCountByUserId(Integer user_id);//查询用户拥有学术论文数目
 }

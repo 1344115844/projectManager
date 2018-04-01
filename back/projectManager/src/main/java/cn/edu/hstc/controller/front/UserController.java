@@ -103,7 +103,7 @@ public class UserController {
     @ResponseBody
     public JSONResponse<User> updatePassword(HttpSession session,String oldpassword,String newpassword) {
         User user=(User)session.getAttribute("currentUser");
-        if(user==null) return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录");
+        if(user==null) return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
         return userService.updatePassword(user,oldpassword,newpassword);
     }
 }

@@ -6,6 +6,7 @@ import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.service.AcademicService;
 import cn.edu.hstc.vo.AcademicListVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  * @description:
  * @modified by:
  */
+@Service
 public class AcademicServiceImpl implements AcademicService {
 @Autowired
     AcademicMapper academicMapper;
@@ -94,4 +96,19 @@ public class AcademicServiceImpl implements AcademicService {
         return JSONResponse.createBySuccess(acadlist);//返回一个Academic的集合VO，带有用户信息
 
     }
+
+    /**
+    * @Description:查询数目
+    * @param: [user_id]
+    * @return: java.lang.Integer
+    * @author: yifang
+    * @Date: 2018/4/1 10:08
+    */
+    @Override
+    public JSONResponse<Integer> getAcademicCountByUserId(Integer user_id) {
+        if(user_id==0)return JSONResponse.createBySuccess(0);
+        Integer count=academicMapper.getAcademicCountByUserId(user_id);
+        return JSONResponse.createBySuccess(count);
+    }
+
 }

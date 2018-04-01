@@ -23,5 +23,5 @@ public interface AcademicService {
 
     JSONResponse<AcademicListVo> selectAcademicListByUserId(Integer user_id);//按用户ID查询
 
-
+    JSONResponse<Integer> getAcademicCountByUserId(Integer user_id);
 }
