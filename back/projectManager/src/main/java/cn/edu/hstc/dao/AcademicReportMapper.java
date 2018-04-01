@@ -21,4 +21,5 @@ public interface AcademicReportMapper {
 
     Integer getReportCountByUserId(Integer user_id);//查询用户拥有学术报告数目
 
+
 }

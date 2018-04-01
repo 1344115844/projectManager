@@ -14,7 +14,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    inv_id, deleted, update_time, create_time, begin_time, over_time, investigate_place,
+    inv_id, deleted, update_time, create_time, begin_time, over_time, investigate_place, 
     investigate_content, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -28,11 +28,11 @@
     where inv_id = #{invId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Investigate">
-    insert into investigate (inv_id, deleted, update_time,
+    insert into investigate (inv_id, deleted, update_time, 
       create_time, begin_time, over_time, 
       investigate_place, investigate_content, user_id, 
       file_id)
-    values (#{invId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP},
+    values (#{invId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{createTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
       #{investigatePlace,jdbcType=VARCHAR}, #{investigateContent,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{fileId,jdbcType=INTEGER})

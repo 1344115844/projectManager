@@ -54,7 +54,7 @@ public class Study implements Serializable {
         return deleted;
     }
 
-    public void setDelete(Integer deleted) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 

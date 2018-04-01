@@ -60,12 +60,12 @@ public class Academic implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelete() {
+    public Integer getDeleted() {
         return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.deleted = delete;
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public String getThesisName() {

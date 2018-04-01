@@ -126,7 +126,7 @@ public class User implements Serializable {
         return deleted;
     }
 
-    public void setDeleted(Integer delete) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 

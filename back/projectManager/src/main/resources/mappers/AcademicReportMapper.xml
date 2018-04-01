@@ -16,7 +16,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    rep_id, create_time, update_time, deleted, report_title, begin_time, over_time, host_unit,
+    rep_id, create_time, update_time, deleted, report_title, begin_time, over_time, host_unit, 
     host_place, attend_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AcademicReport">
     insert into academicreport (rep_id, create_time, update_time, 
-      deleted, report_title, begin_time,
+      deleted, report_title, begin_time, 
       over_time, host_unit, host_place, 
       attend_num, user_id, file_id
       )
     values (#{repId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
       #{overTime,jdbcType=TIMESTAMP}, #{hostUnit,jdbcType=VARCHAR}, #{hostPlace,jdbcType=VARCHAR}, 
       #{attendNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
@@ -175,17 +175,22 @@
     where rep_id = #{repId,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+  <select id="selectByUserId" parameterType="java.lang.Integer"
+          resultMap="BaseResultMap">
     select *
     from academicreport
     where
     user_id=#{user_id}
   </select>
 
-  <select id="getReportCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+  <select id="getReportCountByUserId"
+          parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select COUNT(*)
     from academicreport
     where user_id=#{user_id}
   </select>
+
+
 
 </mapper>

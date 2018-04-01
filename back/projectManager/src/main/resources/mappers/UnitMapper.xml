@@ -14,7 +14,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    unit_id, deleted, update_time, create_time, unit_name, host_unit, duty, term, user_id,
+    unit_id, deleted, update_time, create_time, unit_name, host_unit, duty, term, user_id, 
     file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -28,11 +28,11 @@
     where unit_id = #{unitId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Unit">
-    insert into unit (unit_id, deleted, update_time,
+    insert into unit (unit_id, deleted, update_time, 
       create_time, unit_name, host_unit, 
       duty, term, user_id, 
       file_id)
-    values (#{unitId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP},
+    values (#{unitId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{createTime,jdbcType=TIMESTAMP}, #{unitName,jdbcType=VARCHAR}, #{hostUnit,jdbcType=VARCHAR}, 
       #{duty,jdbcType=VARCHAR}, #{term,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{fileId,jdbcType=INTEGER})

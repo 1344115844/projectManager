@@ -52,11 +52,11 @@ public class Award implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelete() {
+    public Integer getDeleted() {
         return deleted;
     }
 
-    public void setDelete(Integer deleted) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 

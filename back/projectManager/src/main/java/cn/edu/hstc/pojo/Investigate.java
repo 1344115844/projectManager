@@ -38,7 +38,7 @@ public class Investigate implements Serializable {
         return deleted;
     }
 
-    public void setDelete(Integer deleted) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 
