@@ -4,7 +4,8 @@ import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.dao.AcademicMapper;
 import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.service.AcademicService;
-import cn.edu.hstc.vo.AcademicListVo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,18 +83,19 @@ public class AcademicServiceImpl implements AcademicService {
     }
 
     /**
-    * @Description:根据用户id查询其拥有的学术论文，数据库返回一个Academic的集合，封装到VO中
+    * @Description:根据用户id查询其拥有的学术论文，数据库返回一个Academic的集合
+     * 使用分页查询，查询第pageNum页，每页pageSize条记录
     * @param: [user_id]
     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.vo.AcademicListVo>
     * @author: yifang
     * @Date: 2018/3/31 21:06
     */
     @Override
-    public JSONResponse<List<Academic>> selectAcademicListByUserId(Integer user_id) {
+    public JSONResponse<PageInfo> selectAcademicListByUserId(Integer user_id, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         ArrayList<Academic> acads=academicMapper.selectByUserId(user_id);
-
-        return JSONResponse.createBySuccess(acads);//返回一个Academic的集合VO，带有用户信息
-
+        PageInfo<Academic> pageInfo = new PageInfo<>(acads);
+        return JSONResponse.createBySuccess(pageInfo);
     }
 
     /**

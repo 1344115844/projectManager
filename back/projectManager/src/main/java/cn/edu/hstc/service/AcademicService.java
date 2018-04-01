@@ -2,9 +2,8 @@ package cn.edu.hstc.service;
 
 import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.pojo.Academic;
-import cn.edu.hstc.vo.AcademicListVo;
+import com.github.pagehelper.PageInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ public interface AcademicService {
 
     JSONResponse<Academic> selectAcademicById(Integer acad_id);//按ID查询
 
-    JSONResponse<List<Academic>> selectAcademicListByUserId(Integer user_id);//按用户ID查询
+    JSONResponse<PageInfo> selectAcademicListByUserId(Integer user_id,int pageNum,int pageSize);//按用户ID查询论文列表
 
     JSONResponse<Integer> getAcademicCountByUserId(Integer user_id);
 }
