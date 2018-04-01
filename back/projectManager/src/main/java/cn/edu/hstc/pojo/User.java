@@ -26,7 +26,7 @@ public class User implements Serializable {
 
     private Date updateTime;
 
-    private Integer delete;
+    private Integer deleted;
 
     private String username;
 
@@ -122,12 +122,12 @@ public class User implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelete() {
-        return delete;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setDeleted(Integer delete) {
+        this.deleted = deleted;
     }
 
     public String getUsername() {

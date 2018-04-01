@@ -35,7 +35,7 @@ public class AdminController {
 /**
  *@author Veng Su
  *@date 2018/4/1 9:21
- *@param [user]
+ *@param user
  *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
  *方法作用：管理员添加成员
  **/
@@ -48,7 +48,7 @@ public class AdminController {
 /**
  *@author Veng Su
  *@date 2018/4/1 9:55
- *@param [user]
+ *@param user
  *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
  *方法作用：管理员更新成员信息
  **/
@@ -65,8 +65,10 @@ public class AdminController {
      *@date 2018/4/1 10:06
      *方法作用：admin删除成员，假删除方式
      **/
-    public JSONResponse<User> deleteUserByUserId(User user){
-        return userService.deleteUserByUserId(user);
+    @RequestMapping("delete/user")
+    @ResponseBody
+    public JSONResponse<Integer> deleteUserByUserId(int userId){
+        return userService.deleteUserByUserId(userId);
     }
 
 

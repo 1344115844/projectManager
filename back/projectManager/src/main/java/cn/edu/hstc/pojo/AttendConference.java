@@ -10,7 +10,7 @@ public class AttendConference implements Serializable {
 
     private Date updateTime;
 
-    private Integer delete;
+    private Integer deleted;
 
     private String conferenceName;
 
@@ -55,11 +55,11 @@ public class AttendConference implements Serializable {
     }
 
     public Integer getDelete() {
-        return delete;
+        return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setDelete(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public String getConferenceName() {

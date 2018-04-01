@@ -5,7 +5,7 @@
     <id column="copy_id" jdbcType="INTEGER" property="copyId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="right_name" jdbcType="VARCHAR" property="rightName" />
     <result column="rank" jdbcType="VARCHAR" property="rank" />
     <result column="award_time" jdbcType="TIMESTAMP" property="awardTime" />
@@ -14,7 +14,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    copy_id, create_time, update_time, delete, right_name, rank, award_time, right_num, 
+    copy_id, create_time, update_time, deleted, right_name, rank, award_time, right_num,
     user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -29,11 +29,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Copyright">
     insert into copyright (copy_id, create_time, update_time, 
-      delete, right_name, rank, 
+      deleted, right_name, rank,
       award_time, right_num, user_id, 
       file_id)
     values (#{copyId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=INTEGER}, #{rightName,jdbcType=VARCHAR}, #{rank,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{rightName,jdbcType=VARCHAR}, #{rank,jdbcType=VARCHAR},
       #{awardTime,jdbcType=TIMESTAMP}, #{rightNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
       #{fileId,jdbcType=INTEGER})
   </insert>
@@ -49,8 +49,8 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="delete != null">
-        delete,
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="rightName != null">
         right_name,
@@ -81,8 +81,8 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
       </if>
       <if test="rightName != null">
         #{rightName,jdbcType=VARCHAR},
@@ -113,8 +113,8 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
       </if>
       <if test="rightName != null">
         right_name = #{rightName,jdbcType=VARCHAR},
@@ -141,7 +141,7 @@
     update copyright
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
       right_name = #{rightName,jdbcType=VARCHAR},
       rank = #{rank,jdbcType=VARCHAR},
       award_time = #{awardTime,jdbcType=TIMESTAMP},

@@ -10,7 +10,7 @@ public class Award implements Serializable {
 
     private Date updateTime;
 
-    private Integer delete;
+    private Integer deleted;
 
     private String projectName;
 
@@ -53,11 +53,11 @@ public class Award implements Serializable {
     }
 
     public Integer getDelete() {
-        return delete;
+        return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setDelete(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public String getProjectName() {

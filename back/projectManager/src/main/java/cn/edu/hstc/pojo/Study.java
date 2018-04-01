@@ -10,7 +10,7 @@ public class Study implements Serializable {
 
     private Date updateTime;
 
-    private Integer delete;
+    private Integer deleted;
 
     private Date beginTime;
 
@@ -50,12 +50,12 @@ public class Study implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelete() {
-        return delete;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setDelete(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public Date getBeginTime() {
