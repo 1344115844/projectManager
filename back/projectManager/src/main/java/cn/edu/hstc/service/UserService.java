@@ -17,4 +17,6 @@ public interface UserService {
 
 
     JSONResponse<User> updateUser(User user);
+
+    JSONResponse<User> deleteUserByUserId(User user);
 }

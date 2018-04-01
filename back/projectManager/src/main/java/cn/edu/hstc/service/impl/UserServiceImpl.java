@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @Description:注册处理
+     * @Description:注册处理/admin管理成员
      * @param: [user]
      * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
      * @author: yifang
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     /**
      *@author Veng Su
      *@date 2018/4/1 9:54
-     *@param [user]
+     *@param user
      *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
      *方法作用：admin更新成员信息
      **/
@@ -106,5 +106,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    @Override
+    public JSONResponse<User> deleteUserByUserId(User user) {
+        return null;
+    }
 }
