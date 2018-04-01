@@ -50,11 +50,11 @@ public class Copyright implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDeleted() {
+    public Integer getDelete() {
         return deleted;
     }
 
-    public void setDeleted(Integer deleted) {
+    public void setDelete(Integer deleted) {
         this.deleted = deleted;
     }
 

@@ -19,7 +19,7 @@
     <result column=" file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level, 
+    acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level,
     " periodical", publish_journals, collection_situation, author_rank, category, user_id, 
     " file_id"
   </sql>
@@ -35,13 +35,13 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Academic">
     insert into academic (acad_id, create_time, update_time, 
-      deleted, thesis_name, novon, 
+      deleted, thesis_name, novon,
       releasing_code, publication_level, " periodical", 
       publish_journals, collection_situation, author_rank, 
       category, user_id, " file_id"
       )
     values (#{acadId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR},
       #{releasingCode,jdbcType=VARCHAR}, #{publicationLevel,jdbcType=VARCHAR}, #{periodical,jdbcType=VARCHAR}, 
       #{publishJournals,jdbcType=VARCHAR}, #{collectionSituation,jdbcType=VARCHAR}, #{authorRank,jdbcType=VARCHAR}, 
       #{category,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
@@ -211,23 +211,16 @@
     where acad_id = #{acadId,jdbcType=INTEGER}
   </update>
 
-
-
-  <select id="selectByUserId" parameterType="java.lang.Integer"
-          resultMap="BaseResultMap">
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select *
     from academic
     where
     user_id=#{user_id}
   </select>
 
-  <select id="getAcademicCountByUserId"
-          parameterType="java.lang.Integer" resultType="java.lang.Integer">
+  <select id="getAcademicCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select COUNT(*)
     from academic
     where user_id=#{user_id}
   </select>
-
-
-
 </mapper>

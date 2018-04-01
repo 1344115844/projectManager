@@ -34,11 +34,11 @@ public class Unit implements Serializable {
         this.unitId = unitId;
     }
 
-    public Integer getDeleted() {
+    public Integer getDelete() {
         return deleted;
     }
 
-    public void setDeleted(Integer deleted) {
+    public void setDelete(Integer deleted) {
         this.deleted = deleted;
     }
 

@@ -15,7 +15,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    award_id, create_time, update_time, deleted, project_name, award_name, award_level, 
+    award_id, create_time, update_time, deleted, project_name, award_name, award_level,
     award_time, award_rank, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -30,11 +30,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Award">
     insert into award (award_id, create_time, update_time, 
-      deleted, project_name, award_name, 
+      deleted, project_name, award_name,
       award_level, award_time, award_rank, 
       user_id, file_id)
     values (#{awardId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{awardName,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{awardName,jdbcType=VARCHAR},
       #{awardLevel,jdbcType=VARCHAR}, #{awardTime,jdbcType=TIMESTAMP}, #{awardRank,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER})
   </insert>

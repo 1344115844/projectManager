@@ -14,7 +14,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    stu_id, create_time, update_time, deleted, begin_time, over_time, school, study_content, 
+    stu_id, create_time, update_time, deleted, begin_time, over_time, school, study_content,
     user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -29,11 +29,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Study">
     insert into study (stu_id, create_time, update_time, 
-      deleted, begin_time, over_time, 
+      deleted, begin_time, over_time,
       school, study_content, user_id, 
       file_id)
     values (#{stuId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{beginTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP},
       #{school,jdbcType=VARCHAR}, #{studyContent,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{fileId,jdbcType=INTEGER})
   </insert>

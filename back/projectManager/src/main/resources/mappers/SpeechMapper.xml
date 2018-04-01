@@ -14,11 +14,11 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    speech_id, create_time, update_time, deleted, invite_time, begin_time, over_time, 
+    speech_id, create_time, update_time, deleted, invite_time, begin_time, over_time,
     speech_form, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from speech
     where speech_id = #{speechId,jdbcType=INTEGER}
@@ -28,13 +28,13 @@
     where speech_id = #{speechId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Speech">
-    insert into speech (speech_id, create_time, update_time, 
-      deleted, invite_time, begin_time, 
-      over_time, speech_form, user_id, 
+    insert into speech (speech_id, create_time, update_time,
+      deleted, invite_time, begin_time,
+      over_time, speech_form, user_id,
       file_id)
-    values (#{speechId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{inviteTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, 
-      #{overTime,jdbcType=TIMESTAMP}, #{speechForm,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+    values (#{speechId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=INTEGER}, #{inviteTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP},
+      #{overTime,jdbcType=TIMESTAMP}, #{speechForm,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
       #{fileId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Speech">

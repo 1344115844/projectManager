@@ -16,7 +16,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    edit_id, create_time, update_time, deleted, book_name, edit_rank, isbn, publish_unit, 
+    edit_id, create_time, update_time, deleted, book_name, edit_rank, isbn, publish_unit,
     publish_time, byte_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.EditBook">
     insert into editbook (edit_id, create_time, update_time, 
-      deleted, book_name, edit_rank, 
+      deleted, book_name, edit_rank,
       isbn, publish_unit, publish_time, 
       byte_num, user_id, file_id
       )
     values (#{editId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{editRank,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{editRank,jdbcType=VARCHAR},
       #{isbn,jdbcType=VARCHAR}, #{publishUnit,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
       #{byteNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
