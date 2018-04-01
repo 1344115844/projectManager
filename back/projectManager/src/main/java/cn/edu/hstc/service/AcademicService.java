@@ -2,7 +2,7 @@ package cn.edu.hstc.service;
 
 import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.pojo.Academic;
-import cn.edu.hstc.vo.AcademicListVo;
+//import cn.edu.hstc.vo.AcademicListVo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,7 @@ import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.dao.AcademicMapper;
 import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.service.AcademicService;
-import cn.edu.hstc.vo.AcademicListVo;
+//import cn.edu.hstc.vo.AcademicListVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -220,6 +220,11 @@
     where user_id = #{user_id}
     and password = #{oldpassword}
   </select>
+    <update id="deleteUserByUserId" parameterType="java.lang.Integer">
+        UPDATE user
+        SET  deleted=1
+        WHERE user_id =#{userId}
+    </update>
 
 
 </mapper>
