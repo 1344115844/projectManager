@@ -22,5 +22,7 @@ public interface UserMapper {
 
     int checkOldpassword(@Param("user_id") Integer user_id, @Param("oldpassword")String oldpassword);//检查原密码
 
+    int deleteUserByUserId(@Param("userId") Integer userId); //假删除user，更新delete字段为1
+
 
 }

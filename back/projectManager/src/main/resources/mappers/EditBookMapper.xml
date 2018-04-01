@@ -5,7 +5,7 @@
     <id column="edit_id" jdbcType="INTEGER" property="editId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="book_name" jdbcType="VARCHAR" property="bookName" />
     <result column="edit_rank" jdbcType="VARCHAR" property="editRank" />
     <result column="isbn" jdbcType="VARCHAR" property="isbn" />
@@ -16,7 +16,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    edit_id, create_time, update_time, delete, book_name, edit_rank, isbn, publish_unit, 
+    edit_id, create_time, update_time, deleted, book_name, edit_rank, isbn, publish_unit,
     publish_time, byte_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.EditBook">
     insert into editbook (edit_id, create_time, update_time, 
-      delete, book_name, edit_rank, 
+      deleted, book_name, edit_rank,
       isbn, publish_unit, publish_time, 
       byte_num, user_id, file_id
       )
     values (#{editId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{editRank,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{editRank,jdbcType=VARCHAR},
       #{isbn,jdbcType=VARCHAR}, #{publishUnit,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
       #{byteNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
@@ -53,8 +53,8 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="delete != null">
-        delete,
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="bookName != null">
         book_name,
@@ -91,8 +91,8 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
       </if>
       <if test="bookName != null">
         #{bookName,jdbcType=VARCHAR},
@@ -129,8 +129,8 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
       </if>
       <if test="bookName != null">
         book_name = #{bookName,jdbcType=VARCHAR},
@@ -163,7 +163,7 @@
     update editbook
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
       book_name = #{bookName,jdbcType=VARCHAR},
       edit_rank = #{editRank,jdbcType=VARCHAR},
       isbn = #{isbn,jdbcType=VARCHAR},

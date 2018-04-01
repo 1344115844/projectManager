@@ -10,7 +10,7 @@ public class Speech implements Serializable {
 
     private Date updateTime;
 
-    private Integer delete;
+    private Integer deleted;
 
     private Date inviteTime;
 
@@ -50,12 +50,12 @@ public class Speech implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelete() {
-        return delete;
+    public Integer getDeleted() {
+        return deleted;
     }
 
     public void setDelete(Integer delete) {
-        this.delete = delete;
+        this.deleted = deleted;
     }
 
     public Date getInviteTime() {

@@ -5,7 +5,7 @@
     <id column="acad_id" jdbcType="INTEGER" property="acadId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="thesis_name" jdbcType="VARCHAR" property="thesisName" />
     <result column="novon" jdbcType="VARCHAR" property="novon" />
     <result column="releasing_code" jdbcType="VARCHAR" property="releasingCode" />
@@ -19,7 +19,7 @@
     <result column=" file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    acad_id, create_time, update_time, delete, thesis_name, novon, releasing_code, publication_level, 
+    acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level,
     " periodical", publish_journals, collection_situation, author_rank, category, user_id, 
     " file_id"
   </sql>
@@ -35,13 +35,13 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Academic">
     insert into academic (acad_id, create_time, update_time, 
-      delete, thesis_name, novon, 
+      deleted, thesis_name, novon,
       releasing_code, publication_level, " periodical", 
       publish_journals, collection_situation, author_rank, 
       category, user_id, " file_id"
       )
     values (#{acadId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR},
       #{releasingCode,jdbcType=VARCHAR}, #{publicationLevel,jdbcType=VARCHAR}, #{periodical,jdbcType=VARCHAR}, 
       #{publishJournals,jdbcType=VARCHAR}, #{collectionSituation,jdbcType=VARCHAR}, #{authorRank,jdbcType=VARCHAR}, 
       #{category,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
@@ -59,8 +59,8 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="delete != null">
-        delete,
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="thesisName != null">
         thesis_name,
@@ -106,8 +106,8 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
       </if>
       <if test="thesisName != null">
         #{thesisName,jdbcType=VARCHAR},
@@ -153,8 +153,8 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
       </if>
       <if test="thesisName != null">
         thesis_name = #{thesisName,jdbcType=VARCHAR},
@@ -196,7 +196,7 @@
     update academic
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
       thesis_name = #{thesisName,jdbcType=VARCHAR},
       novon = #{novon,jdbcType=VARCHAR},
       releasing_code = #{releasingCode,jdbcType=VARCHAR},

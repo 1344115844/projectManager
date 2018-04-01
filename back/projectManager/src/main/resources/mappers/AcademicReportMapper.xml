@@ -5,7 +5,7 @@
     <id column="rep_id" jdbcType="INTEGER" property="repId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete" jdbcType="INTEGER" property="delete" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="report_title" jdbcType="VARCHAR" property="reportTitle" />
     <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
     <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
@@ -16,7 +16,7 @@
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    rep_id, create_time, update_time, delete, report_title, begin_time, over_time, host_unit, 
+    rep_id, create_time, update_time, deleted, report_title, begin_time, over_time, host_unit,
     host_place, attend_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.AcademicReport">
     insert into academicreport (rep_id, create_time, update_time, 
-      delete, report_title, begin_time, 
+      deleted, report_title, begin_time,
       over_time, host_unit, host_place, 
       attend_num, user_id, file_id
       )
     values (#{repId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{reportTitle,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP},
       #{overTime,jdbcType=TIMESTAMP}, #{hostUnit,jdbcType=VARCHAR}, #{hostPlace,jdbcType=VARCHAR}, 
       #{attendNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
@@ -53,8 +53,8 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="delete != null">
-        delete,
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="reportTitle != null">
         report_title,
@@ -91,8 +91,8 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
       </if>
       <if test="reportTitle != null">
         #{reportTitle,jdbcType=VARCHAR},
@@ -129,8 +129,8 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        delete = #{delete,jdbcType=INTEGER},
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
       </if>
       <if test="reportTitle != null">
         report_title = #{reportTitle,jdbcType=VARCHAR},
@@ -163,7 +163,7 @@
     update academicreport
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete = #{delete,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
       report_title = #{reportTitle,jdbcType=VARCHAR},
       begin_time = #{beginTime,jdbcType=TIMESTAMP},
       over_time = #{overTime,jdbcType=TIMESTAMP},

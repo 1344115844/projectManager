@@ -105,9 +105,14 @@ public class UserServiceImpl implements UserService {
             return JSONResponse.createBySuccessMessage("更新成功");
         }
     }
-
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 10:35
+     *方法作用：假删除user，更新delete为1
+     **/
     @Override
-    public JSONResponse<User> deleteUserByUserId(User user) {
-        return null;
+    public JSONResponse<Integer> deleteUserByUserId(int userId) {
+        userMapper.deleteUserByUserId(userId);
+        return JSONResponse.createBySuccessMessage("删除成功");
     }
 }
