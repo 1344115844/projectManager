@@ -3,6 +3,8 @@ package cn.edu.hstc.dao;
 import cn.edu.hstc.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.ArrayList;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -24,4 +26,5 @@ public interface UserMapper {
 
     int deleteUserByUserId(@Param("userId") Integer userId); //假删除user，更新delete字段为1
 
+    ArrayList<User> selectAllUserList();
 }

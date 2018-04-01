@@ -5,9 +5,12 @@ import cn.edu.hstc.dao.UserMapper;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.UserService;
 import cn.edu.hstc.util.MD5Util;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -125,11 +128,17 @@ public class UserServiceImpl implements UserService {
 
     /**
      *@author Veng Su
-     *@date 2018/4/1 15:03
-     *方法作用：查询所有成员
+     *@date 2018/4/1 20:28
+     *方法作用：查询所有user
      **/
-    public JSONResponse<List> selectAllUser(){
-
-        return null;
+    @Override
+    public JSONResponse<PageInfo> selectAllUserList(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        ArrayList<User> users=userMapper.selectAllUserList();
+        PageInfo<User> pageInfo=new PageInfo<>(users);
+        return JSONResponse.createBySuccess(pageInfo);
     }
+
+
+
 }

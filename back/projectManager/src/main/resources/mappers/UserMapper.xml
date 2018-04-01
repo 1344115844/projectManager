@@ -225,6 +225,9 @@
         SET  deleted=1
         WHERE user_id =#{userId}
     </update>
+    <select id="selectAllUserList" resultMap="BaseResultMap">
+        SELECT * FROM user
+    </select>
 
 
 </mapper>

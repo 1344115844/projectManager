@@ -1,8 +1,8 @@
 package cn.edu.hstc.service;
 
 import cn.edu.hstc.common.JSONResponse;
-import cn.edu.hstc.dao.UserMapper;
 import cn.edu.hstc.pojo.User;
+import com.github.pagehelper.PageInfo;
 
 
 public interface UserService {
@@ -18,4 +18,6 @@ public interface UserService {
     JSONResponse<User> updateUser(User user);
 
     JSONResponse<Integer> deleteUserByUserId(int id);
+
+    JSONResponse<PageInfo> selectAllUserList(int pageNum, int pageSize);
 }

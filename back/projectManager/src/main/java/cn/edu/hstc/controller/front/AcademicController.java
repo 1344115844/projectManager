@@ -102,26 +102,24 @@ public class AcademicController {
      */
     @RequestMapping("/selectByUserId.do")
     @ResponseBody
-    public JSONResponse selectAcademicListByUserId(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "5") int pageSize) {
+    public JSONResponse selectAcademicListByUserId(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
         User user = (User) session.getAttribute("currentUser");
-        if (user == null)
-            return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
-        return academicService.selectAcademicListByUserId(user.getUserId(),pageNum,pageSize);
+        return academicService.selectAcademicListByUserId(user.getUserId(), pageNum, pageSize);
     }
 
 
     /**
-    * @Description:查询学术论文数目
-    * @param: [session]
-    * @return: cn.edu.hstc.common.JSONResponse<java.lang.Integer>
-    * @author: yifang
-    * @Date: 2018/4/1 10:28
-    */
+     * @Description:查询学术论文数目
+     * @param: [session]
+     * @return: cn.edu.hstc.common.JSONResponse<java.lang.Integer>
+     * @author: yifang
+     * @Date: 2018/4/1 10:28
+     */
     @RequestMapping("/getCount.do")
     @ResponseBody
     public JSONResponse<Integer> getAcademicCountByUserId(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
-        if(user==null) return JSONResponse.createBySuccess(0);
+        if (user == null) return JSONResponse.createBySuccess(0);
         return academicService.getAcademicCountByUserId(user.getUserId());
     }
 

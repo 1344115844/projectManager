@@ -5,6 +5,7 @@ import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.UserService;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -106,4 +107,53 @@ public class UserController {
         if(user==null) return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
         return userService.updatePassword(user,oldpassword,newpassword);
     }
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 19:43
+     *方法作用：分页查询全部成员
+     **/
+    @RequestMapping("/select/all")
+    @ResponseBody
+    public JSONResponse<PageInfo> selectUserListById(int pageNum, int pageSize){
+        return userService.selectAllUserList(pageNum,pageSize);
+    }
+
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 10:06
+     *方法作用：删除一个成员，假删除方式,更新deleted为1
+     **/
+    @RequestMapping("/delete/one")
+    @ResponseBody
+    public JSONResponse<Integer> deleteUserByUserId(int userId){
+        return userService.deleteUserByUserId(userId);
+    }
+
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 9:55
+     *@param user
+     *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+     *方法作用：管理员更新user信息
+     **/
+
+    @RequestMapping("/update/one")
+    @ResponseBody
+    public JSONResponse<User> updateUser(User user){
+        return userService.updateUser(user);
+    }
+
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 9:21
+     *@param user
+     *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+     *方法作用：添加user
+     **/
+    @RequestMapping("/add/one")
+    @ResponseBody
+    public JSONResponse<User> addUser(User user){
+        return userService.register(user);
+    }
+
 }
