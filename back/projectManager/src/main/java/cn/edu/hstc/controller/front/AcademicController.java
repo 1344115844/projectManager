@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -34,6 +34,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:48
      */
     @RequestMapping("/add.do")
+    @ResponseBody
     public JSONResponse addAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
@@ -51,6 +52,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:52
      */
     @RequestMapping("/delete.do")
+    @ResponseBody
     public JSONResponse<Integer> deleteAcademic(HttpSession session, Integer acad_id) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
@@ -66,6 +68,7 @@ public class AcademicController {
      * @Date: 2018/4/1 9:58
      */
     @RequestMapping("/update.do")
+    @ResponseBody
     public JSONResponse updateAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
@@ -82,6 +85,7 @@ public class AcademicController {
      * @Date: 2018/4/1 10:00
      */
     @RequestMapping("/selectById.do")
+    @ResponseBody
     public JSONResponse<Academic> selectAcademicById(HttpSession session, Integer acad_id) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
@@ -97,6 +101,7 @@ public class AcademicController {
      * @Date: 2018/4/1 10:02
      */
     @RequestMapping("/selectByUserId.do")
+    @ResponseBody
     public JSONResponse selectAcademicListByUserId(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "5") int pageSize) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null)
@@ -113,6 +118,7 @@ public class AcademicController {
     * @Date: 2018/4/1 10:28
     */
     @RequestMapping("/getCount.do")
+    @ResponseBody
     public JSONResponse<Integer> getAcademicCountByUserId(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         if(user==null) return JSONResponse.createBySuccess(0);
