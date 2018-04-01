@@ -14,4 +14,9 @@ public interface UserService {
     JSONResponse<User> updatePassword(User user,String oldpassword,String newpassword);//修改密码，要求用户输入旧密码
 
 
+
+
+    JSONResponse<User> updateUser(User user);
+
+    JSONResponse<User> deleteUserByUserId(User user);
 }

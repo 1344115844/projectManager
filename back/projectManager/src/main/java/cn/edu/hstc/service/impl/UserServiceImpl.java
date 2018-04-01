@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @Description:注册处理
+     * @Description:注册处理/admin管理成员
      * @param: [user]
      * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
      * @author: yifang
@@ -87,5 +87,27 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/1 9:54
+     *@param user
+     *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
+     *方法作用：admin更新成员信息
+     **/
+    @Override
+    public JSONResponse<User> updateUser(User user) {
+        int result=userMapper.updateByPrimaryKeySelective(user);
+        if (result<0) {
+            return JSONResponse.createByErrorCodeMessage(500,"内部错误，更新失败，请检查再提交");
+        }else if (result==0){
+            return JSONResponse.createByErrorCodeMessage(400,"更新失败，客户端传参失败");
+        }else{
+            return JSONResponse.createBySuccessMessage("更新成功");
+        }
+    }
 
+    @Override
+    public JSONResponse<User> deleteUserByUserId(User user) {
+        return null;
+    }
 }
