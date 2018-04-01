@@ -37,12 +37,12 @@ public class UserController {
  **/
     @RequestMapping("/index")
     public String show() {
-        return "index";
+        return "/user/index";
     }
 
     @RequestMapping("/login")
     public String userLogin() {
-        return "login";
+        return "/login/login";
     }
 
     @RequestMapping("/register")

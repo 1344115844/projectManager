@@ -123,4 +123,14 @@ public class AcademicController {
         return academicService.getAcademicCountByUserId(user.getUserId());
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/2 0:01
+     *方法作用：跳转到academic-list
+     **/
+    @RequestMapping("/list")
+    public String showAcademicList() {
+        return "academic/academic-list";
+    }
+
 }
