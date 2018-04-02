@@ -128,14 +128,24 @@ public class AcademicController {
     }
 
     /**
-     * @author Veng Su
-     * @date 2018/4/2 0:01
-     * 方法作用：跳转到academic-list
+     *@author Veng Su
+     *@date 2018/4/2 0:01
+     *方法作用：跳转到list
      **/
     @RequestMapping("/list")
     public String showAcademicList() {
-        return "academic/academic-list";
+        return "/academic/list";
     }
+    /**
+     *@author Veng Su
+     *@date 2018/4/2 20:30
+     *方法作用：跳转到add页面
+     **/
+    @RequestMapping("/add")
+    public String showAcademicAdd() {
+        return "/academic/add";
+    }
+
 
 
     @RequestMapping(value="/uploadAttachment.do")
