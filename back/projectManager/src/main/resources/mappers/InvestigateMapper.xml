@@ -150,4 +150,18 @@
       file_id = #{fileId,jdbcType=INTEGER}
     where inv_id = #{invId,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from investigate
+    where
+    user_id=#{user_id}
+  </select>
+
+  <select id="getInvestigateCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select COUNT(*)
+    from investigate
+    where user_id=#{user_id}
+  </select>
 </mapper>

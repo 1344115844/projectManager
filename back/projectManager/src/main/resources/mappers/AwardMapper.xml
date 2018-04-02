@@ -161,4 +161,21 @@
       file_id = #{fileId,jdbcType=INTEGER}
     where award_id = #{awardId,jdbcType=INTEGER}
   </update>
+
+
+
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from award
+    where
+    user_id=#{user_id}
+  </select>
+
+  <select id="getAwardCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select COUNT(*)
+    from award
+    where user_id=#{user_id}
+  </select>
+
+
 </mapper>

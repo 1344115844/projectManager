@@ -77,11 +77,11 @@
         <!--</table>-->
 
 
-        <table tableName="project" domainObjectName="Project"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+        <!--<table tableName="patent" domainObjectName="Patent"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
 
 
         <!--<table tableName="parent" domainObjectName="Parent"-->

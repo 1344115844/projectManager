@@ -5,13 +5,25 @@ import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.AcademicService;
+import cn.edu.hstc.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -26,6 +38,8 @@ public class AcademicController {
     @Autowired
     AcademicService academicService;
 
+    @Autowired
+    FileService fileService;
     /**
      * @Description:添加学术论文
      * @param: [session, acad]
@@ -37,8 +51,6 @@ public class AcademicController {
     @ResponseBody
     public JSONResponse addAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
-        if (user == null)
-            return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
         acad.setUserId(user.getUserId());
         return academicService.addAcademic(acad);
     }
@@ -53,11 +65,8 @@ public class AcademicController {
      */
     @RequestMapping("/delete.do")
     @ResponseBody
-    public JSONResponse<Integer> deleteAcademic(HttpSession session, Integer acad_id) {
-        User user = (User) session.getAttribute("currentUser");
-        if (user == null)
-            return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
-        return academicService.deleteAcademic(acad_id);
+    public JSONResponse<Integer> deleteAcademic(Integer acadId) {
+        return academicService.deleteAcademic(acadId);
     }
 
     /**
@@ -71,8 +80,6 @@ public class AcademicController {
     @ResponseBody
     public JSONResponse updateAcademic(HttpSession session, Academic acad) {
         User user = (User) session.getAttribute("currentUser");
-        if (user == null)
-            return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
         acad.setUserId(user.getUserId());
         return academicService.updateAcademic(acad);
     }
@@ -86,11 +93,8 @@ public class AcademicController {
      */
     @RequestMapping("/selectById.do")
     @ResponseBody
-    public JSONResponse<Academic> selectAcademicById(HttpSession session, Integer acad_id) {
-        User user = (User) session.getAttribute("currentUser");
-        if (user == null)
-            return JSONResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());//若用户未登录
-        return academicService.selectAcademicById(acad_id);
+    public JSONResponse<Academic> selectAcademicById(Integer acadId) {
+        return academicService.selectAcademicById(acadId);
     }
 
     /**
@@ -124,13 +128,40 @@ public class AcademicController {
     }
 
     /**
-     *@author Veng Su
-     *@date 2018/4/2 0:01
-     *方法作用：跳转到academic-list
+     * @author Veng Su
+     * @date 2018/4/2 0:01
+     * 方法作用：跳转到academic-list
      **/
     @RequestMapping("/list")
     public String showAcademicList() {
         return "academic/academic-list";
     }
+
+
+    @RequestMapping(value="/uploadAttachment.do")
+    @ResponseBody
+    @Transactional
+    public JSONResponse uploadAttachment(HttpSession session, @RequestParam(value = "upload_file",required = false)MultipartFile file, HttpServletRequest request,Integer acadId){
+        User user = (User)session.getAttribute("currentUser");
+        String username=user.getUsername();
+        Integer userId=user.getUserId();
+            String path = request.getSession().getServletContext().getRealPath("uploads")+"/"+username+"/"+"academic/";
+
+            String url = fileService.upload(file,path);//上传文件
+
+        //更新filepath信息，保存url
+        Integer fileId=fileService.updateFilepathInfo(url,userId);//接口待完善
+
+        //更新academic表file_id字段
+        Integer rs=academicService.updateFileId(acadId,fileId);//接口待完善
+            return JSONResponse.createBySuccess(url);
+
+    }
+
+
+
+
+
+
 
 }

@@ -52,6 +52,13 @@
         </div>
       </div>
     </form>
+
+
+      <form name="form1" class="form form-horizontal" action="/academic/uploadAttachment.do" method="post" enctype="multipart/form-data">
+          <input type="file" name="upload_file" />
+          <input type="submit" value="提交" />
+      </form>
+
   </div>
 </div>
 <div class="footer">Copyright hstc.edu.cn by H-ui.admin v3.1</div>
