@@ -22,4 +22,5 @@ public interface AcademicMapper {
     Integer getAcademicCountByUserId(Integer user_id);//查询用户拥有学术论文数目
 
 
+
 }

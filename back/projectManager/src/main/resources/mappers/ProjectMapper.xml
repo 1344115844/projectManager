@@ -5,7 +5,7 @@
     <id column="pro_id" jdbcType="INTEGER" property="proId" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="project_number" jdbcType="INTEGER" property="projectNumber" />
-    <result column=" project_source" jdbcType="VARCHAR" property="projectSource" />
+    <result column="project_source" jdbcType="VARCHAR" property="projectSource" />
     <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
     <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
     <result column="funds" jdbcType="DOUBLE" property="funds" />
@@ -20,7 +20,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    pro_id, project_name, project_number, " project_source", begin_time, over_time, funds, 
+    pro_id, project_name, project_number, project_source, begin_time, over_time, funds,
     level, is_teamwork, state, project_director, file_id, user_id, creat_time, deleted, 
     update_time
   </sql>
@@ -36,7 +36,7 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Project">
     insert into project (pro_id, project_name, project_number, 
-      " project_source", begin_time, over_time, 
+      project_source, begin_time, over_time,
       funds, level, is_teamwork, 
       state, project_director, file_id, 
       user_id, creat_time, deleted, 
@@ -61,7 +61,7 @@
         project_number,
       </if>
       <if test="projectSource != null">
-        " project_source",
+        project_source,
       </if>
       <if test="beginTime != null">
         begin_time,
@@ -161,7 +161,7 @@
         project_number = #{projectNumber,jdbcType=INTEGER},
       </if>
       <if test="projectSource != null">
-        " project_source" = #{projectSource,jdbcType=VARCHAR},
+        project_source = #{projectSource,jdbcType=VARCHAR},
       </if>
       <if test="beginTime != null">
         begin_time = #{beginTime,jdbcType=TIMESTAMP},
@@ -206,7 +206,7 @@
     update project
     set project_name = #{projectName,jdbcType=VARCHAR},
       project_number = #{projectNumber,jdbcType=INTEGER},
-      " project_source" = #{projectSource,jdbcType=VARCHAR},
+      project_source = #{projectSource,jdbcType=VARCHAR},
       begin_time = #{beginTime,jdbcType=TIMESTAMP},
       over_time = #{overTime,jdbcType=TIMESTAMP},
       funds = #{funds,jdbcType=DOUBLE},

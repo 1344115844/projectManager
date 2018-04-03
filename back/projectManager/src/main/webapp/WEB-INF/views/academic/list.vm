@@ -43,7 +43,7 @@
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
-				<th scope="col" colspan="11">论文列表</th>
+				<th scope="col" colspan="12">论文列表</th>
 			</tr>
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
@@ -53,6 +53,7 @@
 				<th width="150">发行代码</th>
 				<th>刊物级别</th>
 				<th width="130">刊期</th>
+                <th width="130">收录情况</th>
 				<th width="100">发表刊物</th>
                 <th width="100">作者排名</th>
                 <th width="100">类别</th>
@@ -106,6 +107,7 @@ function display(data,data1){
                 "<td name='releasingCode' width='130'>" +data[i].releasingCode + "</td>" +
                 "<td name='publicationLevel' width='100'>" +data[i].publicationLevel + "</td>" +
         		"<td name='periodical' width='100'>" +data[i].periodical + "</td>" +
+                "<td name='periodical' width='100'>" +data[i].collectionSituation + "</td>" +
                 "<td name='publishJournals' width='100'>" +data[i].publishJournals + "</td>" +
                 "<td name='authorRank' width='100'>" +data[i].authorRank + "</td>" +
                 "<td name='category' width='100'>" +data[i].category + "</td>" +
