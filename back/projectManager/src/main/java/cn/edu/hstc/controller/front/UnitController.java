@@ -1,11 +1,10 @@
 package cn.edu.hstc.controller.front;
 
 import cn.edu.hstc.common.JSONResponse;
-import cn.edu.hstc.pojo.Academic;
+import cn.edu.hstc.pojo.Unit;
 import cn.edu.hstc.pojo.User;
-import cn.edu.hstc.service.AcademicService;
+import cn.edu.hstc.service.UnitService;
 import cn.edu.hstc.service.FileService;
-import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,93 +18,93 @@ import javax.servlet.http.HttpSession;
 /**
  * @author yifang 1307720869@qq.com
  * @date Created in 9:43 2018/4/1
- * @description:学术论文
+ * @description:学术团体
  * @modified by:
  */
 
 @Controller
-@RequestMapping("/academic")
-public class AcademicController {
+@RequestMapping("/unit")
+public class UnitController {
     @Autowired
-    AcademicService academicService;
+    UnitService unitService;
 
     @Autowired
     FileService fileService;
 
     /**
-     * @Description:添加学术论文
-     * @param: [session, acad]
-     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Academic>
+     * @Description:添加学术团体
+     * @param: [session, unit]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Unit>
      * @author: yifang
      * @Date: 2018/4/1 9:48
      */
     @RequestMapping("/add.do")
     @ResponseBody
-    public JSONResponse addAcademic(HttpSession session, Academic acad) {
+    public JSONResponse addUnit(HttpSession session, Unit unit) {
         User user = (User) session.getAttribute("currentUser");
-        acad.setUserId(user.getUserId());
-        return academicService.addAcademic(acad);
+        unit.setUserId(user.getUserId());
+        return unitService.addUnit(unit);
     }
 
 
     /**
-     * @Description:删除学术论文
-     * @param: [session, acad_id]
-     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Academic>
+     * @Description:删除学术团体
+     * @param: [session, unit_id]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Unit>
      * @author: yifang
      * @Date: 2018/4/1 9:52
      */
     @RequestMapping("/delete.do")
     @ResponseBody
-    public JSONResponse<Integer> deleteAcademic(Integer acadId) {
-        return academicService.deleteAcademic(acadId);
+    public JSONResponse<Integer> deleteUnit(Integer unitId) {
+        return unitService.deleteUnit(unitId);
     }
 
     /**
-     * @Description:修改学术论文
-     * @param: [session, acad]
-     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Academic>
+     * @Description:修改学术团体
+     * @param: [session, unit]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Unit>
      * @author: yifang
      * @Date: 2018/4/1 9:58
      */
     @RequestMapping("/update.do")
     @ResponseBody
-    public JSONResponse updateAcademic(HttpSession session, Academic acad) {
+    public JSONResponse updateUnit(HttpSession session, Unit unit) {
         User user = (User) session.getAttribute("currentUser");
-        acad.setUserId(user.getUserId());
-        return academicService.updateAcademic(acad);
+        unit.setUserId(user.getUserId());
+        return unitService.updateUnit(unit);
     }
 
     /**
      * @Description:按ID查询
-     * @param: [session, acad_id]
-     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Academic>
+     * @param: [session, unit_id]
+     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.Unit>
      * @author: yifang
      * @Date: 2018/4/1 10:00
      */
     @RequestMapping("/selectById.do")
     @ResponseBody
-    public JSONResponse<Academic> selectAcademicById(Integer acadId) {
-        return academicService.selectAcademicById(acadId);
+    public JSONResponse<Unit> selectUnitById(Integer unitId) {
+        return unitService.selectUnitById(unitId);
     }
 
     /**
-     * @Description:返回用户拥有的学术论文列表
+     * @Description:返回用户拥有的学术团体列表
      * @param: [session]
-     * @return: cn.edu.hstc.common.JSONResponse<cn.edu.hstc.vo.AcademicListVo>
+     * @return:
      * @author: yifang
      * @Date: 2018/4/1 10:02
      */
     @RequestMapping("/selectByUserId.do")
     @ResponseBody
-    public JSONResponse selectAcademicListByUserId(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
+    public JSONResponse selectUnitListByUserId(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
         User user = (User) session.getAttribute("currentUser");
-        return academicService.selectAcademicListByUserId(user.getUserId(), pageNum, pageSize);
+        return unitService.selectUnitListByUserId(user.getUserId(), pageNum, pageSize);
     }
 
 
     /**
-     * @Description:查询学术论文数目
+     * @Description:查询学术团体数目
      * @param: [session]
      * @return: cn.edu.hstc.common.JSONResponse<java.lang.Integer>
      * @author: yifang
@@ -113,10 +112,10 @@ public class AcademicController {
      */
     @RequestMapping("/getCount.do")
     @ResponseBody
-    public JSONResponse<Integer> getAcademicCountByUserId(HttpSession session) {
+    public JSONResponse<Integer> getUnitCountByUserId(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         if (user == null) return JSONResponse.createBySuccess(0);
-        return academicService.getAcademicCountByUserId(user.getUserId());
+        return unitService.getUnitCountByUserId(user.getUserId());
     }
 
     /**
@@ -125,8 +124,8 @@ public class AcademicController {
      * 方法作用：跳转到list
      **/
     @RequestMapping("/list")
-    public String showAcademicList() {
-        return "/academic/list";
+    public String showUnitList() {
+        return "/unit/list";
     }
 
     /**
@@ -135,8 +134,8 @@ public class AcademicController {
      * 方法作用：跳转到add页面
      **/
     @RequestMapping("/add")
-    public String showAcademicAdd() {
-        return "/academic/add";
+    public String showUnitAdd() {
+        return "/unit/add";
     }
 
 
@@ -153,7 +152,7 @@ public class AcademicController {
         User user = (User) session.getAttribute("currentUser");
         String username = user.getUsername();
         Integer userId = user.getUserId();
-        String path = request.getSession().getServletContext().getRealPath("uploads")  + "\\"+username  + "\\academic\\";
+        String path = request.getSession().getServletContext().getRealPath("uploads")  + "\\"+username  + "\\unit\\";
         path=path.substring(0,path.indexOf("target"))+"src\\main\\webapp\\"+path.substring(path.indexOf("uploads"));
         JSONResponse<String> upd = fileService.upload(file, path);
         if (!upd.isSuccess())//若上传出错
