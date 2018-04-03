@@ -152,8 +152,8 @@ public class AcademicController {
         User user = (User) session.getAttribute("currentUser");
         String username = user.getUsername();
         Integer userId = user.getUserId();
-        String path = request.getSession().getServletContext().getRealPath("uploads\\")  + username  + "\\academic\\";
-
+        String path = request.getSession().getServletContext().getRealPath("uploads")  + "\\"+username  + "\\academic\\";
+        path=path.substring(0,path.indexOf("target"))+"src\\main\\webapp\\"+path.substring(path.indexOf("uploads"));
         JSONResponse<String> upd = fileService.upload(file, path);
         if (!upd.isSuccess())//若上传出错
             return upd;
