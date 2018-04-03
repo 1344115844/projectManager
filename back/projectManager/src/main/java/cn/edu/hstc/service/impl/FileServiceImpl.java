@@ -44,38 +44,42 @@ public class FileServiceImpl implements FileService {
     * @Date: 2018/4/3 10:12
     */
     public JSONResponse<String> upload(MultipartFile file, String path) {
-        //检查文件是否为空
-        if (file.getSize() == 0)
-            return JSONResponse.createByErrorMessage("附件为空");
-        //检查文件大小
-        if (file.getSize() > maxFileSize)
-            return JSONResponse.createByErrorMessage("上传文件不能超过10M");
-        //检查文件扩展名
-        String fileName = file.getOriginalFilename();
-        String fileExtensionName = fileName.substring(fileName.lastIndexOf("."));
-        if (!fileTypes.containsValue(fileExtensionName))
-            return JSONResponse.createByErrorMessage("文件格式错误");
+        if(file!=null) {
+            //检查文件是否为空
+            if (file.getSize() == 0)
+                return JSONResponse.createByErrorMessage("附件为空");
+            //检查文件大小
+            if (file.getSize() > maxFileSize)
+                return JSONResponse.createByErrorMessage("上传文件不能超过10M");
+            //检查文件扩展名
+            String fileName = file.getOriginalFilename();
+            String fileExtensionName = fileName.substring(fileName.lastIndexOf("."));
+            if (!fileTypes.containsValue(fileExtensionName))
+                return JSONResponse.createByErrorMessage("文件格式错误");
 
-        String uploadFileName = UUID.randomUUID().toString() + fileExtensionName;
-        logger.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}", fileName, path, uploadFileName);
+            String uploadFileName = UUID.randomUUID().toString() + fileExtensionName;
+            logger.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}", fileName, path, uploadFileName);
 
-        //若文件目录不存在，新建，例如path为/uploads/zyf/academic/
-        File fileDir = new File(path);
-        if (!fileDir.exists()) {
-            fileDir.setWritable(true);
-            fileDir.mkdirs();
+            //若文件目录不存在，新建，例如path为/uploads/zyf/academic/
+            File fileDir = new File(path);
+            if (!fileDir.exists()) {
+                fileDir.setWritable(true);
+                fileDir.mkdirs();
+            }
+            File targetFile = new File(path, uploadFileName);
+            String url = path + uploadFileName;//文件完整路径
+            try {
+                file.transferTo(targetFile);
+                //文件已经上传成功了
+            } catch (IOException e) {
+                logger.error("上传文件异常", e);
+                return JSONResponse.createByErrorMessage("上传文件异常");
+            }
+
+            return JSONResponse.createBySuccess(url);
+        }else{
+        return JSONResponse.createByErrorMessage("附件为空");
         }
-        File targetFile = new File(path, uploadFileName);
-        String url = path + uploadFileName;//文件完整路径
-        try {
-            file.transferTo(targetFile);
-            //文件已经上传成功了
-        } catch (IOException e) {
-            logger.error("上传文件异常", e);
-            return JSONResponse.createByErrorMessage("上传文件异常");
-        }
-
-        return JSONResponse.createBySuccess(url);
     }
 
     /**
