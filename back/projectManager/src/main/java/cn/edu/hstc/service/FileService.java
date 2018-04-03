@@ -10,5 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 */
 public interface FileService {
 
-    String upload(MultipartFile file, String path);
+    JSONResponse<String> upload(MultipartFile file, String path);
+
+    JSONResponse<Integer> updateFilepathInfo(String url,Integer userId);
+
 }

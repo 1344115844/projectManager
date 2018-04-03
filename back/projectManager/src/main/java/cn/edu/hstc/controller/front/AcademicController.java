@@ -1,29 +1,19 @@
 package cn.edu.hstc.controller.front;
 
 import cn.edu.hstc.common.JSONResponse;
-import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.AcademicService;
 import cn.edu.hstc.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.Iterator;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -40,6 +30,7 @@ public class AcademicController {
 
     @Autowired
     FileService fileService;
+
     /**
      * @Description:添加学术论文
      * @param: [session, acad]
@@ -128,18 +119,19 @@ public class AcademicController {
     }
 
     /**
-     *@author Veng Su
-     *@date 2018/4/2 0:01
-     *方法作用：跳转到list
+     * @author Veng Su
+     * @date 2018/4/2 0:01
+     * 方法作用：跳转到list
      **/
     @RequestMapping("/list")
     public String showAcademicList() {
         return "/academic/list";
     }
+
     /**
-     *@author Veng Su
-     *@date 2018/4/2 20:30
-     *方法作用：跳转到add页面
+     * @author Veng Su
+     * @date 2018/4/2 20:30
+     * 方法作用：跳转到add页面
      **/
     @RequestMapping("/add")
     public String showAcademicAdd() {
@@ -147,31 +139,32 @@ public class AcademicController {
     }
 
 
-
-    @RequestMapping(value="/uploadAttachment.do")
+    /**
+    * @Description:上传附件
+    * @param: [session, file, request]
+    * @return: cn.edu.hstc.common.JSONResponse
+    * @author: yifang
+    * @Date: 2018/4/3 10:07
+    */
+    @RequestMapping(value = "/uploadAttachment.do")
     @ResponseBody
-    @Transactional
-    public JSONResponse uploadAttachment(HttpSession session, @RequestParam(value = "upload_file",required = false)MultipartFile file, HttpServletRequest request,Integer acadId){
-        User user = (User)session.getAttribute("currentUser");
-        String username=user.getUsername();
-        Integer userId=user.getUserId();
-            String path = request.getSession().getServletContext().getRealPath("uploads")+"/"+username+"/"+"academic/";
+    public JSONResponse uploadAttachment(HttpSession session, @RequestParam(value = "upload_file", required = false) MultipartFile file, HttpServletRequest request) {
+        User user = (User) session.getAttribute("currentUser");
+        String username = user.getUsername();
+        Integer userId = user.getUserId();
+        String path = request.getSession().getServletContext().getRealPath("uploads") + "\\" + username + "\\" + "academic\\";
 
-            String url = fileService.upload(file,path);//上传文件
+        JSONResponse<String> upd = fileService.upload(file, path);
+        if (!upd.isSuccess())//若上传出错
+            return upd;
 
-        //更新filepath信息，保存url
-        Integer fileId=fileService.updateFilepathInfo(url,userId);//接口待完善
+        String url = upd.getData();
+        //上传成功，保存url到filepath表，并返回fileId
+       return fileService.updateFilepathInfo(url, userId);
 
-        //更新academic表file_id字段
-        Integer rs=academicService.updateFileId(acadId,fileId);//接口待完善
-            return JSONResponse.createBySuccess(url);
+
 
     }
-
-
-
-
-
 
 
 }

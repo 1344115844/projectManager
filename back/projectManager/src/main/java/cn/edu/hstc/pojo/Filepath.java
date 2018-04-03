@@ -65,4 +65,13 @@ public class Filepath implements Serializable {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    public Filepath(Date createTime,String url, Integer userId) {
+        this.createTime = createTime;
+        this.url = url;
+        this.userId = userId;
+    }
+
+    public Filepath() {
+    }
 }

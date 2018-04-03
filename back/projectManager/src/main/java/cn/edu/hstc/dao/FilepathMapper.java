@@ -14,4 +14,6 @@ public interface FilepathMapper {
     int updateByPrimaryKeySelective(Filepath record);
 
     int updateByPrimaryKey(Filepath record);
+
+    int getFileIdByUrl(String url);
 }
