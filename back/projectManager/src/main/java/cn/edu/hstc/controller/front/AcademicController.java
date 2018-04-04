@@ -139,6 +139,16 @@ public class AcademicController {
         return "/academic/add";
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/4 8:36
+     *方法作用：跳转到edit页面
+     **/
+    @RequestMapping("/edit")
+    public String showAcademicEdit() {
+        return "/academic/edit";
+    }
+
 
     /**
     * @Description:上传附件

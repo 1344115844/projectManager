@@ -30,12 +30,7 @@
 <body>
 <article class="page-container">
 	<form  class="form form-horizontal" id="form-academic-add">
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>ID：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="acadId" name="username">
-			</div>
-		</div>
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -179,7 +174,7 @@ $(function(){
             formFile.append("upload_file", upload_file);
             var data = formFile;
 
-			var acadId=$("#acadId").val();
+
 			var authorRank=$("#authorRank").val();
             var category=$("#category").val();
             var collectionSituation=$("#collectionSituation").val();

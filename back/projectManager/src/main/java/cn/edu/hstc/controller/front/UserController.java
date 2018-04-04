@@ -155,5 +155,17 @@ public class UserController {
     public JSONResponse<User> addUser(User user){
         return userService.register(user);
     }
+    
+    /**
+     *@author Veng Su
+     *@date 2018/4/4 8:07
+     *方法作用：获取welcome页面
+     **/
+    @RequestMapping("/index/welcome")
+
+    public String showWelcome(){
+        return "/user/welcome";
+    }
+
 
 }

@@ -55,6 +55,24 @@
 </header>
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
+        <dl id="menu-member">
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 成员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="member-list.html" data-title="成员列表" href="javascript:;">成员列表</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                    <li><a data-href="https://www.baidu.com" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="menu-data">
             <dt><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -105,7 +123,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="http://www.hstc.edu.cn"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="/user/index/welcome"></iframe>
         </div>
     </div>
 </section>
