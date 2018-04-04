@@ -104,10 +104,10 @@
         var tbody = window.document.getElementById("tbody");
         var index =0;
         for (i in data) {
-            index=i+1;
+            index=parseInt(i)+1;
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                    "<td name='acadId' width='40'>" + index + "</td>" +
+                    "<td name='id' width='40'>" + index + "</td>" +
                     "<td name='thesisName'width='150'>" + data[i].thesisName + "</td>" +
                     "<td name='novon'>" + data[i].novon + "</td>" +
                     "<td name='releasingCode' width='130'>" + data[i].releasingCode + "</td>" +
@@ -117,36 +117,56 @@
                     "<td name='publishJournals' width='100'>" + data[i].publishJournals + "</td>" +
                     "<td name='authorRank' width='100'>" + data[i].authorRank + "</td>" +
                     "<td name='category' width='100'>" + data[i].category + "</td>" +
-                    "<td ><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button><button class='deleteAcad btn btn-danger radius ' >删除</button></td>"+
+                    "<td ><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+                    "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].acadId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                     "</tr>";
         }
 
         tbody.innerHTML = str;
     };
 
-    //跳转编辑页面
+    /**
+     *@author Veng Su
+     *@date 2018/4/4 20:05
+     *方法作用：跳转编辑页面
+     **/
 function jumpEdit(id) {
     var url="/academic/edit?id="+id;
     var w = '800';
     var h='800';
     layer_show('修改', url, w, h);
 }
-    // $("#tbody").on("click",".text-c .editAcad",function (ev) {
-    //    var id = ev.currentTarget.dataset.index ;
-    //    var url="/academic/edit?id="+id;
-    //    var w = '800';
-    //    var h='500';
-    //    layer_show('修改', url, w, h);
-    //
-    //
-    //
-    // })
-   //删除记录
-    $("#tbody").on("click",".text-c .deleteAcad" ,function () {
-             layer.confirm('确认要删除吗？', function () {
-            });
-        }
-    );
+/**
+ *@author Veng Su
+ *@date 2018/4/4 20:05
+ *方法作用：删除记录
+ **/
+function jumpDelete(id) {
+    var acadId=parseInt(id);
+    layer.confirm('确认要删除吗？',function () {
+        $.ajax({
+            type:"POST",
+            url:"/academic/delete.do",
+            data:{"acadId":acadId},
+            success:function (data) {
+                data=JSON.parse(data);
+                layer.msg(data.msg, {icon: 1, time: 1000});
+                javascript:location.replace(location.href);
+            }
+        });
+    });
+}
+    // $("#tbody").on("click",".text-c .deleteAcad" ,function () {
+    //          layer.confirm('确认要删除吗？', function () {
+    //              $("#")
+    //             $.ajax({
+    //                 type:"POST",
+    //                 url:"/academic/delete.do"
+    //                 data:
+    //             });
+    //         });
+    //     }
+    // );
 
     /*
         参数解释：
@@ -161,7 +181,7 @@ function jumpEdit(id) {
         layer_show(title, url, w, h);
     }
 
-    /*管理员-删除*/
+    /*删除*/
     function admin_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
