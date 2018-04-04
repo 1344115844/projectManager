@@ -74,26 +74,38 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">作者排名：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" id="authorRank" name="authorRank" size="1" placeholder="jjj">
-				<option value="0"></option>
-				<option value="第一">第一</option>
-				<option value="第二">第二</option>
-				<option value="第三">第三</option>
-				<option value="第四">第四</option>
-			</select>
-			</span> </div>
+            <label class="form-label col-xs-3">作者排名：</label>
+            <div class="formControls skin-minimal col-xs-5">
+                <div class="radio-box">
+                    <input type="radio" id="rank1" name="authorRank" value="第一">
+                    <label for="rank1">第一</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="rank2" name="authorRank" value="第二">
+                    <label for="rank2">第二</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="rank3" name="authorRank" value="第三">
+                    <label for="rank3">第三</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="rank4" name="authorRank" value="第四">
+                    <label for="sex-4">第四</label>
+                </div>
+            </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">类别：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" id="category" name="category" size="1">
-				<option value="0"></option>
-				<option value="科研">科研</option>
-				<option value="教学">教学</option>
-			</select>
-			</span> </div>
+            <label class="form-label col-xs-3">类别：</label>
+            <div class="formControls skin-minimal col-xs-5">
+                <div class="radio-box">
+                    <input type="radio" id="cat1" name="category" value="教学">
+                    <label for="cat1">教学</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="cat2" name="category" value="教学">
+                    <label for="cat2">科研</label>
+                </div>
+            </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
@@ -175,8 +187,8 @@ $(function(){
             var data = formFile;
 
 
-			var authorRank=$("#authorRank").val();
-            var category=$("#category").val();
+            var authorRank=$('input[name="authorRank"]:checked').val();
+            var category=$('input[name="category"]:checked').val();
             var collectionSituation=$("#collectionSituation").val();
             var novon=$("#novon").val();
             var periodical=$("#periodical").val();
@@ -198,7 +210,7 @@ $(function(){
                         type:"POST",
                         url:"/academic/add.do",
                         data:{
-                            "acadId":acadId,"authorRank":authorRank,
+                            "authorRank":authorRank,
                             "category":category,"collectionSituation":collectionSituation,
                             "novon":novon,"periodical":periodical,
                             "publicationLevel":publicationLevel, "publishJournals":publishJournals,

@@ -31,6 +31,8 @@
 <article class="page-container">
 	<form  class="form form-horizontal" id="form-academic-add">
 
+        <input type="hidden" class="input-text" value="" placeholder="" id="acadId" name="acadId">
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -74,26 +76,38 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">作者排名：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" id="authorRank" name="authorRank" size="1" placeholder="jjj">
-				<option value="0"></option>
-				<option value="第一">第一</option>
-				<option value="第二">第二</option>
-				<option value="第三">第三</option>
-				<option value="第四">第四</option>
-			</select>
-			</span> </div>
+        <label class="form-label col-xs-3">作者排名：</label>
+        <div class="formControls skin-minimal col-xs-5">
+            <div class="radio-box">
+                <input type="radio" id="rank1" name="rank">
+                <label for="rank1">第一</label>
+            </div>
+            <div class="radio-box">
+                <input type="radio" id="rank2" name="rank">
+                <label for="rank2">第二</label>
+            </div>
+            <div class="radio-box">
+                <input type="radio" id="sex-3" name="rank">
+                <label for="rank3">第三</label>
+            </div>
+            <div class="radio-box">
+                <input type="radio" id="rank4" name="rank">
+                <label for="sex-4">第四</label>
+            </div>
         </div>
+    </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">类别：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" id="category" name="category" size="1">
-				<option value="0"></option>
-				<option value="科研">科研</option>
-				<option value="教学">教学</option>
-			</select>
-			</span> </div>
+            <label class="form-label col-xs-3">类别：</label>
+            <div class="formControls skin-minimal col-xs-5">
+                <div class="radio-box">
+                    <input type="radio" id="cat1" name="category">
+                    <label for="cat1">教学</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="cat2" name="category">
+                    <label for="cat1">科研</label>
+                </div>
+            </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
@@ -104,9 +118,19 @@
 				</span>
 			</div>
         </div>
+        <input type="hidden" value="" id="fileId">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">注意：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="btn-upload form-group">
+                    <p>不重新上传默认用上一次提交的附件。重新上传则覆盖</p>
+                </span>
+            </div>
+        </div>
+
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
             </div>
         </div>
 	</form>
@@ -123,58 +147,49 @@
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
 <script type="text/javascript">
-$(function(){
-	$('.skin-minimal input').iCheck({
-		checkboxClass: 'icheckbox-blue',
-		radioClass: 'iradio-blue',
-		increaseArea: '20%'
-	});
 
-	$("#form-academic-add").validate({
-		rules:{
-			username:{
-				required:true,
-				minlength:2,
-				maxlength:16
-			},
-			sex:{
-				required:true,
-			},
-			mobile:{
-				required:true,
-				isMobile:true,
-			},
-			email:{
-				required:true,
-				email:true,
-			},
-			uploadfile:{
-				required:true,
-			},
 
-		},
-		onkeyup:false,
-		focusCleanup:true,
-		success:"valid",
-		submitHandler:function(form){
-			//$(form).ajaxSubmit();
-			var index = parent.layer.getFrameIndex(window.name);
-			//parent.$('.btn-refresh').click();
-			parent.layer.close(index);
-		}
-	});
-});
 
+//查询数据
+$(function () {
+    var data = parseUrl();
+    var acadId=parseInt(data['id']);
+    $.ajax({
+        type:"POST",
+        url:"/academic/selectById.do",
+        data:{"acadId":acadId},
+        success:function (data) {
+            var data = JSON.parse(data);
+            $("#acadId").val(data.data.acadId);
+            $("#authorRank").val(data.data.authorRank);
+            $("#category ").val(data.data.category);
+            $("#collectionSituation").val(data.data.collectionSituation);
+            $("#novon").val(data.data.novon);
+            $("#periodical").val(data.data.periodical);
+            $("#publicationLevel").val(data.data.publicationLevel);
+            $("#publishJournals").val(data.data.publishJournals);
+            $("#releasingCode").val(data.data.releasingCode);
+            $("#thesisName").val(data.data.thesisName);
+            $("#fileId").val(data.data.fileId);
+
+        }
+
+
+    });
+
+
+})
 //ajax提交数据
-	$("#submit").click(
-	    function () {
+	$("#submit").click(function () {
+	        //设置data数据
             var upload_file = document.getElementById("file").files[0];
             var formFile = new FormData();
             formFile.append("upload_file", upload_file);
             var data = formFile;
 
-
+            var acadId=$("#acadId").val();
 			var authorRank=$("#authorRank").val();
             var category=$("#category").val();
             var collectionSituation=$("#collectionSituation").val();
@@ -184,45 +199,92 @@ $(function(){
             var publishJournals=$("#publishJournals").val();
             var releasingCode=$("#releasingCode").val();
             var thesisName=$("#thesisName").val();
-            $.ajax({
-				type:"POST",
-				url: "/academic/uploadAttachment.do",
-				data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-				success: function(data){
-				    data=JSON.parse(data);
-				    var fileId=data.data;
+            var fileId=null;
+                //查看upload_file是否为空
+                if(upload_file!=null) {
+                    //不为空重新上传，拿到返回的fileid
                     $.ajax({
-                        type:"POST",
-                        url:"/academic/add.do",
-                        data:{
-                            "acadId":acadId,"authorRank":authorRank,
-                            "category":category,"collectionSituation":collectionSituation,
-                            "novon":novon,"periodical":periodical,
-                            "publicationLevel":publicationLevel, "publishJournals":publishJournals,
-                            "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
-                        },
+                        type: "POST",
+                        url: "/academic/uploadAttachment.do",
+                        data: data,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
                         success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                layer_close();
-                            }else {
-                                alert(user.msg);
-                            }
+                            data = JSON.parse(data);
+                            fileId = data.data.fileId;
+
                         }
                     });
-				}
-			});
-
-
+                }
+                //更新academic表单
+                $.ajax({
+                    type:"POST",
+                    url:"/academic/update.do",
+                    data:{
+                        "acadId":acadId,
+                        "authorRank":authorRank,
+                        "category":category,"collectionSituation":collectionSituation,
+                        "novon":novon,"periodical":periodical,
+                        "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                        "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+                    },
+                    success: function (data) {
+                        var user=JSON.parse(data);
+                        if (user.status ==200){
+                            alert(user.msg);
+                            layer_close();
+                        }else {
+                            alert(user.msg);
+                        }
+                    }
+                });
         }
 	);
 
 
+//框架自带，可以改写
+$(function(ev){
+    $('.skin-minimal input').iCheck({
+        checkboxClass: 'icheckbox-blue',
+        radioClass: 'iradio-blue',
+        increaseArea: '20%'
+    });
 
+    $("#form-academic-add").validate({
+        rules:{
+            username:{
+                required:true,
+                minlength:2,
+                maxlength:16
+            },
+            sex:{
+                required:true,
+            },
+            mobile:{
+                required:true,
+                isMobile:true,
+            },
+            email:{
+                required:true,
+                email:true,
+            },
+            uploadfile:{
+                required:true,
+            },
+
+        },
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            //$(form).ajaxSubmit();
+            var index = parent.layer.getFrameIndex(window.name);
+            //parent.$('.btn-refresh').click();
+            parent.layer.close(index);
+        }
+    });
+});
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

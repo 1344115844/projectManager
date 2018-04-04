@@ -102,10 +102,12 @@
         document.getElementById("total").innerHTML = total;
         var str = "";
         var tbody = window.document.getElementById("tbody");
+        var index =0;
         for (i in data) {
+            index=i+1;
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                    "<td name='acadId' width='40'>" + data[i].acadId + "</td>" +
+                    "<td name='acadId' width='40'>" + index + "</td>" +
                     "<td name='thesisName'width='150'>" + data[i].thesisName + "</td>" +
                     "<td name='novon'>" + data[i].novon + "</td>" +
                     "<td name='releasingCode' width='130'>" + data[i].releasingCode + "</td>" +
@@ -115,18 +117,30 @@
                     "<td name='publishJournals' width='100'>" + data[i].publishJournals + "</td>" +
                     "<td name='authorRank' width='100'>" + data[i].authorRank + "</td>" +
                     "<td name='category' width='100'>" + data[i].category + "</td>" +
-                    "<td ><button class='editAcad btn btn-primary radius ' >编辑</button><button class='deleteAcad btn btn-danger radius ' >删除</button></td>"+
+                    "<td ><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button><button class='deleteAcad btn btn-danger radius ' >删除</button></td>"+
                     "</tr>";
         }
-        ;
+
         tbody.innerHTML = str;
     };
 
     //跳转编辑页面
-
-    $("#tbody").on("click",".text-c .editAcad",function () {
-        layer_show("编辑", '/academic/edit', '800', '500');
-    })
+function jumpEdit(id) {
+    var url="/academic/edit?id="+id;
+    var w = '800';
+    var h='800';
+    layer_show('修改', url, w, h);
+}
+    // $("#tbody").on("click",".text-c .editAcad",function (ev) {
+    //    var id = ev.currentTarget.dataset.index ;
+    //    var url="/academic/edit?id="+id;
+    //    var w = '800';
+    //    var h='500';
+    //    layer_show('修改', url, w, h);
+    //
+    //
+    //
+    // })
    //删除记录
     $("#tbody").on("click",".text-c .deleteAcad" ,function () {
              layer.confirm('确认要删除吗？', function () {
