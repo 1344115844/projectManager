@@ -78,17 +78,17 @@
             <dd>
                 <ul>
                     <li><a data-href="/academic/list" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
-                    <li><a data-href="admin-permission.html" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
-                    <li><a data-href="admin-list.html" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
-                    <li><a data-href="admin-list.html" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
-                    <li><a data-href="admin-list.html" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
-                    <li><a data-href="admin-list.html" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
-                    <li><a data-href="admin-list.html" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
-                    <li><a data-href="admin-list.html" data-title="专利" href="javascript:void(0)">专利</a></li>
-                    <li><a data-href="admin-list.html" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
-                    <li><a data-href="admin-list.html" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
-                    <li><a data-href="admin-list.html" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
-                    <li><a data-href="admin-list.html" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
+                    <li><a data-href="/academicreport/list" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
+                    <li><a data-href="/attendconference/list" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
+                    <li><a data-href="/award/list" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
+                    <li><a data-href="/copyright/list" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
+                    <li><a data-href="/editbook/list" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
+                    <li><a data-href="/investigate/list" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
+                    <li><a data-href="/patent/list" data-title="专利" href="javascript:void(0)">专利</a></li>
+                    <li><a data-href="/project/list" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
+                    <li><a data-href="/speech/list" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
+                    <li><a data-href="/study/list" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
+                    <li><a data-href="/unit/list" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
                 </ul>
             </dd>
         </dl>
