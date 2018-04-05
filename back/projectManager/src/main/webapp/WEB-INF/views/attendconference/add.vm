@@ -24,9 +24,14 @@
     <script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
     <script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script>
     <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
-    <script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
     <script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+
+
+    <script type="text/javascript" src="/myjs/until/date.js"></script>
+
+
+
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -38,84 +43,59 @@
 </head>
 <body>
 <article class="page-container">
-	<form  class="form form-horizontal" id="form-academic-add">
+	<form  class="form form-horizontal" id="form-attendconference-add">
 
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文名称：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>会议名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="thesisName" name="username">
+                <input type="text" class="input-text" value="" placeholder="" id="conferenceName" name="username">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊物名称：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文题目：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="novon" name="username">
+                <input type="text" class="input-text" value="" placeholder="" id="paperTitle" name="username">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3">举办时间：</label>
+            <div class="formControls col-xs-8">
+                <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="time"
+                       class="input-text Wdate" style="width:120px;">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>地点：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="place" name="username">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发行代码：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>主办单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="releasingCode" name="username">
+                <input type="text" class="input-text" value="" placeholder="" id="hostUnit" name="username">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊物级别：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publicationLevel" name="username">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊期：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="periodical" name="username">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收录情况：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text" value="" placeholder="" id="collectionSituation" name="username">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发表刊物：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publishJournals" name="username">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">作者排名：</label>
+            <label class="form-label col-xs-3">会议类别：</label>
             <div class="formControls skin-minimal col-xs-5">
                 <div class="radio-box">
-                    <input type="radio" id="rank1" name="authorRank" value="第一">
-                    <label for="rank1">第一</label>
+                    <input type="radio" id="cat1" name="conferenceCategory" value="国际学术会议">
+                    <label for="cat1">国际学术会议</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="rank2" name="authorRank" value="第二">
-                    <label for="rank2">第二</label>
+                    <input type="radio" id="cat2" name="conferenceCategory" value="港澳台学术会议">
+                    <label for="cat2">港澳台学术会议</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="rank3" name="authorRank" value="第三">
-                    <label for="rank3">第三</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="rank4" name="authorRank" value="第四">
-                    <label for="sex-4">第四</label>
+                    <input type="radio" id="cat2" name="conferenceCategory" value="国内学术会议">
+                    <label for="cat3">国内学术会议</label>
                 </div>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">类别：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="category" value="教学">
-                    <label for="cat1">教学</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="category" value="教学">
-                    <label for="cat2">科研</label>
-                </div>
-            </div>
-        </div>
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
@@ -131,6 +111,15 @@
             </div>
         </div>
 	</form>
+    <br>
+    <br>
+    <div class="text-shadow">
+        <p>说明：会议类别分为</p>
+        <p>（1）“国际学术会议”指有两个及以上国家的专家学者参加的学术会议，不管在哪举行；</p>
+        <p>（2）“港澳台学术会议”指有大陆和港澳台地区专家学者参加，但没有其他国家专家学者参加的学术会议；</p>
+        <p>（3）“国内学术会议”指在国内举行，且只有本国专家学者参加的学术会议（含全国性、地区性）；</p>
+    </div>
+
 </article>
 
 <!--_footer 作为公共模版分离出去-->
@@ -146,6 +135,7 @@
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
 
+
 //ajax提交数据
 	$("#submit").click(
 	    function () {
@@ -154,19 +144,17 @@
             formFile.append("upload_file", upload_file);
             var data = formFile;
 
+            var conferenceName=$("#conferenceName").val();
+            var paperTitle=$("#paperTitle").val();
+            var time =$("#time").val();
+            time=convertDateFromString(time);
 
-            var authorRank=$('input[name="authorRank"]:checked').val();
-            var category=$('input[name="category"]:checked').val();
-            var collectionSituation=$("#collectionSituation").val();
-            var novon=$("#novon").val();
-            var periodical=$("#periodical").val();
-            var publicationLevel=$("#publicationLevel").val();
-            var publishJournals=$("#publishJournals").val();
-            var releasingCode=$("#releasingCode").val();
-            var thesisName=$("#thesisName").val();
+            var place=$("#place").val();
+            var hostUnit=$("#hostUnit").val();
+            var conferenceCategory=$('input[name="conferenceCategory"]:checked').val();
             $.ajax({
 				type:"POST",
-				url: "/academic/uploadAttachment.do",
+				url: "/attendconference/uploadAttachment.do",
 				data: data,
                 cache: false,//上传文件无需缓存
                 processData: false,//用于对data参数进行序列化处理 这里必须false
@@ -174,22 +162,20 @@
 				success: function(data){
 				    data=JSON.parse(data);
 				    var fileId=data.data;
+				    fileId=parseInt(fileId);
                     $.ajax({
                         type:"POST",
-                        url:"/academic/add.do",
+                        url:"/attendconference/add.do",
                         data:{
-                            "authorRank":authorRank,
-                            "category":category,"collectionSituation":collectionSituation,
-                            "novon":novon,"periodical":periodical,
-                            "publicationLevel":publicationLevel, "publishJournals":publishJournals,
-                            "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+                            "conferenceName":conferenceName, "paperTitle":paperTitle, "time":time, "place":place, "hostUnit":hostUnit,
+                            "conferenceCategory":conferenceCategory, "fileId":fileId
                         },
                         success: function (data) {
                             var user=JSON.parse(data);
                             if (user.status ==200){
                                 layer.msg(user.msg, {icon: 1, time: 2000});
                                 window.close();
-                                window.parent.location.replace("/academic/list");
+                                window.parent.location.replace("/attendconference/list");
                             }else {
                                 layer.msg(user.msg, {icon: 2, time: 2000});
                             }

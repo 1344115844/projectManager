@@ -120,20 +120,15 @@
         </div>
         <input type="hidden" value="" id="fileId">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">注意：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <span class="btn-upload form-group">
-                    <p>不重新上传默认用上一次提交的附件。重新上传则覆盖</p>
-                </span>
-            </div>
-        </div>
-
-        <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
             </div>
         </div>
 	</form>
+    <div class="text-shadow">
+        <p>注意：</p>
+        <p>不重新上传默认用上一次提交的附件。重新上传则覆盖</p>
+    </div>
 </article>
 
 <!--_footer 作为公共模版分离出去-->
@@ -190,7 +185,7 @@ $(function () {
             var data = formFile;
 
             var acadId=$("#acadId").val();
-            acadId=parseInt(acadId);
+            acadId=parseInt(a)
 			var authorRank=$("#authorRank").val();
             var category=$("#category").val();
             var collectionSituation=$("#collectionSituation").val();
@@ -229,7 +224,7 @@ $(function () {
                                 success: function (data) {
                                     var user=JSON.parse(data);
                                     if (user.status ==200){
-                                        layer.msg(user.msg, {icon: 1, time: 2000});
+                                        alert(user.msg);
                                         window.close();
                                         window.parent.location.replace("/academic/list");
                                     }else {

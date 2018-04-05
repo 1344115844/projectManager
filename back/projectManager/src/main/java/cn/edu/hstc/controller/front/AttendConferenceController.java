@@ -137,6 +137,15 @@ public class AttendConferenceController {
     public String showAttendConferenceAdd() {
         return "/attendconference/add";
     }
+    /**
+     *@author Veng Su
+     *@date 2018/4/5 16:15
+     *方法作用：跳转到edit页面
+     **/
+    @RequestMapping("/edit")
+    public String showAttendConferenceEdit() {
+        return "/attendconference/edit";
+    }
 
 
     /**

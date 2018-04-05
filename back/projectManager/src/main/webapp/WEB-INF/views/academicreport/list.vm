@@ -142,12 +142,12 @@ function jumpEdit(id) {
  *方法作用：删除记录
  **/
 function jumpDelete(id) {
-    var acadId=parseInt(id);
+    var repId=parseInt(id);
     layer.confirm('确认要删除吗？',function () {
         $.ajax({
             type:"POST",
             url:"/academicreport/delete.do",
-            data:{"repId":acadId},
+            data:{"repId":repId},
             success:function (data) {
                 data=JSON.parse(data);
                 layer.msg(data.msg, {icon: 1, time: 1000});
