@@ -190,6 +190,7 @@ $(function () {
             var data = formFile;
 
             var acadId=$("#acadId").val();
+            acadId=parseInt(acadId);
 			var authorRank=$("#authorRank").val();
             var category=$("#category").val();
             var collectionSituation=$("#collectionSituation").val();
@@ -212,79 +213,64 @@ $(function () {
                         contentType: false,
                         success: function (data) {
                             data = JSON.parse(data);
-                            fileId = data.data.fileId;
+                            fileId = data.data;
+                            fileId=parseInt(fileId);
+                            $.ajax({
+                                type:"POST",
+                                url:"/academic/update.do",
+                                data:{
+                                    "acadId":acadId,
+                                    "authorRank":authorRank,
+                                    "category":category,"collectionSituation":collectionSituation,
+                                    "novon":novon,"periodical":periodical,
+                                    "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                                    "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+                                },
+                                success: function (data) {
+                                    var user=JSON.parse(data);
+                                    if (user.status ==200){
+                                        layer.msg(user.msg, {icon: 1, time: 2000});
+                                        window.close();
+                                        window.parent.location.replace("/academic/list");
+                                    }else {
+                                        layer.msg(user.msg, {icon: 1, time: 2000});
+                                    }
+                                }
+                            });
 
                         }
                     });
-                }
-                //更新academic表单
-                $.ajax({
-                    type:"POST",
-                    url:"/academic/update.do",
-                    data:{
-                        "acadId":acadId,
-                        "authorRank":authorRank,
-                        "category":category,"collectionSituation":collectionSituation,
-                        "novon":novon,"periodical":periodical,
-                        "publicationLevel":publicationLevel, "publishJournals":publishJournals,
-                        "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            layer_close();
-                        }else {
-                            alert(user.msg);
+                }else {
+                    //更新academic表单
+                    $.ajax({
+                        type:"POST",
+                        url:"/academic/update.do",
+                        data:{
+                            "acadId":acadId,
+                            "authorRank":authorRank,
+                            "category":category,"collectionSituation":collectionSituation,
+                            "novon":novon,"periodical":periodical,
+                            "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                            "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+                        },
+                        success: function (data) {
+                            var user=JSON.parse(data);
+                            if (user.status ==200){
+                                alert(user.msg);
+                                window.close();
+                                window.parent.location.replace("/academic/list");
+                            }else {
+                                layer.msg(user.msg, {icon: 1, time: 2000});
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
         }
 	);
 
 
-//框架自带，可以改写
-$(function(ev){
-    $('.skin-minimal input').iCheck({
-        checkboxClass: 'icheckbox-blue',
-        radioClass: 'iradio-blue',
-        increaseArea: '20%'
-    });
 
-    $("#form-academic-add").validate({
-        rules:{
-            username:{
-                required:true,
-                minlength:2,
-                maxlength:16
-            },
-            sex:{
-                required:true,
-            },
-            mobile:{
-                required:true,
-                isMobile:true,
-            },
-            email:{
-                required:true,
-                email:true,
-            },
-            uploadfile:{
-                required:true,
-            },
-
-        },
-        onkeyup:false,
-        focusCleanup:true,
-        success:"valid",
-        submitHandler:function(form){
-            //$(form).ajaxSubmit();
-            var index = parent.layer.getFrameIndex(window.name);
-            //parent.$('.btn-refresh').click();
-            parent.layer.close(index);
-        }
-    });
-});
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

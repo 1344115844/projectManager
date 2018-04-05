@@ -138,6 +138,17 @@ public class AcademicReportController {
         return "/academicreport/add";
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/5 14:51
+     *方法作用：跳转到编辑页面
+     **/
+    @RequestMapping("/edit")
+    public String showAcademicEdit() {
+        return "/academicreport/edit";
+    }
+
+
 
     /**
     * @Description:上传附件
