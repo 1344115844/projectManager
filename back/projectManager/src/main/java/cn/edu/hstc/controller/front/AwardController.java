@@ -138,6 +138,16 @@ public class AwardController {
         return "/award/add";
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/5 20:07
+     *方法作用：跳转到edit页面
+     **/
+    @RequestMapping("/edit")
+    public String showAwardEdit() {
+        return "/award/edit";
+    }
+
 
     /**
     * @Description:上传附件

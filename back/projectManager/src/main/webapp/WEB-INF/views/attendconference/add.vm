@@ -29,10 +29,11 @@
 
 
     <script type="text/javascript" src="/myjs/until/date.js"></script>
+    <script type="text/javascript" src="/myjs/laydate/laydate.js"></script>
 
 
 
-<!--[if IE 6]>
+    <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
@@ -61,7 +62,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3">举办时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="time"
+                <input type="text"  id="time"
                        class="input-text Wdate" style="width:120px;">
             </div>
         </div>
@@ -135,6 +136,14 @@
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
 
+/**
+ *@author Veng Su
+ *@date 2018/4/5 21:18
+ *方法作用：绑定日期插件
+ **/
+laydate.render({
+    elem: '#time' //指定元素
+});
 
 //ajax提交数据
 	$("#submit").click(

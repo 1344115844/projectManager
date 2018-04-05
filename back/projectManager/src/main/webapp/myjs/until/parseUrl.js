@@ -1,3 +1,8 @@
+/**
+ *@author Veng Su
+ *@date 2018/4/5 21:20
+ *方法作用：url解析get参数
+ **/
 function parseUrl(){
     var url=location.href;
     var i=url.indexOf('?');

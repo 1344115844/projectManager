@@ -128,7 +128,14 @@
 
 <script type="text/javascript">
 
-
+    /**
+     *@author Veng Su
+     *@date 2018/4/5 21:18
+     *方法作用：绑定日期插件
+     **/
+    laydate.render({
+        elem: '#time' //指定元素
+    });
 
 //查询数据
 $(function () {
