@@ -29,57 +29,30 @@
 </head>
 <body>
 <article class="page-container">
-    <form  class="form form-horizontal" id="form-editbook-add">
-        <input type="hidden" class="input-text" value="" placeholder="" id="editId" name="editId">
+    <form  class="form form-horizontal" id="form-investigate-add">
+        <input type="hidden" class="input-text" value="" placeholder="" id="invId" name="editId">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>教材名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="bookName" name="bookName">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">编辑排名：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="editRank" value="第一">
-                    <label for="cat1">第一</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="editRank" value="第二">
-                    <label for="cat2">第二</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat3" name="editRank" value="第三">
-                    <label for="cat3">第三</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat4" name="editRank" value="第四">
-                    <label for="cat4">第四</label>
-                </div>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>书号：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="isbn" name="isbn">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出版单位：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publishUnit" name="publishUnit">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">出版时间：</label>
+            <label class="form-label col-xs-3">开始时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;">
+                <input type="text"  id="beginTime" class="input-text Wdate" style="width:120px;">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>字数：</label>
+            <label class="form-label col-xs-3">结束时间：</label>
+            <div class="formControls col-xs-8">
+                <input type="text"  id="overTime" class="input-text Wdate" style="width:120px;">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察地点：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="byteNum" name="byteNum">
+                <input type="text" class="input-text" value="" placeholder="" id="investigatePlace" name="investigatePlace">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="investigateContent" name="investigateContent">
             </div>
         </div>
 
@@ -122,31 +95,39 @@
 <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
 <script type="text/javascript" src="/myjs/until/date.js"></script>
 <script type="text/javascript" src="/myjs/laydate/laydate.js"></script>
-<script type="text/javascript" src="/workflow/editbook/editbook.js"></script>
+<script type="text/javascript" src="/workflow/investigate/investigate.js"></script>
 
 
 
 <script type="text/javascript">
 
-
-    /**
-     *@author Veng Su
-     *@date 2018/4/5 21:18
-     *方法作用：绑定日期插件
-     **/
-    laydate.render({
-        elem: '#publishTime' //指定元素
-    });
+##
+   /**
+    *@author Veng Su
+    *@date 2018/4/5 21:18
+    *方法作用：绑定日期插件
+    **/
+   laydate.render({
+       elem: '#beginTime' //指定元素
+   });
+   /**
+    *@author Veng Su
+    *@date 2018/4/5 21:18
+    *方法作用：绑定日期插件
+    **/
+   laydate.render({
+       elem: '#overTime' //指定元素
+   });
 
 //查询数据
 $(function () {
-    selectData();
+   selectData();
 })
 
 //ajax提交数据
 	$("#submit").click(function () {
 	     update();
-        }
+       }
 	);
 
 

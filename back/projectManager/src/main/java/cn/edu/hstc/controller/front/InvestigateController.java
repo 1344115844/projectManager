@@ -138,6 +138,16 @@ public class InvestigateController {
         return "/investigate/add";
     }
 
+/**
+ *@author Veng Su
+ *@date 2018/4/6 13:48
+ *方法作用：跳转到edit页面
+ **/
+    @RequestMapping("/edit")
+    public String showInvestigateEdit() {
+        return "/investigate/edit";
+    }
+
 
     /**
      * @Description:上传附件

@@ -48,7 +48,7 @@
         <span class="l">
             <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i
                     class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="editbook_add('添加记录','/editbook/add')"
+            <a href="javascript:;" onclick="investigate_add('添加记录','/investigate/add')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
         <span id="total" class="r"> </span>
@@ -61,12 +61,10 @@
         <tr class="text-c">
             <th width="25"><input type="checkbox" name="" value=""></th>
             <th width="40">ID</th>
-            <th>教材名称</th>
-            <th>编辑排名</th>
-            <th>书号</th>
-            <th>出版单位</th>
-            <th>出版时间</th>
-            <th>字数</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>考察地点</th>
+            <th>考察内容</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -84,7 +82,7 @@
 <script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
 
-<script type="text/javascript" src="/workflow/editbook/editbook.js"></script>
+<script type="text/javascript" src="/workflow/investigate/investigate.js"></script>
 
 
 
