@@ -138,6 +138,11 @@ public class CopyrightController {
         return "/copyright/add";
     }
 
+    @RequestMapping("/edit")
+    public String showCopyrightEdit() {
+        return "/copyright/edit";
+    }
+
 
     /**
      * @Description:上传附件

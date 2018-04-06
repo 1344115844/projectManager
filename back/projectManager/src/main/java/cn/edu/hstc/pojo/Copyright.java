@@ -18,7 +18,7 @@ public class Copyright implements Serializable {
 
     private Date awardTime;
 
-    private Integer rightNum;
+    private String rightNum;
 
     private Integer userId;
 
@@ -82,11 +82,11 @@ public class Copyright implements Serializable {
         this.awardTime = awardTime;
     }
 
-    public Integer getRightNum() {
+    public String getRightNum() {
         return rightNum;
     }
 
-    public void setRightNum(Integer rightNum) {
+    public void setRightNum(String rightNum) {
         this.rightNum = rightNum;
     }
 

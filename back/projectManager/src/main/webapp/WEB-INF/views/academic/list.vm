@@ -47,7 +47,7 @@
         <span class="l">
             <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i
                     class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="academic_add('添加记录','/academic/add','800','800')"
+            <a href="javascript:;" onclick="academic_add('添加记录','/academic/add')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
         <span id="total" class="r"> </span>
@@ -135,9 +135,8 @@
      **/
 function jumpEdit(id) {
     var url="/academic/edit?id="+id;
-    var w = '800';
-    var h='800';
-    layer_show('修改', url, w, h);
+
+    layer_show('修改', url);
 }
 /**
  *@author Veng Su

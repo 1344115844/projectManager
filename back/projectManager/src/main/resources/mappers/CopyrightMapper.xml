@@ -9,7 +9,7 @@
     <result column="right_name" jdbcType="VARCHAR" property="rightName" />
     <result column="rank" jdbcType="VARCHAR" property="rank" />
     <result column="award_time" jdbcType="TIMESTAMP" property="awardTime" />
-    <result column="right_num" jdbcType="INTEGER" property="rightNum" />
+    <result column="right_num" jdbcType="VARCHAR" property="rightNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>

@@ -30,65 +30,44 @@
 <body>
 <article class="page-container">
     <form  class="form form-horizontal" id="form-award-add">
-        <input type="hidden" class="input-text" value="" placeholder="" id="awardId" name="awardId">
+        <input type="hidden" class="input-text" value="" placeholder="" id="copyId" name="copyId">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目名称：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>著作权名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="projectName" name="projectName">
+                <input type="text" class="input-text" value="" placeholder="" id="rightName" name="rightName">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>获奖名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="awardName" name="awardName">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">获奖等级：</label>
+            <label class="form-label col-xs-3">排行：</label>
             <div class="formControls skin-minimal col-xs-5">
                 <div class="radio-box">
-                    <input type="radio" id="cat1" name="awardLevel" value="世界级">
-                    <label for="cat1">世界级</label>
+                    <input type="radio" id="cat1" name="rank" value="第一">
+                    <label for="cat1">第一</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat2" name="awardLevel" value="国家级">
-                    <label for="cat2">国家级</label>
+                    <input type="radio" id="cat2" name="rank" value="第二">
+                    <label for="cat2">第二</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat3" name="awardLevel" value="省级">
-                    <label for="cat3">省级</label>
+                    <input type="radio" id="cat3" name="rank" value="第三">
+                    <label for="cat3">第三</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat4" name="awardLevel" value="市级">
-                    <label for="cat4">市级</label>
+                    <input type="radio" id="cat4" name="rank" value="第四">
+                    <label for="cat4">第四</label>
                 </div>
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3">获奖时间：</label>
+            <label class="form-label col-xs-3">颁发时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text"  id="awardTime" class="input-text Wdate" style="width:120px;">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3">获奖排行：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="awardRank" value="第一">
-                    <label for="cat1">第一</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="awardRank" value="第二">
-                    <label for="cat2">第二</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat3" name="awardRank" value="第三">
-                    <label for="cat3">第三</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat4" name="awardRank" value="第四">
-                    <label for="cat4">第四</label>
-                </div>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>证书编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="rightNum" name="rightNum">
             </div>
         </div>
 
@@ -131,7 +110,7 @@
 <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
 <script type="text/javascript" src="/myjs/until/date.js"></script>
 <script type="text/javascript" src="/myjs/laydate/laydate.js"></script>
-<script type="text/javascript" src="/workflow/award/Award.js"></script>
+<script type="text/javascript" src="/workflow/copyright/Copyright.js"></script>
 
 
 

@@ -89,6 +89,12 @@
             </div>
         </div>
     </form>
+    <br>
+    <br>
+    <div class="text-shadow">
+        <p>注意：</p>
+        <p>不重新上传默认用上一次提交的附件。重新上传则覆盖</p>
+    </div>
 </article>
 
 <!--_footer 作为公共模版分离出去-->

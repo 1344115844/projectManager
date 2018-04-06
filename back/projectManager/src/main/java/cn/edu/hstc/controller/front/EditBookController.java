@@ -137,6 +137,15 @@ public class EditBookController {
     public String showEditBookAdd() {
         return "/editbook/add";
     }
+    /**
+     *@author Veng Su
+     *@date 2018/4/6 12:26
+     *方法作用：跳转到edit页面
+     **/
+    @RequestMapping("/edit")
+    public String showEditBookEdit() {
+        return "/editbook/edit";
+    }
 
 
     /**

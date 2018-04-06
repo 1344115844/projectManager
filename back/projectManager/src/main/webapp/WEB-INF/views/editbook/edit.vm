@@ -29,66 +29,57 @@
 </head>
 <body>
 <article class="page-container">
-    <form  class="form form-horizontal" id="form-award-add">
-        <input type="hidden" class="input-text" value="" placeholder="" id="awardId" name="awardId">
+    <form  class="form form-horizontal" id="form-editbook-add">
+        <input type="hidden" class="input-text" value="" placeholder="" id="editId" name="editId">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目名称：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>教材名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="projectName" name="projectName">
+                <input type="text" class="input-text" value="" placeholder="" id="bookName" name="bookName">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>获奖名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="awardName" name="awardName">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">获奖等级：</label>
+            <label class="form-label col-xs-3">编辑排名：</label>
             <div class="formControls skin-minimal col-xs-5">
                 <div class="radio-box">
-                    <input type="radio" id="cat1" name="awardLevel" value="世界级">
-                    <label for="cat1">世界级</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="awardLevel" value="国家级">
-                    <label for="cat2">国家级</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat3" name="awardLevel" value="省级">
-                    <label for="cat3">省级</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat4" name="awardLevel" value="市级">
-                    <label for="cat4">市级</label>
-                </div>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">获奖时间：</label>
-            <div class="formControls col-xs-8">
-                <input type="text"  id="awardTime" class="input-text Wdate" style="width:120px;">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-3">获奖排行：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="awardRank" value="第一">
+                    <input type="radio" id="cat1" name="editRank" value="第一">
                     <label for="cat1">第一</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat2" name="awardRank" value="第二">
+                    <input type="radio" id="cat2" name="editRank" value="第二">
                     <label for="cat2">第二</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat3" name="awardRank" value="第三">
+                    <input type="radio" id="cat3" name="editRank" value="第三">
                     <label for="cat3">第三</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="cat4" name="awardRank" value="第四">
+                    <input type="radio" id="cat4" name="editRank" value="第四">
                     <label for="cat4">第四</label>
                 </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>书号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="isbn" name="isbn">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出版单位：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="publishUnit" name="publishUnit">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">出版时间：</label>
+            <div class="formControls col-xs-8">
+                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>字数：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="byteNum" name="byteNum">
             </div>
         </div>
 
@@ -131,7 +122,7 @@
 <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
 <script type="text/javascript" src="/myjs/until/date.js"></script>
 <script type="text/javascript" src="/myjs/laydate/laydate.js"></script>
-<script type="text/javascript" src="/workflow/award/Award.js"></script>
+<script type="text/javascript" src="/workflow/editbook/editbook.js"></script>
 
 
 
@@ -144,7 +135,7 @@
      *方法作用：绑定日期插件
      **/
     laydate.render({
-        elem: '#awardTime' //指定元素
+        elem: '#publishTime' //指定元素
     });
 
 //查询数据
