@@ -6,14 +6,25 @@ function getData() {
         url: "/project/selectByUserId.do",
         success: function (data) {
             var data = JSON.parse(data);
-            display(data.data.list, data.data.total);
+            display(data.data.list);
+            var setTotalCount = data.data.total;//总条数
+            var startNumber = data.data.pageNum;//当前页数
+            var totalPages = data.data.navigatepageNums.length;//总页数
+            $('#box').paging({
+                initPageNo: startNumber, // 初始页码
+                totalPages: totalPages, //总页数
+                totalCount: '合计' + setTotalCount + '条数据', // 条目总数
+                slideSpeed: 600, // 缓动速度。单位毫秒
+                jump: true, //是否支持跳转
+                callback: function(page) { // 回调函数
+                    console.log(page);
+                }
+            });
         }
     });
 }
 
-function display(data, data1) {
-    var total = "<strong >共有数据：" + data1 + "条</strong>";
-    document.getElementById("total").innerHTML = total;
+function display(data) {
     var str = "";
     var tbody = window.document.getElementById("tbody");
     var index =0;
@@ -161,52 +172,136 @@ function findmember() {
                 str+="<option value='" +data[i].userId+"' >"+data[i].name+"</option>"
             }
             $("#projectDirector").html(str);
+
         }
     });
 }
-
-
 function selectData() {
     var data = parseUrl();
-    var invId=parseInt(data['id']);
+    var proId=parseInt(data['id']);
     $.ajax({
         type:"POST",
         url:"/project/selectById.do",
-        data:{"invId":invId},
+        data:{"proId":proId},
         success:function (data) {
             var data = JSON.parse(data);
-            $("#invId").val(data.data.invId);
-            $("#projectPlace").val(data.data.projectPlace);
-            $("#projectContent").val(data.data.projectContent);
+            $("#proId").val(data.data.proId);
+            $("#projectName").val(data.data.projectName);
+            $("#projectNumber").val(data.data.projectNumber);
+            $("#projectSource").val(data.data.projectSource);
+            $("#funds").val(data.data.funds);
+            $("#level").val(data.data.level);
+            $("#isTeamwork").val(data.data.isTeamwork);
+            $("#state").val(data.data.state);
+            $("#projectDirector").val(data.data.projectDirector);
+            var wang = data.data.projectDirector;
+            // $("#projectDirector").val("ceshi1");
+            $("#state").val(data.data.state);
 
             var beginTime=FormatDateTime(data.data.beginTime);
             $("#beginTime").val(beginTime);
             var overTime=FormatDateTime(data.data.overTime);
             $("#overTime").val(overTime);
 
-
-
+            $.ajax({
+                type:"POST",
+                url:"/user/all",
+                success:function (data) {
+                    data=JSON.parse(data);
+                    data=data.data;
+                    var str="<option value=\"\" >选择课题负责人</option>";
+                    for (i in data){
+                        if(wang == data[i].name){
+                            str+="<option value='" +data[i].userId+"' selected='selected'>"+data[i].name+"</option>";
+                        }else{
+                            str+="<option value='" +data[i].userId+"' >"+data[i].name+"</option>";
+                        }
+                    }
+                    $("#projectDirector").html(str);
+                }
+            });
         }
     });
+
+
+// function selectData() {
+//     var data = parseUrl();
+//     var proId=parseInt(data['id']);
+//     $.ajax({
+//         type:"POST",
+//         url:"/user/all",
+//         success:function (data) {
+//             data=JSON.parse(data);
+//             data=data.data;
+//             var wang = data.data.projectDirector;
+//
+//             var str="<option value=\"\" >选择课题负责人</option>";
+//             for (i in data){
+//                 if(wang == data[i].name){
+//                     str+="<option value='" +data[i].userId+"' selected='selected'>"+data[i].name+"</option>";
+//                 }else{
+//                     str+="<option value='" +data[i].userId+"' >"+data[i].name+"</option>";
+//                 }
+//             }
+//             $("#projectDirector").html(str);
+//             $.ajax({
+//                 type:"POST",
+//                 url:"/project/selectById.do",
+//                 data:{"proId":proId},
+//                 success:function (data) {
+//                     var data = JSON.parse(data);
+//                     $("#proId").val(data.data.proId);
+//                     $("#projectName").val(data.data.projectName);
+//                     $("#projectNumber").val(data.data.projectNumber);
+//                     $("#projectSource").val(data.data.projectSource);
+//                     $("#funds").val(data.data.funds);
+//                     $("#level").val(data.data.level);
+//                     $("#isTeamwork").val(data.data.isTeamwork);
+//                     $("#state").val(data.data.state);
+//                     $("#projectDirector").val(data.data.projectDirector);
+//                     // $("#projectDirector").val("ceshi1");
+//                     $("#state").val(data.data.state);
+//
+//                     var beginTime=FormatDateTime(data.data.beginTime);
+//                     $("#beginTime").val(beginTime);
+//                     var overTime=FormatDateTime(data.data.overTime);
+//                     $("#overTime").val(overTime);
+//                 }
+//             });
+//
+//         }
+//     });
+
+
+
 }
 
 function update() {
 
     //设置data数据
-    var invId=$("#invId").val();
-    invId=parseInt(invId);
+    var proId=$("#proId").val();
+    proId=parseInt(proId);
 
     var upload_file = document.getElementById("file").files[0];
     var formFile = new FormData();
     formFile.append("upload_file", upload_file);
     var data = formFile;
 
-    var projectPlace=$("#projectPlace").val();
-    var projectContent=$("#projectContent").val();
+    var projectName=$("#projectName").val();
+    var projectNumber=$("#projectNumber").val();
+    var projectSource=$("#projectSource").val();
+    var funds=$("#funds").val();
+    funds=parseFloat(funds);
+    var isTeamwork=$('#isTeamwork option:selected').val();
+    isTeamwork=parseInt(isTeamwork);
 
-    var beginTime =$("#beginTime").val();
+    var state=$('#state option:selected').val();
+    var projectDirector="";projectDirector=$('#projectDirector option:selected').text();
+    var level=$('#level option:selected').val();
+
+    var beginTime=$("#beginTime").val();
     beginTime=convertDateFromString(beginTime);
-    var overTime =$("#overTime").val();
+    var overTime=$("#overTime").val();
     overTime=convertDateFromString(overTime);
 
     var fileId=null;
@@ -228,9 +323,9 @@ function update() {
                     type:"POST",
                     url:"/project/update.do",
                     data:{
-                        "invId":invId,
-                        "beginTime":beginTime, "overTime":overTime, "projectPlace":projectPlace,
-                        "projectContent":projectContent,
+                        "proId":proId,
+                        "projectName":projectName, "projectNumber":projectNumber, "projectSource":projectSource, "funds":funds,
+                        "level":level,"isTeamwork":isTeamwork,"state":state,"projectDirector":projectDirector,"beginTime":beginTime,"overTime":overTime,
                         "fileId":fileId
                     },
                     success: function (data) {
@@ -251,8 +346,9 @@ function update() {
             type:"POST",
             url:"/project/update.do",
             data:{
-                "invId":invId,
-                "beginTime":beginTime, "overTime":overTime, "projectPlace":projectPlace, "projectContent":projectContent,
+                "proId":proId,
+                "projectName":projectName, "projectNumber":projectNumber, "projectSource":projectSource, "funds":funds,
+                "level":level,"isTeamwork":isTeamwork,"state":state,"projectDirector":projectDirector,"beginTime":beginTime,"overTime":overTime,
                 "fileId":fileId
             },
             success: function (data) {
@@ -267,3 +363,4 @@ function update() {
         });
     }
 }
+

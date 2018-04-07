@@ -30,49 +30,119 @@
 <body>
 <article class="page-container">
     <form  class="form form-horizontal" id="form-project-add">
-        <input type="hidden" class="input-text" value="" placeholder="" id="invId" name="editId">
+        <input type="hidden" class="input-text" value="" placeholder="" id="proId" name="proId">
         <div class="row cl">
-            <label class="form-label col-xs-3">开始时间：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="projectName" name="projectName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="projectNumber" name="projectNumber">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目来源：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="projectSource" name="projectSource">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">项目开始时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text"  id="beginTime" class="input-text Wdate" style="width:120px;">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3">结束时间：</label>
+            <label class="form-label col-xs-3">项目结束时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text"  id="overTime" class="input-text Wdate" style="width:120px;">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察地点：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目经费：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="projectPlace" name="projectPlace">
+                <input type="text" class="input-text" value="" placeholder="" id="funds" name="funds">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察内容：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="projectContent" name="projectContent">
+            <label class="form-label col-xs-3">项目级别：</label>
+            <div class="col-xs-6">
+                    <span class="select-box">
+                        <select class="select" size="1" name="level" id="level">
+                            <option value="国家级" >国家级</option>
+                            <option value="部级" >部级</option>
+                            <option value="省级" >省级</option>
+                            <option value="厅级" >厅级</option>
+                            <option value="市级" >市级</option>
+                            <option value="校级" >校级</option>
+                        </select>
+                     </span>
             </div>
         </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">是否合作研究：</label>
+            <div class="col-xs-6">
+                    <span class="select-box">
+                        <select class="select" size="1" name="isTeamwork" id="isTeamwork">
+                            <option value="0" >否</option>
+                            <option value="1" >是</option>
+                        </select>
+                     </span>
+            </div>
+        </div>
+            <br>
 
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+            <div class="row cl">
+                <label class="form-label col-xs-3">项目状态：</label>
+                <div class="col-xs-6">
+                    <span class="select-box">
+                        <select class="select" size="1" name="state" id="state">
+                            <option value="" selected>选择项目状态</option>
+                            <option value="进行" >进行</option>
+                            <option value="完成" >完成</option>
+                            <option value="暂停" >暂停</option>
+                            <option value="撤销" >撤销</option>
+                        </select>
+                     </span>
+                </div>
+            </div>
+
+
+            <div class="row cl">
+                <label class="form-label col-xs-3">项目负责人：</label>
+                <div class="col-xs-6">
+                <span class="select-box">
+                    <select class="select" size="1" name="projectDirector" id="projectDirector">
+                    </select>
+                </span>
+                </div>
+            </div>
+
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
+                <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
 				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple id="file" name="file" class="input-file">
 				</span>
+                </div>
             </div>
-        </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                    <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                </div>
             </div>
-        </div>
     </form>
     <br>
     <br>
+    <div class="text-shadow">
+        <p>说明：</p>
+        <p></p>
+    </div>
     <div class="text-shadow">
         <p>注意：</p>
         <p>不重新上传默认用上一次提交的附件。重新上传则覆盖</p>
@@ -122,6 +192,7 @@
 //查询数据
 $(function () {
    selectData();
+
 })
 
 //ajax提交数据
