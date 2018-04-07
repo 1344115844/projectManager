@@ -4,6 +4,8 @@ import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.pojo.User;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 
 public interface UserService {
 
@@ -20,4 +22,8 @@ public interface UserService {
     JSONResponse<Integer> deleteUserByUserId(int id);
 
     JSONResponse<PageInfo> selectAllUserList(int pageNum, int pageSize);
+
+
+
+    JSONResponse<List> selectAllUser();
 }

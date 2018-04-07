@@ -27,6 +27,11 @@
         from user
         where user_id = #{userId,jdbcType=INTEGER}
     </select>
+
+    <select id="selectAll"  resultMap="BaseResultMap">
+        select user_id , name
+        from user
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}

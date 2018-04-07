@@ -8,7 +8,7 @@ public class Project implements Serializable {
 
     private String projectName;
 
-    private Integer projectNumber;
+    private String projectNumber;
 
     private String projectSource;
 
@@ -54,11 +54,11 @@ public class Project implements Serializable {
         this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public Integer getProjectNumber() {
+    public String getProjectNumber() {
         return projectNumber;
     }
 
-    public void setProjectNumber(Integer projectNumber) {
+    public void setProjectNumber(String projectNumber) {
         this.projectNumber = projectNumber;
     }
 

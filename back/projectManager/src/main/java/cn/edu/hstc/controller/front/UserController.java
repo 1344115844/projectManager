@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -116,6 +117,17 @@ public class UserController {
     @ResponseBody
     public JSONResponse<PageInfo> selectUserListById(int pageNum, int pageSize){
         return userService.selectAllUserList(pageNum,pageSize);
+    }
+
+    /**
+     *@author Veng Su
+     *@date 2018/4/7 15:11
+     *方法作用：查询全部成员
+     **/
+    @RequestMapping("/all")
+    @ResponseBody
+    public JSONResponse<List> selectUserList(){
+        return userService.selectAllUser();
     }
 
     /**

@@ -140,5 +140,9 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    @Override
+    public JSONResponse<List> selectAllUser() {
+        ArrayList<User> users=userMapper.selectAll();
+        return JSONResponse.createBySuccess("sucess",users);
+    }
 }

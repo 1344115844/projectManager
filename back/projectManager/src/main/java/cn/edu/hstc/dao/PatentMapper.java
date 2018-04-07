@@ -5,13 +5,13 @@ import cn.edu.hstc.pojo.Patent;
 import java.util.ArrayList;
 
 public interface PatentMapper {
-    int deleteByPrimaryKey(Integer pId);
+    int deleteByPrimaryKey(Integer tentId);
 
     int insert(Patent record);
 
     int insertSelective(Patent record);
 
-    Patent selectByPrimaryKey(Integer pId);
+    Patent selectByPrimaryKey(Integer tentId);
 
     int updateByPrimaryKeySelective(Patent record);
 

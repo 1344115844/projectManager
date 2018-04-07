@@ -27,4 +27,6 @@ public interface UserMapper {
     int deleteUserByUserId(@Param("userId") Integer userId); //假删除user，更新delete字段为1
 
     ArrayList<User> selectAllUserList();
+
+    ArrayList<User> selectAll();
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.PatentMapper">
   <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.Patent">
-    <id column="p_id" jdbcType="INTEGER" property="pId" />
+    <id column="tent_id" jdbcType="INTEGER" property="tentId" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -11,31 +11,31 @@
     <result column="patent_form" jdbcType="VARCHAR" property="patentForm" />
     <result column="authority" jdbcType="VARCHAR" property="authority" />
     <result column="registration_enterprise" jdbcType="VARCHAR" property="registrationEnterprise" />
-    <result column="patent_num" jdbcType="INTEGER" property="patentNum" />
+    <result column="patent_num" jdbcType="VARCHAR" property="patentNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
   </resultMap>
   <sql id="Base_Column_List">
-    p_id, deleted, update_time, create_time, patent_tame, patent_rank, patent_form, authority, 
+    tent_id, deleted, update_time, create_time, patent_tame, patent_rank, patent_form, authority,
     registration_enterprise, patent_num, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from patent
-    where p_id = #{pId,jdbcType=INTEGER}
+    where tent_id = #{tentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from patent
-    where p_id = #{pId,jdbcType=INTEGER}
+    where tent_id = #{tentId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.hstc.pojo.Patent">
-    insert into patent (p_id, deleted, update_time, 
+    insert into patent (tent_id, deleted, update_time,
       create_time, patent_tame, patent_rank, 
       patent_form, authority, registration_enterprise, 
       patent_num, user_id, file_id
       )
-    values (#{pId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{tentId,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP},
       #{createTime,jdbcType=TIMESTAMP}, #{patentTame,jdbcType=VARCHAR}, #{patentRank,jdbcType=VARCHAR}, 
       #{patentForm,jdbcType=VARCHAR}, #{authority,jdbcType=VARCHAR}, #{registrationEnterprise,jdbcType=VARCHAR}, 
       #{patentNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
@@ -44,8 +44,8 @@
   <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.Patent">
     insert into patent
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pId != null">
-        p_id,
+      <if test="tentId != null">
+        tent_id,
       </if>
       <if test="deleted != null">
         deleted,
@@ -82,8 +82,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pId != null">
-        #{pId,jdbcType=INTEGER},
+      <if test="tentId != null">
+        #{tentId,jdbcType=INTEGER},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=INTEGER},
@@ -157,7 +157,7 @@
         file_id = #{fileId,jdbcType=INTEGER},
       </if>
     </set>
-    where p_id = #{pId,jdbcType=INTEGER}
+    where tent_id = #{tentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.Patent">
     update patent
@@ -172,7 +172,7 @@
       patent_num = #{patentNum,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       file_id = #{fileId,jdbcType=INTEGER}
-    where p_id = #{pId,jdbcType=INTEGER}
+    where tent_id = #{tentId,jdbcType=INTEGER}
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">

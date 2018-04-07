@@ -84,8 +84,8 @@ public class PatentController {
      */
     @RequestMapping("/selectById.do")
     @ResponseBody
-    public JSONResponse<Patent> selectPatentById(Integer pId) {
-        return patentService.selectPatentById(pId);
+    public JSONResponse<Patent> selectPatentById(Integer tentId) {
+        return patentService.selectPatentById(tentId);
     }
 
     /**
@@ -136,6 +136,12 @@ public class PatentController {
     @RequestMapping("/add")
     public String showPatentAdd() {
         return "/patent/add";
+    }
+
+
+    @RequestMapping("/edit")
+    public String showPatentEdit() {
+        return "/patent/edit";
     }
 
 

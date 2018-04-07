@@ -138,6 +138,12 @@ public class ProjectController {
         return "/project/add";
     }
 
+    @RequestMapping("/edit")
+    public String showProjectEdit() {
+        return "/project/edit";
+    }
+
+
 
     /**
      * @Description:上传附件

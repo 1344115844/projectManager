@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Patent implements Serializable {
-    private Integer pId;
+    private Integer tentId;
 
     private Integer deleted;
 
@@ -22,7 +22,7 @@ public class Patent implements Serializable {
 
     private String registrationEnterprise;
 
-    private Integer patentNum;
+    private String patentNum;
 
     private Integer userId;
 
@@ -30,12 +30,12 @@ public class Patent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getpId() {
-        return pId;
+    public Integer getTentId() {
+        return tentId;
     }
 
-    public void setpId(Integer pId) {
-        this.pId = pId;
+    public void setTentId(Integer tentId) {
+        this.tentId = tentId;
     }
 
     public Integer getDeleted() {
@@ -102,11 +102,11 @@ public class Patent implements Serializable {
         this.registrationEnterprise = registrationEnterprise == null ? null : registrationEnterprise.trim();
     }
 
-    public Integer getPatentNum() {
+    public String getPatentNum() {
         return patentNum;
     }
 
-    public void setPatentNum(Integer patentNum) {
+    public void setPatentNum(String patentNum) {
         this.patentNum = patentNum;
     }
 
