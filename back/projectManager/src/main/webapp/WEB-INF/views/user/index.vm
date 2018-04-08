@@ -28,7 +28,7 @@
 
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
-                    <li>超级管理员</li>
+                    <li>普通成员</li>
                     <li class="dropDown dropDown_hover">
                         <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
@@ -55,27 +55,27 @@
 </header>
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
-        <dl id="menu-member">
-            <dt><i class="Hui-iconfont">&#xe60d;</i> 成员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="member-list.html" data-title="成员列表" href="javascript:;">成员列表</a></li>
-                </ul>
-            </dd>
-        </dl>
-
-        <dl id="menu-admin">
-            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
-                    <li><a data-href="https://www.baidu.com" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-                </ul>
-            </dd>
-        </dl>
+##        <dl id="menu-member">
+##            <dt><i class="Hui-iconfont">&#xe60d;</i> 成员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+##            <dd>
+##                <ul>
+##                    <li><a data-href="member-list.html" data-title="成员列表" href="javascript:;">成员列表</a></li>
+##                </ul>
+##            </dd>
+##        </dl>
+##
+##        <dl id="menu-admin">
+##            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+##            <dd>
+##                <ul>
+##                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+##                    <li><a data-href="https://www.baidu.com" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+##                </ul>
+##            </dd>
+##        </dl>
         <dl id="menu-data">
-            <dt><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
+            <dt class="selected"><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd style="display :block">
                 <ul>
                     <li><a data-href="/academic/list" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
                     <li><a data-href="/academicreport/list" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
@@ -93,14 +93,14 @@
             </dd>
         </dl>
 
-        <dl id="menu-picture">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 附件管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="picture-list.html" data-title="附件管理" href="javascript:void(0)">附件管理</a></li>
-                </ul>
-            </dd>
-        </dl>
+##        <dl id="menu-picture">
+##            <dt><i class="Hui-iconfont">&#xe613;</i> 附件管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+##            <dd>
+##                <ul>
+##                    <li><a data-href="picture-list.html" data-title="附件管理" href="javascript:void(0)">附件管理</a></li>
+##                </ul>
+##            </dd>
+##        </dl>
     </div>
 
 </aside>

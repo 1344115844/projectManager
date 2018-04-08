@@ -1,42 +1,52 @@
 
 
 function getData() {
-    $.ajax({
-        type: "POST",
-        url: "/award/selectByUserId.do",
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list, data.data.total);
-        }
-    });
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/award/selectByUserId.do",
+    //     success: function (data) {
+    //         var data = JSON.parse(data);
+    //         display(data.data.list);
+    //         var setTotalCount = data.data.total;//总条数
+    //         var startNumber = data.data.pageNum;//当前页数
+    //         var totalPages = data.data.navigatepageNums.length;//总页数
+    //         $('#box').paging({
+    //             initPageNo: startNumber, // 初始页码
+    //             totalPages: totalPages, //总页数
+    //             totalCount: '合计' + setTotalCount + '条数据', // 条目总数
+    //             slideSpeed: 600, // 缓动速度。单位毫秒
+    //             jump: true, //是否支持跳转
+    //             callback: function(page) { // 回调函数
+    //                 console.log(page);
+    //             }
+    //         });
+    //     }
+    // });
 }
 
-function display(data, data1) {
-    var total = "<strong >共有数据：" + data1 + "条</strong>";
-    document.getElementById("total").innerHTML = total;
-    var str = "";
-    var tbody = window.document.getElementById("tbody");
-    var index =0;
-    for (i in data) {
-        // var overTime =FormatDateTime(data[i].overTime);
-        // var beginTime =FormatDateTime(data[i].beginTime);
-        var awardTime =FormatDateTime(data[i].awardTime);
-        index=parseInt(i)+1;
-        str += "<tr class='text-c'>" +
-            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-            "<td name='id' width='40'>" + index + "</td>" +
-            "<td name='projectName'width='150'>" + data[i].projectName + "</td>" +
-            "<td name='awardName' width='130'>" +  data[i].awardName + "</td>" +
-            "<td name='awardLevel' width='100'>" + data[i].awardLevel + "</td>" +
-            "<td name='awardTime' width='100'>" + awardTime + "</td>" +
-            "<td name='awardRank' width='100'>" + data[i].awardRank + "</td>" +
-            "<td ><button  class='editAcad btn btn-primary radius ' value='"+data[i].awardId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-            "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].awardId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-            "</tr>";
-    }
-
-    tbody.innerHTML = str;
-}
+// function display(data) {
+//     var str = "";
+//     var tbody = window.document.getElementById("tbody");
+//     var index =0;
+//     for (i in data) {
+//         // var overTime =FormatDateTime(data[i].overTime);
+//         // var beginTime =FormatDateTime(data[i].beginTime);
+//         var awardTime =FormatDateTime(data[i].awardTime);
+//         index=parseInt(i)+1;
+//         str += "<tr class='text-c'>" +
+//             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+//             "<td name='id' width='40'>" + index + "</td>" +
+//             "<td name='projectName'width='150'>" + data[i].projectName + "</td>" +
+//             "<td name='awardName' width='130'>" +  data[i].awardName + "</td>" +
+//             "<td name='awardLevel' width='100'>" + data[i].awardLevel + "</td>" +
+//             "<td name='awardTime' width='100'>" + awardTime + "</td>" +
+//             "<td name='awardRank' width='100'>" + data[i].awardRank + "</td>" +
+//             "<td ><button  class='editAcad btn btn-primary radius ' value='"+data[i].awardId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+//             "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].awardId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+//             "</tr>";
+//     }
+//     tbody.innerHTML = str;
+// };
 
 /**
  *@author Veng Su
@@ -87,6 +97,7 @@ function award_add(title, url, w, h) {
  *方法作用：add记录
  **/
 function add() {
+    var upload_file = document.getElementById("file").files[0];
     var upload_file = document.getElementById("file").files[0];
     var formFile = new FormData();
     formFile.append("upload_file", upload_file);

@@ -64,10 +64,13 @@
             <div class="col-xs-6">
             <span class="select-box">
                 <select class="select" size="1" name="publicationLevel" id="publicationLevel">
-                    <option value="第一" >第一</option>
-                    <option value="第二" >第二</option>
-                    <option value="第三" >第三</option>
-                    <option value="第四" >第四</option>
+                    <option value="权威" >权威</option>
+                    <option value="核心" >核心</option>
+                    <option value="一般" >一般</option>
+                    <option value="外刊" >外刊</option>
+                    <option value="增刊、特刊、专刊" >增刊、特刊、专刊</option>
+                    <option value="论文集" >论文集</option>
+                    <option value="其他" >其他</option>
                 </select>
             </span>
             </div>
@@ -95,10 +98,10 @@
             <div class="col-xs-6">
             <span class="select-box">
                 <select class="select" size="1" name="authorRank" id="authorRank">
-                    <option value="第一" >第一</option>
-                    <option value="第二" >第二</option>
-                    <option value="第三" >第三</option>
-                    <option value="第四" >第四</option>
+                    <option value="第一作者" >第一作者</option>
+                    <option value="第二作者" >第二作者</option>
+                    <option value="第三作者 >第三作者</option>
+                    <option value="第四作者" >第四作者</option>
                 </select>
             </span>
             </div>

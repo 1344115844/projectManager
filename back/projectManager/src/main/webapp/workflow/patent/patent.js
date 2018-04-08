@@ -6,14 +6,12 @@ function getData() {
         url: "/patent/selectByUserId.do",
         success: function (data) {
             var data = JSON.parse(data);
-            display(data.data.list, data.data.total);
+            display(data.data.list);
         }
     });
 }
 
-function display(data, data1) {
-    var total = "<strong >共有数据：" + data1 + "条</strong>";
-    document.getElementById("total").innerHTML = total;
+function display(data) {
     var str = "";
     var tbody = window.document.getElementById("tbody");
     var index =0;

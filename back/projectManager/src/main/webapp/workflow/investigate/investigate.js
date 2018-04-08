@@ -1,40 +1,40 @@
 
 
 function getData() {
-    $.ajax({
-        type: "POST",
-        url: "/investigate/selectByUserId.do",
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list, data.data.total);
-        }
-    });
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/investigate/selectByUserId.do",
+    //     success: function (data) {
+    //         var data = JSON.parse(data);
+    //         display(data.data.list, data.data.total);
+    //     }
+    // });
 }
 
-function display(data, data1) {
-    var total = "<strong >共有数据：" + data1 + "条</strong>";
-    document.getElementById("total").innerHTML = total;
-    var str = "";
-    var tbody = window.document.getElementById("tbody");
-    var index =0;
-    for (i in data) {
-        var beginTime =FormatDateTime(data[i].beginTime );
-        var overTime =FormatDateTime(data[i].overTime);
-        index=parseInt(i)+1;
-        str += "<tr class='text-c'>" +
-            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-            "<td name='id' width='40'>" + index + "</td>" +
-            "<td name='beginTime'width='150'>" + beginTime + "</td>" +
-            "<td name='overTime' width='130'>" + overTime + "</td>" +
-            "<td name='investigatePlace' width='100'>" + data[i].investigatePlace + "</td>" +
-            "<td name='investigateContent' width='100'>" + data[i].investigateContent + "</td>" +
-            "<td ><button  class='btn btn-primary radius ' value='"+data[i].invId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-            "<button class=' btn btn-danger radius ' value='"+data[i].invId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-            "</tr>";
-    }
-
-    tbody.innerHTML = str;
-}
+// function display(data, data1) {
+//     var total = "<strong >共有数据：" + data1 + "条</strong>";
+//     document.getElementById("total").innerHTML = total;
+//     var str = "";
+//     var tbody = window.document.getElementById("tbody");
+//     var index =0;
+//     for (i in data) {
+//         var beginTime =FormatDateTime(data[i].beginTime );
+//         var overTime =FormatDateTime(data[i].overTime);
+//         index=parseInt(i)+1;
+//         str += "<tr class='text-c'>" +
+//             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+//             "<td name='id' width='40'>" + index + "</td>" +
+//             "<td name='beginTime'width='150'>" + beginTime + "</td>" +
+//             "<td name='overTime' width='130'>" + overTime + "</td>" +
+//             "<td name='investigatePlace' width='100'>" + data[i].investigatePlace + "</td>" +
+//             "<td name='investigateContent' width='100'>" + data[i].investigateContent + "</td>" +
+//             "<td ><button  class='btn btn-primary radius ' value='"+data[i].invId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+//             "<button class=' btn btn-danger radius ' value='"+data[i].invId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+//             "</tr>";
+//     }
+//
+//     tbody.innerHTML = str;
+// }
 
 /**
  *@author Veng Su

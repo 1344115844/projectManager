@@ -1,41 +1,39 @@
 
 
 function getData() {
-    $.ajax({
-        type: "POST",
-        url: "/editbook/selectByUserId.do",
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list, data.data.total);
-        }
-    });
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/editbook/selectByUserId.do",
+    //     success: function (data) {
+    //         var data = JSON.parse(data);
+    //         display(data.data.list);
+    //     }
+    // });
 }
 
-function display(data, data1) {
-    var total = "<strong >共有数据：" + data1 + "条</strong>";
-    document.getElementById("total").innerHTML = total;
-    var str = "";
-    var tbody = window.document.getElementById("tbody");
-    var index =0;
-    for (i in data) {
-        var publishTime =FormatDateTime(data[i].publishTime);
-        index=parseInt(i)+1;
-        str += "<tr class='text-c'>" +
-            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-            "<td name='id' width='40'>" + index + "</td>" +
-            "<td name='bookName'width='150'>" + data[i].bookName + "</td>" +
-            "<td name='editRank' width='130'>" +  data[i].editRank + "</td>" +
-            "<td name='publishTime' width='100'>" + publishTime + "</td>" +
-            "<td name='isbn' width='100'>" + data[i].isbn + "</td>" +
-            "<td name='publishUnit' width='100'>" + data[i].publishUnit + "</td>" +
-            "<td name='byteNum' width='100'>" + data[i].byteNum + "</td>" +
-            "<td ><button  class='btn btn-primary radius ' value='"+data[i].editId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-            "<button class=' btn btn-danger radius ' value='"+data[i].editId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-            "</tr>";
-    }
-
-    tbody.innerHTML = str;
-}
+// function display(data) {
+//     var str = "";
+//     var tbody = window.document.getElementById("tbody");
+//     var index =0;
+//     for (i in data) {
+//         var publishTime =FormatDateTime(data[i].publishTime);
+//         index=parseInt(i)+1;
+//         str += "<tr class='text-c'>" +
+//             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+//             "<td name='id' width='40'>" + index + "</td>" +
+//             "<td name='bookName'width='150'>" + data[i].bookName + "</td>" +
+//             "<td name='editRank' width='130'>" +  data[i].editRank + "</td>" +
+//             "<td name='publishTime' width='100'>" + publishTime + "</td>" +
+//             "<td name='isbn' width='100'>" + data[i].isbn + "</td>" +
+//             "<td name='publishUnit' width='100'>" + data[i].publishUnit + "</td>" +
+//             "<td name='byteNum' width='100'>" + data[i].byteNum + "</td>" +
+//             "<td ><button  class='btn btn-primary radius ' value='"+data[i].editId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+//             "<button class=' btn btn-danger radius ' value='"+data[i].editId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+//             "</tr>";
+//     }
+//
+//     tbody.innerHTML = str;
+// }
 
 /**
  *@author Veng Su

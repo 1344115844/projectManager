@@ -1,38 +1,38 @@
 
 
 function getData() {
-    $.ajax({
-        type: "POST",
-        url: "/study/selectByUserId.do",
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list);
-        }
-    });
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/study/selectByUserId.do",
+    //     success: function (data) {
+    //         var data = JSON.parse(data);
+    //         display(data.data.list);
+    //     }
+    // });
 }
 
-function display(data) {
-    var str = "";
-    var tbody = window.document.getElementById("tbody");
-    var index =0;
-    for (i in data) {
-        var beginTime =FormatDateTime(data[i].beginTime );
-        var overTime =FormatDateTime(data[i].overTime);
-        index=parseInt(i)+1;
-        str += "<tr class='text-c'>" +
-            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-            "<td name='id' width='40'>" + index + "</td>" +
-            "<td name='beginTime'width='150'>" + beginTime + "</td>" +
-            "<td name='overTime' width='130'>" + overTime + "</td>" +
-            "<td name='studyForm' width='100'>" + data[i].school + "</td>" +
-            "<td name='studyForm' width='100'>" + data[i].studyContent + "</td>" +
-            "<td ><button  class='btn btn-primary radius ' value='"+data[i].stuId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-            "<button class=' btn btn-danger radius ' value='"+data[i].stuId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-            "</tr>";
-    }
-
-    tbody.innerHTML = str;
-}
+// function display(data) {
+//     var str = "";
+//     var tbody = window.document.getElementById("tbody");
+//     var index =0;
+//     for (i in data) {
+//         var beginTime =FormatDateTime(data[i].beginTime );
+//         var overTime =FormatDateTime(data[i].overTime);
+//         index=parseInt(i)+1;
+//         str += "<tr class='text-c'>" +
+//             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+//             "<td name='id' width='40'>" + index + "</td>" +
+//             "<td name='beginTime'width='150'>" + beginTime + "</td>" +
+//             "<td name='overTime' width='130'>" + overTime + "</td>" +
+//             "<td name='studyForm' width='100'>" + data[i].school + "</td>" +
+//             "<td name='studyForm' width='100'>" + data[i].studyContent + "</td>" +
+//             "<td ><button  class='btn btn-primary radius ' value='"+data[i].stuId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+//             "<button class=' btn btn-danger radius ' value='"+data[i].stuId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+//             "</tr>";
+//     }
+//
+//     tbody.innerHTML = str;
+// }
 
 /**
  *@author Veng Su

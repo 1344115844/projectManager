@@ -118,63 +118,47 @@
                 pageIndex == totalPages ? nextPage.attr('disabled', true) : nextPage.attr('disabled', false);
                 that.options.callback(pageIndex);
             }
-            // handles(that.options.pageNo); // 初始化页码位置
         }
     }
-
-    function testPage(pageNum){
-        $.ajax({
-            type: "POST",
-            url: "/project/selectByUserId.do",
-            data:{"pageNum":pageNum},
-            success: function (data) {
-                var data = JSON.parse(data);
-                display(data.data.list);
-                var setTotalCount = data.data.total;//总条数
-                var startNumber = data.data.pageNum;//当前页数
-                var totalPages = data.data.navigatepageNums.length;//总页数
-                $('#box').paging({
-                    initPageNo: startNumber, // 初始页码
-                    totalPages: totalPages, //总页数
-                    totalCount: '合计' + setTotalCount + '条数据', // 条目总数
-                    slideSpeed: 600, // 缓动速度。单位毫秒
-                    jump: true, //是否支持跳转
-                    callback: function(page) { // 回调函数
-                        console.log(page);
-                    }
-                });
-            }
-        });
-    }
-    function display(data) {
-        var str = "";
-        var tbody = window.document.getElementById("tbody");
-        var index =0;
-        for (i in data) {
-            var beginTime =FormatDateTime(data[i].beginTime );
-            var overTime =FormatDateTime(data[i].overTime);
-            index=parseInt(i)+1;
-            str += "<tr class='text-c'>" +
-                "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                "<td name='id' width='40'>" + index + "</td>" +
-                "<td name='projectName' width='100'>" + data[i].projectName + "</td>" +
-                "<td name='projectNumber' width='100'>" + data[i].projectNumber + "</td>" +
-                "<td name='projectSource' width='100'>" + data[i].projectSource + "</td>" +
-                "<td name='beginTime'width='150'>" + beginTime + "</td>" +
-                "<td name='overTime' width='130'>" + overTime + "</td>" +
-                "<td name='funds' width='100'>" + data[i].funds + "</td>" +
-                "<td name='level' width='100'>" + data[i].level + "</td>" +
-                "<td name='isTeamwork' width='100'>" + data[i].isTeamwork + "</td>" +
-                "<td name='state' width='100'>" + data[i].state + "</td>" +
-                "<td name='projectDirector' width='100'>" + data[i].projectDirector + "</td>" +
-                "<td ><button  class='btn btn-primary radius ' value='"+data[i].proId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-                "<button class=' btn btn-danger radius ' value='"+data[i].proId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-                "</tr>";
-        }
-        tbody.innerHTML = str;
-    }
-
     $.fn.paging = function(options) {
         return new Paging($(this), options);
     }
 })(jQuery, window, document);
+
+function testPage(pageNum){
+    $.ajax({
+        type: "POST",
+        url: "/academic/selectByUserId.do",
+        data:{"pageNum":pageNum},
+        success: function (data) {
+            var data = JSON.parse(data);
+            display(data.data.list);
+        }
+    });
+}
+function display(data) {
+    console.log(data);
+    var str = "";
+    var tbody = window.document.getElementById("tbody");
+    var index =0;
+    for (i in data) {
+        index=parseInt(i)+1;
+        str += "<tr class='text-c'>" +
+            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+            "<td name='id' width='40'>" + index + "</td>" +
+            "<td name='thesisName'width='150'>" + data[i].thesisName + "</td>" +
+            "<td name='novon'>" + data[i].novon + "</td>" +
+            "<td name='releasingCode' width='130'>" + data[i].releasingCode + "</td>" +
+            "<td name='publicationLevel' width='100'>" + data[i].publicationLevel + "</td>" +
+            "<td name='periodical' width='100'>" + data[i].periodical + "</td>" +
+            "<td name='periodical' width='100'>" + data[i].collectionSituation + "</td>" +
+            "<td name='publishJournals' width='100'>" + data[i].publishJournals + "</td>" +
+            "<td name='authorRank' width='100'>" + data[i].authorRank + "</td>" +
+            "<td name='category' width='100'>" + data[i].category + "</td>" +
+            "<td ><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+            "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].acadId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+            "</tr>";
+    }
+
+    tbody.innerHTML = str;
+};
