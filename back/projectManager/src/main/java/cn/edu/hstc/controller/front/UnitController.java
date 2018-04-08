@@ -138,6 +138,11 @@ public class UnitController {
         return "/unit/add";
     }
 
+    @RequestMapping("/edit")
+    public String showUnitEdit() {
+        return "/unit/edit";
+    }
+
 
     /**
     * @Description:上传附件

@@ -138,6 +138,11 @@ public class SpeechController {
         return "/speech/add";
     }
 
+    @RequestMapping("/edit")
+    public String showSpeechEdit() {
+        return "/speech/edit";
+    }
+
 
     /**
      * @Description:上传附件

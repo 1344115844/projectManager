@@ -139,6 +139,12 @@ public class StudyController {
     }
 
 
+    @RequestMapping("/edit")
+    public String showStudyEdit() {
+        return "/study/edit";
+    }
+
+
     /**
      * @Description:上传附件
      * @param: [session, file, request]

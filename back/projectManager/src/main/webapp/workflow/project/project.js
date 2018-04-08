@@ -222,58 +222,6 @@ function selectData() {
             });
         }
     });
-
-
-// function selectData() {
-//     var data = parseUrl();
-//     var proId=parseInt(data['id']);
-//     $.ajax({
-//         type:"POST",
-//         url:"/user/all",
-//         success:function (data) {
-//             data=JSON.parse(data);
-//             data=data.data;
-//             var wang = data.data.projectDirector;
-//
-//             var str="<option value=\"\" >选择课题负责人</option>";
-//             for (i in data){
-//                 if(wang == data[i].name){
-//                     str+="<option value='" +data[i].userId+"' selected='selected'>"+data[i].name+"</option>";
-//                 }else{
-//                     str+="<option value='" +data[i].userId+"' >"+data[i].name+"</option>";
-//                 }
-//             }
-//             $("#projectDirector").html(str);
-//             $.ajax({
-//                 type:"POST",
-//                 url:"/project/selectById.do",
-//                 data:{"proId":proId},
-//                 success:function (data) {
-//                     var data = JSON.parse(data);
-//                     $("#proId").val(data.data.proId);
-//                     $("#projectName").val(data.data.projectName);
-//                     $("#projectNumber").val(data.data.projectNumber);
-//                     $("#projectSource").val(data.data.projectSource);
-//                     $("#funds").val(data.data.funds);
-//                     $("#level").val(data.data.level);
-//                     $("#isTeamwork").val(data.data.isTeamwork);
-//                     $("#state").val(data.data.state);
-//                     $("#projectDirector").val(data.data.projectDirector);
-//                     // $("#projectDirector").val("ceshi1");
-//                     $("#state").val(data.data.state);
-//
-//                     var beginTime=FormatDateTime(data.data.beginTime);
-//                     $("#beginTime").val(beginTime);
-//                     var overTime=FormatDateTime(data.data.overTime);
-//                     $("#overTime").val(overTime);
-//                 }
-//             });
-//
-//         }
-//     });
-
-
-
 }
 
 function update() {
