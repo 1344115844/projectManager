@@ -106,22 +106,21 @@ function add() {
     formFile.append("upload_file", upload_file);
     var data = formFile;
 
-    var projectName="";
-    projectName=$("#projectName").val();
-    var projectNumber="";projectNumber=$("#projectNumber").val();
-    var projectSource="";projectSource=$("#projectSource").val();
-    var funds="";funds=$("#funds").val();
+    var projectName=$("#projectName").val();
+    var projectNumber=$("#projectNumber").val();
+    var projectSource=$("#projectSource").val();
+    var funds=$("#funds").val();
     funds=parseFloat(funds);
 
-    var isTeamwork="";isTeamwork=$('input[name="isTeamwork"]:checked').val();
+    var isTeamwork=$('#isTeamwork option:selected').val();
     isTeamwork=parseInt(isTeamwork);
-    var state="";state=$('#state option:selected').text();
-    var projectDirector="";projectDirector=$('#projectDirector option:selected').text();
-    var level="";level=$('input[name="level"]:checked').val();
+    var state=$('#state option:selected').text();
+    var projectDirector=$('#projectDirector option:selected').text();
+    var level=$('#level option:selected').val();
 
-    var beginTime ="";beginTime=$("#beginTime").val();
+    var beginTime=$("#beginTime").val();
     beginTime=convertDateFromString(beginTime);
-    var overTime ="";overTime=$("#overTime").val();
+    var overTime=$("#overTime").val();
     overTime=convertDateFromString(overTime);
 
     $.ajax({
@@ -240,11 +239,11 @@ function update() {
     var projectSource=$("#projectSource").val();
     var funds=$("#funds").val();
     funds=parseFloat(funds);
+
     var isTeamwork=$('#isTeamwork option:selected').val();
     isTeamwork=parseInt(isTeamwork);
-
-    var state=$('#state option:selected').val();
-    var projectDirector="";projectDirector=$('#projectDirector option:selected').text();
+    var state=$('#state option:selected').text();
+    var projectDirector=$('#projectDirector option:selected').text();
     var level=$('#level option:selected').val();
 
     var beginTime=$("#beginTime").val();

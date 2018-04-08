@@ -43,10 +43,37 @@
                 <input type="text" class="input-text" value="" placeholder="" id="projectNumber" name="projectNumber">
             </div>
         </div>
+
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目来源：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="projectSource" name="projectSource">
+            <label class="form-label col-xs-3">项目来源：</label>
+            <div class="col-xs-6">
+        <span class="select-box">
+        <select class="select" size="1" name="projectSource" id="projectSource">
+            <option value="高校古籍整理研究项目" >高校古籍整理研究项目</option>
+            <option value="国际合作研究项目" >国际合作研究项目</option>
+            <option value="国家科技计划项目" >国家科技计划项目</option>
+            <option value="国家社科基金单列学科项目" >国家社科基金单列学科项目</option>
+            <option value="国家社科基金学科项目" >国家社科基金学科项目</option>
+            <option value="国家自然科学基金项目" >国家自然科学基金项目</option>
+            <option value="教育部人文社科研究项目" >教育部人文社科研究项目</option>
+            <option value="企事业单位委托项目" >企事业单位委托项目</option>
+            <option value="省、部产学研项目" >省、部产学研项目</option>
+            <option value="省、市、自治区科技计划项目" >省、市、自治区科技计划项目</option>
+            <option value="省、市、自治区自然科学基金项目" >省、市、自治区自然科学基金项目</option>
+            <option value="省、市、自治区社科基金项目" >省、市、自治区社科基金项目</option>
+            <option value="省教育厅社科项目" >省教育厅社科项目</option>
+            <option value="省教育厅自然科学项目" >省教育厅自然科学项目</option>
+            <option value="市、厅（科技厅、教育厅除外）、局等政府部门项目" >市、厅（科技厅、教育厅除外）、局等政府部门项目</option>
+            <option value="外资项目" >外资项目</option>
+            <option value="学校教授或博士启动项目" >学校教授或博士启动项目</option>
+            <option value="学校理科项目" >学校理科项目</option>
+            <option value="学校社科项目" >学校社科项目</option>
+            <option value="与港、澳、台合作研究项目" >与港、澳、台合作研究项目</option>
+            <option value="中央其他部门社科专门项目" >中央其他部门社科专门项目</option>
+            <option value="中央其他部门自然科学专门项目" >中央其他部门自然科学专门项目</option>
+            <option value="其他项目" >其他项目</option>
+        </select>
+        </span>
             </div>
         </div>
         <div class="row cl">
@@ -62,86 +89,97 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目经费：</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>项目经费：（万元）</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="" placeholder="" id="funds" name="funds">
             </div>
+
         </div>
+
         <div class="row cl">
             <label class="form-label col-xs-3">项目级别：</label>
             <div class="col-xs-6">
-                    <span class="select-box">
-                        <select class="select" size="1" name="level" id="level">
-                            <option value="国家级" >国家级</option>
-                            <option value="部级" >部级</option>
-                            <option value="省级" >省级</option>
-                            <option value="厅级" >厅级</option>
-                            <option value="市级" >市级</option>
-                            <option value="校级" >校级</option>
-                        </select>
-                     </span>
+                <span class="select-box">
+                <select class="select" size="1" name="level" id="level">
+                    <option value="国家级" >国家级</option>
+                    <option value="部级" >部级</option>
+                    <option value="省级" >省级</option>
+                    <option value="厅级" >厅级</option>
+                    <option value="市级" >市级</option>
+                    <option value="校级" >校级</option>
+                </select>
+                </span>
             </div>
         </div>
+
         <div class="row cl">
             <label class="form-label col-xs-3">是否合作研究：</label>
             <div class="col-xs-6">
-                    <span class="select-box">
-                        <select class="select" size="1" name="isTeamwork" id="isTeamwork">
-                            <option value="0" >否</option>
-                            <option value="1" >是</option>
-                        </select>
-                     </span>
+            <span class="select-box">
+            <select class="select" size="1" name="isTeamwork" id="isTeamwork">
+                <option value="1" >是</option>
+                <option value="0" >否</option>
+
+            </select>
+            </span>
             </div>
         </div>
-            <br>
+        <br>
 
-            <div class="row cl">
-                <label class="form-label col-xs-3">项目状态：</label>
-                <div class="col-xs-6">
-                    <span class="select-box">
-                        <select class="select" size="1" name="state" id="state">
-                            <option value="" selected>选择项目状态</option>
-                            <option value="进行" >进行</option>
-                            <option value="完成" >完成</option>
-                            <option value="暂停" >暂停</option>
-                            <option value="撤销" >撤销</option>
-                        </select>
-                     </span>
-                </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3">项目状态：</label>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="state" id="state">
+                    <option value="" selected>选择项目状态</option>
+                    <option value="进行" >进行</option>
+                    <option value="完成" >完成</option>
+                    <option value="暂停" >暂停</option>
+                    <option value="撤销" >撤销</option>
+                </select>
+            </span>
             </div>
+        </div>
 
 
-            <div class="row cl">
-                <label class="form-label col-xs-3">项目负责人：</label>
-                <div class="col-xs-6">
+        <div class="row cl">
+            <label class="form-label col-xs-3">项目负责人：</label>
+            <div class="col-xs-6">
                 <span class="select-box">
                     <select class="select" size="1" name="projectDirector" id="projectDirector">
                     </select>
                 </span>
-                </div>
             </div>
+        </div>
 
 
-            <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
-                <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
 				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple id="file" name="file" class="input-file">
 				</span>
-                </div>
             </div>
-            <div class="row cl">
-                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                    <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
-                </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
             </div>
+        </div>
     </form>
     <br>
     <br>
     <div class="text-shadow">
         <p>说明：</p>
-        <p></p>
+        <p>国家级：国家自然科学基金委、全国哲学社科规划办、科技部批准立项的项目</p>
+        <p>部级：教育部及其他部委批准立项的项目</p>
+        <p>省级：科技厅、省哲学科规划办批准立项的项目</p>
+        <p>市级：科技局、市哲学社科规划办批准立项的项目</p>
+        <p>校级：韩山师范学院批准立项的项目</p>
+
+
+
     </div>
     <div class="text-shadow">
         <p>注意：</p>
