@@ -81,21 +81,17 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">会议类别：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="conferenceCategory" value="国际学术会议">
-                    <label for="cat1">国际学术会议</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="conferenceCategory" value="港澳台学术会议">
-                    <label for="cat2">港澳台学术会议</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="conferenceCategory" value="国内学术会议">
-                    <label for="cat3">国内学术会议</label>
-                </div>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="conferenceCategory" id="conferenceCategory">
+                    <option value="国际学术会议" >国际学术会议</option>
+                    <option value="港澳台学术会议" >港澳台学术会议</option>
+                    <option value="国内学术会议" >国内学术会议</option>
+                </select>
+            </span>
             </div>
         </div>
+
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
@@ -160,7 +156,7 @@ laydate.render({
 
             var place=$("#place").val();
             var hostUnit=$("#hostUnit").val();
-            var conferenceCategory=$('input[name="conferenceCategory"]:checked').val();
+            var conferenceCategory=$("#conferenceCategory").val();
             $.ajax({
 				type:"POST",
 				url: "/attendconference/uploadAttachment.do",
@@ -182,7 +178,7 @@ laydate.render({
                         success: function (data) {
                             var user=JSON.parse(data);
                             if (user.status ==200){
-                                layer.msg(user.msg, {icon: 1, time: 2000});
+                                alert(user.msg);
                                 window.close();
                                 window.parent.location.replace("/attendconference/list");
                             }else {

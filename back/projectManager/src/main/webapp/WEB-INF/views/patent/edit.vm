@@ -40,40 +40,29 @@
 
         <div class="row cl">
             <label class="form-label col-xs-3">专利排名：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="patentRank" value="第一">
-                    <label for="cat1">第一</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="patentRank" value="第二">
-                    <label for="cat2">第二</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat3" name="patentRank" value="第三">
-                    <label for="cat3">第三</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat4" name="patentRank" value="第四">
-                    <label for="cat4">第四</label>
-                </div>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="patentRank" id="patentRank">
+                    <option value="第一" >第一</option>
+                    <option value="第二" >第二</option>
+                    <option value="第三" >第三</option>
+                    <option value="第四" >第四</option>
+                </select>
+            </span>
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-3">类型：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="patentForm" value="第一">
-                    <label for="cat1">教学</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="patentForm" value="第二">
-                    <label for="cat2">科研</label>
-                </div>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="patentForm" id="patentForm">
+                    <option value="教学" >教学</option>
+                    <option value="科研" >科研</option>
+                </select>
+            </span>
             </div>
         </div>
-
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>授权机构：</label>
             <div class="formControls col-xs-8 col-sm-9">

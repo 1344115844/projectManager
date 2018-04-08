@@ -39,23 +39,15 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">编辑排名：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="editRank" value="第一">
-                    <label for="cat1">第一</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="editRank" value="第二">
-                    <label for="cat2">第二</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat3" name="editRank" value="第三">
-                    <label for="cat3">第三</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat4" name="editRank" value="第四">
-                    <label for="cat4">第四</label>
-                </div>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="editRank" id="editRank">
+                    <option value="第一" >第一</option>
+                    <option value="第二" >第二</option>
+                    <option value="第三" >第三</option>
+                    <option value="第四" >第四</option>
+                </select>
+            </span>
             </div>
         </div>
         <div class="row cl">

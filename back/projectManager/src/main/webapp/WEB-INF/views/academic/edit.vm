@@ -52,9 +52,16 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊物级别：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publicationLevel" name="username">
+            <label class="form-label col-xs-3">刊物级别：</label>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="publicationLevel" id="publicationLevel">
+                    <option value="第一" >第一</option>
+                    <option value="第二" >第二</option>
+                    <option value="第三" >第三</option>
+                    <option value="第四" >第四</option>
+                </select>
+            </span>
             </div>
         </div>
         <div class="row cl">
@@ -76,39 +83,32 @@
             </div>
         </div>
         <div class="row cl">
-        <label class="form-label col-xs-3">作者排名：</label>
-        <div class="formControls skin-minimal col-xs-5">
-            <div class="radio-box">
-                <input type="radio" id="rank1" name="rank">
-                <label for="rank1">第一</label>
-            </div>
-            <div class="radio-box">
-                <input type="radio" id="rank2" name="rank">
-                <label for="rank2">第二</label>
-            </div>
-            <div class="radio-box">
-                <input type="radio" id="sex-3" name="rank">
-                <label for="rank3">第三</label>
-            </div>
-            <div class="radio-box">
-                <input type="radio" id="rank4" name="rank">
-                <label for="sex-4">第四</label>
+            <label class="form-label col-xs-3">作者排名：</label>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="authorRank" id="authorRank">
+                    <option value="第一" >第一</option>
+                    <option value="第二" >第二</option>
+                    <option value="第三" >第三</option>
+                    <option value="第四" >第四</option>
+                </select>
+            </span>
             </div>
         </div>
-    </div>
         <div class="row cl">
             <label class="form-label col-xs-3">类别：</label>
-            <div class="formControls skin-minimal col-xs-5">
-                <div class="radio-box">
-                    <input type="radio" id="cat1" name="category">
-                    <label for="cat1">教学</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="cat2" name="category">
-                    <label for="cat1">科研</label>
-                </div>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="category" id="category">
+                    <option value="教学" >教学</option>
+                    <option value="科研" >科研</option>
+
+                </select>
+            </span>
             </div>
         </div>
+
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">证明附件：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
@@ -143,6 +143,8 @@
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
+<script type="text/javascript" src="/myjs/laydate/laydate.js"></script>
+
 <script type="text/javascript">
 
 
@@ -185,7 +187,7 @@ $(function () {
             var data = formFile;
 
             var acadId=$("#acadId").val();
-            acadId=parseInt(a)
+            acadId=parseInt(acadId)
 			var authorRank=$("#authorRank").val();
             var category=$("#category").val();
             var collectionSituation=$("#collectionSituation").val();

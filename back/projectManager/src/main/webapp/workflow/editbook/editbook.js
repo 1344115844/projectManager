@@ -100,7 +100,7 @@ function add() {
     var publishTime =$("#publishTime").val();
     publishTime=convertDateFromString(publishTime);
 
-    var editRank=$('input[name="editRank"]:checked').val();
+    var editRank=$('#editRank').val();
 
 
 
@@ -186,7 +186,7 @@ function update() {
     var publishTime =$("#publishTime").val();
     publishTime=convertDateFromString(publishTime);
 
-    var editRank=$('input[name="editRank"]:checked').val();
+    var editRank=$('#editRank').val();
 
     var fileId=null;
     //查看upload_file是否为空

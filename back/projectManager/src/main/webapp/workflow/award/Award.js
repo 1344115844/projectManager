@@ -97,8 +97,8 @@ function add() {
     var awardTime =$("#awardTime").val();
     awardTime=convertDateFromString(awardTime);
 
-    var awardLevel=$('input[name="awardLevel"]:checked').val();
-    var awardRank=$('input[name="awardRank"]:checked').val();
+    var awardLevel=$("#awardLevel").val();
+    var awardRank=$("#awardRank").val();
 
 
     $.ajax({
@@ -176,8 +176,8 @@ function update() {
     var awardTime =$("#awardTime").val();
     awardTime=convertDateFromString(awardTime);
 
-    var awardLevel=$('input[name="awardLevel"]:checked').val();
-    var awardRank=$('input[name="awardRank"]:checked').val();
+    var awardLevel=$("#awardLevel").val();
+    var awardRank=$("#awardRank").val();
 
     var fileId=null;
     //查看upload_file是否为空

@@ -94,7 +94,7 @@ function add() {
     var awardTime =$("#awardTime").val();
     awardTime=convertDateFromString(awardTime);
 
-    var rank=$('input[name="rank"]:checked').val();
+    var rank=$("#rank").val();
     var rightNum=$("#rightNum").val();
 
 
@@ -172,7 +172,7 @@ function update() {
     var awardTime =$("#awardTime").val();
     awardTime=convertDateFromString(awardTime);
 
-    var rank=$('input[name="rank"]:checked').val();
+    var rank=$("#rank").val();
     var rightNum=$("#rightNum").val();
 
     var fileId=null;
