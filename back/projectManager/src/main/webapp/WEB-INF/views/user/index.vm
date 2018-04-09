@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿    #set($projectname="/pm")
+    <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,22 +8,22 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="Bookmark" href="/favicon.ico">
-    <link rel="Shortcut Icon" href="/favicon.ico"/>
+    <link rel="Bookmark" href="$projectname/favicon.ico">
+    <link rel="Shortcut Icon" href="$projectname/favicon.ico"/>
 
-    <link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css"/>
-    <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/green/skin.css" id="skin"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/skin/green/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/style.css"/>
 
     <title>科研管理系统</title>
 </head>
 <body>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
-        <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">计算机学院科研管理系统</a>
-            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+        <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs" href="$projectname/aboutHui.shtml">计算机学院科研管理系统</a>
+            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="$projectname/aboutHui.shtml">H-ui</a>
             <span class="logo navbar-slogan f-l mr-10 hidden-xs">v0.1</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 
@@ -77,18 +78,18 @@
             <dt class="selected"><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd style="display :block">
                 <ul>
-                    <li><a data-href="/academic/list" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
-                    <li><a data-href="/academicreport/list" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
-                    <li><a data-href="/attendconference/list" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
-                    <li><a data-href="/award/list" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
-                    <li><a data-href="/copyright/list" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
-                    <li><a data-href="/editbook/list" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
-                    <li><a data-href="/investigate/list" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
-                    <li><a data-href="/patent/list" data-title="专利" href="javascript:void(0)">专利</a></li>
-                    <li><a data-href="/project/list" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
-                    <li><a data-href="/speech/list" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
-                    <li><a data-href="/study/list" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
-                    <li><a data-href="/unit/list" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
+                    <li><a data-href="$projectname/academic/list" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
+                    <li><a data-href="$projectname/academicreport/list" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
+                    <li><a data-href="$projectname/attendconference/list" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
+                    <li><a data-href="$projectname/award/list" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
+                    <li><a data-href="$projectname/copyright/list" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
+                    <li><a data-href="$projectname/editbook/list" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
+                    <li><a data-href="$projectname/investigate/list" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
+                    <li><a data-href="$projectname/patent/list" data-title="专利" href="javascript:void(0)">专利</a></li>
+                    <li><a data-href="$projectname/project/list" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
+                    <li><a data-href="$projectname/speech/list" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
+                    <li><a data-href="$projectname/study/list" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
+                    <li><a data-href="$projectname/unit/list" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
                 </ul>
             </dd>
         </dl>
@@ -111,7 +112,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的主页" data-href="/user/login">我的主页</span>
+                    <span title="我的主页" data-href="$projectname/user/login">我的主页</span>
                     <em></em></li>
             </ul>
         </div>
@@ -123,7 +124,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="/user/index/welcome"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="$projectname/user/index/welcome"></iframe>
         </div>
     </div>
 </section>
@@ -135,13 +136,13 @@
     </ul>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript" src="$projectname/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
     $(function () {
         $("body").Huitab({
@@ -210,9 +211,10 @@
             //ajax访问接口
             $.ajax({
                 type: "GET",
-                url: "/user/logout.do",
+                url: "$projectname/user/logout.do",
                 data: {},
                 success: function (data) {
+                    window.redirect("/pm/user/login");
                 }
             });
         });

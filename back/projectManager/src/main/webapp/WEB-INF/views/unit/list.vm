@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿    #set($projectname="/pm")
+    <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,22 +8,22 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="Bookmark" href="/favicon.ico">
-    <link rel="Shortcut Icon" href="/favicon.ico"/>
+    <link rel="Bookmark" href="$projectname/favicon.ico">
+    <link rel="Shortcut Icon" href="$projectname/favicon.ico"/>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="lib/html5shiv.js"></script>
     <script type="text/javascript" src="lib/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css"/>
-    <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/style.css"/>
 
-    <link rel="stylesheet" href="/myjs/paging/paging.css">
+    <link rel="stylesheet" href="$projectname/myjs/paging/paging.css">
 
-    <script type="text/javascript" src="/myjs/until/date.js"></script>
-    <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/until/parseUrl.js"></script>
 
     <!--[if IE 6]>
     <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
@@ -50,7 +51,7 @@
         <span class="l">
             <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i
                     class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="unit_add('添加记录','/unit/add')"
+            <a href="javascript:;" onclick="unit_add('添加记录','$projectname/unit/add')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
         <span id="total" class="r"> </span>
@@ -80,32 +81,25 @@
     </table>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
-<script src="/myjs/paging/unit_paging.js"></script>
-<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="$projectname/myjs/paging/unit_paging.js"></script>
+<script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
 
-<script type="text/javascript" src="/workflow/unit/unit.js"></script>
 
 
 
 <script type="text/javascript">
 
-
-    /*加载页面显示数据*/
-    // $(function () {
-    //     getData();
-    // }
-    // );
     $.ajax({
         type: "POST",
-        url: "/unit/selectByUserId.do",
+        url: "$projectname/unit/selectByUserId.do",
         success: function (data) {
             var data = JSON.parse(data);
             display(data.data.list);
@@ -155,3 +149,235 @@
 </script>
 </body>
 </html>
+    <script>
+
+
+        function getData() {
+            $.ajax({
+                type: "POST",
+                url: "/unit/selectByUserId.do",
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    display(data.data.list);
+                }
+            });
+        }
+
+        // function display(data) {
+        //     var str = "";
+        //     var tbody = window.document.getElementById("tbody");
+        //     var index =0;
+        //     for (i in data) {
+        //
+        //         index=parseInt(i)+1;
+        //         str += "<tr class='text-c'>" +
+        //             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
+        //             "<td name='id' width='40'>" + index + "</td>" +
+        //             "<td name='beginTime'width='150'>" + data[i].unitName + "</td>" +
+        //             "<td name='overTime' width='130'>" + data[i].hostUnit + "</td>" +
+        //             "<td name='unitForm' width='100'>" + data[i].duty + "</td>" +
+        //             "<td name='unitForm' width='100'>" + data[i].term + "</td>" +
+        //             "<td ><button  class='btn btn-primary radius ' value='"+data[i].unitId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+        //             "<button class=' btn btn-danger radius ' value='"+data[i].unitId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
+        //             "</tr>";
+        //     }
+        //
+        //     tbody.innerHTML = str;
+        // }
+
+        /**
+         *@author Veng Su
+         *@date 2018/4/4 20:05
+         *方法作用：跳转编辑页面
+         **/
+        function jumpEdit(id) {
+            var url="$projectname/unit/edit?id="+id;
+
+            layer_show('修改', url);
+        }
+
+        /**
+         *@author Veng Su
+         *@date 2018/4/4 20:05
+         *方法作用：删除记录
+         **/
+        function jumpDelete(id) {
+            var stuId=parseInt(id);
+            layer.confirm('确认要删除吗？',function () {
+                $.ajax({
+                    type:"POST",
+                    url:"$projectname/unit/delete.do",
+                    data:{"stuId":stuId},
+                    success:function (data) {
+                        data=JSON.parse(data);
+                        if(data.status==200){
+                            layer.msg(data.msg, {icon: 1, time: 3000});
+
+                        }else {
+                            layer.msg(data.msg, {icon: 2, time: 3000});
+                        }
+                        getData();
+
+                    }
+                });
+            });
+        }
+
+        /**
+         *@author Veng Su
+         *@date 2018/4/5 9:58
+         *方法作用：跳转add页面
+         **/
+        function unit_add(title, url, w, h) {
+            layer_show(title, url, w, h);
+        }
+
+        /**
+         *@author Veng Su
+         *@date 2018/4/5 22:21
+         *方法作用：add记录
+         **/
+        function add() {
+            var upload_file = document.getElementById("file").files[0];
+            var formFile = new FormData();
+            formFile.append("upload_file", upload_file);
+            var data = formFile;
+
+            var unitName=$("#unitName").val();
+            var hostUnit=$("#hostUnit").val();
+            var term=$("#term").val();
+            var duty=$("#duty").val();
+
+
+
+            $.ajax({
+                type:"POST",
+                url: "$projectname/unit/uploadAttachment.do",
+                data: data,
+                cache: false,//上传文件无需缓存
+                processData: false,//用于对data参数进行序列化处理 这里必须false
+                contentType: false,
+                success: function(data){
+                    data=JSON.parse(data);
+                    var fileId=data.data;
+                    fileId=parseInt(fileId);
+                    $.ajax({
+                        type:"POST",
+                        url:"$projectname/unit/add.do",
+                        data:{
+                            "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
+                            "fileId":fileId
+                        },
+                        success: function (data) {
+                            var user=JSON.parse(data);
+                            if (user.status ==200){
+                                alert(user.msg);
+                                window.parent.location.replace("$projectname/unit/list");
+                            }else {
+                                layer.msg(user.msg, {icon: 2, time: 2000});
+                            }
+                        }
+                    });
+                },
+                error:function () {
+                    layer.msg("必须上传证件",{icon: 3, time: 2000});
+                }
+            });
+        }
+
+
+        function selectData() {
+            var data = parseUrl();
+            var unitId=parseInt(data['id']);
+            $.ajax({
+                type:"POST",
+                url:"$projectname/unit/selectById.do",
+                data:{"unitId":unitId},
+                success:function (data) {
+                    var data = JSON.parse(data);
+                    $("#unitId").val(data.data.unitId);
+
+                    $("#unitName").val(data.data.unitName);
+                    $("#hostUnit").val(data.data.hostUnit);
+                    $("#term").val(data.data.term);
+                    $("#duty").val(data.data.duty);
+                }
+            });
+        }
+
+        function update() {
+
+            //设置data数据
+            var unitId=$("#unitId").val();
+            unitId=parseInt(unitId);
+
+            var upload_file = document.getElementById("file").files[0];
+            var formFile = new FormData();
+            formFile.append("upload_file", upload_file);
+            var data = formFile;
+
+            var unitName=$("#unitName").val();
+            var hostUnit=$("#hostUnit").val();
+            var term=$("#term").val();
+            var duty=$("#duty").val();
+
+            var fileId=null;
+            //查看upload_file是否为空
+            if(upload_file!=null) {
+                //不为空重新上传，拿到返回的fileid
+                $.ajax({
+                    type:"POST",
+                    url: "$projectname/unit/uploadAttachment.do",
+                    data: data,
+                    cache: false,//上传文件无需缓存
+                    processData: false,//用于对data参数进行序列化处理 这里必须false
+                    contentType: false,
+                    success: function(data){
+                        data=JSON.parse(data);
+                        var fileId=data.data;
+                        fileId=parseInt(fileId);
+                        $.ajax({
+                            type:"POST",
+                            url:"$projectname/unit/update.do",
+                            data:{
+                                "unitId":unitId,
+                                "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
+                                "fileId":fileId
+                            },
+                            success: function (data) {
+                                var user=JSON.parse(data);
+                                if (user.status ==200){
+                                    alert(user.msg);
+                                    window.parent.location.replace("$projectname/unit/list");
+                                }else {
+                                    layer.msg(user.msg, {icon: 2, time: 2000});
+                                }
+                            }
+                        });
+                    }
+                });
+            }else {
+
+                $.ajax({
+                    type:"POST",
+                    url:"$projectname/unit/update.do",
+                    data:{
+                        "unitId":unitId,
+                        "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
+                        "fileId":fileId
+                    },
+                    success: function (data) {
+                        var user=JSON.parse(data);
+                        if (user.status ==200){
+                            alert(user.msg);
+                            window.parent.location.replace("$projectname/unit/list");
+                        }else {
+                            layer.msg(user.msg, {icon: 2, time: 2000});
+                        }
+                    }
+                });
+            }
+        }
+
+
+    </script>

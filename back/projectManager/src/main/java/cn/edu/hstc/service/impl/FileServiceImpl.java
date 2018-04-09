@@ -44,7 +44,7 @@ public class FileServiceImpl implements FileService {
     * @Date: 2018/4/3 10:12
     */
     public JSONResponse<String> upload(MultipartFile file, String path) {
-//        if(file!=null) {
+        if(file!=null) {
             //检查文件是否为空
             if (file.getSize() == 0)
                 return JSONResponse.createByErrorMessage("附件为空");
@@ -77,9 +77,9 @@ public class FileServiceImpl implements FileService {
             }
 
             return JSONResponse.createBySuccess(url);
-//        }else{
-//        return JSONResponse.createByErrorMessage("附件为空");
-//        }
+        }else{
+        return JSONResponse.createByErrorMessage("附件为空");
+        }
     }
 
     /**

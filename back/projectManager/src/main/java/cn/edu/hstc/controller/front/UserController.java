@@ -74,7 +74,7 @@ public class UserController {
      *@return cn.edu.hstc.common.JSONResponse<java.lang.String>
      *方法作用：退出登录
      **/
-    @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout.do")
     @ResponseBody
     public JSONResponse<String> logout(HttpSession session) {
         session.removeAttribute("currentUser");

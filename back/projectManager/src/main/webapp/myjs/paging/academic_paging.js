@@ -125,17 +125,7 @@
     }
 })(jQuery, window, document);
 
-function testPage(pageNum){
-    $.ajax({
-        type: "POST",
-        url: "/academic/selectByUserId.do",
-        data:{"pageNum":pageNum},
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list);
-        }
-    });
-}
+
 function display(data) {
     console.log(data);
     var str = "";

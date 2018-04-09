@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿    #set($projectname="/pm")<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,21 +7,21 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="Bookmark" href="/favicon.ico">
-    <link rel="Shortcut Icon" href="/favicon.ico"/>
+    <link rel="Bookmark" href="$projectname/favicon.ico">
+    <link rel="Shortcut Icon" href="$projectname/favicon.ico"/>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="lib/html5shiv.js"></script>
     <script type="text/javascript" src="lib/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css"/>
-    <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin"/>
-    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css"/>
-    <link rel="stylesheet" href="/myjs/paging/paging.css">
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/style.css"/>
+    <link rel="stylesheet" href="$projectname/myjs/paging/paging.css">
 
-    <script type="text/javascript" src="/myjs/until/date.js"></script>
-    <script type="text/javascript" src="/myjs/until/parseUrl.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/until/parseUrl.js"></script>
 
     <!--[if IE 6]>
     <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
@@ -49,7 +49,7 @@
         <span class="l">
             <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i
                     class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="academicreport_add('添加记录','/academicreport/add')"
+            <a href="javascript:;" onclick="academicreport_add('添加记录','$projectname/academicreport/add')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
         <span id="total" class="r"> </span>
@@ -80,16 +80,16 @@
     </table>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
-<script src="/myjs/paging/academicreport_paging.js"></script>
-<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="$projectname/myjs/paging/academicreport_paging.js"></script>
+<script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
 
@@ -97,7 +97,7 @@
     $(function () {
         $.ajax({
             type: "POST",
-            url: "/academicreport/selectByUserId.do",
+            url: "$projectname/academicreport/selectByUserId.do",
             success: function (data) {
                 var data = JSON.parse(data);
                 display(data.data.list);
@@ -149,7 +149,7 @@
      *方法作用：跳转编辑页面
      **/
 function jumpEdit(id) {
-    var url="/academicreport/edit?id="+id;
+    var url="$projectname/academicreport/edit?id="+id;
 
     layer_show('修改', url);
 }
@@ -163,7 +163,7 @@ function jumpDelete(id) {
     layer.confirm('确认要删除吗？',function () {
         $.ajax({
             type:"POST",
-            url:"/academicreport/delete.do",
+            url:"$projectname/academicreport/delete.do",
             data:{"repId":repId},
             success:function (data) {
                 data=JSON.parse(data);

@@ -162,7 +162,7 @@ public class EditBookController {
         String username = user.getUsername();
         Integer userId = user.getUserId();
         String path = request.getSession().getServletContext().getRealPath("uploads")  + "\\"+username  + "\\editbook\\";
-        path=path.substring(0,path.indexOf("target"))+"src\\main\\webapp\\"+path.substring(path.indexOf("uploads"));
+//        path=path.substring(0,path.indexOf("target"))+"src\\main\\webapp\\"+path.substring(path.indexOf("uploads"));
         JSONResponse<String> upd = fileService.upload(file, path);
         if (!upd.isSuccess())//若上传出错
             return upd;

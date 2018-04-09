@@ -26,7 +26,7 @@ public class SessionInterceptor implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String uri = request.getRequestURI();
-        if((uri.indexOf("login")>=0)||(uri.indexOf("error")>=0)||(uri.indexOf("static")>=0)||(uri.indexOf("lib")>=0)||(uri.indexOf("myjs")>=0)||(uri.indexOf("uploads")>=0)||(uri.indexOf("workflow")>=0)){
+        if((uri.indexOf("login")>=0)||(uri.indexOf("error")>=0)||(uri.indexOf("static")>=0)||(uri.indexOf("lib")>=0)||(uri.indexOf("myjs")>=0)||(uri.indexOf("uploads")>=0)){
             return true;
         }
         HttpSession session = request.getSession();
@@ -35,7 +35,7 @@ public class SessionInterceptor implements HandlerInterceptor{
             return true;
         }
 //        转发到登录
-        request.getRequestDispatcher("/user/login").forward(request,response);
+        request.getRequestDispatcher("localhost:8080/pm/user/login").forward(request,response);
         return false;
     }
 
