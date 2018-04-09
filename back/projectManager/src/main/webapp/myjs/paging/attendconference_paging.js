@@ -125,17 +125,6 @@
     }
 })(jQuery, window, document);
 
-function testPage(pageNum){
-    $.ajax({
-        type: "POST",
-        url: "/attendconference/selectByUserId.do",
-        data:{"pageNum":pageNum},
-        success: function (data) {
-            var data = JSON.parse(data);
-            display(data.data.list);
-        }
-    });
-}
 function display(data) {
     var str = "";
     var tbody = window.document.getElementById("tbody");

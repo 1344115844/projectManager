@@ -157,7 +157,7 @@
         function getData() {
             $.ajax({
                 type: "POST",
-                url: "/copyright/selectByUserId.do",
+                url: "$projectnamecopyright/selectByUserId.do",
                 success: function (data) {
                     var data = JSON.parse(data);
                     display(data.data.list);
@@ -384,6 +384,17 @@
                     }
                 });
             }
+        }
+        function testPage(pageNum){
+            $.ajax({
+                type: "POST",
+                url: "$projectname/copyright/selectByUserId.do",
+                data:{"pageNum":pageNum},
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    display(data.data.list);
+                }
+            });
         }
 
     </script>

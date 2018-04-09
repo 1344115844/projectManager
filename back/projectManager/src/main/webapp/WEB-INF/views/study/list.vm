@@ -391,5 +391,15 @@
             }
         }
 
-
+        function testPage(pageNum){
+            $.ajax({
+                type: "POST",
+                url: "$projectname/study/selectByUserId.do",
+                data:{"pageNum":pageNum},
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    display(data.data.list);
+                }
+            });
+        }
     </script>

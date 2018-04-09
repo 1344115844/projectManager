@@ -199,7 +199,7 @@ function jumpDelete(id) {
     function testPage(pageNum){
         $.ajax({
             type: "POST",
-            url: "/academic/selectByUserId.do",
+            url: "$projectname/academic/selectByUserId.do",
             data:{"pageNum":pageNum},
             success: function (data) {
                 var data = JSON.parse(data);

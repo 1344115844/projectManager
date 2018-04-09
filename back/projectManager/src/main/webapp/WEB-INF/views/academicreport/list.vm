@@ -182,6 +182,20 @@ function jumpDelete(id) {
     function academicreport_add(title, url, w, h) {
         layer_show(title, url, w, h);
     }
+
+
+    function testPage(pageNum){
+        $.ajax({
+            type: "POST",
+            url: "$projectname/academicreport/selectByUserId.do",
+            data:{"pageNum":pageNum},
+            success: function (data) {
+                var data = JSON.parse(data);
+                display(data.data.list);
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

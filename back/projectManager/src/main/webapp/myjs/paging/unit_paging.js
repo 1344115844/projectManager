@@ -128,7 +128,7 @@
 function testPage(pageNum){
     $.ajax({
         type: "POST",
-        url: "/unit/selectByUserId.do",
+        url: "$projectname/unit/selectByUserId.do",
         data:{"pageNum":pageNum},
         success: function (data) {
             var data = JSON.parse(data);

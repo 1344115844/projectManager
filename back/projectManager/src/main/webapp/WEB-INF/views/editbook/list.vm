@@ -402,4 +402,15 @@
                 });
             }
         }
+        function testPage(pageNum){
+            $.ajax({
+                type: "POST",
+                url: "$projectname/editbook/selectByUserId.do",
+                data:{"pageNum":pageNum},
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    display(data.data.list);
+                }
+            });
+        }
     </script>
