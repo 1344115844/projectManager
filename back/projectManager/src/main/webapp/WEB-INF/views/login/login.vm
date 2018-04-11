@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE HTML>
 ##引入config的配置
-    #set($projectname="/pm")
+    #set($projectname="")
 
 <html>
 <head>
