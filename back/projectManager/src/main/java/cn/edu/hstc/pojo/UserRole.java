@@ -2,10 +2,10 @@ package cn.edu.hstc.pojo;
 
 import java.io.Serializable;
 
-public class Authority implements Serializable {
+public class UserRole implements Serializable {
     private Integer userId;
 
-    private Integer register;
+    private Integer roleId;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,11 +17,11 @@ public class Authority implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getRegister() {
-        return register;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRegister(Integer register) {
-        this.register = register;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }
