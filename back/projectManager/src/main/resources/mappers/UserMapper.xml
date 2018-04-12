@@ -204,7 +204,7 @@
 
     <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     select
-    *
+        <include refid="Base_Column_List"/>
     from user
     where username = #{username}
     and password = #{password}
