@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -144,5 +145,20 @@ public class UserServiceImpl implements UserService {
     public JSONResponse<List> selectAllUser() {
         ArrayList<User> users=userMapper.selectAll();
         return JSONResponse.createBySuccess("sucess",users);
+    }
+
+    @Override
+    public Set<String> getRoles(String username) {
+        return null;
+    }
+
+    @Override
+    public Set<String> getPermissions(String username) {
+        return null;
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return null;
     }
 }

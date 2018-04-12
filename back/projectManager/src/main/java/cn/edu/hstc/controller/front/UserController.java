@@ -179,5 +179,18 @@ public class UserController {
         return "/user/welcome";
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/12 8:02
+     *方法作用：拿到用户名
+     **/
+    @RequestMapping("/getUsername")
+    @ResponseBody
+    public JSONResponse<String> getUsername(HttpSession session){
+       User user=(User) session.getAttribute("currentUser");
+        String username=user.getName();
 
+       return   JSONResponse.createBySuccess("success",username);
+
+    }
 }

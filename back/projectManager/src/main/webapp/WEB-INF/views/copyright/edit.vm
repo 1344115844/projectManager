@@ -100,7 +100,7 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 
-<script type="text/javascript" src="$projectname/myjs/until/parseUrl.js"></script>
+<script type="text/javascript" src="$projectname/myjs/until/parseurl.js"></script>
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 

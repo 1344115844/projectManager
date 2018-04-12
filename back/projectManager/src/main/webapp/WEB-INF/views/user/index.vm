@@ -31,7 +31,7 @@
                 <ul class="cl">
                     <li>普通成员</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" id="username"  class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a class="logout" href="">切换账户</a></li>
                             <li><a class="logout" href="">退出</a></li>
@@ -140,6 +140,7 @@
 <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$projectname/myjs/until/username.js"></script>
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="$projectname/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
@@ -207,6 +208,7 @@
     ##切换用户/退出登录
     ##	对logout类的点击事件做访问logou.do接口消除session
     $(function () {
+        getUsername();
         $(".logout").click(function () {
             //ajax访问接口
             $.ajax({

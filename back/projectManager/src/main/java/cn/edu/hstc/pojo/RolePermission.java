@@ -2,10 +2,10 @@ package cn.edu.hstc.pojo;
 
 import java.io.Serializable;
 
-public class Role implements Serializable {
+public class RolePermission implements Serializable {
     private Integer roleId;
 
-    private String roleName;
+    private Integer perId;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,11 +17,11 @@ public class Role implements Serializable {
         this.roleId = roleId;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public Integer getPerId() {
+        return perId;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
+    public void setPerId(Integer perId) {
+        this.perId = perId;
     }
 }
