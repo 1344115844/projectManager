@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         //用户名还未被注册，可以使用
         //user.setRole(xxx);为用户设置角色
         //密码加密
-        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        user.setPassword(MD5Util.encrypt(user.getUsername(),user.getPassword()));
         //添加到数据库
         int reg = userMapper.insertSelective(user);
         if (reg == 1) {
@@ -149,16 +149,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Set<String> getRoles(String username) {
-        return null;
+        return userMapper.getRoles(username);
     }
 
     @Override
     public Set<String> getPermissions(String username) {
-        return null;
+        return userMapper.getPermissions(username);
     }
 
     @Override
     public User getByUsername(String username) {
-        return null;
+        return userMapper.getByUsername(username);
     }
 }

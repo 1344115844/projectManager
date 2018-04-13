@@ -48,11 +48,11 @@
                 /uploads/**=anon
                 /user/login*=anon
                 <!--&lt;!&ndash;/user/register*=anon&ndash;&gt;-->
-                <!--&lt;!&ndash;/user/student*/**=roles[teacher]&ndash;&gt;-->
+                <!--/user/student*/**=roles[teacher]-->
                 <!--&lt;!&ndash;/user/teacher*/**=perms["user:create"]&ndash;&gt;-->
-                <!--/academic/**=perms["academic:*"]-->
-                <!--/user/logout*=logout-->
-                <!--/**=authc-->
+                <!--/**=roles["普通用户"]-->
+                /user/logout*=logout
+                /**=authc
 
             </value>
         </property>
