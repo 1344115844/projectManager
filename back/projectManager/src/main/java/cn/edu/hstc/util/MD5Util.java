@@ -88,7 +88,7 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String md=MD5Util.encrypt("whl","jjj");
+        String md=MD5Util.encrypt("mym","jjj");
         System.out.println(md);
     }
 }

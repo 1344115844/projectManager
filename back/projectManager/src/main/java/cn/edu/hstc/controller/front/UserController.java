@@ -42,7 +42,18 @@ public class UserController {
  **/
     @RequestMapping("/index")
     public String show() {
-        return "/user/index";
+
+        Subject currentUser= SecurityUtils.getSubject();
+        if(currentUser.hasRole("administrator")){
+//拥有角色administrator
+            return "/admin/index";
+        } else if(currentUser.hasRole("user")){
+//没有角色处理
+            return "/user/index";
+        }else {
+            return "404";
+        }
+
     }
 
     @RequestMapping("/login")

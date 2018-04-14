@@ -1,4 +1,5 @@
-﻿    #set($projectname="")<!DOCTYPE HTML>
+﻿    #set($projectname="")
+    <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -28,9 +29,9 @@
 
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
-                    <li>超级管理员</li>
+                    <li>管理员</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" id="username"  class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a class="logout" href="">切换账户</a></li>
                             <li><a class="logout" href="">退出</a></li>
@@ -55,7 +56,6 @@
 </header>
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
-
         <dl id="menu-member">
             <dt><i class="Hui-iconfont">&#xe60d;</i> 成员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -74,35 +74,34 @@
                 </ul>
             </dd>
         </dl>
-
         <dl id="menu-data">
-            <dt><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
+            <dt class="selected"><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd style="display :block">
                 <ul>
-                    <li><a data-href="admin-role.html" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
-                    <li><a data-href="admin-permission.html" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
-                    <li><a data-href="admin-list.html" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
-                    <li><a data-href="admin-list.html" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
-                    <li><a data-href="admin-list.html" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
-                    <li><a data-href="admin-list.html" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
-                    <li><a data-href="admin-list.html" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
-                    <li><a data-href="admin-list.html" data-title="专利" href="javascript:void(0)">专利</a></li>
-                    <li><a data-href="admin-list.html" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
-                    <li><a data-href="admin-list.html" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
-                    <li><a data-href="admin-list.html" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
-                    <li><a data-href="admin-list.html" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
+                    <li><a data-href="$projectname/academic/list" data-title="学术论文" href="javascript:void(0)">学术论文</a></li>
+                    <li><a data-href="$projectname/academicreport/list" data-title="学术报告" href="javascript:void(0)">学术报告</a></li>
+                    <li><a data-href="$projectname/attendconference/list" data-title="参加学术会议" href="javascript:void(0)">参加学术会议</a></li>
+                    <li><a data-href="$projectname/award/list" data-title="获奖信息" href="javascript:void(0)">获奖信息</a></li>
+                    <li><a data-href="$projectname/copyright/list" data-title="软件著作权" href="javascript:void(0)">软件著作权</a></li>
+                    <li><a data-href="$projectname/editbook/list" data-title="参与教材" href="javascript:void(0)">参与教材</a></li>
+                    <li><a data-href="$projectname/investigate/list" data-title="外出考察" href="javascript:void(0)">外出考察</a></li>
+                    <li><a data-href="$projectname/patent/list" data-title="专利" href="javascript:void(0)">专利</a></li>
+                    <li><a data-href="$projectname/project/list" data-title="科研项目" href="javascript:void(0)">科研项目</a></li>
+                    <li><a data-href="$projectname/speech/list" data-title="受聘讲学" href="javascript:void(0)">受聘讲学</a></li>
+                    <li><a data-href="$projectname/study/list" data-title="进修学习" href="javascript:void(0)">进修学习</a></li>
+                    <li><a data-href="$projectname/unit/list" data-title="学术团体" href="javascript:void(0)">学术团体</a></li>
                 </ul>
             </dd>
         </dl>
 
-        <dl id="menu-picture">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 附件管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="picture-list.html" data-title="附件管理" href="javascript:void(0)">附件管理</a></li>
-                </ul>
-            </dd>
-        </dl>
+##        <dl id="menu-picture">
+##            <dt><i class="Hui-iconfont">&#xe613;</i> 附件管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+##            <dd>
+##                <ul>
+##                    <li><a data-href="picture-list.html" data-title="附件管理" href="javascript:void(0)">附件管理</a></li>
+##                </ul>
+##            </dd>
+##        </dl>
     </div>
 
 </aside>
@@ -125,7 +124,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="http://www.hstc.edu.cn"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="$projectname/user/index/welcome"></iframe>
         </div>
     </div>
 </section>
@@ -141,6 +140,7 @@
 <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$projectname/myjs/until/username.js"></script>
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="$projectname/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
@@ -208,6 +208,7 @@
     ##切换用户/退出登录
     ##	对logout类的点击事件做访问logou.do接口消除session
     $(function () {
+        getUsername();
         $(".logout").click(function () {
             //ajax访问接口
             $.ajax({
@@ -215,6 +216,7 @@
                 url: "$projectname/user/logout.do",
                 data: {},
                 success: function (data) {
+                    window.redirect("/pm/user/login");
                 }
             });
         });

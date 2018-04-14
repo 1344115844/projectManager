@@ -21,6 +21,13 @@
     <context:component-scan base-package="cn.edu.hstc" annotation-config="true"/>
 
 
+<!--开启shiro注解-->
+    <bean id="defaultAdvisorAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <!--强制使用cglib创建Action的代理对象-->
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+    <!--切面类-->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
 
     <!--自定义Realm-->
     <bean id="myRealm" class="cn.edu.hstc.shiro.MyRealm"/>
