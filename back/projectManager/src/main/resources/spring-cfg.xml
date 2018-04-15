@@ -21,6 +21,52 @@
     <context:component-scan base-package="cn.edu.hstc" annotation-config="true"/>
 
 
+<!--开启shiro注解-->
+    <bean id="defaultAdvisorAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <!--强制使用cglib创建Action的代理对象-->
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+    <!--切面类-->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
+
+    <!--自定义Realm-->
+    <bean id="myRealm" class="cn.edu.hstc.shiro.MyRealm"/>
+
+    <!--安全管理-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"></property>
+    </bean>
+
+    <!--shiro 过滤器-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- Shiro过滤器的核心安全接口，这个属性是必须的-->
+        <property name="securityManager" ref="securityManager"/>
+        <!--身份认证失败，则跳转到登录页面的配置-->
+        <property name="loginUrl" value="/user/login"/>
+        <!--权限认证失败，则跳转到指定页面-->
+        <property name="unauthorizedUrl" value="/user/login"/>
+        <!-- Shiro连接约束配置，即过滤链的定义-->
+        <property name="filterChainDefinitions">
+            <value>
+                /static/**=anon
+                /error/**=anon
+                /lib/**=anon
+                /myjs/**=anon
+                /uploads/**=anon
+                /user/login*=anon
+                <!--&lt;!&ndash;/user/register*=anon&ndash;&gt;-->
+                <!--/user/student*/**=roles[teacher]-->
+                <!--&lt;!&ndash;/user/teacher*/**=perms["user:create"]&ndash;&gt;-->
+                <!--/**=roles["普通用户"]-->
+                /user/logout*=logout
+                /**=authc
+
+            </value>
+        </property>
+    </bean>
+
+
+
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
 

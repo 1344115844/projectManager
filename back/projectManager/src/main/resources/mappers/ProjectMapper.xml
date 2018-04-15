@@ -18,6 +18,9 @@
     <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     pro_id, project_name, project_number, project_source, begin_time, over_time, funds,
@@ -223,10 +226,26 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from project
+SELECT
+	project.begin_time,
+	project.deleted,
+	project.file_id,
+	project.funds,
+	project.is_teamwork,
+	project.`level`,
+	project.over_time,
+	project.project_director,
+	project.project_name,
+	project.project_number,
+	project.project_source,
+	project.pro_id,
+	project.state,
+	f.url
+FROM
+	project
+JOIN filepath AS f ON f.file_id = project.file_id
     where
-    user_id=#{user_id}
+    project.user_id=#{user_id}
   </select>
 
   <select id="getProjectCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

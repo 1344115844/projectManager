@@ -17,7 +17,11 @@
     <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
+
   <sql id="Base_Column_List">
     acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level,
     periodical, publish_journals, collection_situation, author_rank, category, user_id,
@@ -212,10 +216,24 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from academic
-    where
-    user_id=#{user_id}
+    SELECT
+	acad.acad_id,
+	acad.deleted,
+	acad.thesis_name,
+	acad.novon,
+	acad.releasing_code,
+	acad.publication_level,
+	acad.publish_journals,
+	acad.periodical,
+	acad.collection_situation,
+	acad.author_rank,
+	acad.category,
+	f.url
+    FROM
+	academic AS acad
+    JOIN filepath AS f ON f.file_id = acad.file_id
+    WHERE
+    acad.user_id=#{user_id}
   </select>
 
   <select id="getAcademicCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

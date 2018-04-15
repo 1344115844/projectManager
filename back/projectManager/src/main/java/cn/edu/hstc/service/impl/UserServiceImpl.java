@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
         //用户名还未被注册，可以使用
         //user.setRole(xxx);为用户设置角色
         //密码加密
-        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        user.setPassword(MD5Util.encrypt(user.getUsername(),user.getPassword()));
         //添加到数据库
         int reg = userMapper.insertSelective(user);
         if (reg == 1) {
@@ -144,5 +145,20 @@ public class UserServiceImpl implements UserService {
     public JSONResponse<List> selectAllUser() {
         ArrayList<User> users=userMapper.selectAll();
         return JSONResponse.createBySuccess("sucess",users);
+    }
+
+    @Override
+    public Set<String> getRoles(String username) {
+        return userMapper.getRoles(username);
+    }
+
+    @Override
+    public Set<String> getPermissions(String username) {
+        return userMapper.getPermissions(username);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return userMapper.getByUsername(username);
     }
 }

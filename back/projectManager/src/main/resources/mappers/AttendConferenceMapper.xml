@@ -14,6 +14,9 @@
     <result column="conference_category" jdbcType="VARCHAR" property="conferenceCategory" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     conf_id, create_time, update_time, deleted, conference_name, paper_title, time, place,
@@ -176,10 +179,21 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from attendconference
+   SELECT
+	attc.conference_category,
+	attc.conference_name,
+	attc.conf_id,
+	attc.file_id,
+	attc.host_unit,
+	attc.paper_title,
+	attc.place,
+	attc.time,
+	f.url
+FROM
+	attendconference AS attc
+JOIN filepath AS f ON f.file_id = attc.file_id
     where
-    user_id=#{user_id}
+    attc.user_id=#{user_id}
   </select>
 
   <select id="getConferenceCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

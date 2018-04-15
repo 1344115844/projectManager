@@ -1,5 +1,5 @@
 <!--_meta 作为公共模版分离出去-->
-#set($projectname="")
+#set($projectname="/pm")
 
 <!DOCTYPE HTML>
 <html>
@@ -45,19 +45,19 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="thesisName" name="username">
+                <input type="text" class="input-text" value="" placeholder="" required="required" id="thesisName" name="thesisName">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊物名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="novon" name="username">
+                <input type="text" class="input-text" value="" placeholder="" required="required" id="novon" name="novon">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发行代码：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="releasingCode" name="username">
+                <input type="text" class="input-text" value="" placeholder="" required="required" id="releasingCode" name="releasingCode">
             </div>
         </div>
 
@@ -80,19 +80,19 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刊期：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="periodical" name="username">
+                <input type="text" class="input-text" value="" placeholder="" required="required" id="periodical" name="periodical">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收录情况：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text" value="" placeholder="" id="collectionSituation" name="username">
+                <input type="text"  class="input-text" value="" placeholder="" required="required" id="collectionSituation" name="collectionSituation">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发表刊物：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publishJournals" name="username">
+                <input type="text" class="input-text" value="" placeholder="" required="required" id="publishJournals" name="publishJournals">
             </div>
         </div>
         <div class="row cl">
@@ -126,10 +126,19 @@
             <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
 				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
-				<input type="file" multiple id="file" name="file" class="input-file">
+				<input type="file" multiple id="file" name="file" class="input-file" onchange="previewImg(this,'img1')">
+
 				</span>
 			</div>
         </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">预览：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+            <img  width="140" height="140" id="img1" />
+            </div>
+        </div>
+
+
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -149,11 +158,14 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="$projectname/myjs/previewimage/previewimg.js"></script>
 <script type="text/javascript">
+
 
 //ajax提交数据
 	$("#submit").click(
 	    function () {
+
             var upload_file = document.getElementById("file").files[0];
             var formFile = new FormData();
             formFile.append("upload_file", upload_file);
@@ -178,28 +190,38 @@
                 contentType: false,
 				success: function(data){
 				    data=JSON.parse(data);
-				    var fileId=data.data;
-                    $.ajax({
-                        type:"POST",
-                        url:"$projectname/academic/add.do",
-                        data:{
-                            "authorRank":authorRank,
-                            "category":category,"collectionSituation":collectionSituation,
-                            "novon":novon,"periodical":periodical,
-                            "publicationLevel":publicationLevel, "publishJournals":publishJournals,
-                            "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
-                        },
-                        success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                window.close();
-                                window.parent.location.replace("$projectname/academic/list");
-                            }else {
-                                layer.msg(user.msg, {icon: 2, time: 2000});
+				    if(data.status==200){
+                        var fileId=data.data;
+                        $.ajax({
+                            type:"POST",
+                            url:"$projectname/academic/add.do",
+                            data:{
+                                "authorRank":authorRank,
+                                "category":category,"collectionSituation":collectionSituation,
+                                "novon":novon,"periodical":periodical,
+                                "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                                "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+                            },
+                            success: function (data) {
+                                var user=JSON.parse(data);
+                                if (user.status ==200){
+                                    alert(user.msg);
+                                    window.close();
+                                    window.parent.location.replace("$projectname/academic/list");
+                                }else {
+                                    layer.msg(user.msg, {icon: 2, time: 2000});
+                                }
+                            },
+                            error:function () {
+                                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
                             }
-                        }
-                    });
+                        });
+
+                    }else {
+                        layer.msg(data.msg,{icon:2,time:3000});
+                    }
+
+
 				},
                 error:function () {
                     layer.msg("必须上传证件",{icon: 3, time: 2000});

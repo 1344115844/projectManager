@@ -14,6 +14,9 @@
     <result column="patent_num" jdbcType="VARCHAR" property="patentNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     tent_id, deleted, update_time, create_time, patent_tame, patent_rank, patent_form, authority,
@@ -176,10 +179,22 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from patent
+   SELECT
+	patent.authority,
+	patent.deleted,
+	patent.file_id,
+	patent.patent_form,
+	patent.patent_num,
+	patent.patent_rank,
+	patent.patent_tame,
+	patent.registration_enterprise,
+	patent.tent_id,
+	f.url
+FROM
+	patent
+JOIN filepath AS f ON f.file_id = patent.file_id
     where
-    user_id=#{user_id}
+    patent.user_id=#{user_id}
   </select>
 
   <select id="getPatentCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

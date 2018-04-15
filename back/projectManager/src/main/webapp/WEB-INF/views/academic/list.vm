@@ -1,4 +1,4 @@
-﻿    #set($projectname="")
+﻿    #set($projectname="/pm")
     <!DOCTYPE HTML>
 <html>
 <head>
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="$projectname/myjs/paging/paging.css">
 
     <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
-    <script type="text/javascript" src="$projectname/myjs/until/parseUrl.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/until/parseurl.js"></script>
     <!--[if IE 6]>
     <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
     <script>DD_belatedPNG.fix('*');</script>
@@ -61,18 +61,19 @@
             <th scope="col" colspan="12">论文列表</th>
         </tr>
         <tr class="text-c">
-            <th width="25"><input type="checkbox" name="" value=""></th>
-            <th width="40">ID</th>
-            <th width="150">论文名称</th>
-            <th width="90">刊物名称</th>
-            <th width="150">发行代码</th>
+            <th ><input type="checkbox" name="" value=""></th>
+            <th >ID</th>
+            <th >论文名称</th>
+            <th >刊物名称</th>
+            <th >发行代码</th>
             <th>刊物级别</th>
-            <th width="130">刊期</th>
-            <th width="130">收录情况</th>
-            <th width="100">发表刊物</th>
-            <th width="100">作者排名</th>
-            <th width="100">类别</th>
-            <th width="100">操作</th>
+            <th >刊期</th>
+            <th >收录情况</th>
+            <th >发表刊物</th>
+            <th >作者排名</th>
+            <th >类别</th>
+            <th >附件</th>
+            <th >操作</th>
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -94,14 +95,15 @@
 <script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="$projectname/myjs/showimg.js"></script>
 
+<script type="text/javascript">
 
     /*加载页面显示数据*/
     $(function () {
         $.ajax({
             type: "POST",
-            url: "$projectname/academic/selectByUserId.do",
+                url: "$projectname/academic/selectByUserId.do",
             success: function (data) {
                 var data = JSON.parse(data);
                 display(data.data.list);
@@ -131,22 +133,25 @@
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
                     "<td name='id' width='40'>" + index + "</td>" +
-                    "<td name='thesisName'width='150'>" + data[i].thesisName + "</td>" +
+                    "<td name='thesisName'width=''>" + data[i].thesisName + "</td>" +
                     "<td name='novon'>" + data[i].novon + "</td>" +
-                    "<td name='releasingCode' width='130'>" + data[i].releasingCode + "</td>" +
-                    "<td name='publicationLevel' width='100'>" + data[i].publicationLevel + "</td>" +
-                    "<td name='periodical' width='100'>" + data[i].periodical + "</td>" +
-                    "<td name='periodical' width='100'>" + data[i].collectionSituation + "</td>" +
-                    "<td name='publishJournals' width='100'>" + data[i].publishJournals + "</td>" +
-                    "<td name='authorRank' width='100'>" + data[i].authorRank + "</td>" +
-                    "<td name='category' width='100'>" + data[i].category + "</td>" +
-                    "<td ><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+                    "<td name='releasingCode' width=''>" + data[i].releasingCode + "</td>" +
+                    "<td name='publicationLevel' width=''>" + data[i].publicationLevel + "</td>" +
+                    "<td name='periodical' width=''>" + data[i].periodical + "</td>" +
+                    "<td name='periodical' width=''>" + data[i].collectionSituation + "</td>" +
+                    "<td name='publishJournals' width=''>" + data[i].publishJournals + "</td>" +
+                    "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
+                    "<td name='category' width=''>" + data[i].category + "</td>" +
+
+                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
+                    "<td><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].acadId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                     "</tr>";
         }
 
         tbody.innerHTML = str;
     };
+
 
     /**
      *@author Veng Su

@@ -34,8 +34,18 @@ public class Academic implements Serializable {
 
     private Integer fileId;
 
+    private Filepath filepath;
+
     private static final long serialVersionUID = 1L;
 
+
+    public Filepath getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(Filepath filepath) {
+        this.filepath = filepath;
+    }
     public Integer getAcadId() {
         return acadId;
     }

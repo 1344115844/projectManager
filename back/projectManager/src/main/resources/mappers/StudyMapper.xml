@@ -12,6 +12,9 @@
     <result column="study_content" jdbcType="VARCHAR" property="studyContent" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     stu_id, create_time, update_time, deleted, begin_time, over_time, school, study_content,
@@ -152,10 +155,20 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from study
+    SELECT
+	study.begin_time,
+	study.deleted,
+	study.file_id,
+	study.over_time,
+	study.school,
+	study.study_content,
+	study.stu_id,
+	f.url
+FROM
+	study
+JOIN filepath AS f ON f.file_id = study.file_id
     where
-    user_id=#{user_id}
+    study.user_id=#{user_id}
   </select>
 
   <select id="getStudyCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

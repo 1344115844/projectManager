@@ -5,6 +5,7 @@ import cn.edu.hstc.pojo.User;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface UserService {
@@ -17,13 +18,20 @@ public interface UserService {
 
 
 
-    JSONResponse<User> updateUser(User user);
+    JSONResponse<User> updateUser(User user);//更新用户信息
 
-    JSONResponse<Integer> deleteUserByUserId(int id);
+    JSONResponse<Integer> deleteUserByUserId(int id);//根据id删除用户
 
-    JSONResponse<PageInfo> selectAllUserList(int pageNum, int pageSize);
+    JSONResponse<PageInfo> selectAllUserList(int pageNum, int pageSize);//分页查询全部用户
 
 
 
-    JSONResponse<List> selectAllUser();
+    JSONResponse<List> selectAllUser();//查询全部成员
+
+
+    Set<String> getRoles(String username);
+
+    Set<String> getPermissions(String username);
+
+    User getByUsername(String username);
 }

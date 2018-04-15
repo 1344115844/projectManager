@@ -31,9 +31,15 @@ public class ProjectServiceImpl implements ProjectService {
      */
     @Override
     public JSONResponse addProject(Project pro) {
-        int rs = projectMapper.insertSelective(pro);
-        if (rs == 1) return JSONResponse.createBySuccessMessage("添加科研项目成功");
-        return JSONResponse.createByErrorMessage("添加科研项目失败");
+        try {
+            int rs = projectMapper.insertSelective(pro);
+            if (rs == 1) return JSONResponse.createBySuccessMessage("添加科研项目成功");
+            return JSONResponse.createByErrorMessage("添加科研项目失败");
+        }
+       catch(Exception e){
+           return JSONResponse.createByErrorMessage("添加科研项目失败");
+       }
+
     }
 
     /**

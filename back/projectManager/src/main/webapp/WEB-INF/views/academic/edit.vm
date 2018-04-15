@@ -1,4 +1,4 @@
-    #set($projectname="")<!--_meta 作为公共模版分离出去-->
+    #set($projectname="/pm")<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -142,7 +142,7 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="$projectname/myjs/until/parseUrl.js"></script>
+<script type="text/javascript" src="$projectname/myjs/until/parseurl.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 
 <script type="text/javascript">
@@ -178,7 +178,7 @@ $(function () {
 
 
 })
-//ajax提交数据
+//`2提交数据
 	$("#submit").click(function () {
 	        //设置data数据
             var upload_file = document.getElementById("file").files[0];

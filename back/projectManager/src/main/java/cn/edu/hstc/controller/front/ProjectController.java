@@ -7,6 +7,7 @@ import cn.edu.hstc.service.ProjectService;
 import cn.edu.hstc.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 /**
  * @author yifang 1307720869@qq.com
@@ -40,7 +42,10 @@ public class ProjectController {
      */
     @RequestMapping("/add.do")
     @ResponseBody
-    public JSONResponse addProject(HttpSession session, Project pro) {
+    public JSONResponse addProject(HttpSession session, @Valid Project pro, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return JSONResponse.createByErrorMessage(bindingResult.getFieldError().getDefaultMessage());
+        }
         User user = (User) session.getAttribute("currentUser");
         pro.setUserId(user.getUserId());
         return projectService.addProject(pro);
@@ -164,7 +169,8 @@ public class ProjectController {
         if (!upd.isSuccess())//若上传出错
             return upd;
 
-        String url = upd.getData();
+        String url =request.getContextPath()+"/uploads"+"/"+username+"/project"+"/"+ upd.getData();
+
         //上传成功，保存url到filepath表，并返回fileId
         return fileService.updateFilepathInfo(url, userId);
 

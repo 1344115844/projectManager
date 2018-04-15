@@ -5,7 +5,11 @@ import cn.edu.hstc.common.ResponseCode;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.UserService;
 
+import cn.edu.hstc.util.MD5Util;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -38,7 +42,18 @@ public class UserController {
  **/
     @RequestMapping("/index")
     public String show() {
-        return "/user/index";
+
+        Subject currentUser= SecurityUtils.getSubject();
+        if(currentUser.hasRole("administrator")){
+//拥有角色administrator
+            return "/admin/index";
+        } else if(currentUser.hasRole("user")){
+//没有角色处理
+            return "/user/index";
+        }else {
+            return "404";
+        }
+
     }
 
     @RequestMapping("/login")
@@ -59,12 +74,25 @@ public class UserController {
  **/
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     @ResponseBody
-    public JSONResponse<User> login(String username, String password, HttpSession session) {
-        JSONResponse<User> response = userService.login(username, password);
-        if (response.isSuccess()) {
-            session.setAttribute("currentUser", response.getData());
+    public JSONResponse<User> login(User user, HttpSession session) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        Subject subject = SecurityUtils.getSubject();
+        //对用户提交的密码作同样的md5加密算法，然后放到token中,因为将用户名作为盐，所以要把用户名传进去
+        UsernamePasswordToken token = new UsernamePasswordToken(username, MD5Util.encrypt(username, password));
+        try {
+            //调用subject.login(token)进行登录，会自动委托给securityManager,调用之前会跳到我们自定义的realm中
+            subject.login(token);
+            //认证成功，获取用户完整信息
+            user = userService.getByUsername(username);
+            //密码设空
+            user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+            session.setAttribute("currentUser", user);
+            return JSONResponse.createBySuccess("login success", user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JSONResponse.createByErrorMessage("用户名或密码错误");
         }
-        return response;
     }
 
     /**
@@ -179,5 +207,18 @@ public class UserController {
         return "/user/welcome";
     }
 
+    /**
+     *@author Veng Su
+     *@date 2018/4/12 8:02
+     *方法作用：拿到用户名
+     **/
+    @RequestMapping("/getUsername")
+    @ResponseBody
+    public JSONResponse<String> getUsername(HttpSession session){
+       User user=(User) session.getAttribute("currentUser");
+        String username=user.getName();
 
+       return   JSONResponse.createBySuccess("success",username);
+
+    }
 }

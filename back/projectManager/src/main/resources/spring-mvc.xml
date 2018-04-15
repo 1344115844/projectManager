@@ -10,6 +10,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
+
     <mvc:annotation-driven>
         <mvc:message-converters>
 
@@ -25,7 +26,10 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-<!--支持多媒体文件上传-->
+
+
+
+    <!--支持多媒体文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--<property name="maxUploadSize" value="10485760"/> &lt;!&ndash; 表示上传文件最大Size为10M &ndash;&gt;-->
         <property name="maxInMemorySize" value="4096" />
@@ -40,9 +44,9 @@
     <mvc:default-servlet-handler/>
 
 
-    <mvc:interceptors>
-        <bean class="cn.edu.hstc.interceptor.SessionInterceptor"/>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<bean class="cn.edu.hstc.interceptor.SessionInterceptor"/>-->
+    <!--</mvc:interceptors>-->
 
 
     <!-- 自动给后面do的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
