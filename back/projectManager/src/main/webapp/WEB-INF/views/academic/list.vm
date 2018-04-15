@@ -97,7 +97,6 @@
 <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
-
     /*加载页面显示数据*/
     $(function () {
         $.ajax({
@@ -142,7 +141,7 @@
                     "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 
-                    "<td ><img width='80' height='80' src='"+"/uploads/whl/academic/d1bf0fb0-07bf-47ad-a5ff-34ee5b74c4a1.jpg"+"'/><button class='viewImg btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"showImg(this.value)"+">查看证明附件</button></td>"+
+                    "<td ><img width='80' height='80' src='"+data[i].filepath.url+"'/></td>"+
                     "<td><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].acadId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                     "</tr>";

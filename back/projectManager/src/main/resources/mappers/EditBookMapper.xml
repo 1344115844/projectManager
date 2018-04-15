@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.EditBookMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.EditBook">
-    <id column="edit_id" jdbcType="INTEGER" property="editId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="deleted" jdbcType="INTEGER" property="deleted" />
-    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
-    <result column="edit_rank" jdbcType="VARCHAR" property="editRank" />
-    <result column="isbn" jdbcType="VARCHAR" property="isbn" />
-    <result column="publish_unit" jdbcType="VARCHAR" property="publishUnit" />
-    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
-    <result column="byte_num" jdbcType="INTEGER" property="byteNum" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="file_id" jdbcType="INTEGER" property="fileId" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="cn.edu.hstc.pojo.EditBook">
+        <id column="edit_id" jdbcType="INTEGER" property="editId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="deleted" jdbcType="INTEGER" property="deleted"/>
+        <result column="book_name" jdbcType="VARCHAR" property="bookName"/>
+        <result column="edit_rank" jdbcType="VARCHAR" property="editRank"/>
+        <result column="isbn" jdbcType="VARCHAR" property="isbn"/>
+        <result column="publish_unit" jdbcType="VARCHAR" property="publishUnit"/>
+        <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+        <result column="byte_num" jdbcType="INTEGER" property="byteNum"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="file_id" jdbcType="INTEGER" property="fileId"/>
+        <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+            <result column="url" property="url"/>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
     edit_id, create_time, update_time, deleted, book_name, edit_rank, isbn, publish_unit,
     publish_time, byte_num, user_id, file_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from editbook
-    where edit_id = #{editId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from editbook
+        where edit_id = #{editId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from editbook
     where edit_id = #{editId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.hstc.pojo.EditBook">
+    <insert id="insert" parameterType="cn.edu.hstc.pojo.EditBook">
     insert into editbook (edit_id, create_time, update_time, 
       deleted, book_name, edit_rank,
       isbn, publish_unit, publish_time, 
@@ -41,125 +44,125 @@
       #{byteNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.EditBook">
-    insert into editbook
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="editId != null">
-        edit_id,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="deleted != null">
-        deleted,
-      </if>
-      <if test="bookName != null">
-        book_name,
-      </if>
-      <if test="editRank != null">
-        edit_rank,
-      </if>
-      <if test="isbn != null">
-        isbn,
-      </if>
-      <if test="publishUnit != null">
-        publish_unit,
-      </if>
-      <if test="publishTime != null">
-        publish_time,
-      </if>
-      <if test="byteNum != null">
-        byte_num,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="fileId != null">
-        file_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="editId != null">
-        #{editId,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleted != null">
-        #{deleted,jdbcType=INTEGER},
-      </if>
-      <if test="bookName != null">
-        #{bookName,jdbcType=VARCHAR},
-      </if>
-      <if test="editRank != null">
-        #{editRank,jdbcType=VARCHAR},
-      </if>
-      <if test="isbn != null">
-        #{isbn,jdbcType=VARCHAR},
-      </if>
-      <if test="publishUnit != null">
-        #{publishUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="publishTime != null">
-        #{publishTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="byteNum != null">
-        #{byteNum,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="fileId != null">
-        #{fileId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.EditBook">
-    update editbook
-    <set>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleted != null">
-        deleted = #{deleted,jdbcType=INTEGER},
-      </if>
-      <if test="bookName != null">
-        book_name = #{bookName,jdbcType=VARCHAR},
-      </if>
-      <if test="editRank != null">
-        edit_rank = #{editRank,jdbcType=VARCHAR},
-      </if>
-      <if test="isbn != null">
-        isbn = #{isbn,jdbcType=VARCHAR},
-      </if>
-      <if test="publishUnit != null">
-        publish_unit = #{publishUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="publishTime != null">
-        publish_time = #{publishTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="byteNum != null">
-        byte_num = #{byteNum,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="fileId != null">
-        file_id = #{fileId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where edit_id = #{editId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.EditBook">
+    <insert id="insertSelective" parameterType="cn.edu.hstc.pojo.EditBook">
+        insert into editbook
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="editId != null">
+                edit_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="bookName != null">
+                book_name,
+            </if>
+            <if test="editRank != null">
+                edit_rank,
+            </if>
+            <if test="isbn != null">
+                isbn,
+            </if>
+            <if test="publishUnit != null">
+                publish_unit,
+            </if>
+            <if test="publishTime != null">
+                publish_time,
+            </if>
+            <if test="byteNum != null">
+                byte_num,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="fileId != null">
+                file_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="editId != null">
+                #{editId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=INTEGER},
+            </if>
+            <if test="bookName != null">
+                #{bookName,jdbcType=VARCHAR},
+            </if>
+            <if test="editRank != null">
+                #{editRank,jdbcType=VARCHAR},
+            </if>
+            <if test="isbn != null">
+                #{isbn,jdbcType=VARCHAR},
+            </if>
+            <if test="publishUnit != null">
+                #{publishUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                #{publishTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="byteNum != null">
+                #{byteNum,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="fileId != null">
+                #{fileId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.edu.hstc.pojo.EditBook">
+        update editbook
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=INTEGER},
+            </if>
+            <if test="bookName != null">
+                book_name = #{bookName,jdbcType=VARCHAR},
+            </if>
+            <if test="editRank != null">
+                edit_rank = #{editRank,jdbcType=VARCHAR},
+            </if>
+            <if test="isbn != null">
+                isbn = #{isbn,jdbcType=VARCHAR},
+            </if>
+            <if test="publishUnit != null">
+                publish_unit = #{publishUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                publish_time = #{publishTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="byteNum != null">
+                byte_num = #{byteNum,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="fileId != null">
+                file_id = #{fileId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where edit_id = #{editId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.edu.hstc.pojo.EditBook">
     update editbook
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -175,14 +178,26 @@
     where edit_id = #{editId,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from editbook
+    <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+	editbook.book_name,
+	editbook.byte_num,
+	editbook.deleted,
+	editbook.edit_id,
+	editbook.edit_rank,
+	editbook.file_id,
+	editbook.isbn,
+	editbook.publish_time,
+	editbook.publish_unit,
+	f.url
+FROM
+	editbook
+JOIN filepath AS f ON f.file_id = editbook.file_id
     where
-    user_id=#{user_id}
+    eidtbook.user_id=#{user_id}
   </select>
 
-  <select id="getEditBookCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    <select id="getEditBookCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select COUNT(*)
     from editbook
     where user_id=#{user_id}

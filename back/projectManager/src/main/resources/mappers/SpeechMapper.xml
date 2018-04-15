@@ -12,6 +12,9 @@
     <result column="speech_form" jdbcType="VARCHAR" property="speechForm" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     speech_id, create_time, update_time, deleted, invite_time, begin_time, over_time,
@@ -152,10 +155,20 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from speech
+    SELECT
+	speech.begin_time,
+	speech.deleted,
+	speech.file_id,
+	speech.invite_time,
+	speech.over_time,
+	speech.speech_form,
+	speech.speech_id,
+	f.url
+FROM
+	speech
+JOIN filepath AS f ON f.file_id = speech.file_id
     where
-    user_id=#{user_id}
+    speech.user_id=#{user_id}
   </select>
 
   <select id="getSpeechCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

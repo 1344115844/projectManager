@@ -12,6 +12,9 @@
     <result column="right_num" jdbcType="VARCHAR" property="rightNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     copy_id, create_time, update_time, deleted, right_name, rank, award_time, right_num,
@@ -153,10 +156,20 @@
 
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from copyright
+    SELECT
+	copyright.award_time,
+	copyright.copy_id,
+	copyright.deleted,
+	copyright.file_id,
+	copyright.rank,
+	copyright.right_name,
+	copyright.right_num,
+	f.url
+FROM
+	copyright
+JOIN filepath AS f ON f.file_id = copyright.file_id
     where
-    user_id=#{user_id}
+    copyright.user_id=#{user_id}
   </select>
 
   <select id="getCopyrightCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

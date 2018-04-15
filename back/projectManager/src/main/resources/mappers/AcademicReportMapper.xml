@@ -14,6 +14,9 @@
     <result column="attend_num" jdbcType="INTEGER" property="attendNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     rep_id, create_time, update_time, deleted, report_title, begin_time, over_time, host_unit,
@@ -176,10 +179,22 @@
   </update>
 
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from academicreport
+    SELECT
+    ar.attend_num,
+    ar.begin_time,
+    ar.deleted,
+    ar.file_id,
+    ar.host_place,
+    ar.host_unit,
+    ar.over_time,
+    ar.report_title,
+    ar.rep_id,
+    f.url
+    FROM
+        academicreport AS ar
+    JOIN filepath AS f ON f.file_id = ar.file_id
     where
-    user_id=#{user_id}
+    ar.user_id=#{user_id}
   </select>
 
   <select id="getReportCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

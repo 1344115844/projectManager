@@ -12,6 +12,9 @@
     <result column="term" jdbcType="VARCHAR" property="term" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     unit_id, deleted, update_time, create_time, unit_name, host_unit, duty, term, user_id,
@@ -151,10 +154,14 @@
     where unit_id = #{unitId,jdbcType=INTEGER}
   </update>
   <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from unit
+   SELECT
+unit.deleted,unit.duty,unit.file_id,unit.host_unit,unit.term,unit.unit_id,unit.unit_name,
+	f.url
+FROM
+	unit
+JOIN filepath AS f ON f.file_id = unit.file_id
     where
-    user_id=#{user_id}
+    unit.user_id=#{user_id}
   </select>
 
   <select id="getUnitCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

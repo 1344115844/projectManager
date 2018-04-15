@@ -26,6 +26,16 @@ public class Speech implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Filepath filepath;
+
+    public Filepath getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(Filepath filepath) {
+        this.filepath = filepath;
+    }
+
     public Integer getSpeechId() {
         return speechId;
     }
