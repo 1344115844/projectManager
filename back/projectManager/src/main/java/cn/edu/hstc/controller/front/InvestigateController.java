@@ -168,7 +168,8 @@ public class InvestigateController {
         if (!upd.isSuccess())//若上传出错
             return upd;
 
-        String url = upd.getData();
+        String url =request.getContextPath()+"/uploads"+"/"+username+"/investigate"+"/"+ upd.getData();
+
         //上传成功，保存url到filepath表，并返回fileId
         return fileService.updateFilepathInfo(url, userId);
 

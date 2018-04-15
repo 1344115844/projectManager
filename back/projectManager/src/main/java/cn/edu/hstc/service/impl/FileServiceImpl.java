@@ -67,7 +67,7 @@ public class FileServiceImpl implements FileService {
                 fileDir.mkdirs();
             }
             File targetFile = new File(path, uploadFileName);
-            String url = path + uploadFileName;//文件完整路径
+            String url = uploadFileName;//文件名
             try {
                 file.transferTo(targetFile);
                 //文件已经上传成功了
