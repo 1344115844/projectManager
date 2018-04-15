@@ -1,4 +1,4 @@
-﻿    #set($projectname="")<!DOCTYPE HTML>
+﻿    #set($projectname="/pm")<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
