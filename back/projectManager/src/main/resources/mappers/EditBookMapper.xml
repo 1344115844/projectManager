@@ -194,7 +194,7 @@ FROM
 	editbook
 JOIN filepath AS f ON f.file_id = editbook.file_id
     where
-    eidtbook.user_id=#{user_id}
+    editbook.user_id=#{user_id}
   </select>
 
     <select id="getEditBookCountByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">

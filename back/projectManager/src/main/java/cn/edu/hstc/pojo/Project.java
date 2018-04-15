@@ -1,5 +1,6 @@
 package cn.edu.hstc.pojo;
 
+import javax.validation.constraints.Digits;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +17,7 @@ public class Project implements Serializable {
 
     private Date overTime;
 
+    @Digits(integer = 12,fraction = 4,message = "请输入小数位最大精度为4位的数字！")
     private Double funds;
 
     private String level;
