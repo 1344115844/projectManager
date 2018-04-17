@@ -172,10 +172,9 @@ public class AcademicController {
         String url =request.getContextPath()+"/uploads"+"/"+username+"/academic"+"/"+ upd.getData();
         //上传成功，保存url到filepath表，并返回fileId
        return fileService.updateFilepathInfo(url, userId);
-
-
-
     }
+
+
 
 
 }

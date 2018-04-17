@@ -1,4 +1,4 @@
-    #set($projectname="/pm")<!--_meta 作为公共模版分离出去-->
+   #set($projectname="")<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>

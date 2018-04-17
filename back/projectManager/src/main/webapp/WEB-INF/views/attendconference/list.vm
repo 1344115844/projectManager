@@ -1,4 +1,4 @@
-﻿    #set($projectname="/pm")
+﻿   #set($projectname="")
     <!DOCTYPE HTML>
 <html>
 <head>
