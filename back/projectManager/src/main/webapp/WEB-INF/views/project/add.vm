@@ -218,7 +218,9 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
-<script type="text/javascript" src="$projectname/myjs/previewimage/previewimg.js"></script>
+<script type="text/javascript" src="$projectname/myjs/previewimage/previewimg.js">
+</script><script type="text/javascript" src="$projectname/myjs/base.js"></script>
+
 
 
 <script type="text/javascript">
@@ -369,6 +371,7 @@ laydate.render({
             var projectNumber=$("#projectNumber").val();
             var projectSource=$("#projectSource").val();
             var funds=$("#funds").val();
+            validateFund();
             funds=parseFloat(funds);
 
             var isTeamwork=$('#isTeamwork option:selected').val();

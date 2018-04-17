@@ -63,7 +63,7 @@
         </tr>
         <tr class="text-c">
             <th width="25"><input type="checkbox" name="" value=""></th>
-            <th width="40">ID</th>
+            <th >ID</th>
             <th> 项目名称</th>
             <th>项目编号</th>
             <th>项目来源</th>
@@ -75,13 +75,14 @@
             <th>项目状态</th>
             <th>课题负责人</th>
             <th >附件</th>
+            <th >下载</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
         <tfoot>
         <tr>
-            <th colspan="13"><div class="box" id="box"></div></th>
+            <th colspan="24"><div class="box" id="box"></div></th>
         </tr>
         </tfoot>
     </table>
@@ -97,7 +98,7 @@
 <script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-<script type="text/javascript" src="$projectname/myjs/showimg.js"></script>
+<script type="text/javascript" src="$projectname/myjs/base.js"></script>
 
 
 
@@ -168,6 +169,8 @@
                         "<td name='state' width='100'>" + data[i].state + "</td>" +
                         "<td name='projectDirector' width='100'>" + data[i].projectDirector + "</td>" +
                         "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
+                        "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
+
                         "<td ><button  class='btn btn-primary radius ' value='"+data[i].proId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                         "<button class=' btn btn-danger radius ' value='"+data[i].proId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                         "</tr>";
@@ -223,69 +226,7 @@
             layer_show(title, url, w, h);
         }
 
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
 
-            var projectName=$("#projectName").val();
-            var projectNumber=$("#projectNumber").val();
-            var projectSource=$("#projectSource").val();
-            var funds=$("#funds").val();
-            funds=parseFloat(funds);
-
-            var isTeamwork=$('#isTeamwork option:selected').val();
-            isTeamwork=parseInt(isTeamwork);
-            var state=$('#state option:selected').text();
-            var projectDirector=$('#projectDirector option:selected').text();
-            var level=$('#level option:selected').val();
-
-            var beginTime=$("#beginTime").val();
-            beginTime=convertDateFromString(beginTime);
-            var overTime=$("#overTime").val();
-            overTime=convertDateFromString(overTime);
-
-            $.ajax({
-                type:"POST",
-                url: "$projectname/project/uploadAttachment.do",
-                data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-                success: function(data){
-                    data=JSON.parse(data);
-                    var fileId=data.data;
-                    fileId=parseInt(fileId);
-                    $.ajax({
-                        type:"POST",
-                        url:"$projectname/project/add.do",
-                        data:{
-                            "projectName":projectName, "projectNumber":projectNumber, "projectSource":projectSource, "funds":funds,
-                            "level":level,"isTeamwork":isTeamwork,"state":state,"projectDirector":projectDirector,"beginTime":beginTime,"overTime":overTime,
-                            "fileId":fileId
-                        },
-                        success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                window.parent.location.replace("$projectname/project/list");
-                            }else {
-                                layer.msg(user.msg, {icon: 2, time: 2000});
-                            }
-                        }
-                    });
-                },
-                error:function () {
-                    layer.msg("必须上传证件",{icon: 3, time: 2000});
-                }
-            });
-        }
 
         function findmember() {
             $.ajax({

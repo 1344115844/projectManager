@@ -62,23 +62,24 @@
             <th scope="col" colspan="12">参加学术会议列表</th>
         </tr>
         <tr class="text-c">
-            <th width="25"><input type="checkbox" name="" value=""></th>
-            <th width="40">ID</th>
-            <th width="150">会议名称</th>
-            <th width="90">论文题目</th>
-            <th width="150">举办时间</th>
+            <th ><input type="checkbox" name="" value=""></th>
+            <th >ID</th>
+            <th >会议名称</th>
+            <th >论文题目</th>
+            <th >举办时间</th>
             <th>地点</th>
-            <th width="130">主办单位</th>
-            <th width="130">会议类别</th>
+            <th >主办单位</th>
+            <th >会议类别</th>
             <th >附件</th>
-            <th width="100">操作</th>
+            <th >下载</th>
+            <th >操作</th>
 
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
         <tfoot>
         <tr>
-            <th colspan="13"><div class="box" id="box"></div></th>
+            <th colspan="24"><div class="box" id="box"></div></th>
         </tr>
         </tfoot>
     </table>
@@ -94,7 +95,7 @@
 <script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-<script type="text/javascript" src="$projectname/myjs/showimg.js"></script>
+<script type="text/javascript" src="$projectname/myjs/base.js"></script>
 <script type="text/javascript">
 
 
@@ -142,6 +143,8 @@
                     "<td name='hostUnit' width='100'>" + data[i].hostUnit + "</td>" +
                     "<td name='conferenceCategory' width='100'>" + data[i].conferenceCategory + "</td>" +
                     "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
+                    "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
+
                     "<td ><button  class='editAcad btn btn-primary radius ' value='"+data[i].confId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].confId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                     "</tr>";
