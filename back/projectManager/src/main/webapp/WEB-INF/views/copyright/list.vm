@@ -168,29 +168,6 @@
             });
         }
 
-        // function display(data) {
-        //     var str = "";
-        //     var tbody = window.document.getElementById("tbody");
-        //     var index =0;
-        //     for (i in data) {
-        //         // var overTime =FormatDateTime(data[i].overTime);
-        //         // var beginTime =FormatDateTime(data[i].beginTime);
-        //         var awardTime =FormatDateTime(data[i].awardTime);
-        //         index=parseInt(i)+1;
-        //         str += "<tr class='text-c'>" +
-        //             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-        //             "<td name='id' width='40'>" + index + "</td>" +
-        //             "<td name='rightName'width='150'>" + data[i].rightName + "</td>" +
-        //             "<td name='rank' width='130'>" +  data[i].rank + "</td>" +
-        //             "<td name='awardTime' width='100'>" + awardTime + "</td>" +
-        //             "<td name='rightNum' width='100'>" + data[i].rightNum + "</td>" +
-        //             "<td ><button  class='btn btn-primary radius ' value='"+data[i].copyId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-        //             "<button class=' btn btn-danger radius ' value='"+data[i].copyId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-        //             "</tr>";
-        //     }
-        //
-        //     tbody.innerHTML = str;
-        // }
 
         /**
          *@author Veng Su
@@ -217,8 +194,13 @@
                     data:{"copyId":copyId},
                     success:function (data) {
                         data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
+                        if(data.status==200){
+                            layer.msg(data.msg, {icon: 1, time: 2000});
+                            getData();
+                        }else{
+                            layer.msg(data.msg, {icon: 2, time: 2000});
+                        }
+
 
                     }
                 });

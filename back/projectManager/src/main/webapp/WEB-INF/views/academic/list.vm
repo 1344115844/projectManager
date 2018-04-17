@@ -191,8 +191,13 @@ function jumpDelete(id) {
             data:{"acadId":acadId},
             success:function (data) {
                 data=JSON.parse(data);
-                layer.msg(data.msg, {icon: 1, time: 1000});
-                javascript:location.replace(location.href);
+                if(data.status==200){
+                    layer.msg(data.msg, {icon: 1, time: 1000});
+                    javascript:location.replace(location.href);
+                }else{
+                    layer.msg(data.msg, {icon: 2, time: 1000});
+                }
+
             }
         });
     });

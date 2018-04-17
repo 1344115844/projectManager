@@ -201,8 +201,13 @@
                     data:{"proId":proId},
                     success:function (data) {
                         data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
+                        if(data.status==200){
+                            layer.msg(data.msg, {icon: 1, time: 2000});
+                            getData();
+                        }else{
+                            layer.msg(data.msg, {icon: 2, time: 2000});
+                        }
+
 
                     }
                 });
