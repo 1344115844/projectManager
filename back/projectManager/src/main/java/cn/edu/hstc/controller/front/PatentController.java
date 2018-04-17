@@ -56,8 +56,8 @@ public class PatentController {
      */
     @RequestMapping("/delete.do")
     @ResponseBody
-    public JSONResponse<Integer> deletePatent(Integer pId) {
-        return patentService.deletePatent(pId);
+    public JSONResponse<Integer> deletePatent(Integer tentId) {
+        return patentService.deletePatent(tentId);
     }
 
     /**

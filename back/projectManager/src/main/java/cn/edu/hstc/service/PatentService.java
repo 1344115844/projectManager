@@ -13,7 +13,7 @@ public interface PatentService {
 
     JSONResponse addPatent(Patent p);//添加
 
-    JSONResponse deletePatent(Integer p_id);//删除
+    JSONResponse deletePatent(Integer tentId);//删除
 
     JSONResponse updatePatent(Patent p);//修改
 

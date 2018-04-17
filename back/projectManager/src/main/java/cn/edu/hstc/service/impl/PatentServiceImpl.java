@@ -43,8 +43,8 @@ public class PatentServiceImpl implements PatentService {
     * @Date: 2018/3/31 21:10
     */
     @Override
-    public JSONResponse deletePatent(Integer p_id) {
-        int rs=patentMapper.deleteByPrimaryKey(p_id);
+    public JSONResponse deletePatent(Integer tentId) {
+        int rs=patentMapper.deleteByPrimaryKey(tentId);
         if(rs==1)return JSONResponse.createBySuccessMessage("删除专利成功");
         return JSONResponse.createByErrorMessage("删除专利失败");
     }

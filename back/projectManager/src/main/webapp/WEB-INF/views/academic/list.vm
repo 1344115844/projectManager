@@ -73,6 +73,7 @@
             <th >作者排名</th>
             <th >类别</th>
             <th >附件</th>
+            <th >下载</th>
             <th >操作</th>
         </tr>
         </thead>
@@ -144,13 +145,26 @@
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 
                     "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
-                    "<td><button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
+                    "<td>" +
+                    "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value)"+">下载附件</button></td>"+
+                    "</td>"+
+                    "<td>" +
+                    "<button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].acadId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
                     "</tr>";
         }
 
         tbody.innerHTML = str;
     };
+
+    function downloadFileByForm(filepath) {
+        console.log("ajaxDownloadSynchronized");
+        var url = "$projectname/download";
+
+        var form = $("<form></form>").attr("action", url).attr("method", "post");
+        form.append($("<input></input>").attr("type", "hidden").attr("name", "filepath").attr("value", filepath));
+        form.appendTo('body').submit().remove();
+    }
 
 
     /**
