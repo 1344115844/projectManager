@@ -29,10 +29,12 @@
 
 
     <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
+    <script type="text/javascript" src="$projectname/myjs/base.js"></script>
 
 
 
-<!--[if IE 6]>
+
+    <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
@@ -121,7 +123,7 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="$projectname/myjs/previewimage/previewimg.js"></script>
+<script type="text/javascript" src="$projectname/myjs/base.js"></script>
 
 <script type="text/javascript">
 

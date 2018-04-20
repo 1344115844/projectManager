@@ -21,17 +21,46 @@
       <result column="url" property="url"/>
     </association>
   </resultMap>
+  <resultMap id="academic_file" type="cn.edu.hstc.pojo.Academic">
+    <id column="acad_id" jdbcType="INTEGER" property="acadId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="thesis_name" jdbcType="VARCHAR" property="thesisName" />
+    <result column="novon" jdbcType="VARCHAR" property="novon" />
+    <result column="releasing_code" jdbcType="VARCHAR" property="releasingCode" />
+    <result column="publication_level" jdbcType="VARCHAR" property="publicationLevel" />
+    <result column="periodical" jdbcType="VARCHAR" property="periodical" />
+    <result column="publish_journals" jdbcType="VARCHAR" property="publishJournals" />
+    <result column="collection_situation" jdbcType="VARCHAR" property="collectionSituation" />
+    <result column="author_rank" jdbcType="VARCHAR" property="authorRank" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="file_id" jdbcType="INTEGER" property="fileId" />
+    <association property="filepath" javaType="cn.edu.hstc.pojo.Filepath">
+      <result column="url" property="url"/>
+    </association>
+  </resultMap>
+
 
   <sql id="Base_Column_List">
     acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level,
     periodical, publish_journals, collection_situation, author_rank, category, user_id,
     file_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+  <sql id="academic_file">
+        acad.acad_id,    acad.thesis_name,  acad.novon,  acad.releasing_code,  acad.publication_level,
+     acad.periodical,  acad.publish_journals,  acad.collection_situation,  acad.author_rank,  acad.category,  acad.user_id,
+     acad.file_id,f.url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="academic_file">
     select 
-    <include refid="Base_Column_List" />
-    from academic
-    where acad_id = #{acadId,jdbcType=INTEGER}
+    <include refid="academic_file" />
+    FROM
+    academic AS acad
+    JOIN filepath AS f ON f.file_id = acad.file_id
+    where acad.acad_id = #{acadId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from academic

@@ -140,10 +140,10 @@
 <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="$projectname/myjs/until/username.js"></script>
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="$projectname/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript" src="$projectname/myjs/until/username.js"></script>
 <script type="text/javascript">
     $(function () {
         $("body").Huitab({
@@ -208,7 +208,7 @@
     ##切换用户/退出登录
     ##	对logout类的点击事件做访问logou.do接口消除session
     $(function () {
-        getUsername();
+        getUsername("$projectname/user/getUsername");
         $(".logout").click(function () {
             //ajax访问接口
             $.ajax({
