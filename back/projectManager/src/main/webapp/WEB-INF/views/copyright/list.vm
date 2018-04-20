@@ -162,7 +162,7 @@
         function getData() {
             $.ajax({
                 type: "POST",
-                url: "$projectnamecopyright/selectByUserId.do",
+                url: "$projectname/copyright/selectByUserId.do",
                 success: function (data) {
                     var data = JSON.parse(data);
                     display(data.data.list);

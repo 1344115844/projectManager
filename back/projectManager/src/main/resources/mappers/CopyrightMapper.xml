@@ -20,10 +20,22 @@
     copy_id, create_time, update_time, deleted, right_name, rank, award_time, right_num,
     user_id, file_id
   </sql>
+  <sql id="copy_file_list">
+    copyright.award_time,
+	copyright.copy_id,
+	copyright.deleted,
+	copyright.file_id,
+	copyright.rank,
+	copyright.right_name,
+	copyright.right_num,
+	f.url
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from copyright
+    SELECT
+	<include refid="copy_file_list"/>
+FROM
+	copyright
+JOIN filepath AS f ON f.file_id = copyright.file_id
     where copy_id = #{copyId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

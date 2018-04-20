@@ -18,15 +18,42 @@
       <result column="url" property="url"/>
     </association>
   </resultMap>
+
+
   <sql id="Base_Column_List">
-    rep_id, create_time, update_time, deleted, report_title, begin_time, over_time, host_unit,
-    host_place, attend_num, user_id, file_id
+    rep_id,
+    create_time,
+    update_time,
+    deleted,
+    report_title,
+    begin_time,
+    over_time,
+    host_unit,
+    host_place,
+    attend_num,
+    user_id,
+    file_id,
   </sql>
+
+  <sql id="ar_file_list">
+    ar.attend_num,
+    ar.begin_time,
+    ar.deleted,
+    ar.file_id,
+    ar.host_place,
+    ar.host_unit,
+    ar.over_time,
+    ar.report_title,
+    ar.rep_id,
+    f.url
+  </sql>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from academicreport
-    where rep_id = #{repId,jdbcType=INTEGER}
+    SELECT <include refid="ar_file_list" />
+    FROM academicreport AS  ar
+    JOIN filepath AS f ON f.file_id = ar.file_id
+    WHERE ar.rep_id = #{repId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from academicreport

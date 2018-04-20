@@ -21,10 +21,22 @@
     award_id, create_time, update_time, deleted, project_name, award_name, award_level,
     award_time, award_rank, user_id, file_id
   </sql>
+    <sql id="award_file_list">
+    award.award_id,
+	award.award_level,
+	award.award_name,
+	award.award_rank,
+	award.award_time,
+	award.file_id,
+	award.project_name,
+	f.url
+    </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
-        from award
+        <include refid="award_file_list"/>
+        FROM
+        award
+        JOIN filepath AS f ON f.file_id = award.file_id
         where award_id = #{awardId,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

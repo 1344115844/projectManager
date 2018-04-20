@@ -313,6 +313,7 @@ $(function () {
                     $("#awardTime").val(awardTime);
 
                     $("#rightNum").val(data.data.rightNum);
+                    $("#img2").attr("src",data.data.filepath.url);
                 }
             });
         }

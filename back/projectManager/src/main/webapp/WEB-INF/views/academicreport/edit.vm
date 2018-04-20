@@ -148,7 +148,7 @@ $(function () {
             $("#hostUnit").val(data.data.hostUnit);
             $("#hostPlace").val(data.data.hostPlace);
             $("#attendNum").val(data.data.attendNum);
-
+            $("#img2").attr("src",data.data.filepath.url);
         }
 
 

@@ -20,10 +20,22 @@
     inv_id, deleted, update_time, create_time, begin_time, over_time, investigate_place,
     investigate_content, user_id, file_id
   </sql>
+  <sql id="investigate_file_list">
+    investigate.begin_time,
+    investigate.deleted,
+    investigate.file_id,
+    investigate.investigate_content,
+    investigate.investigate_place,
+    investigate.inv_id,
+    investigate.over_time,
+    f.url
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from investigate
+    SELECT
+    <include refid="investigate_file_list" />
+    FROM
+    investigate
+    JOIN filepath AS f ON f.file_id = investigate.file_id
     where inv_id = #{invId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

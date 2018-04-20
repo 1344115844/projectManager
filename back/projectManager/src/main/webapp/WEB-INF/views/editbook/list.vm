@@ -162,16 +162,16 @@
     <script>
 
 
-        function getData() {
-            $.ajax({
-                type: "POST",
-                url: "/editbook/selectByUserId.do",
-                success: function (data) {
-                    var data = JSON.parse(data);
-                    display(data.data.list);
-                }
-            });
-        }
+         function getData() {
+             $.ajax({
+                 type: "POST",
+                 url: "$projectname/editbook/selectByUserId.do",
+                 success: function (data) {
+                     var data = JSON.parse(data);
+                     display(data.data.list);
+                 }
+             });
+         }
 
 
 

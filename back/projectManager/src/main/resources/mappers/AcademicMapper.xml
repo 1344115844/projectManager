@@ -49,14 +49,14 @@
     file_id
   </sql>
 
-  <sql id="academic_file">
+  <sql id="academic_file_list">
         acad.acad_id,    acad.thesis_name,  acad.novon,  acad.releasing_code,  acad.publication_level,
      acad.periodical,  acad.publish_journals,  acad.collection_situation,  acad.author_rank,  acad.category,  acad.user_id,
      acad.file_id,f.url
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="academic_file">
     select 
-    <include refid="academic_file" />
+    <include refid="academic_file_list" />
     FROM
     academic AS acad
     JOIN filepath AS f ON f.file_id = acad.file_id

@@ -16,14 +16,26 @@
       <result column="url" property="url"/>
     </association>
   </resultMap>
+  <sql id="speech_file_list">
+    speech.begin_time,
+    speech.deleted,
+    speech.file_id,
+    speech.invite_time,
+    speech.over_time,
+    speech.speech_form,
+    speech.speech_id,
+    f.url
+  </sql>
   <sql id="Base_Column_List">
     speech_id, create_time, update_time, deleted, invite_time, begin_time, over_time,
     speech_form, user_id, file_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from speech
+    SELECT
+    <include refid="speech_file_list" />
+    FROM
+    speech
+    JOIN filepath AS f ON f.file_id = speech.file_id
     where speech_id = #{speechId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

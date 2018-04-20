@@ -22,15 +22,33 @@
       <result column="url" property="url"/>
     </association>
   </resultMap>
+  <sql id="project_file_list">
+     project.begin_time,
+    project.deleted,
+    project.file_id,
+    project.funds,
+    project.is_teamwork,
+    project.`level`,
+    project.over_time,
+    project.project_director,
+    project.project_name,
+    project.project_number,
+    project.project_source,
+    project.pro_id,
+    project.state,
+    f.url
+  </sql>
   <sql id="Base_Column_List">
     pro_id, project_name, project_number, project_source, begin_time, over_time, funds,
     level, is_teamwork, state, project_director, file_id, user_id, creat_time, deleted, 
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from project
+    SELECT
+    <include refid="project_file_list" />
+    FROM
+    project
+    JOIN filepath AS f ON f.file_id = project.file_id
     where pro_id = #{proId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

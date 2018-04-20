@@ -20,10 +20,16 @@
     unit_id, deleted, update_time, create_time, unit_name, host_unit, duty, term, user_id,
     file_id
   </sql>
+  <sql id="unit_file_list">
+    unit.deleted,unit.duty,unit.file_id,unit.host_unit,unit.term,unit.unit_id,unit.unit_name,
+    f.url
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from unit
+    SELECT
+    <include refid="unit_file_list" />
+    FROM
+    unit
+    JOIN filepath AS f ON f.file_id = unit.file_id
     where unit_id = #{unitId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

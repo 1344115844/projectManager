@@ -22,10 +22,24 @@
     tent_id, deleted, update_time, create_time, patent_tame, patent_rank, patent_form, authority,
     registration_enterprise, patent_num, user_id, file_id
   </sql>
+  <sql id="patent_file_list">
+    patent.authority,
+    patent.deleted,
+    patent.file_id,
+    patent.patent_form,
+    patent.patent_num,
+    patent.patent_rank,
+    patent.patent_tame,
+    patent.registration_enterprise,
+    patent.tent_id,
+    f.url
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from patent
+     SELECT
+    <include refid="patent_file_list" />
+    FROM
+    patent
+    JOIN filepath AS f ON f.file_id = patent.file_id
     where tent_id = #{tentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

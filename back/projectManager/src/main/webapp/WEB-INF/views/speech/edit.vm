@@ -298,7 +298,7 @@ $(function () {
                     $("#inviteTime").val(inviteTime);
                     var overTime=FormatDateTime(data.data.overTime);
                     $("#overTime").val(overTime);
-
+                    $("#img2").attr("src",data.data.filepath.url);
 
                 }
             });

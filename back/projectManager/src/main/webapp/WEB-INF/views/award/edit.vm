@@ -332,6 +332,7 @@ $(function () {
 
                     $("#awardLevel").val(data.data.awardLevel);
                     $("#awardRank").val(data.data.awardRank);
+                    $("#img2").attr("src",data.data.filepath.url);
                 }
             });
         }

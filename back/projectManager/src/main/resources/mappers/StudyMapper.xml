@@ -20,10 +20,22 @@
     stu_id, create_time, update_time, deleted, begin_time, over_time, school, study_content,
     user_id, file_id
   </sql>
+  <sql id="study_file_list">
+    study.begin_time,
+    study.deleted,
+    study.file_id,
+    study.over_time,
+    study.school,
+    study.study_content,
+    study.stu_id,
+    f.url
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from study
+    SELECT
+    <include refid="study_file_list" />
+    FROM
+    study
+    JOIN filepath AS f ON f.file_id = study.file_id
     where stu_id = #{stuId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
