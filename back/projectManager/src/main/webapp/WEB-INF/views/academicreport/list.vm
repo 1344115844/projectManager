@@ -1,4 +1,4 @@
-﻿   #set($projectname="")<!DOCTYPE HTML>
+﻿   #set($projectname="/projectManager")<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -138,7 +138,7 @@
                     "<td name='hostUnit' width='100'>" + data[i].hostUnit + "</td>" +
                     "<td name='hostPlace' width='100'>" + data[i].hostPlace + "</td>" +
                     "<td name='attendNum' width='100'>" + data[i].attendNum + "</td>" +
-                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
+                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='$projectname"+data[i].filepath.url+"'/></td>"+
                     "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
                     "<td ><button  class='editAcad btn btn-primary radius ' value='"+data[i].repId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].repId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+

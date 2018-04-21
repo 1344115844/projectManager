@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,6 +34,20 @@ public class UserController {
     UserService userService;
 
 
+
+    @RequestMapping("/setpassword")
+    @ResponseBody
+    public JSONResponse<Object> setPassword(){
+
+        ArrayList<String> usernamelist=  userService.getAllUsername();
+        String md="";
+        for( String username : usernamelist)
+        {
+            md = MD5Util.encrypt(username, "jjj");
+            userService.updatePasswordByUsername(username, md);
+        }
+        return JSONResponse.createBySuccessMessage("设置默认密码jjj");
+        }
 /**
  *@author suveng
  *@date 2018/3/29 19:07
@@ -68,7 +83,6 @@ public class UserController {
 /**
  *@author suveng
  *@date 2018/3/29 19:07
- *@param username, password, session
  *@return cn.edu.hstc.common.JSONResponse<cn.edu.hstc.pojo.User>
  *方法作用：y验证登录
  **/

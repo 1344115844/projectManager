@@ -1,4 +1,4 @@
-﻿	#set($projectname="")
+﻿	#set($projectname="/projectManager")
 	<!DOCTYPE HTML>
 <html>
 <head>

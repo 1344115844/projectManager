@@ -1,4 +1,4 @@
-   #set($projectname="")
+   #set($projectname="/projectManager")
     <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -314,7 +314,9 @@ $(function () {
                     $("#patentForm").val(data.data.patentForm);
                     $("#registrationEnterprise").val(data.data.registrationEnterprise);
                     $("#patentNum").val(data.data.patentNum);
-                    $("#img2").attr("src",data.data.filepath.url);
+                    var url="$projectname";
+                    url+=data.data.filepath.url;
+                    $("#img2").attr("src",url);
 
 
                 }

@@ -1,10 +1,13 @@
 package cn.edu.hstc.util;
 
+import cn.edu.hstc.service.UserService;
+import cn.edu.hstc.service.impl.UserServiceImpl;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.util.StringUtils;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
 
 /**
  * 用户密码加密工具
@@ -87,8 +90,5 @@ public class MD5Util {
         return newPassword;
     }
 
-    public static void main(String[] args) {
-        String md=MD5Util.encrypt("mym","jjj");
-        System.out.println(md);
-    }
+
 }

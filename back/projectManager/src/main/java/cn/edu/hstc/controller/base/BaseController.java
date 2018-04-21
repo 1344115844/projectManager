@@ -1,11 +1,7 @@
-package cn.edu.hstc.controller.front;
+package cn.edu.hstc.controller.base;
 
-import cn.edu.hstc.common.JSONResponse;
-import cn.edu.hstc.service.FileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

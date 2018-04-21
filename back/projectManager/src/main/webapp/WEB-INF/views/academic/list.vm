@@ -1,4 +1,4 @@
-﻿   #set($projectname="")
+﻿   #set($projectname="/projectManager")
     <!DOCTYPE HTML>
 <html>
 <head>
@@ -144,7 +144,7 @@
                     "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 
-                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='"+data[i].filepath.url+"'/></td>"+
+                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='$projectname"+data[i].filepath.url+"'/></td>"+
                     "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                     "<td>" +

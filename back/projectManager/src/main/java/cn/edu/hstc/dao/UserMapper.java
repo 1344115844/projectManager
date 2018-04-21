@@ -4,6 +4,7 @@ import cn.edu.hstc.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public interface UserMapper {
@@ -35,4 +36,8 @@ public interface UserMapper {
     Set<String> getPermissions(String username);//获取权限名
 
     User getByUsername(String username);//根据username 拿到user对象
+
+    ArrayList<String> selectAllusername();
+
+    void updatePasswordByUsername(@Param("username") String s,@Param("password")String password);
 }

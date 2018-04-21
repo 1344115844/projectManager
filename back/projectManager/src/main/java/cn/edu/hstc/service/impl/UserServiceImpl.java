@@ -161,4 +161,19 @@ public class UserServiceImpl implements UserService {
     public User getByUsername(String username) {
         return userMapper.getByUsername(username);
     }
+
+
+    @Override
+    public void updatePasswordByUsername(String username,String password) {
+        userMapper.updatePasswordByUsername(username,password);
+    }
+
+    @Override
+    public ArrayList<String> getAllUsername() {
+        ArrayList<String> userArrayList=userMapper.selectAllusername();
+        if (userArrayList!=null){
+            return userArrayList;
+        }
+        return null;
+    }
 }

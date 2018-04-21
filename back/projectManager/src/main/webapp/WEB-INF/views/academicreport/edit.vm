@@ -1,4 +1,4 @@
-   #set($projectname="")<!--_meta 作为公共模版分离出去-->
+   #set($projectname="/projectManager")<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -148,7 +148,9 @@ $(function () {
             $("#hostUnit").val(data.data.hostUnit);
             $("#hostPlace").val(data.data.hostPlace);
             $("#attendNum").val(data.data.attendNum);
-            $("#img2").attr("src",data.data.filepath.url);
+            var url="$projectname";
+            url+=data.data.filepath.url;
+            $("#img2").attr("src",url);
         }
 
 

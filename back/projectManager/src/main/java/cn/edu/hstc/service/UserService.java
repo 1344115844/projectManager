@@ -4,6 +4,7 @@ import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.pojo.User;
 import com.github.pagehelper.PageInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -34,4 +35,8 @@ public interface UserService {
     Set<String> getPermissions(String username);
 
     User getByUsername(String username);
+
+    ArrayList<String> getAllUsername();
+
+    void updatePasswordByUsername(String s,String password);
 }
