@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE HTML>
 ##引入config的配置
-   #set($projectname="/projectManager")
+   #set($projectname="")
 
 <html>
 <head>
@@ -36,17 +36,19 @@
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal">
+    <form id="login_form"  class="form form-horizontal">
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
-          <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L">
+          <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L" datatype="*" nullmsg="请输入账号！">
+            <span class="Validform_checktip"></span>
         </div>
       </div>
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
         <div class="formControls col-xs-8">
-          <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L">
+          <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L" datatype="*" nullmsg="请输入密码！">
+            <span class="Validform_checktip"></span>
         </div>
       </div>
 
@@ -59,8 +61,8 @@
       </div>
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
-          <input id="submitId"name="" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
-          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+          <input id="submitId"name="" type="submit" class="btn btn-success radius size-L" onclick="checkAndLogin()" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input id="reset" name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
         </div>
       </div>
     </form>
@@ -70,33 +72,67 @@
 <div class="footer">Copyright hstc.edu.cn by H-ui.admin v3.1</div>
 <script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
+
+<script src="$projectname/myjs/validform/jquery.validate.js"></script>
+<script  src="$projectname/myjs/validform/messages_zh.js"></script>
+<script src="$projectname/myjs/validform/validate-methods.js"></script>
+<style>
+    .registerform li{padding-bottom:20px;}
+    .Validform_checktip{margin-left:10px;}
+    .registerform .label{display:inline-block; width:70px;}
+    .action{padding-left:92px;}
+</style>
 ##
 ##请求登录
 <script type="text/javascript">
-    $(function () {
-        $("#submitId").click(function () {
-            var user=$("#username").val();
-            var pwd=$("#password").val();
-            var veryfiy=true;
-            if(veryfiy){
-                //ajax提交表单
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/user/login.do",
-                    data:{"username":user,"password":pwd},
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            window.location.href="$projectname/user/index";
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 1000});
-                        }
-                    }
-                });
+
+    function checkAndLogin() {
+        $("#login_form").Validform({
+            btnSubmit: "#submitId",
+            btnReset: "#reset",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                Login();
+                return false;
+            },
+        });
+    }
+    function Login() {
+        var user=$("#username").val();
+        var pwd=$("#password").val();
+        //ajax提交表单
+        $.ajax({
+            type:"POST",
+            url:"$projectname/user/login.do",
+            data:{"username":user,"password":pwd},
+            success: function (data) {
+                var user=JSON.parse(data);
+                if (user.status ==200){
+                    window.location.href="$projectname/user/index";
+                }else {
+                    layer.msg(user.msg, {icon: 2, time: 1000});
+                }
             }
         });
-    });
-</script>
+    }
 
+
+
+</script>
+##<script>
+##    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+##        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+##            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+##    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+##
+##    ga('create', 'UA-81001026-1', 'auto');
+##    ga('send', 'pageview');
+##</script>
 </body>
 </html>

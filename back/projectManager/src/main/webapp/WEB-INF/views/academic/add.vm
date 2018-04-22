@@ -1,5 +1,5 @@
 <!--_meta 作为公共模版分离出去-->
-#set($projectname="/projectManager")
+#set($projectname="")
 
 <!DOCTYPE HTML>
 <html>
