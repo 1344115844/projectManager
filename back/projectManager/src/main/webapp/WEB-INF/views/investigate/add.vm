@@ -47,13 +47,13 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察地点：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="investigatePlace" name="investigatePlace" datatype="*" nullmsg="必填字段">
+                <input type="text" class="input-text"  placeholder="请填写考察地点" id="investigatePlace" name="investigatePlace" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="investigateContent" name="investigateContent" datatype="*" nullmsg="必填字段">
+                <input type="text" class="input-text"  placeholder="请填写考察内容" id="investigateContent" name="investigateContent" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 

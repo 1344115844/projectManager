@@ -35,7 +35,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>专利名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="patentTame" name="patentTame">
+                <input type="text" class="input-text"  placeholder="请填写专利名称" id="patentTame" name="patentTame" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 
@@ -43,7 +43,8 @@
             <label class="form-label col-xs-3">专利排名：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="patentRank" id="patentRank">
+                <select class="select" size="1" name="patentRank" id="patentRank" datatype="*" nullmsg="必填字段">
+                    <option value>请填写专利排名</option>
                     <option value="第一" >第一</option>
                     <option value="第二" >第二</option>
                     <option value="第三" >第三</option>
@@ -57,7 +58,8 @@
             <label class="form-label col-xs-3">类型：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="patentForm" id="patentForm">
+                <select class="select" size="1" name="patentForm" id="patentForm" datatype="*" nullmsg="必填字段">
+                    <option value>请填写专利类型</option>
                     <option value="教学" >教学</option>
                     <option value="科研" >科研</option>
                 </select>
@@ -67,21 +69,21 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>授权机构：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="authority" name="authority">
+                <input type="text" class="input-text"  placeholder="请填写授权机构" id="authority" name="authority" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>登记单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="registrationEnterprise" name="registrationEnterprise">
+                <input type="text" class="input-text"  placeholder="请填写登记单位" id="registrationEnterprise" name="registrationEnterprise" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>证书编号：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="patentNum" name="patentNum">
+                <input type="text" class="input-text"  placeholder="请填写证书编号" id="patentNum" name="patentNum" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 
@@ -109,7 +111,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndPost()" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
     </form>
@@ -138,130 +141,78 @@
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
-
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 
 <script type="text/javascript">
 
-##
+    function checkAndPost() {
+        $("#form-patent-add").Validform({
+            btnSubmit: "#submit",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                update();
+                return false;
+            },
+        });
+    }
+
 
 //查询数据
 $(function () {
    selectData();
 })
+    function selectData() {
+        var data = parseUrl();
+        var tentId=parseInt(data['id']);
+        $.ajax({
+            type:"POST",
+            url:"$projectname/patent/selectById.do",
+            data:{"tentId":tentId},
+            success:function (data) {
+                var data = JSON.parse(data);
+                $("#tentId").val(data.data.tentId);
+                $("#patentTame").val(data.data.patentTame);
+                $("#patentRank").val(data.data.patentRank);
+                $("#authority").val(data.data.authority);
+                $("#patentForm").val(data.data.patentForm);
+                $("#registrationEnterprise").val(data.data.registrationEnterprise);
+                $("#patentNum").val(data.data.patentNum);
+                var url="$projectname";
+                url+=data.data.filepath.url;
+                $("#img2").attr("src",url);
 
-//ajax提交数据
-	$("#submit").click(function () {
-	     update();
-       }
-	);
 
-
-
-</script>
-<!--/请在上方写此页面业务相关的脚本-->
-</body>
-</html>
-    <script>
-
-
-        function getData() {
-            $.ajax({
-                type: "POST",
-                url: "/patent/selectByUserId.do",
-                success: function (data) {
-                    var data = JSON.parse(data);
-                    display(data.data.list);
-                }
-            });
-        }
-
-        function display(data) {
-            var str = "";
-            var tbody = window.document.getElementById("tbody");
-            var index =0;
-            for (i in data) {
-                index=parseInt(i)+1;
-                str += "<tr class='text-c'>" +
-                        "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                        "<td name='id' width='40'>" + index + "</td>" +
-                        "<td name='patentTame'width='150'>" + data[i].patentTame + "</td>" +
-                        "<td name='patentRank' width='130'>" + data[i].patentRank + "</td>" +
-                        "<td name='authority' width='100'>" + data[i].authority + "</td>" +
-                        "<td name='patentForm' width='100'>" + data[i].patentForm + "</td>" +
-                        "<td name='registrationEnterprise' width='100'>" + data[i].registrationEnterprise + "</td>" +
-                        "<td name='patentNum' width='100'>" + data[i].patentNum + "</td>" +
-                        "<td ><button  class='btn btn-primary radius ' value='"+data[i].tentId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-                        "<button class=' btn btn-danger radius ' value='"+data[i].tentId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-                        "</tr>";
             }
+        });
+    }
 
-            tbody.innerHTML = str;
-        }
+    function update() {
 
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：跳转编辑页面
-         **/
-        function jumpEdit(id) {
-            var url="$projectname/patent/edit?id="+id;
+        //设置data数据
+        var tentId=$("#tentId").val();
+        tentId=parseInt(tentId);
 
-            layer_show('修改', url);
-        }
+        var upload_file = document.getElementById("file").files[0];
+        var formFile = new FormData();
+        formFile.append("upload_file", upload_file);
+        var data = formFile;
 
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：删除记录
-         **/
-        function jumpDelete(id) {
-            var tentId=parseInt(id);
-            layer.confirm('确认要删除吗？',function () {
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/patent/delete.do",
-                    data:{"tentId":tentId},
-                    success:function (data) {
-                        data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
+        var patentTame=$("#patentTame").val();
+        var patentRank=$("#patentRank").val();
+        var authority =$("#authority").val();
+        var patentForm =$("#patentForm").val();
+        var registrationEnterprise =$("#registrationEnterprise").val();
+        var patentNum =$("#patentNum").val();
 
-                    }
-                });
-            });
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 9:58
-         *方法作用：跳转add页面
-         **/
-        function patent_add(title, url, w, h) {
-            layer_show(title, url, w, h);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var patentTame=$("#patentTame").val();
-            var patentRank=$("#patentRank").val();
-            var authority =$("#authority").val();
-            var patentForm =$("#patentForm").val();
-            var registrationEnterprise =$("#registrationEnterprise").val();
-            var patentNum =$("#patentNum").val();
-
-
-
-
-
+        var fileId=null;
+        //查看upload_file是否为空
+        if(upload_file!=null) {
+            //不为空重新上传，拿到返回的fileid
             $.ajax({
                 type:"POST",
                 url: "$projectname/patent/uploadAttachment.do",
@@ -275,8 +226,9 @@ $(function () {
                     fileId=parseInt(fileId);
                     $.ajax({
                         type:"POST",
-                        url:"$projectname/patent/add.do",
+                        url:"$projectname/patent/update.do",
                         data:{
+                            "tentId":tentId,
                             "patentTame":patentTame, "patentRank":patentRank, "authority":authority, "patentForm":patentForm,
                             "registrationEnterprise":registrationEnterprise,"patentNum":patentNum,
                             "fileId":fileId
@@ -291,113 +243,34 @@ $(function () {
                             }
                         }
                     });
-                },
-                error:function () {
-                    layer.msg("必须上传证件",{icon: 3, time: 2000});
                 }
             });
-        }
+        }else {
 
-
-        function selectData() {
-            var data = parseUrl();
-            var tentId=parseInt(data['id']);
             $.ajax({
                 type:"POST",
-                url:"$projectname/patent/selectById.do",
-                data:{"tentId":tentId},
-                success:function (data) {
-                    var data = JSON.parse(data);
-                    $("#tentId").val(data.data.tentId);
-                    $("#patentTame").val(data.data.patentTame);
-                    $("#authority").val(data.data.authority);
-                    $("#patentForm").val(data.data.patentForm);
-                    $("#registrationEnterprise").val(data.data.registrationEnterprise);
-                    $("#patentNum").val(data.data.patentNum);
-                    var url="$projectname";
-                    url+=data.data.filepath.url;
-                    $("#img2").attr("src",url);
-
-
+                url:"$projectname/patent/update.do",
+                data:{
+                    "tentId":tentId,
+                    "patentTame":patentTame, "patentRank":patentRank, "authority":authority, "patentForm":patentForm,
+                    "registrationEnterprise":registrationEnterprise,"patentNum":patentNum,
+                    "fileId":fileId
+                },
+                success: function (data) {
+                    var user=JSON.parse(data);
+                    if (user.status ==200){
+                        alert(user.msg);
+                        window.parent.location.replace("$projectname/patent/list");
+                    }else {
+                        layer.msg(user.msg, {icon: 2, time: 2000});
+                    }
                 }
             });
         }
+    }
 
-        function update() {
 
-            //设置data数据
-            var tentId=$("#tentId").val();
-            tentId=parseInt(tentId);
 
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var patentTame=$("#patentTame").val();
-            var patentRank=$("#patentRank").val();
-            var authority =$("#authority").val();
-            var patentForm =$("#patentForm").val();
-            var registrationEnterprise =$("#registrationEnterprise").val();
-            var patentNum =$("#patentNum").val();
-
-            var fileId=null;
-            //查看upload_file是否为空
-            if(upload_file!=null) {
-                //不为空重新上传，拿到返回的fileid
-                $.ajax({
-                    type:"POST",
-                    url: "$projectname/patent/uploadAttachment.do",
-                    data: data,
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false,
-                    success: function(data){
-                        data=JSON.parse(data);
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/patent/update.do",
-                            data:{
-                                "tentId":tentId,
-                                "patentTame":patentTame, "patentRank":patentRank, "authority":authority, "patentForm":patentForm,
-                                "registrationEnterprise":registrationEnterprise,"patentNum":patentNum,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/patent/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            }
-                        });
-                    }
-                });
-            }else {
-
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/patent/update.do",
-                    data:{
-                        "tentId":tentId,
-                        "patentTame":patentTame, "patentRank":patentRank, "authority":authority, "patentForm":patentForm,
-                        "registrationEnterprise":registrationEnterprise,"patentNum":patentNum,
-                        "fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            window.parent.location.replace("$projectname/patent/list");
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 2000});
-                        }
-                    }
-                });
-            }
-        }
-    </script>
+</script>
+</body>
+</html>
