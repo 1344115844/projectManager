@@ -185,84 +185,81 @@ function checkAndPost() {
         beforeSubmit:function(curform){
             //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
             //这里明确return false的话表单将不会提交;
-
+            uploadAndAdd();
             return false;
         },
     });
 }
+
 //ajax提交数据
-## 	$("#submit").click(
-## 	    function () {
-##
-##             var upload_file = document.getElementById("file").files[0];
-##             var formFile = new FormData();
-##             formFile.append("upload_file", upload_file);
-##             var data = formFile;
-##
-##
-##             var authorRank=$("#authorRank").val();
-##             var category=$("#category").val();
-##             var collectionSituation=$("#collectionSituation").val();
-##             var novon=$("#novon").val();
-##             var periodical=$("#periodical").val();
-##             var publicationLevel=$("#publicationLevel").val();
-##             var publishJournals=$("#publishJournals").val();
-##             var releasingCode=$("#releasingCode").val();
-##             var thesisName=$("#thesisName").val();
-##             $.ajax({
-## 				type:"POST",
-## 				url: "$projectname/academic/uploadAttachment.do",
-## 				data: data,
-##                 cache: false,//上传文件无需缓存
-##                 processData: false,//用于对data参数进行序列化处理 这里必须false
-##                 contentType: false,
-## 				success: function(data){
-## 				    data=JSON.parse(data);
-## 				    if(data.status==200){
-##                         var fileId=data.data;
-##                         $.ajax({
-##                             type:"POST",
-##                             url:"$projectname/academic/add.do",
-##                             data:{
-##                                 "authorRank":authorRank,
-##                                 "category":category,"collectionSituation":collectionSituation,
-##                                 "novon":novon,"periodical":periodical,
-##                                 "publicationLevel":publicationLevel, "publishJournals":publishJournals,
-##                                 "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
-##                             },
-##                             success: function (data) {
-##                                 var user=JSON.parse(data);
-##                                 if (user.status ==200){
-##                                     alert(user.msg);
-##                                     window.close();
-##                                     window.parent.location.replace("$projectname/academic/list");
-##                                 }else {
-##                                     layer.msg(user.msg, {icon: 2, time: 2000});
-##                                 }
-##                             },
-##                             error:function () {
-##                                 layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-##                             }
-##                         });
-##
-##                     }else {
-##                         layer.msg(data.msg,{icon:2,time:3000});
-##                     }
-##
-##
-## 				},
-##                 error:function () {
-##                     layer.msg("必须上传证件",{icon: 3, time: 2000});
-##                 }
-## 			});
-##
-##
-##         }
-## 	);
+function uploadAndAdd() {
+    upload();
+}
+function upload() {
+    var upload_file = document.getElementById("file").files[0];
+    var formFile = new FormData();
+    formFile.append("upload_file", upload_file);
+    var data = formFile;
+    $.ajax({
+        type:"POST",
+        url: "$projectname/academic/uploadAttachment.do",
+        data: data,
+        cache: false,//上传文件无需缓存
+        processData: false,//用于对data参数进行序列化处理 这里必须false
+        contentType: false,
+        success:function (data) {
+            layer.msg("上传文件成功",{icon:1,time:2000});
+            add(data);
+        },
+        error:function () {
+            layer.msg("上传文件失败",{icon: 2, time: 2000});
+        }
+    });
+}
+function add(data) {
+    //拿表单数据
+    var authorRank=$("#authorRank").val();
+    var category=$("#category").val();
+    var collectionSituation=$("#collectionSituation").val();
+    var novon=$("#novon").val();
+    var periodical=$("#periodical").val();
+    var publicationLevel=$("#publicationLevel").val();
+    var publishJournals=$("#publishJournals").val();
+    var releasingCode=$("#releasingCode").val();
+    var thesisName=$("#thesisName").val();
+    //请求后台接口
+    data=JSON.parse(data);
+    if(data.status==200){
+        var fileId=data.data;
+        $.ajax({
+            type:"POST",
+            url:"$projectname/academic/add.do",
+            data:{
+                "authorRank":authorRank,
+                "category":category,"collectionSituation":collectionSituation,
+                "novon":novon,"periodical":periodical,
+                "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+            },
+            success: function (data) {
+                var user=JSON.parse(data);
+                if (user.status ==200){
+                    alert(user.msg);
+                    window.close();
+                    window.parent.location.replace("$projectname/academic/list");
+                }else {
+                    layer.msg(user.msg, {icon: 2, time: 2000});
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+            }
+        });
 
-
-
+    }else {
+        layer.msg(data.msg,{icon:2,time:3000});
+    }
+}
 </script>
-<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
