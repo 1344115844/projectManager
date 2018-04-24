@@ -35,44 +35,52 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>教材名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="bookName" name="bookName">
+                <input type="text" class="input-text"  placeholder="请填写教材名称" id="bookName" name="bookName" datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">编辑排名：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="editRank" id="editRank">
-                    <option value="第一" >第一</option>
-                    <option value="第二" >第二</option>
-                    <option value="第三" >第三</option>
-                    <option value="第四" >第四</option>
+                <select class="select" size="1" name="editRank" id="editRank"  datatype="*" nullmsg="必填字段">
+                    <option value >请填写编辑排名</option>
+                    <option value="第一作者" >第一作者</option>
+                    <option value="第二作者" >第二作者</option>
+                    <option value="第三作者" >第三作者</option>
+                    <option value="参著者" >参著者</option>
+                    <option value="参编者" >参编者</option>
                 </select>
-            </span>
+            </span> <span class="Validform_checktip"></span>
+
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>书号：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="isbn" name="isbn">
+                <input type="text" class="input-text"  placeholder="请填写书号" id="isbn" name="isbn"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出版单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publishUnit" name="publishUnit">
+                <input type="text" class="input-text"  placeholder="请填写书号" id="publishUnit" name="publishUnit"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">出版时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;">
+                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>字数：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="byteNum" name="byteNum">
+                <input type="text" class="input-text"  placeholder="请填写字数" id="byteNum" name="byteNum"  datatype="n1-20" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
@@ -100,7 +108,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndPost()" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
     </form>
@@ -129,16 +138,26 @@
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
-
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 
 <script type="text/javascript">
 
+    function checkAndPost() {
+        $("#form-editbook-add").Validform({
+            btnSubmit: "#submit",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                update();
+                return false;
+            },
+        });
+    }
 
-    /**
-     *@author Veng Su
-     *@date 2018/4/5 21:18
-     *方法作用：绑定日期插件
-     **/
     laydate.render({
         elem: '#publishTime' //指定元素
     });
@@ -147,124 +166,60 @@
 $(function () {
     selectData();
 })
+    function selectData() {
+        var data = parseUrl();
+        var editId=parseInt(data['id']);
+        $.ajax({
+            type:"POST",
+            url:"$projectname/editbook/selectById.do",
+            data:{"editId":editId},
+            success:function (data) {
+                var data = JSON.parse(data);
+                $("#editId").val(data.data.editId);
+                $("#bookName").val(data.data.bookName);
+                $("#isbn").val(data.data.isbn);
+                $("#publishUnit").val(data.data.publishUnit);
+                $("#byteNum").val(data.data.byteNum);
+                $("#editRank").val(data.data.editRank);
 
-//ajax提交数据
-	$("#submit").click(function () {
-	     update();
-        }
-	);
-
-
-
-</script>
-<!--/请在上方写此页面业务相关的脚本-->
-</body>
-</html>
-    <script>
-
-
-        function getData() {
-            // $.ajax({
-            //     type: "POST",
-            //     url: "/editbook/selectByUserId.do",
-            //     success: function (data) {
-            //         var data = JSON.parse(data);
-            //         display(data.data.list);
-            //     }
-            // });
-        }
-
-        // function display(data) {
-        //     var str = "";
-        //     var tbody = window.document.getElementById("tbody");
-        //     var index =0;
-        //     for (i in data) {
-        //         var publishTime =FormatDateTime(data[i].publishTime);
-        //         index=parseInt(i)+1;
-        //         str += "<tr class='text-c'>" +
-        //             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-        //             "<td name='id' width='40'>" + index + "</td>" +
-        //             "<td name='bookName'width='150'>" + data[i].bookName + "</td>" +
-        //             "<td name='editRank' width='130'>" +  data[i].editRank + "</td>" +
-        //             "<td name='publishTime' width='100'>" + publishTime + "</td>" +
-        //             "<td name='isbn' width='100'>" + data[i].isbn + "</td>" +
-        //             "<td name='publishUnit' width='100'>" + data[i].publishUnit + "</td>" +
-        //             "<td name='byteNum' width='100'>" + data[i].byteNum + "</td>" +
-        //             "<td ><button  class='btn btn-primary radius ' value='"+data[i].editId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-        //             "<button class=' btn btn-danger radius ' value='"+data[i].editId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-        //             "</tr>";
-        //     }
-        //
-        //     tbody.innerHTML = str;
-        // }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：跳转编辑页面
-         **/
-        function jumpEdit(id) {
-            var url="$projectname/editbook/edit?id="+id;
-
-            layer_show('修改', url);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：删除记录
-         **/
-        function jumpDelete(id) {
-            var copyId=parseInt(id);
-            layer.confirm('确认要删除吗？',function () {
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/editbook/delete.do",
-                    data:{"copyId":copyId},
-                    success:function (data) {
-                        data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
-
-                    }
-                });
-            });
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 9:58
-         *方法作用：跳转add页面
-         **/
-        function editbook_add(title, url, w, h) {
-            layer_show(title, url, w, h);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var bookName=$("#bookName").val();
-            var isbn=$("#isbn").val();
-            var publishUnit=$("#publishUnit").val();
-
-            var byteNum=$("#byteNum").val();
-            byteNum=parseInt(byteNum);
-
-            var publishTime =$("#publishTime").val();
-            publishTime=convertDateFromString(publishTime);
-
-            var editRank=$('#editRank').val();
+                var publishTime=FormatDateTime(data.data.publishTime);
+                $("#publishTime").val(publishTime);
+                var url="$projectname";
+                url+=data.data.filepath.url;
+                $("#img2").attr("src",url);
 
 
+            }
+        });
+    }
 
+    function update() {
+
+        //设置data数据
+        var editId=$("#editId").val();
+        editId=parseInt(editId);
+
+        var upload_file = document.getElementById("file").files[0];
+        var formFile = new FormData();
+        formFile.append("upload_file", upload_file);
+        var data = formFile;
+
+        var bookName=$("#bookName").val();
+        var isbn=$("#isbn").val();
+        var publishUnit=$("#publishUnit").val();
+
+        var byteNum=$("#byteNum").val();
+        byteNum=parseInt(byteNum);
+
+        var publishTime =$("#publishTime").val();
+        publishTime=convertDateFromString(publishTime);
+
+        var editRank=$('#editRank').val();
+
+        var fileId=null;
+        //查看upload_file是否为空
+        if(upload_file!=null) {
+            //不为空重新上传，拿到返回的fileid
             $.ajax({
                 type:"POST",
                 url: "$projectname/editbook/uploadAttachment.do",
@@ -278,8 +233,9 @@ $(function () {
                     fileId=parseInt(fileId);
                     $.ajax({
                         type:"POST",
-                        url:"$projectname/editbook/add.do",
+                        url:"$projectname/editbook/update.do",
                         data:{
+                            "editId":editId,
                             "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
                             "publishTime":publishTime,"editRank":editRank,
                             "fileId":fileId
@@ -294,121 +250,33 @@ $(function () {
                             }
                         }
                     });
-                },
-                error:function () {
-                    layer.msg("必须上传证件",{icon: 3, time: 2000});
                 }
             });
-        }
+        }else {
 
-
-        function selectData() {
-            var data = parseUrl();
-            var editId=parseInt(data['id']);
             $.ajax({
                 type:"POST",
-                url:"$projectname/editbook/selectById.do",
-                data:{"editId":editId},
-                success:function (data) {
-                    var data = JSON.parse(data);
-                    $("#editId").val(data.data.editId);
-                    $("#bookName").val(data.data.bookName);
-                    $("#isbn").val(data.data.isbn);
-                    $("#publishUnit").val(data.data.publishUnit);
-                    $("#byteNum").val(data.data.byteNum);
-                    $("#editRank").val(data.data.editRank);
-
-                    var publishTime=FormatDateTime(data.data.publishTime);
-                    $("#publishTime").val(publishTime);
-                    var url="$projectname";
-                    url+=data.data.filepath.url;
-                    $("#img2").attr("src",url);
-
-
+                url:"$projectname/editbook/update.do",
+                data:{
+                    "editId":editId,
+                    "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
+                    "publishTime":publishTime,"editRank":editRank,
+                    "fileId":fileId
+                },
+                success: function (data) {
+                    var user=JSON.parse(data);
+                    if (user.status ==200){
+                        alert(user.msg);
+                        window.parent.location.replace("$projectname/editbook/list");
+                    }else {
+                        layer.msg(user.msg, {icon: 2, time: 2000});
+                    }
                 }
             });
         }
+    }
 
-        function update() {
 
-            //设置data数据
-            var editId=$("#editId").val();
-            editId=parseInt(editId);
-
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var bookName=$("#bookName").val();
-            var isbn=$("#isbn").val();
-            var publishUnit=$("#publishUnit").val();
-
-            var byteNum=$("#byteNum").val();
-            byteNum=parseInt(byteNum);
-
-            var publishTime =$("#publishTime").val();
-            publishTime=convertDateFromString(publishTime);
-
-            var editRank=$('#editRank').val();
-
-            var fileId=null;
-            //查看upload_file是否为空
-            if(upload_file!=null) {
-                //不为空重新上传，拿到返回的fileid
-                $.ajax({
-                    type:"POST",
-                    url: "$projectname/editbook/uploadAttachment.do",
-                    data: data,
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false,
-                    success: function(data){
-                        data=JSON.parse(data);
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/editbook/update.do",
-                            data:{
-                                "editId":editId,
-                                "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                                "publishTime":publishTime,"editRank":editRank,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/editbook/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            }
-                        });
-                    }
-                });
-            }else {
-
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/editbook/update.do",
-                    data:{
-                        "editId":editId,
-                        "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                        "publishTime":publishTime,"editRank":editRank,
-                        "fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            window.parent.location.replace("$projectname/editbook/list");
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 2000});
-                        }
-                    }
-                });
-            }
-        }
-    </script>
+</script>
+</body>
+</html>

@@ -8,12 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="Bookmark" href="$projectname/favicon.ico" >
-<link rel="Shortcut Icon" href="$projectname/favicon.ico" />
-<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
+
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="$projectname/lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -27,68 +22,61 @@
     <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
     <script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-
-
     <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
-
-
-
-<!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
-
 <title>添加记录</title>
-
 </head>
 <body>
 <article class="page-container">
 	<form  class="form form-horizontal" id="form-editbook-add">
-
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>教材名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="bookName" name="bookName">
+                <input type="text" class="input-text"  placeholder="请填写教材名称" id="bookName" name="bookName" datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
-
         <div class="row cl">
             <label class="form-label col-xs-3">编辑排名：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="editRank" id="editRank">
+                <select class="select" size="1" name="editRank" id="editRank"  datatype="*" nullmsg="必填字段">
+                    <option value >请填写编辑排名</option>
                     <option value="第一作者" >第一作者</option>
                     <option value="第二作者" >第二作者</option>
                     <option value="第三作者" >第三作者</option>
                     <option value="参著者" >参著者</option>
                     <option value="参编者" >参编者</option>
                 </select>
-            </span>
+            </span> <span class="Validform_checktip"></span>
+
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>书号：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="isbn" name="isbn">
+                <input type="text" class="input-text"  placeholder="请填写书号" id="isbn" name="isbn"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出版单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="publishUnit" name="publishUnit">
+                <input type="text" class="input-text"  placeholder="请填写书号" id="publishUnit" name="publishUnit"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">出版时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;">
+                <input type="text"  id="publishTime" class="input-text Wdate" style="width:120px;"  datatype="*" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>字数：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="byteNum" name="byteNum">
+                <input type="text" class="input-text"  placeholder="请填写字数" id="byteNum" name="byteNum"  datatype="n1-20" nullmsg="必填字段">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
@@ -98,8 +86,7 @@
 				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple id="file" name="file" class="input-file" onchange="previewImg(this,'img1')">
-
-				</span>
+				</span><span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
@@ -110,7 +97,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="check()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
 	</form>
@@ -119,26 +107,33 @@
     <div class="text-shadow">
 
     </div>
-
 </article>
-
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
-
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-<script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
-<script type="text/javascript" src="$projectname/myjs/base.js"></script>
-
-
+<script src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="$projectname/lib/layer/2.4/layer.js"></script>
+<script src="$projectname/static/h-ui/js/H-ui.min.js"></script>
+<script src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script>
+<script src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script src="$projectname/myjs/laydate/laydate.js"></script>
+<script src="$projectname/myjs/base.js"></script>
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 <script type="text/javascript">
 
+
+    function check() {
+        $("#form-editbook-add").Validform({
+            btnSubmit: "#submit",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                add();
+                return false;
+            },
+        });
+    }
 
     /**
      *@author Veng Su
@@ -148,274 +143,69 @@
     laydate.render({
         elem: '#publishTime' //指定元素
     });
+    function add() {
+        var upload_file = document.getElementById("file").files[0];
+        var formFile = new FormData();
+        formFile.append("upload_file", upload_file);
+        var data = formFile;
 
-//ajax提交数据
-	$("#submit").click(
-	    function () {
-            add();
-        }
-	);
+        var bookName=$("#bookName").val();
+        var isbn=$("#isbn").val();
+        var publishUnit=$("#publishUnit").val();
+
+        var byteNum=$("#byteNum").val();
+        byteNum=parseInt(byteNum);
+
+        var publishTime =$("#publishTime").val();
+        publishTime=convertDateFromString(publishTime);
+
+        var editRank=$('#editRank').val();
 
 
 
+        $.ajax({
+            type:"POST",
+            url: "$projectname/editbook/uploadAttachment.do",
+            data: data,
+            cache: false,//上传文件无需缓存
+            processData: false,//用于对data参数进行序列化处理 这里必须false
+            contentType: false,
+            success: function(data){
+                data=JSON.parse(data);
+                if (data.status==200){
+                    var fileId=data.data;
+                    fileId=parseInt(fileId);
+                    $.ajax({
+                        type:"POST",
+                        url:"$projectname/editbook/add.do",
+                        data:{
+                            "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
+                            "publishTime":publishTime,"editRank":editRank,
+                            "fileId":fileId
+                        },
+                        success: function (data) {
+                            var user=JSON.parse(data);
+                            if (user.status ==200){
+                                alert(user.msg);
+                                window.parent.location.replace("$projectname/editbook/list");
+                            }else {
+                                layer.msg(user.msg, {icon: 2, time: 2000});
+                            }
+                        },
+                        error:function () {
+                            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+                        }
+                    });
+                }else {
+                    layer.msg(data.msg, {icon: 2, time: 2000});
+                }
+
+            },
+            error:function () {
+                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+            }
+        });
+    }
 </script>
-<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
-    <script>
-
-
-        function getData() {
-            // $.ajax({
-            //     type: "POST",
-            //     url: "/editbook/selectByUserId.do",
-            //     success: function (data) {
-            //         var data = JSON.parse(data);
-            //         display(data.data.list);
-            //     }
-            // });
-        }
-
-        // function display(data) {
-        //     var str = "";
-        //     var tbody = window.document.getElementById("tbody");
-        //     var index =0;
-        //     for (i in data) {
-        //         var publishTime =FormatDateTime(data[i].publishTime);
-        //         index=parseInt(i)+1;
-        //         str += "<tr class='text-c'>" +
-        //             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-        //             "<td name='id' width='40'>" + index + "</td>" +
-        //             "<td name='bookName'width='150'>" + data[i].bookName + "</td>" +
-        //             "<td name='editRank' width='130'>" +  data[i].editRank + "</td>" +
-        //             "<td name='publishTime' width='100'>" + publishTime + "</td>" +
-        //             "<td name='isbn' width='100'>" + data[i].isbn + "</td>" +
-        //             "<td name='publishUnit' width='100'>" + data[i].publishUnit + "</td>" +
-        //             "<td name='byteNum' width='100'>" + data[i].byteNum + "</td>" +
-        //             "<td ><button  class='btn btn-primary radius ' value='"+data[i].editId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-        //             "<button class=' btn btn-danger radius ' value='"+data[i].editId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-        //             "</tr>";
-        //     }
-        //
-        //     tbody.innerHTML = str;
-        // }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：跳转编辑页面
-         **/
-        function jumpEdit(id) {
-            var url="$projectname/editbook/edit?id="+id;
-
-            layer_show('修改', url);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：删除记录
-         **/
-        function jumpDelete(id) {
-            var copyId=parseInt(id);
-            layer.confirm('确认要删除吗？',function () {
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/editbook/delete.do",
-                    data:{"copyId":copyId},
-                    success:function (data) {
-                        data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
-
-                    }
-                });
-            });
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 9:58
-         *方法作用：跳转add页面
-         **/
-        function editbook_add(title, url, w, h) {
-            layer_show(title, url, w, h);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var bookName=$("#bookName").val();
-            var isbn=$("#isbn").val();
-            var publishUnit=$("#publishUnit").val();
-
-            var byteNum=$("#byteNum").val();
-            byteNum=parseInt(byteNum);
-
-            var publishTime =$("#publishTime").val();
-            publishTime=convertDateFromString(publishTime);
-
-            var editRank=$('#editRank').val();
-
-
-
-            $.ajax({
-                type:"POST",
-                url: "$projectname/editbook/uploadAttachment.do",
-                data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-                success: function(data){
-                    data=JSON.parse(data);
-                    if (data.status==200){
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/editbook/add.do",
-                            data:{
-                                "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                                "publishTime":publishTime,"editRank":editRank,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/editbook/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            },
-                            error:function () {
-                                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                            }
-                        });
-                    }else {
-                        layer.msg(data.msg, {icon: 2, time: 2000});
-                    }
-
-                },
-                error:function () {
-                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                }
-            });
-        }
-
-
-        function selectData() {
-            var data = parseUrl();
-            var editId=parseInt(data['id']);
-            $.ajax({
-                type:"POST",
-                url:"$projectname/editbook/selectById.do",
-                data:{"editId":editId},
-                success:function (data) {
-                    var data = JSON.parse(data);
-                    $("#editId").val(data.data.editId);
-                    $("#bookName").val(data.data.bookName);
-                    $("#isbn").val(data.data.isbn);
-                    $("#publishUnit").val(data.data.publishUnit);
-                    $("#byteNum").val(data.data.byteNum);
-                    $("#editRank").val(data.data.editRank);
-
-                    var publishTime=FormatDateTime(data.data.publishTime);
-                    $("#publishTime").val(publishTime);
-
-
-                }
-            });
-        }
-
-        function update() {
-
-            //设置data数据
-            var editId=$("#editId").val();
-            editId=parseInt(editId);
-
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var bookName=$("#bookName").val();
-            var isbn=$("#isbn").val();
-            var publishUnit=$("#publishUnit").val();
-
-            var byteNum=$("#byteNum").val();
-            byteNum=parseInt(byteNum);
-
-            var publishTime =$("#publishTime").val();
-            publishTime=convertDateFromString(publishTime);
-
-            var editRank=$('#editRank').val();
-
-            var fileId=null;
-            //查看upload_file是否为空
-            if(upload_file!=null) {
-                //不为空重新上传，拿到返回的fileid
-                $.ajax({
-                    type:"POST",
-                    url: "$projectname/editbook/uploadAttachment.do",
-                    data: data,
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false,
-                    success: function(data){
-                        data=JSON.parse(data);
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/editbook/update.do",
-                            data:{
-                                "editId":editId,
-                                "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                                "publishTime":publishTime,"editRank":editRank,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/editbook/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            }
-                        });
-                    }
-                });
-            }else {
-
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/editbook/update.do",
-                    data:{
-                        "editId":editId,
-                        "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                        "publishTime":publishTime,"editRank":editRank,
-                        "fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            window.parent.location.replace("$projectname/editbook/list");
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 2000});
-                        }
-                    }
-                });
-            }
-        }
-    </script>
