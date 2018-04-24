@@ -35,25 +35,25 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学术团体名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="unitName" name="unitName">
+                <input type="text" class="input-text"  placeholder="请填写学术团体名称" id="unitName" name="unitName" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>主办单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="hostUnit" name="hostUnit">
+                <input type="text" class="input-text"  placeholder="请填写主办单位" id="hostUnit" name="hostUnit" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>职务：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="duty" name="duty">
+                <input type="text" class="input-text"  placeholder="请填写职务" id="duty" name="duty" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>任期：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="term" name="term">
+                <input type="text" class="input-text"  placeholder="请填写任期" id="term" name="term" datatype="*" nullmsg="必填字段">
             </div>
         </div>
 
@@ -81,7 +81,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndPost()" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
     </form>
@@ -110,199 +111,81 @@
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 
 
 <script type="text/javascript">
+    function checkAndPost() {
+        $("#form-unit-add").Validform({
+            btnSubmit: "#submit",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                update();
+                return false;
+            },
+        });
+    }
 //查询数据
 $(function () {
    selectData();
 })
-//ajax提交数据
-	$("#submit").click(function () {
-	     update();
-       }
-	);
-</script>
-<!--/请在上方写此页面业务相关的脚本-->
-</body>
-</html>
-    <script>
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：跳转编辑页面
-         **/
-        function jumpEdit(id) {
-            var url="$projectname/unit/edit?id="+id;
+function selectData() {
+    var data = parseUrl();
+    var unitId=parseInt(data['id']);
+    $.ajax({
+        type:"POST",
+        url:"$projectname/unit/selectById.do",
+        data:{"unitId":unitId},
+        success:function (data) {
+            var data = JSON.parse(data);
+            $("#unitId").val(data.data.unitId);
 
-            layer_show('修改', url);
+            $("#unitName").val(data.data.unitName);
+            $("#hostUnit").val(data.data.hostUnit);
+            $("#term").val(data.data.term);
+            $("#duty").val(data.data.duty);
+            var url="$projectname";
+            url+=data.data.filepath.url;
+            $("#img2").attr("src",url);
         }
+    });
+}
+function update() {
 
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：删除记录
-         **/
-        function jumpDelete(id) {
-            var stuId=parseInt(id);
-            layer.confirm('确认要删除吗？',function () {
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/unit/delete.do",
-                    data:{"stuId":stuId},
-                    success:function (data) {
-                        data=JSON.parse(data);
-                        if(data.status==200){
-                            layer.msg(data.msg, {icon: 1, time: 3000});
+    //设置data数据
+    var unitId=$("#unitId").val();
+    unitId=parseInt(unitId);
 
-                        }else {
-                            layer.msg(data.msg, {icon: 2, time: 3000});
-                        }
-                        getData();
+    var upload_file = document.getElementById("file").files[0];
+    var formFile = new FormData();
+    formFile.append("upload_file", upload_file);
+    var data = formFile;
 
-                    }
-                });
-            });
-        }
+    var unitName=$("#unitName").val();
+    var hostUnit=$("#hostUnit").val();
+    var term=$("#term").val();
+    var duty=$("#duty").val();
 
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 9:58
-         *方法作用：跳转add页面
-         **/
-        function unit_add(title, url, w, h) {
-            layer_show(title, url, w, h);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var unitName=$("#unitName").val();
-            var hostUnit=$("#hostUnit").val();
-            var term=$("#term").val();
-            var duty=$("#duty").val();
-
-
-
-            $.ajax({
-                type:"POST",
-                url: "$projectname/unit/uploadAttachment.do",
-                data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-                success: function(data){
-                    data=JSON.parse(data);
-                    var fileId=data.data;
-                    fileId=parseInt(fileId);
-                    $.ajax({
-                        type:"POST",
-                        url:"$projectname/unit/add.do",
-                        data:{
-                            "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
-                            "fileId":fileId
-                        },
-                        success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                window.parent.location.replace("$projectname/unit/list");
-                            }else {
-                                layer.msg(user.msg, {icon: 2, time: 2000});
-                            }
-                        }
-                    });
-                },
-                error:function () {
-                    layer.msg("必须上传证件",{icon: 3, time: 2000});
-                }
-            });
-        }
-
-
-        function selectData() {
-            var data = parseUrl();
-            var unitId=parseInt(data['id']);
-            $.ajax({
-                type:"POST",
-                url:"$projectname/unit/selectById.do",
-                data:{"unitId":unitId},
-                success:function (data) {
-                    var data = JSON.parse(data);
-                    $("#unitId").val(data.data.unitId);
-
-                    $("#unitName").val(data.data.unitName);
-                    $("#hostUnit").val(data.data.hostUnit);
-                    $("#term").val(data.data.term);
-                    $("#duty").val(data.data.duty);
-                    var url="$projectname";
-                    url+=data.data.filepath.url;
-                    $("#img2").attr("src",url);
-                }
-            });
-        }
-
-        function update() {
-
-            //设置data数据
-            var unitId=$("#unitId").val();
-            unitId=parseInt(unitId);
-
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var unitName=$("#unitName").val();
-            var hostUnit=$("#hostUnit").val();
-            var term=$("#term").val();
-            var duty=$("#duty").val();
-
-            var fileId=null;
-            //查看upload_file是否为空
-            if(upload_file!=null) {
-                //不为空重新上传，拿到返回的fileid
-                $.ajax({
-                    type:"POST",
-                    url: "$projectname/unit/uploadAttachment.do",
-                    data: data,
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false,
-                    success: function(data){
-                        data=JSON.parse(data);
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/unit/update.do",
-                            data:{
-                                "unitId":unitId,
-                                "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/unit/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            }
-                        });
-                    }
-                });
-            }else {
-
+    var fileId=null;
+    //查看upload_file是否为空
+    if(upload_file!=null) {
+        //不为空重新上传，拿到返回的fileid
+        $.ajax({
+            type:"POST",
+            url: "$projectname/unit/uploadAttachment.do",
+            data: data,
+            cache: false,//上传文件无需缓存
+            processData: false,//用于对data参数进行序列化处理 这里必须false
+            contentType: false,
+            success: function(data){
+                data=JSON.parse(data);
+                var fileId=data.data;
+                fileId=parseInt(fileId);
                 $.ajax({
                     type:"POST",
                     url:"$projectname/unit/update.do",
@@ -322,7 +205,31 @@ $(function () {
                     }
                 });
             }
-        }
+        });
+    }else {
+
+        $.ajax({
+            type:"POST",
+            url:"$projectname/unit/update.do",
+            data:{
+                "unitId":unitId,
+                "unitName":unitName, "hostUnit":hostUnit, "term":term, "duty":duty,
+                "fileId":fileId
+            },
+            success: function (data) {
+                var user=JSON.parse(data);
+                if (user.status ==200){
+                    alert(user.msg);
+                    window.parent.location.replace("$projectname/unit/list");
+                }else {
+                    layer.msg(user.msg, {icon: 2, time: 2000});
+                }
+            }
+        });
+    }
+}
 
 
-    </script>
+</script>
+</body>
+</html>
