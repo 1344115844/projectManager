@@ -51,13 +51,15 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>会议名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="conferenceName" name="username">
+                <input type="text" class="input-text"  placeholder="请填写会议名称" id="conferenceName" name="conferenceName" datatype="*" nullmsg="请填写会议名称">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>论文题目：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="paperTitle" name="username">
+                <input type="text" class="input-text"  placeholder="请填写论文题目" id="paperTitle" name="paperTitle" datatype="*" nullmsg="请填写论文题目">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
@@ -65,32 +67,36 @@
             <label class="form-label col-xs-3">举办时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text"  id="time"
-                       class="input-text Wdate" style="width:120px;">
+                       class="input-text Wdate" style="width:120px;" datatype="*" nullmsg="请填写举办时间">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>地点：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="place" name="username">
+                <input type="text" class="input-text"  placeholder="请填写地点" id="place" name="place" datatype="*" nullmsg="请填写地点">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>主办单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="hostUnit" name="username">
+                <input type="text" class="input-text"  placeholder="请填写主办单位" id="hostUnit" name="hostUnit" datatype="*" nullmsg="请填写主办单位">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">会议类别：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="conferenceCategory" id="conferenceCategory">
+                <select class="select" size="1" name="conferenceCategory" id="conferenceCategory" datatype="*" nullmsg="请填写主办单位">
+                    <option value>请填写会议类别</option>
                     <option value="国际学术会议" >国际学术会议</option>
                     <option value="港澳台学术会议" >港澳台学术会议</option>
                     <option value="国内学术会议" >国内学术会议</option>
                 </select>
-            </span>
+            </span><span class="Validform_checktip"></span>
             </div>
         </div>
 
@@ -113,7 +119,9 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndPost()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
+
             </div>
         </div>
 	</form>
@@ -139,7 +147,7 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 <script type="text/javascript">
 
 /**
@@ -151,71 +159,80 @@ laydate.render({
     elem: '#time' //指定元素
 });
 
-//ajax提交数据
-	$("#submit").click(
-	    function () {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
+function checkAndPost() {
+    $("#form-attendconference-add").Validform({
+        btnSubmit: "#submit",
+        tiptype:3,
+        showAllError: true,
+        ignoreHidden: true,
+        ajaxPost: false,
+        beforeSubmit:function(curform){
+            //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+            //这里明确return false的话表单将不会提交;
+            post();
+            return false;
+        },
+    });
+}
 
-            var conferenceName=$("#conferenceName").val();
-            var paperTitle=$("#paperTitle").val();
-            var time =$("#time").val();
-            time=convertDateFromString(time);
+function post() {
+    var upload_file = document.getElementById("file").files[0];
+    var formFile = new FormData();
+    formFile.append("upload_file", upload_file);
+    var data = formFile;
 
-            var place=$("#place").val();
-            var hostUnit=$("#hostUnit").val();
-            var conferenceCategory=$("#conferenceCategory").val();
-            $.ajax({
-				type:"POST",
-				url: "$projectname/attendconference/uploadAttachment.do",
-				data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-				success: function(data){
-				    data=JSON.parse(data);
-				    if(data.status==200){
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/attendconference/add.do",
-                            data:{
-                                "conferenceName":conferenceName, "paperTitle":paperTitle, "time":time, "place":place, "hostUnit":hostUnit,
-                                "conferenceCategory":conferenceCategory, "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.close();
-                                    window.parent.location.replace("$projectname/attendconference/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            },
-                            error:function () {
-                                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                            }
-                        });
-                    }else {
-                        layer.msg(data.msg, {icon: 2, time: 2000});
+    var conferenceName=$("#conferenceName").val();
+    var paperTitle=$("#paperTitle").val();
+    var time =$("#time").val();
+    time=convertDateFromString(time);
+
+    var place=$("#place").val();
+    var hostUnit=$("#hostUnit").val();
+    var conferenceCategory=$("#conferenceCategory").val();
+    $.ajax({
+        type:"POST",
+        url: "$projectname/attendconference/uploadAttachment.do",
+        data: data,
+        cache: false,//上传文件无需缓存
+        processData: false,//用于对data参数进行序列化处理 这里必须false
+        contentType: false,
+        success: function(data){
+            data=JSON.parse(data);
+            if(data.status==200){
+                var fileId=data.data;
+                fileId=parseInt(fileId);
+                $.ajax({
+                    type:"POST",
+                    url:"$projectname/attendconference/add.do",
+                    data:{
+                        "conferenceName":conferenceName, "paperTitle":paperTitle, "time":time, "place":place, "hostUnit":hostUnit,
+                        "conferenceCategory":conferenceCategory, "fileId":fileId
+                    },
+                    success: function (data) {
+                        var user=JSON.parse(data);
+                        if (user.status ==200){
+                            alert(user.msg);
+                            window.close();
+                            window.parent.location.replace("$projectname/attendconference/list");
+                        }else {
+                            layer.msg(user.msg, {icon: 2, time: 2000});
+                        }
+                    },
+                    error:function () {
+                        layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
                     }
-				},
-                error:function () {
-                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                }
-			});
-
-
+                });
+            }else {
+                layer.msg(data.msg, {icon: 2, time: 2000});
+            }
+        },
+        error:function () {
+            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
         }
-	);
-
+    });
+}
 
 
 </script>
-<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

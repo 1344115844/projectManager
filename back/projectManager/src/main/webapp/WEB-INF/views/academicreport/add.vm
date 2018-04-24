@@ -9,16 +9,12 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="Bookmark" href="$projectname/favicon.ico" >
 <link rel="Shortcut Icon" href="$projectname/favicon.ico" />
-<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
+
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="$projectname/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="$projectname/static/h-ui.admin/css/style.css" />
-
     <script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
     <script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
@@ -26,64 +22,55 @@
     <script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
     <script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-
-
     <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
-    <script type="text/javascript" src="$projectname/myjs/base.js"></script>
-
-
-
-
-    <!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
-
 <title>添加记录</title>
-
 </head>
 <body>
 <article class="page-container">
 	<form  class="form form-horizontal" id="form-academicreport-add">
-
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学术报告标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="reportTitle" name="username">
+                <input type="text" class="input-text"  placeholder="请填写报告标题" id="reportTitle" name="username"  datatype="*" nullmsg="请填写报告标题">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">学术报告开始的时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin"
-                       class="input-text Wdate" style="width:120px;">
+                       class="input-text Wdate" style="width:120px;" datatype="*" nullmsg="请填写时间">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">结束的时间：</label>
             <div class="formControls col-xs-8">
                 <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax"
-                       class="input-text Wdate" style="width:120px;">
+                       class="input-text Wdate" style="width:120px;" datatype="*" nullmsg="请填写时间">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>举办单位：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="hostUnit" name="username">
+                <input type="text" class="input-text"  placeholder="请填举办单位" id="hostUnit" name="username" datatype="*" nullmsg="请填举办单位">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>举办地点：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="hostPlace" name="username">
+                <input type="text" class="input-text"  placeholder="请填写举办地点" id="hostPlace" name="username" datatype="*" nullmsg="请填写举办地点">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>参加人数：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text" value="" placeholder="" id="attendNum" name="username">
+                <input type="text"  class="input-text"  placeholder="请填写整数" id="attendNum" name="username" datatype="n1-10" nullmsg="请填写参加人数">
+                <span class="Validform_checktip"></span>
             </div>
         </div>
 
@@ -93,9 +80,8 @@
             <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
 				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
-				<input type="file" multiple id="file" name="file" class="input-file" onchange="previewImg(this,'img1')">
-
-				</span>
+				<input type="file" multiple id="file" name="file" class="input-file" onchange="previewImg(this,'img1')" >
+				</span><span class="Validform_checktip"></span>
             </div>
         </div>
         <div class="row cl">
@@ -106,7 +92,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndPost()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
 	</form>
@@ -124,77 +111,84 @@
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="$projectname/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 
 <script type="text/javascript">
 
+function checkAndPost() {
+    $("#form-academicreport-add").Validform({
+        btnSubmit: "#submit",
+        tiptype:3,
+        showAllError: true,
+        ignoreHidden: true,
+        ajaxPost: false,
+        beforeSubmit:function(curform){
+            //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+            //这里明确return false的话表单将不会提交;
+            uploadAndAdd();
+            return false;
+        },
+    });
+}
+function uploadAndAdd() {
+    var upload_file = document.getElementById("file").files[0];
+    var formFile = new FormData();
+    formFile.append("upload_file", upload_file);
+    var data = formFile;
 
-//ajax提交数据
-	$("#submit").click(
-	    function () {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
+    var reportTitle=$("#reportTitle").val();
+    var beginTime=$("#datemin").val();
+    beginTime=convertDateFromString(beginTime);
+    var overTime=$("#datemax").val();
+    overTime=convertDateFromString(overTime);
+    var hostUnit=$("#hostUnit").val();
+    var hostPlace=$("#hostPlace").val();
+    var attendNum=$("#attendNum").val();
+    attendNum=parseInt(attendNum);
+    $.ajax({
+    type:"POST",
+    url: "$projectname/academicreport/uploadAttachment.do",
+    data: data,
+    cache: false,//上传文件无需缓存
+    processData: false,//用于对data参数进行序列化处理 这里必须false
+    contentType: false,
+    success: function(data){
+    data=JSON.parse(data);
+    if(data.status==200){
+    var fileId=data.data;
+    fileId=parseInt(fileId);
+    $.ajax({
+    type:"POST",
+    url:"$projectname/academicreport/add.do",
+    data:{
+     "reportTitle":reportTitle, "beginTime":beginTime, "overTime":overTime, "hostUnit":hostUnit, "hostPlace":hostPlace,
+     "attendNum":attendNum, "fileId":fileId
+    },
+    success: function (data) {
+     var user=JSON.parse(data);
+     if (user.status ==200){
+         layer.msg(user.msg, {icon: 1, time: 2000});
+         window.close();
+         window.parent.location.replace("$projectname/academicreport/list");
+     }else {
+         layer.msg(user.msg, {icon: 2, time: 2000});
+     }
+    },
+    error:function () {
+     layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+    }
+    });
+    }else {
+    layer.msg(data.msg, {icon: 2, time: 2000});
+    }
 
-            var reportTitle=$("#reportTitle").val();
-            var beginTime=$("#datemin").val();
-            beginTime=convertDateFromString(beginTime);
-            var overTime=$("#datemax").val();
-            overTime=convertDateFromString(overTime);
-            var hostUnit=$("#hostUnit").val();
-            var hostPlace=$("#hostPlace").val();
-            var attendNum=$("#attendNum").val();
-            attendNum=parseInt(attendNum);
-            $.ajax({
-				type:"POST",
-				url: "$projectname/academicreport/uploadAttachment.do",
-				data: data,
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false,
-				success: function(data){
-				    data=JSON.parse(data);
-				    if(data.status==200){
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/academicreport/add.do",
-                            data:{
-                                "reportTitle":reportTitle, "beginTime":beginTime, "overTime":overTime, "hostUnit":hostUnit, "hostPlace":hostPlace,
-                                "attendNum":attendNum, "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    layer.msg(user.msg, {icon: 1, time: 2000});
-                                    window.close();
-                                    window.parent.location.replace("$projectname/academicreport/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            },
-                            error:function () {
-                                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                            }
-                        });
-                    }else {
-                        layer.msg(data.msg, {icon: 2, time: 2000});
-                    }
-
-				},
-                error:function () {
-                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                }
-			});
-
-
-        }
-	);
-
-
+    },
+    error:function () {
+    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+    }
+    });
+}
 
 </script>
-<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
