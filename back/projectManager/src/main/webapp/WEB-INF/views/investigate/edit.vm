@@ -34,27 +34,28 @@
         <div class="row cl">
             <label class="form-label col-xs-3">开始时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text"  id="beginTime" class="input-text Wdate" style="width:120px;">
+                <input type="text"  id="beginTime" class="input-text Wdate" style="width:120px;" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3">结束时间：</label>
             <div class="formControls col-xs-8">
-                <input type="text"  id="overTime" class="input-text Wdate" style="width:120px;">
+                <input type="text"  id="overTime" class="input-text Wdate" style="width:120px;" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察地点：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="investigatePlace" name="investigatePlace">
+                <input type="text" class="input-text" value="" placeholder="" id="investigatePlace" name="investigatePlace" datatype="*" nullmsg="必填字段">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>考察内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="investigateContent" name="investigateContent">
+                <input type="text" class="input-text" value="" placeholder="" id="investigateContent" name="investigateContent" datatype="*" nullmsg="必填字段">
             </div>
         </div>
+
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">已上传：</label>
@@ -80,7 +81,8 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                <input class="btn btn-primary radius" id="submit" type="button" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="submit" type="submit"  onclick="checkAndPost()" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
             </div>
         </div>
     </form>
@@ -109,11 +111,28 @@
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
 <script type="text/javascript" src="$projectname/myjs/laydate/laydate.js"></script>
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
+<script src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
 
 
 <script type="text/javascript">
 
-##
+    function checkAndPost() {
+        $("#form-investigate-add").Validform({
+            btnSubmit: "#submit",
+            tiptype:3,
+            showAllError: true,
+            ignoreHidden: true,
+            ajaxPost: false,
+            beforeSubmit:function(curform){
+                //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                //这里明确return false的话表单将不会提交;
+                update();
+                return false;
+            },
+        });
+    }
+
+
    /**
     *@author Veng Su
     *@date 2018/4/5 21:18
@@ -135,122 +154,55 @@
 $(function () {
    selectData();
 })
+    function selectData() {
+        var data = parseUrl();
+        var invId=parseInt(data['id']);
+        $.ajax({
+            type:"POST",
+            url:"$projectname/investigate/selectById.do",
+            data:{"invId":invId},
+            success:function (data) {
+                var data = JSON.parse(data);
+                $("#invId").val(data.data.invId);
+                $("#investigatePlace").val(data.data.investigatePlace);
+                $("#investigateContent").val(data.data.investigateContent);
 
-//ajax提交数据
-	$("#submit").click(function () {
-	     update();
-       }
-	);
-
-
-
-</script>
-<!--/请在上方写此页面业务相关的脚本-->
-</body>
-</html>
-    <script>
-
-
-        function getData() {
-            // $.ajax({
-            //     type: "POST",
-            //     url: "/investigate/selectByUserId.do",
-            //     success: function (data) {
-            //         var data = JSON.parse(data);
-            //         display(data.data.list, data.data.total);
-            //     }
-            // });
-        }
-
-        // function display(data, data1) {
-        //     var total = "<strong >共有数据：" + data1 + "条</strong>";
-        //     document.getElementById("total").innerHTML = total;
-        //     var str = "";
-        //     var tbody = window.document.getElementById("tbody");
-        //     var index =0;
-        //     for (i in data) {
-        //         var beginTime =FormatDateTime(data[i].beginTime );
-        //         var overTime =FormatDateTime(data[i].overTime);
-        //         index=parseInt(i)+1;
-        //         str += "<tr class='text-c'>" +
-        //             "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-        //             "<td name='id' width='40'>" + index + "</td>" +
-        //             "<td name='beginTime'width='150'>" + beginTime + "</td>" +
-        //             "<td name='overTime' width='130'>" + overTime + "</td>" +
-        //             "<td name='investigatePlace' width='100'>" + data[i].investigatePlace + "</td>" +
-        //             "<td name='investigateContent' width='100'>" + data[i].investigateContent + "</td>" +
-        //             "<td ><button  class='btn btn-primary radius ' value='"+data[i].invId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-        //             "<button class=' btn btn-danger radius ' value='"+data[i].invId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-        //             "</tr>";
-        //     }
-        //
-        //     tbody.innerHTML = str;
-        // }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：跳转编辑页面
-         **/
-        function jumpEdit(id) {
-            var url="$projectname/investigate/edit?id="+id;
-
-            layer_show('修改', url);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/4 20:05
-         *方法作用：删除记录
-         **/
-        function jumpDelete(id) {
-            var invId=parseInt(id);
-            layer.confirm('确认要删除吗？',function () {
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/investigate/delete.do",
-                    data:{"invId":invId},
-                    success:function (data) {
-                        data=JSON.parse(data);
-                        layer.msg(data.msg, {icon: 1, time: 2000});
-                        getData();
-
-                    }
-                });
-            });
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 9:58
-         *方法作用：跳转add页面
-         **/
-        function investigate_add(title, url, w, h) {
-            layer_show(title, url, w, h);
-        }
-
-        /**
-         *@author Veng Su
-         *@date 2018/4/5 22:21
-         *方法作用：add记录
-         **/
-        function add() {
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var investigatePlace=$("#investigatePlace").val();
-            var investigateContent=$("#investigateContent").val();
-
-            var beginTime =$("#beginTime").val();
-            beginTime=convertDateFromString(beginTime);
-            var overTime =$("#overTime").val();
-            overTime=convertDateFromString(overTime);
+                var beginTime=FormatDateTime(data.data.beginTime);
+                $("#beginTime").val(beginTime);
+                var overTime=FormatDateTime(data.data.overTime);
+                $("#overTime").val(overTime);
+                var url="$projectname";
+                url+=data.data.filepath.url;
+                $("#img2").attr("src",url);
 
 
+            }
+        });
+    }
 
+    function update() {
 
+        //设置data数据
+        var invId=$("#invId").val();
+        invId=parseInt(invId);
+
+        var upload_file = document.getElementById("file").files[0];
+        var formFile = new FormData();
+        formFile.append("upload_file", upload_file);
+        var data = formFile;
+
+        var investigatePlace=$("#investigatePlace").val();
+        var investigateContent=$("#investigateContent").val();
+
+        var beginTime =$("#beginTime").val();
+        beginTime=convertDateFromString(beginTime);
+        var overTime =$("#overTime").val();
+        overTime=convertDateFromString(overTime);
+
+        var fileId=null;
+        //查看upload_file是否为空
+        if(upload_file!=null) {
+            //不为空重新上传，拿到返回的fileid
             $.ajax({
                 type:"POST",
                 url: "$projectname/investigate/uploadAttachment.do",
@@ -264,9 +216,11 @@ $(function () {
                     fileId=parseInt(fileId);
                     $.ajax({
                         type:"POST",
-                        url:"$projectname/investigate/add.do",
+                        url:"$projectname/investigate/update.do",
                         data:{
-                            "beginTime":beginTime, "overTime":overTime, "investigatePlace":investigatePlace, "investigateContent":investigateContent,
+                            "invId":invId,
+                            "beginTime":beginTime, "overTime":overTime, "investigatePlace":investigatePlace,
+                            "investigateContent":investigateContent,
                             "fileId":fileId
                         },
                         success: function (data) {
@@ -279,114 +233,33 @@ $(function () {
                             }
                         }
                     });
-                },
-                error:function () {
-                    layer.msg("必须上传证件",{icon: 3, time: 2000});
                 }
             });
-        }
+        }else {
 
-
-        function selectData() {
-            var data = parseUrl();
-            var invId=parseInt(data['id']);
             $.ajax({
                 type:"POST",
-                url:"$projectname/investigate/selectById.do",
-                data:{"invId":invId},
-                success:function (data) {
-                    var data = JSON.parse(data);
-                    $("#invId").val(data.data.invId);
-                    $("#investigatePlace").val(data.data.investigatePlace);
-                    $("#investigateContent").val(data.data.investigateContent);
-
-                    var beginTime=FormatDateTime(data.data.beginTime);
-                    $("#beginTime").val(beginTime);
-                    var overTime=FormatDateTime(data.data.overTime);
-                    $("#overTime").val(overTime);
-                    var url="$projectname";
-                    url+=data.data.filepath.url;
-                    $("#img2").attr("src",url);
-
-
+                url:"$projectname/investigate/update.do",
+                data:{
+                    "invId":invId,
+                    "beginTime":beginTime, "overTime":overTime, "investigatePlace":investigatePlace, "investigateContent":investigateContent,
+                    "fileId":fileId
+                },
+                success: function (data) {
+                    var user=JSON.parse(data);
+                    if (user.status ==200){
+                        alert(user.msg);
+                        window.parent.location.replace("$projectname/investigate/list");
+                    }else {
+                        layer.msg(user.msg, {icon: 2, time: 2000});
+                    }
                 }
             });
         }
+    }
 
-        function update() {
 
-            //设置data数据
-            var invId=$("#invId").val();
-            invId=parseInt(invId);
 
-            var upload_file = document.getElementById("file").files[0];
-            var formFile = new FormData();
-            formFile.append("upload_file", upload_file);
-            var data = formFile;
-
-            var investigatePlace=$("#investigatePlace").val();
-            var investigateContent=$("#investigateContent").val();
-
-            var beginTime =$("#beginTime").val();
-            beginTime=convertDateFromString(beginTime);
-            var overTime =$("#overTime").val();
-            overTime=convertDateFromString(overTime);
-
-            var fileId=null;
-            //查看upload_file是否为空
-            if(upload_file!=null) {
-                //不为空重新上传，拿到返回的fileid
-                $.ajax({
-                    type:"POST",
-                    url: "$projectname/investigate/uploadAttachment.do",
-                    data: data,
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false,
-                    success: function(data){
-                        data=JSON.parse(data);
-                        var fileId=data.data;
-                        fileId=parseInt(fileId);
-                        $.ajax({
-                            type:"POST",
-                            url:"$projectname/investigate/update.do",
-                            data:{
-                                "invId":invId,
-                                "beginTime":beginTime, "overTime":overTime, "investigatePlace":investigatePlace,
-                                "investigateContent":investigateContent,
-                                "fileId":fileId
-                            },
-                            success: function (data) {
-                                var user=JSON.parse(data);
-                                if (user.status ==200){
-                                    alert(user.msg);
-                                    window.parent.location.replace("$projectname/investigate/list");
-                                }else {
-                                    layer.msg(user.msg, {icon: 2, time: 2000});
-                                }
-                            }
-                        });
-                    }
-                });
-            }else {
-
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/investigate/update.do",
-                    data:{
-                        "invId":invId,
-                        "beginTime":beginTime, "overTime":overTime, "investigatePlace":investigatePlace, "investigateContent":investigateContent,
-                        "fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            window.parent.location.replace("$projectname/investigate/list");
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 2000});
-                        }
-                    }
-                });
-            }
-        }    </script>
+</script>
+</body>
+</html>
