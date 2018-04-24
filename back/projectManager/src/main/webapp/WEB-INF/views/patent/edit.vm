@@ -185,8 +185,6 @@ $(function () {
                 var url="$projectname";
                 url+=data.data.filepath.url;
                 $("#img2").attr("src",url);
-
-
             }
         });
     }
