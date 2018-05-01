@@ -62,7 +62,6 @@
         </tr>
         <tr class="text-c">
             <th ><input type="checkbox" name="" value=""></th>
-            <th >ID</th>
             <th >论文名称</th>
             <th >刊物名称</th>
             <th >发行代码</th>
@@ -131,7 +130,6 @@
             index=parseInt(i)+1;
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                    "<td name='id' width='40'>" + index + "</td>" +
                     "<td name='thesisName'width=''>" + data[i].thesisName + "</td>" +
                     "<td name='novon'>" + data[i].novon + "</td>" +
                     "<td name='releasingCode' width=''>" + data[i].releasingCode + "</td>" +
@@ -141,7 +139,6 @@
                     "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 
-                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='$projectname"+data[i].filepath.url+"'/></td>"+
                     "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                     "<td>" +

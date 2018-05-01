@@ -61,7 +61,6 @@
         </tr>
         <tr class="text-c">
             <th ><input type="checkbox" name="" value=""></th>
-            <th >ID</th>
             <th >学术报告标题</th>
             <th >学术报告开始的时间</th>
             <th >结束的时间</th>
@@ -130,14 +129,12 @@
             index=parseInt(i)+1;
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                    "<td name='id' width='40'>" + index + "</td>" +
                     "<td name='reportTitle'width='150'>" + data[i].reportTitle + "</td>" +
                     "<td name='beginTime'>" + beginTime + "</td>" +
                     "<td name='overTime' width='130'>" + overTime + "</td>" +
                     "<td name='hostUnit' width='100'>" + data[i].hostUnit + "</td>" +
                     "<td name='hostPlace' width='100'>" + data[i].hostPlace + "</td>" +
                     "<td name='attendNum' width='100'>" + data[i].attendNum + "</td>" +
-                    "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='$projectname"+data[i].filepath.url+"'/></td>"+
                     "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
                     "<td ><button  class='editAcad btn btn-primary radius ' value='"+data[i].repId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='"+data[i].repId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+

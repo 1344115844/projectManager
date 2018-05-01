@@ -70,10 +70,17 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收录情况：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text" placeholder="请填写收录情况" id="collectionSituation" name="username" datatype="*" nullmsg="请填写收录情况">
-                <span class="Validform_checktip"></span>
+            <label class="form-label col-xs-3">收录情况：</label>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="collectionSituation" id="collectionSituation" datatype="*" nullmsg="请填写收录情况" >
+                    <option value>请填写收录情况</option>
+                    <option value="SCI" >SCI</option>
+                    <option value="SSCI" >SSCI</option>
+                    <option value="EI" > EI</option>
+                    <option value="CPCI" >CPCI</option>
+                </select>
+            </span><span class="Validform_checktip"></span>
             </div>
         </div>
 

@@ -63,7 +63,6 @@
         </tr>
         <tr class="text-c">
             <th width="25"><input type="checkbox" name="" value=""></th>
-            <th >ID</th>
             <th> 项目名称</th>
             <th>项目编号</th>
             <th>项目来源</th>
@@ -156,7 +155,7 @@
                 index=parseInt(i)+1;
                 str += "<tr class='text-c'>" +
                         "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-                        "<td name='id' width='40'>" + index + "</td>" +
+
                         "<td name='projectName' width='100'>" + data[i].projectName + "</td>" +
                         "<td name='projectNumber' width='100'>" + data[i].projectNumber + "</td>" +
                         "<td name='projectSource' width='100'>" + data[i].projectSource + "</td>" +
@@ -167,7 +166,6 @@
                         "<td name='isTeamwork' width='100'>" + data[i].isTeamwork + "</td>" +
                         "<td name='state' width='100'>" + data[i].state + "</td>" +
                         "<td name='projectDirector' width='100'>" + data[i].projectDirector + "</td>" +
-                        "<td ><img class='imgfile' width='80' height='80' onclick="+"showImg(this.src)"+" src='$projectname"+data[i].filepath.url+"'/></td>"+
                         "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                         "<td ><button  class='btn btn-primary radius ' value='"+data[i].proId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
