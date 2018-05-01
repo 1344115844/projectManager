@@ -34,7 +34,7 @@
 
     <!--安全管理-->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="myRealm"></property>
+        <property name="realm" ref="myRealm"/>
     </bean>
 
     <!--shiro 过滤器-->

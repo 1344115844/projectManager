@@ -22,7 +22,6 @@ public class Academic implements Serializable {
 
     private String periodical;
 
-    private String publishJournals;
 
     private String collectionSituation;
 
@@ -116,14 +115,6 @@ public class Academic implements Serializable {
 
     public void setPeriodical(String periodical) {
         this.periodical = periodical == null ? null : periodical.trim();
-    }
-
-    public String getPublishJournals() {
-        return publishJournals;
-    }
-
-    public void setPublishJournals(String publishJournals) {
-        this.publishJournals = publishJournals == null ? null : publishJournals.trim();
     }
 
     public String getCollectionSituation() {

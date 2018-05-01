@@ -58,7 +58,7 @@
     <table class="table table-border table-bordered table-bg">
         <thead>
         <tr>
-            <th scope="col" colspan="12">论文列表</th>
+            <th scope="col" colspan="24">论文列表</th>
         </tr>
         <tr class="text-c">
             <th ><input type="checkbox" name="" value=""></th>
@@ -69,7 +69,6 @@
             <th>刊物级别</th>
             <th >刊期</th>
             <th >收录情况</th>
-            <th >发表刊物</th>
             <th >作者排名</th>
             <th >类别</th>
             <th >附件</th>
@@ -80,7 +79,7 @@
         <tbody id="tbody"></tbody>
         <tfoot>
         <tr>
-            <th colspan="12"><div class="box" id="box"></div></th>
+            <th colspan="48"><div class="box" id="box"></div></th>
         </tr>
         </tfoot>
     </table>
@@ -140,7 +139,6 @@
                     "<td name='publicationLevel' width=''>" + data[i].publicationLevel + "</td>" +
                     "<td name='periodical' width=''>" + data[i].periodical + "</td>" +
                     "<td name='periodical' width=''>" + data[i].collectionSituation + "</td>" +
-                    "<td name='publishJournals' width=''>" + data[i].publishJournals + "</td>" +
                     "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 

@@ -87,13 +87,7 @@
 
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发表刊物：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text"  placeholder="请填写发表刊物"  id="publishJournals" name="publishJournals" datatype="*" nullmsg="请填写发表刊物">
-                <span class="Validform_checktip"></span>
-            </div>
-        </div>
+
         <div class="row cl">
             <label class="form-label col-xs-3">作者排名：</label>
             <div class="col-xs-6">
@@ -214,7 +208,6 @@ function add(data) {
     var novon=$("#novon").val();
     var periodical=$("#periodical").val();
     var publicationLevel=$("#publicationLevel").val();
-    var publishJournals=$("#publishJournals").val();
     var releasingCode=$("#releasingCode").val();
     var thesisName=$("#thesisName").val();
     //请求后台接口
@@ -228,7 +221,7 @@ function add(data) {
                 "authorRank":authorRank,
                 "category":category,"collectionSituation":collectionSituation,
                 "novon":novon,"periodical":periodical,
-                "publicationLevel":publicationLevel, "publishJournals":publishJournals,
+                "publicationLevel":publicationLevel,
                 "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
             },
             success: function (data) {

@@ -11,7 +11,6 @@
     <result column="releasing_code" jdbcType="VARCHAR" property="releasingCode" />
     <result column="publication_level" jdbcType="VARCHAR" property="publicationLevel" />
     <result column="periodical" jdbcType="VARCHAR" property="periodical" />
-    <result column="publish_journals" jdbcType="VARCHAR" property="publishJournals" />
     <result column="collection_situation" jdbcType="VARCHAR" property="collectionSituation" />
     <result column="author_rank" jdbcType="VARCHAR" property="authorRank" />
     <result column="category" jdbcType="VARCHAR" property="category" />
@@ -31,7 +30,6 @@
     <result column="releasing_code" jdbcType="VARCHAR" property="releasingCode" />
     <result column="publication_level" jdbcType="VARCHAR" property="publicationLevel" />
     <result column="periodical" jdbcType="VARCHAR" property="periodical" />
-    <result column="publish_journals" jdbcType="VARCHAR" property="publishJournals" />
     <result column="collection_situation" jdbcType="VARCHAR" property="collectionSituation" />
     <result column="author_rank" jdbcType="VARCHAR" property="authorRank" />
     <result column="category" jdbcType="VARCHAR" property="category" />
@@ -45,13 +43,13 @@
 
   <sql id="Base_Column_List">
     acad_id, create_time, update_time, deleted, thesis_name, novon, releasing_code, publication_level,
-    periodical, publish_journals, collection_situation, author_rank, category, user_id,
+    periodical, collection_situation, author_rank, category, user_id,
     file_id
   </sql>
 
   <sql id="academic_file_list">
         acad.acad_id,    acad.thesis_name,  acad.novon,  acad.releasing_code,  acad.publication_level,
-     acad.periodical,  acad.publish_journals,  acad.collection_situation,  acad.author_rank,  acad.category,  acad.user_id,
+     acad.periodical,  acad.collection_situation,  acad.author_rank,  acad.category,  acad.user_id,
      acad.file_id,f.url
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="academic_file">
@@ -70,13 +68,13 @@
     insert into academic (acad_id, create_time, update_time, 
       deleted, thesis_name, novon,
       releasing_code, publication_level, periodical,
-      publish_journals, collection_situation, author_rank, 
+      collection_situation, author_rank,
       category, user_id, file_id
       )
     values (#{acadId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{deleted,jdbcType=INTEGER}, #{thesisName,jdbcType=VARCHAR}, #{novon,jdbcType=VARCHAR},
       #{releasingCode,jdbcType=VARCHAR}, #{publicationLevel,jdbcType=VARCHAR}, #{periodical,jdbcType=VARCHAR}, 
-      #{publishJournals,jdbcType=VARCHAR}, #{collectionSituation,jdbcType=VARCHAR}, #{authorRank,jdbcType=VARCHAR}, 
+      #{collectionSituation,jdbcType=VARCHAR}, #{authorRank,jdbcType=VARCHAR},
       #{category,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}
       )
   </insert>
@@ -110,9 +108,7 @@
       <if test="periodical != null">
         periodical,
       </if>
-      <if test="publishJournals != null">
-        publish_journals,
-      </if>
+
       <if test="collectionSituation != null">
         collection_situation,
       </if>
@@ -157,9 +153,7 @@
       <if test="periodical != null">
         #{periodical,jdbcType=VARCHAR},
       </if>
-      <if test="publishJournals != null">
-        #{publishJournals,jdbcType=VARCHAR},
-      </if>
+
       <if test="collectionSituation != null">
         #{collectionSituation,jdbcType=VARCHAR},
       </if>
@@ -204,9 +198,7 @@
       <if test="periodical != null">
         periodical = #{periodical,jdbcType=VARCHAR},
       </if>
-      <if test="publishJournals != null">
-        publish_journals = #{publishJournals,jdbcType=VARCHAR},
-      </if>
+
       <if test="collectionSituation != null">
         collection_situation = #{collectionSituation,jdbcType=VARCHAR},
       </if>
@@ -235,7 +227,7 @@
       releasing_code = #{releasingCode,jdbcType=VARCHAR},
       publication_level = #{publicationLevel,jdbcType=VARCHAR},
       periodical = #{periodical,jdbcType=VARCHAR},
-      publish_journals = #{publishJournals,jdbcType=VARCHAR},
+
       collection_situation = #{collectionSituation,jdbcType=VARCHAR},
       author_rank = #{authorRank,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
@@ -252,7 +244,6 @@
 	acad.novon,
 	acad.releasing_code,
 	acad.publication_level,
-	acad.publish_journals,
 	acad.periodical,
 	acad.collection_situation,
 	acad.author_rank,
