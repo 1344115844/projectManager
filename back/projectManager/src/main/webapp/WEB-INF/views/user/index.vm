@@ -34,6 +34,7 @@
                         <a href="#" id="username"  class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a class="logout" href="">切换账户</a></li>
+                            <li><a onclick="jumpUpdatePassword()">修改密码</a></li>
                             <li><a class="logout" href="">退出</a></li>
                         </ul>
                     </li>
@@ -56,24 +57,6 @@
 </header>
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
-##        <dl id="menu-member">
-##            <dt><i class="Hui-iconfont">&#xe60d;</i> 成员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-##            <dd>
-##                <ul>
-##                    <li><a data-href="member-list.html" data-title="成员列表" href="javascript:;">成员列表</a></li>
-##                </ul>
-##            </dd>
-##        </dl>
-##
-##        <dl id="menu-admin">
-##            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-##            <dd>
-##                <ul>
-##                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
-##                    <li><a data-href="https://www.baidu.com" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-##                </ul>
-##            </dd>
-##        </dl>
         <dl id="menu-data">
             <dt class="selected"><i class="Hui-iconfont">&#xe61d;</i> 数据管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd style="display :block">
@@ -94,14 +77,7 @@
             </dd>
         </dl>
 
-##        <dl id="menu-picture">
-##            <dt><i class="Hui-iconfont">&#xe613;</i> 附件管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-##            <dd>
-##                <ul>
-##                    <li><a data-href="picture-list.html" data-title="附件管理" href="javascript:void(0)">附件管理</a></li>
-##                </ul>
-##            </dd>
-##        </dl>
+
     </div>
 
 </aside>
@@ -146,6 +122,10 @@
 <script src="$projectname/myjs/base.js"></script>
 <script type="text/javascript">
 
+    function jumpUpdatePassword() {
+        var url="$projectname/user/jumpUpdatePassword";
+        layer_show('修改密码', url);
+    }
     getUsername("$projectname/user/getUsername");
 
     $(function () {
@@ -157,19 +137,17 @@
         });
     });
 
-
-        ## getUsername("$projectname/user/getUsername");
-        $(".logout").click(function () {
-            //ajax访问接口
-            $.ajax({
-                type: "GET",
-                url: "$projectname/user/logout.do",
-                data: {},
-                success: function (data) {
-                    window.redirect("$projectname/user/login");
-                }
-            });
+    $(".logout").click(function () {
+        //ajax访问接口
+        $.ajax({
+            type: "GET",
+            url: "$projectname/user/logout.do",
+            data: {},
+            success: function (data) {
+                window.redirect("$projectname/user/login");
+            }
         });
+    });
 
 
 

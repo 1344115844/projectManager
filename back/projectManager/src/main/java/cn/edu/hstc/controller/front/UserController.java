@@ -136,6 +136,10 @@ public class UserController {
         return userService.register(user);
     }
 
+    @RequestMapping("/jumpUpdatePassword")
+    public String jumpUpdatePassword(){
+        return "/user/update_password";
+    }
 /**
 * @Description:修改密码
 * @param: [session, oldpassword, newpassword]

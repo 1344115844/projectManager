@@ -80,11 +80,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONResponse<User> updatePassword(User user, String oldpassword, String newpassword) {
 
-        int resultCount = userMapper.checkOldpassword(user.getUserId(),MD5Util.MD5EncodeUtf8(oldpassword));
+        int resultCount = userMapper.checkOldpassword(user.getUserId(),MD5Util.encrypt(user.getUsername(),oldpassword));
         if(resultCount == 0){
             return JSONResponse.createByErrorMessage("原密码错误");
         }
-        user.setPassword(MD5Util.MD5EncodeUtf8(newpassword));
+        user.setPassword(MD5Util.encrypt(user.getUsername(),newpassword));
         int updateCount = userMapper.updateByPrimaryKeySelective(user);
         if(updateCount > 0){
             return JSONResponse.createBySuccessMessage("修改密码成功");
