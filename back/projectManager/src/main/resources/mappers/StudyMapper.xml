@@ -178,7 +178,7 @@
 	f.url
 FROM
 	study
-JOIN filepath AS f ON f.file_id = study.file_id
+LEFT JOIN filepath AS f ON f.file_id = study.file_id
     where
     study.user_id=#{user_id}
   </select>

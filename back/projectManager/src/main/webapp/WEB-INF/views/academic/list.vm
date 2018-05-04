@@ -126,7 +126,13 @@
         var str = "";
         var tbody = window.document.getElementById("tbody");
         var index =0;
+        var url
         for (i in data) {
+            if(data[i].hasOwnProperty("filepath")){
+                url= data[i].filepath.url;
+            }else {
+                url="";
+            }
             index=parseInt(i)+1;
             str += "<tr class='text-c'>" +
                     "<td name='caonima' width='25'><input type='checkbox' ></td>" +
@@ -139,7 +145,7 @@
                     "<td name='authorRank' width=''>" + data[i].authorRank + "</td>" +
                     "<td name='category' width=''>" + data[i].category + "</td>" +
 
-                    "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
+                    "<td><button class='btn btn-danger radius ' value='"+url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                     "<td>" +
                     "<button class='editAcad btn btn-primary radius ' value='"+data[i].acadId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +

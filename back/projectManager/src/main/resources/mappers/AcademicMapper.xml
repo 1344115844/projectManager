@@ -251,7 +251,7 @@
 	f.url
     FROM
 	academic AS acad
-    JOIN filepath AS f ON f.file_id = acad.file_id
+    LEFT JOIN filepath AS f ON f.file_id = acad.file_id
     WHERE
     acad.user_id=#{user_id}
   </select>

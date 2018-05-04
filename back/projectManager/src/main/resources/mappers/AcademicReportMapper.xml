@@ -219,7 +219,7 @@
     f.url
     FROM
         academicreport AS ar
-    JOIN filepath AS f ON f.file_id = ar.file_id
+    LEFT JOIN filepath AS f ON f.file_id = ar.file_id
     where
     ar.user_id=#{user_id}
   </select>

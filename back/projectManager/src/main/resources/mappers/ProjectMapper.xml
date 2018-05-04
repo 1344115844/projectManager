@@ -261,7 +261,7 @@ SELECT
 	f.url
 FROM
 	project
-JOIN filepath AS f ON f.file_id = project.file_id
+LEFT JOIN filepath AS f ON f.file_id = project.file_id
     where
     project.user_id=#{user_id}
   </select>

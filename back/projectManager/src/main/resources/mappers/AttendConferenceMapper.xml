@@ -204,7 +204,7 @@
 	f.url
 FROM
 	attendconference AS attc
-JOIN filepath AS f ON f.file_id = attc.file_id
+LEFT JOIN filepath AS f ON f.file_id = attc.file_id
     where
     attc.user_id=#{user_id}
   </select>

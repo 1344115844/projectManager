@@ -191,6 +191,7 @@ function upload() {
     var formFile = new FormData();
     formFile.append("upload_file", upload_file);
     var data = formFile;
+
     $.ajax({
         type:"POST",
         url: "$projectname/academic/uploadAttachment.do",
@@ -199,11 +200,10 @@ function upload() {
         processData: false,//用于对data参数进行序列化处理 这里必须false
         contentType: false,
         success:function (data) {
-            layer.msg("上传文件成功",{icon:1,time:2000});
             add(data);
         },
-        error:function () {
-            layer.msg("上传文件失败",{icon: 2, time: 2000});
+        error:function (data) {
+            layer.msg("请求上传文件接口失败",{icon: 2, time: 5000});
         }
     });
 }
@@ -217,38 +217,39 @@ function add(data) {
     var publicationLevel=$("#publicationLevel").val();
     var releasingCode=$("#releasingCode").val();
     var thesisName=$("#thesisName").val();
+
     //请求后台接口
+    var fileId=null;
     data=JSON.parse(data);
     if(data.status==200){
-        var fileId=data.data;
-        $.ajax({
-            type:"POST",
-            url:"$projectname/academic/add.do",
-            data:{
-                "authorRank":authorRank,
-                "category":category,"collectionSituation":collectionSituation,
-                "novon":novon,"periodical":periodical,
-                "publicationLevel":publicationLevel,
-                "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
-            },
-            success: function (data) {
-                var user=JSON.parse(data);
-                if (user.status ==200){
-                    alert(user.msg);
-                    window.close();
-                    window.parent.location.replace("$projectname/academic/list");
-                }else {
-                    layer.msg(user.msg, {icon: 2, time: 2000});
-                }
-            },
-            error:function () {
-                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-            }
-        });
-
-    }else {
-        layer.msg(data.msg,{icon:2,time:3000});
+        fileId =data.data;
+        fileId=parseInt(fileId);
     }
+    $.ajax({
+        type:"POST",
+        url:"$projectname/academic/add.do",
+        data:{
+            "authorRank":authorRank,
+            "category":category,"collectionSituation":collectionSituation,
+            "novon":novon,"periodical":periodical,
+            "publicationLevel":publicationLevel,
+            "releasingCode":releasingCode,"thesisName":thesisName,"fileId":fileId
+        },
+        success: function (data) {
+            var user=JSON.parse(data);
+            if (user.status ==200){
+                alert(user.msg);
+                window.close();
+                window.parent.location.replace("$projectname/academic/list");
+            }else {
+                layer.msg(user.msg, {icon: 2, time: 2000});
+            }
+        },
+        error:function () {
+            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+        }
+    });
+
 }
 </script>
 </body>

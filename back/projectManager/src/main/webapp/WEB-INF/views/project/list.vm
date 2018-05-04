@@ -146,10 +146,16 @@
         }
 
         function display(data) {
+
             var str = "";
             var tbody = window.document.getElementById("tbody");
             var index =0;
             for (i in data) {
+                if(data[i].hasOwnProperty("filepath")){
+                    url= data[i].filepath.url;
+                }else {
+                    url="";
+                }
                 var beginTime =FormatDateTime(data[i].beginTime );
                 var overTime =FormatDateTime(data[i].overTime);
                 index=parseInt(i)+1;
@@ -166,7 +172,7 @@
                         "<td name='isTeamwork' width='100'>" + data[i].isTeamwork + "</td>" +
                         "<td name='state' width='100'>" + data[i].state + "</td>" +
                         "<td name='projectDirector' width='100'>" + data[i].projectDirector + "</td>" +
-                        "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
+                        "<td><button class='btn btn-danger radius ' value='"+url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                         "<td ><button  class='btn btn-primary radius ' value='"+data[i].proId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                         "<button class=' btn btn-danger radius ' value='"+data[i].proId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+

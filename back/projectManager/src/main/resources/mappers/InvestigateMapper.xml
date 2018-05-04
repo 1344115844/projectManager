@@ -179,7 +179,7 @@
 	f.url
 FROM
 	investigate
-JOIN filepath AS f ON f.file_id = investigate.file_id
+LEFT JOIN filepath AS f ON f.file_id = investigate.file_id
     where
     investigate.user_id=#{user_id}
   </select>

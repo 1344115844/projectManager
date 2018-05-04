@@ -206,7 +206,7 @@
 	f.url
 FROM
 	patent
-JOIN filepath AS f ON f.file_id = patent.file_id
+LEFT JOIN filepath AS f ON f.file_id = patent.file_id
     where
     patent.user_id=#{user_id}
   </select>

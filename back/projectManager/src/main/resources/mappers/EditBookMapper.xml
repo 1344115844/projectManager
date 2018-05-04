@@ -206,7 +206,7 @@
 	f.url
 FROM
 	editbook
-JOIN filepath AS f ON f.file_id = editbook.file_id
+LEFT JOIN filepath AS f ON f.file_id = editbook.file_id
     where
     editbook.user_id=#{user_id}
   </select>

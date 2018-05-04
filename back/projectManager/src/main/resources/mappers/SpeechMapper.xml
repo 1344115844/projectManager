@@ -178,7 +178,7 @@
 	f.url
 FROM
 	speech
-JOIN filepath AS f ON f.file_id = speech.file_id
+LEFT JOIN filepath AS f ON f.file_id = speech.file_id
     where
     speech.user_id=#{user_id}
   </select>

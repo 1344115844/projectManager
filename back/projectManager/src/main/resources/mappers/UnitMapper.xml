@@ -165,7 +165,7 @@ unit.deleted,unit.duty,unit.file_id,unit.host_unit,unit.term,unit.unit_id,unit.u
 	f.url
 FROM
 	unit
-JOIN filepath AS f ON f.file_id = unit.file_id
+LEFT JOIN filepath AS f ON f.file_id = unit.file_id
     where
     unit.user_id=#{user_id}
   </select>

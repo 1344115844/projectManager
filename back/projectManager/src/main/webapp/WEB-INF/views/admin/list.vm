@@ -1,0 +1,48 @@
+
+<html>
+<head>
+
+#parse("/common/head.vm")
+
+    <title>获奖信息列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员列表 <span
+        class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r"
+                                                style="line-height:1.6em;margin-top:3px"
+                                                href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="24">管理员列表</th>
+        </tr>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox"></th>
+            <th width="50">username</th>
+            <th width="250">操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot>
+        <tr>
+            <th colspan="24"><div class="box" id="box"></div></th>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+#parse("/common/foot.vm")
+<script>
+    $(function () {
+
+    });
+    function getList() {
+        $.ajax({
+            type:"POST",
+            url:"$projectname/admin/",
+
+        });
+    }
+</script>
+</body>
+</html>

@@ -172,33 +172,33 @@
             contentType: false,
             success: function(data){
                 data=JSON.parse(data);
-                if (data.status==200){
-                    var fileId=data.data;
+                var fileId=null;
+
+                if(data.status==200){
+                    fileId =data.data;
                     fileId=parseInt(fileId);
-                    $.ajax({
-                        type:"POST",
-                        url:"$projectname/editbook/add.do",
-                        data:{
-                            "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                            "publishTime":publishTime,"editRank":editRank,
-                            "fileId":fileId
-                        },
-                        success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                window.parent.location.replace("$projectname/editbook/list");
-                            }else {
-                                layer.msg(user.msg, {icon: 2, time: 2000});
-                            }
-                        },
-                        error:function () {
-                            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                        }
-                    });
-                }else {
-                    layer.msg(data.msg, {icon: 2, time: 2000});
                 }
+                $.ajax({
+                    type:"POST",
+                    url:"$projectname/editbook/add.do",
+                    data:{
+                        "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
+                        "publishTime":publishTime,"editRank":editRank,
+                        "fileId":fileId
+                    },
+                    success: function (data) {
+                        var user=JSON.parse(data);
+                        if (user.status ==200){
+                            alert(user.msg);
+                            window.parent.location.replace("$projectname/editbook/list");
+                        }else {
+                            layer.msg(user.msg, {icon: 2, time: 2000});
+                        }
+                    },
+                    error:function () {
+                        layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+                    }
+                });
 
             },
             error:function () {

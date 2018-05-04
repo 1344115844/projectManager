@@ -34,8 +34,14 @@ public class FileServiceImpl implements FileService {
     private static final long maxFileSize = 10 * 1024 * 1024;//文件最大10M
 
     static {
-        fileTypes.put("image", ".jpg");
-        fileTypes.put("document", ".pdf");
+        fileTypes.put("jpg", ".jpg");
+        fileTypes.put("jpeg", ".jpeg");
+        fileTypes.put("png", ".png");
+        fileTypes.put("pdf", ".pdf");
+        fileTypes.put("doc", ".doc");
+        fileTypes.put("docx", ".docx");
+        fileTypes.put("ppt", ".ppt");
+        fileTypes.put("pptx", ".pptx");
     }
 
     /**
@@ -57,7 +63,7 @@ public class FileServiceImpl implements FileService {
             String fileName = file.getOriginalFilename();
             String fileExtensionName = fileName.substring(fileName.lastIndexOf("."));
             if (!fileTypes.containsValue(fileExtensionName))
-                return JSONResponse.createByErrorMessage("文件格式错误");
+                return JSONResponse.createByErrorMessage("文件格式错误"+fileTypes.toString());
 
             String uploadFileName = UUID.randomUUID().toString() + fileExtensionName;
             logger.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}", fileName, path, uploadFileName);

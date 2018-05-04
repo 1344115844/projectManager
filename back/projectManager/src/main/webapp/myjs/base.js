@@ -12,11 +12,14 @@ function showImg(path) {
  **/
 function downloadFileByForm(filepath,url) {
     console.log("ajaxDownloadSynchronized");
-    var url = url;
-
-    var form = $("<form></form>").attr("action", url).attr("method", "post");
-    form.append($("<input></input>").attr("type", "hidden").attr("name", "filepath").attr("value", filepath));
-    form.appendTo('body').submit().remove();
+    if(filepath){
+        var url = url;
+        var form = $("<form></form>").attr("action", url).attr("method", "post");
+        form.append($("<input></input>").attr("type", "hidden").attr("name", "filepath").attr("value", filepath));
+        form.appendTo('body').submit().remove();
+    }else{
+        layer.msg("你没有上传附件",{time:3000});
+    }
 }
 /**
  *@author Veng Su 2018/4/17 22:15

@@ -153,38 +153,38 @@ function uploadAndAdd() {
     processData: false,//用于对data参数进行序列化处理 这里必须false
     contentType: false,
     success: function(data){
-    data=JSON.parse(data);
-    if(data.status==200){
-    var fileId=data.data;
-    fileId=parseInt(fileId);
-    $.ajax({
-    type:"POST",
-    url:"$projectname/academicreport/add.do",
-    data:{
-     "reportTitle":reportTitle, "beginTime":beginTime, "overTime":overTime, "hostUnit":hostUnit, "hostPlace":hostPlace,
-     "attendNum":attendNum, "fileId":fileId
-    },
-    success: function (data) {
-     var user=JSON.parse(data);
-     if (user.status ==200){
-         layer.msg(user.msg, {icon: 1, time: 2000});
-         window.close();
-         window.parent.location.replace("$projectname/academicreport/list");
-     }else {
-         layer.msg(user.msg, {icon: 2, time: 2000});
-     }
-    },
-    error:function () {
-     layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-    }
-    });
-    }else {
-    layer.msg(data.msg, {icon: 2, time: 2000});
-    }
+        data=JSON.parse(data);
+        var fileId=null;
+        if(data.status==200){
+            fileId =data.data;
+            fileId=parseInt(fileId);
+        }
+        $.ajax({
+            type:"POST",
+            url:"$projectname/academicreport/add.do",
+            data:{
+                "reportTitle":reportTitle, "beginTime":beginTime, "overTime":overTime, "hostUnit":hostUnit, "hostPlace":hostPlace,
+                "attendNum":attendNum, "fileId":fileId
+            },
+            success: function (data) {
+                var user=JSON.parse(data);
+                if (user.status ==200){
+                    layer.msg(user.msg, {icon: 1, time: 2000});
+                    window.close();
+                    window.parent.location.replace("$projectname/academicreport/list");
+                }else {
+                    layer.msg(user.msg, {icon: 2, time: 2000});
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+            }
+        });
+
 
     },
     error:function () {
-    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+    layer.msg("请求上传文件接口失败，客户端参数错误", {icon: 2, time: 3000});
     }
     });
 }

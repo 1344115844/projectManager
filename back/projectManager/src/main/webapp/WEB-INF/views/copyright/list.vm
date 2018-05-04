@@ -124,8 +124,11 @@
         var tbody = window.document.getElementById("tbody");
         var index =0;
         for (i in data) {
-            // var overTime =FormatDateTime(data[i].overTime);
-            // var beginTime =FormatDateTime(data[i].beginTime);
+            if(data[i].hasOwnProperty("filepath")){
+                url= data[i].filepath.url;
+            }else {
+                url="";
+            }
             var awardTime =FormatDateTime(data[i].awardTime);
             index=parseInt(i)+1;
             str += "<tr class='text-c'>" +
@@ -134,7 +137,7 @@
                     "<td name='rank' width='130'>" +  data[i].rank + "</td>" +
                     "<td name='awardTime' width='100'>" + awardTime + "</td>" +
                     "<td name='rightNum' width='100'>" + data[i].rightNum + "</td>" +
-                    "<td><button class='btn btn-danger radius ' value='"+data[i].filepath.url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
+                    "<td><button class='btn btn-danger radius ' value='"+url+"' onclick="+"downloadFileByForm(this.value,"+'"$projectname/download"'+")"+">下载附件</button></td>"+
 
                     "<td ><button  class='btn btn-primary radius ' value='"+data[i].copyId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
                     "<button class=' btn btn-danger radius ' value='"+data[i].copyId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+

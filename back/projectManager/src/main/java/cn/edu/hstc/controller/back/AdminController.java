@@ -1,9 +1,7 @@
 package cn.edu.hstc.controller.back;
 
-import cn.edu.hstc.common.JSONResponse;
-import cn.edu.hstc.pojo.User;
+import cn.edu.hstc.controller.base.BaseController;
 import cn.edu.hstc.service.UserService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("admin")
-public class AdminController {
+public class AdminController extends BaseController{
     @Autowired
     UserService userService;
 
@@ -26,10 +24,9 @@ public class AdminController {
      *@return java.lang.String
      *方法作用：跳转到member-list页面
      **/
-    @RequestMapping("/show/user-list")
-    @ResponseBody
+    @RequestMapping("/list")
     public String showMember(){
-        return "member-list";
+        return "/admin/list";
     }
 
 

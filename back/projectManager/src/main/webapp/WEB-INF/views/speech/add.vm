@@ -166,32 +166,32 @@
             contentType: false,
             success: function(data){
                 data=JSON.parse(data);
+                var fileId=null;
+
                 if(data.status==200){
-                    var fileId=data.data;
+                    fileId =data.data;
                     fileId=parseInt(fileId);
-                    $.ajax({
-                        type:"POST",
-                        url:"$projectname/speech/add.do",
-                        data:{
-                            "speechForm":speechForm, "beginTime":beginTime, "overTime":overTime, "inviteTime":inviteTime,
-                            "fileId":fileId
-                        },
-                        success: function (data) {
-                            var user=JSON.parse(data);
-                            if (user.status ==200){
-                                alert(user.msg);
-                                window.parent.location.replace("$projectname/speech/list");
-                            }else {
-                                layer.msg(user.msg, {icon: 2, time: 2000});
-                            }
-                        },
-                        error:function () {
-                            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                        }
-                    });
-                }else {
-                    layer.msg(data.msg, {icon: 2, time: 2000});
                 }
+                $.ajax({
+                    type:"POST",
+                    url:"$projectname/speech/add.do",
+                    data:{
+                        "speechForm":speechForm, "beginTime":beginTime, "overTime":overTime, "inviteTime":inviteTime,
+                        "fileId":fileId
+                    },
+                    success: function (data) {
+                        var user=JSON.parse(data);
+                        if (user.status ==200){
+                            alert(user.msg);
+                            window.parent.location.replace("$projectname/speech/list");
+                        }else {
+                            layer.msg(user.msg, {icon: 2, time: 2000});
+                        }
+                    },
+                    error:function () {
+                        layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+                    }
+                });
 
             },
             error:function () {
