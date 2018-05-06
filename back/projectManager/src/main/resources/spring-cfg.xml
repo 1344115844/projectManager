@@ -21,11 +21,11 @@
     <context:component-scan base-package="cn.edu.hstc" annotation-config="true"/>
 
 
-<!--开启shiro注解-->
-    <bean id="defaultAdvisorAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
-        <!--强制使用cglib创建Action的代理对象-->
-        <property name="proxyTargetClass" value="true"/>
-    </bean>
+
+
+
+
+<!--整合shiro-->
     <!--切面类-->
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
 
@@ -54,17 +54,12 @@
                 /myjs/**=anon
                 /uploads/**=anon
                 /user/login*=anon
-                <!--&lt;!&ndash;/user/register*=anon&ndash;&gt;-->
-                <!--/user/student*/**=roles[teacher]-->
-                <!--&lt;!&ndash;/user/teacher*/**=perms["user:create"]&ndash;&gt;-->
-                <!--/**=roles["普通用户"]-->
                 /user/logout*=logout
                 /**=authc
-
             </value>
         </property>
     </bean>
-
+<!--over-->
 
 
 

@@ -39,4 +39,6 @@ public interface UserService {
     ArrayList<String> getAllUsername();
 
     void updatePasswordByUsername(String s,String password);
+
+    ArrayList<User> selectAllAdmin();//cx
 }

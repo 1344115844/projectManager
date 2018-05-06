@@ -7,6 +7,8 @@ import cn.edu.hstc.service.UserService;
 import cn.edu.hstc.util.MD5Util;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
 
     /**
      * @Description:登录验证处理
@@ -175,5 +179,16 @@ public class UserServiceImpl implements UserService {
             return userArrayList;
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<User> selectAllAdmin() {
+        try {
+            ArrayList<User> admins=userMapper.selectAllAdmin();
+            return  admins;
+        }catch (Exception e){
+            logger.error("查詢全部管理員失敗");
+            throw e;
+        }
     }
 }
