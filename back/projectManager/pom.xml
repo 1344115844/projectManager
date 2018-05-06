@@ -107,12 +107,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.34</version>
         </dependency>
+        <!--end-->
+
         <!-- 添加druid连接池包 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.12</version>
         </dependency>
+        <!--end-->
+
         <!-- 日志文件管理包 -->
         <!-- log start -->
         <dependency>
@@ -120,8 +124,6 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
-
         <!-- 格式化对象，方便输出日志 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -142,6 +144,7 @@
             <version>${slf4j.version}</version>
         </dependency>
         <!-- log end -->
+
         <!--apache shiro  -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -158,13 +161,17 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.2.3</version>
         </dependency>
-        <!--apache shiro  end-->
+        <!--end-->
+
+
         <!-- 映入JSON -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
         </dependency>
+        <!--end-->
+
         <!-- 上传组件包 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -181,11 +188,17 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+        <!--end-->
+
+        <!--定時器任務調度框架-->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <!--end-->
+
+        <!--velocity視圖模板-->
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
@@ -196,7 +209,10 @@
             <artifactId>velocity-tools</artifactId>
             <version>2.0</version>
         </dependency>
+        <!--end-->
 
+
+        <!--mybatis generator -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
@@ -209,7 +225,9 @@
             <artifactId>mybatis-generator-core</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!--end-->
 
+        <!--common包-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -222,14 +240,17 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.0</version>
         </dependency>
+        <!--end-->
 
-    <!--日期工具-->
+        <!--日期工具-->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>2.3</version>
         </dependency>
-<!--valid工具包-->
+        <!--emd-->
+
+        <!--valid工具包-->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -241,6 +262,7 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
+        <!--end-->
 
     </dependencies>
 

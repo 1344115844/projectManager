@@ -19,8 +19,8 @@
         </tr>
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
-            <th width="50">username</th>
-            <th width="250">操作</th>
+            <th >username</th>
+            <th >操作</th>
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -34,14 +34,40 @@
 #parse("/common/foot.vm")
 <script>
     $(function () {
-
+        getList();
     });
     function getList() {
         $.ajax({
             type:"POST",
-            url:"$projectname/admin/",
+            url:"$projectname/admin/selectAdmin",
+            data:{},
+            success:function (data) {
+                data=JSON.parse(data);
+                if (data.status==200){
+                    setList(data.data);
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败");
+            }
 
         });
+    }
+    function setList(data) {
+        var str = "";
+        var tbody = window.document.getElementById("tbody");
+        var index = 0;
+        for (i in data) {
+            str += "<tr class='text-c'>" +
+                    "<td  width='25'><input type='checkbox' ></td>" +
+                    "<td name='username'width=''>" + data[i].username + "</td>" +
+                    "<td>"+
+                    "<button class='editAcad btn btn-primary radius ' value='" + data[i].userId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
+                    "<button class='deleteAcad btn btn-danger radius ' value='" + data[i].userId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +
+                    "</td>" +
+                    "</tr>";
+        }
+        tbody.innerHTML = str;
     }
 </script>
 </body>
