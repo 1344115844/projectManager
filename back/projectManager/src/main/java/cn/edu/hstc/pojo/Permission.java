@@ -7,6 +7,8 @@ public class Permission implements Serializable {
 
     private String perName;
 
+    private Role role;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getPerId() {
@@ -23,5 +25,13 @@ public class Permission implements Serializable {
 
     public void setPerName(String perName) {
         this.perName = perName == null ? null : perName.trim();
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

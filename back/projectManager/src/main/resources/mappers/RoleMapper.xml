@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hstc.dao.RoleMapper">
+    <resultMap id="BaseMap" type="cn.edu.hstc.pojo.Role">
+        <id column="role_id" property="roleId"/>
+        <result column="roleName" property="roleName"/>
+        <collection property="permissions" ofType="cn.edu.hstc.pojo.Permission">
+            <result column="perName" property="perName"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllRoleAndPermission" resultMap="BaseMap" >
+            SELECT
+                temp.role_id,
+                temp.role_name AS roleName,
+                p.per_name AS  perName
+            FROM
+                (
+                    SELECT
+                        r.role_id,
+                        r.role_name,
+                        rp.per_id
+                    FROM
+                        role AS r
+                    LEFT JOIN role_permission AS rp ON r.role_id = rp.role_id
+                ) AS temp
+            LEFT JOIN permission AS p ON p.per_id = temp.per_id
+    </select>
+
+</mapper>  
