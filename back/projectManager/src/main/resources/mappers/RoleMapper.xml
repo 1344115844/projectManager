@@ -3,19 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hstc.dao.RoleMapper">
-    <resultMap id="BaseMap" type="cn.edu.hstc.pojo.Role">
-        <id column="role_id" property="roleId"/>
+    <resultMap id="RoleAndPermissionMap" type="cn.edu.hstc.pojo.Role">
+        <id column="roleId" property="roleId"/>
         <result column="roleName" property="roleName"/>
         <collection property="permissions" ofType="cn.edu.hstc.pojo.Permission">
-            <id column="per_id" property="perId"/>
+            <id column="perId" property="perId"/>
             <result column="perName" property="perName"/>
         </collection>
     </resultMap>
 
-    <select id="selectAllRoleAndPermission" resultMap="BaseMap" >
+    <resultMap id="roleMap" type="cn.edu.hstc.pojo.Role">
+        <id column="roleId" property="roleId"/>
+        <result column="roleName" property="roleName"/>
+    </resultMap>
+
+    <select id="selectAllRoleAndPermission" resultMap="RoleAndPermissionMap" >
             SELECT
-                temp.role_id,
-                p.per_id,
+                temp.role_id AS roleId,
+                p.per_id AS  perId,
                 temp.role_name AS roleName,
                 p.per_name AS  perName
             FROM
@@ -30,5 +35,13 @@
                 ) AS temp
             LEFT JOIN permission AS p ON p.per_id = temp.per_id
     </select>
+    <select id="selectRoles" resultMap="roleMap" >
+        SELECT
+            r.role_id AS roleId,
+            r.role_name AS roleName
+        FROM
+            role AS r
+    </select>
+
 
 </mapper>  

@@ -14,4 +14,11 @@ public interface RoleMapper {
      *方法作用：查询所有角色和权限
      **/
     ArrayList<Role> selectAllRoleAndPermission();
+
+    /**
+     *@author Veng Su 2018/5/7 16:33
+     *方法作用：查询所有角色
+     **/
+    ArrayList<Role> selectRoles();
+
 }

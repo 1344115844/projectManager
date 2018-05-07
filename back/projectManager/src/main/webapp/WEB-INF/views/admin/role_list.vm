@@ -19,17 +19,12 @@
     </tr>
     <tr class="text-c">
         <th width="25"><input type="checkbox"></th>
+        <th >ID</th>
         <th >角色</th>
-        <th >权限</th>
         <th >操作</th>
     </tr>
     </thead>
     <tbody id="tbody"></tbody>
-    <tfoot>
-    <tr>
-        <th colspan="24"><div class="box" id="box"></div></th>
-    </tr>
-    </tfoot>
 </table>
 </div>
     #parse("/common/foot.vm")
@@ -40,7 +35,7 @@
     function getList() {
         $.ajax({
             type:"POST",
-            url:"$projectname/admin/role/permission",
+            url:"$projectname/admin/selectRoles",
             data:{},
             success:function (data) {
                 data=JSON.parse(data);
@@ -63,12 +58,8 @@
         for (i in data) {
             str += "<tr class='text-c'>" +
                     "<td  width='25'><input type='checkbox' ></td>" +
+                    "<td name='roleId'width=''>" + data[i].roleId + "</td>" +
                     "<td name='roleName'width=''>" + data[i].roleName + "</td>" +
-                    "<td name='permissions'>";
-            for (var j=0;j<data[i].permissions.length;j++){
-                str+= "<p>" + data[i].permissions[j].perName+ "</p>";
-            }
-            str+= "</td>"+
                     "<td>"+
                     "<button class='editAcad btn btn-primary radius ' value='" + data[i].roleId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='" + data[i].roleId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +

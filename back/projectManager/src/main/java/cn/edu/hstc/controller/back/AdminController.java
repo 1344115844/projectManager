@@ -38,7 +38,7 @@ public class AdminController extends BaseController{
      **/
     @RequestMapping("/list")
     public String showMember(){
-        return "/admin/list";
+        return "/admin/admin_list";
     }
 
     @RequestMapping("/permissions/list")
@@ -70,16 +70,31 @@ public class AdminController extends BaseController{
      *@author Veng Su 2018/5/6 22:42
      *方法作用：查询所有角色和权限
      **/
-    @RequestMapping("/role/permission")
+    @RequestMapping("/selectPermissions")
     @ResponseBody
     @RequiresRoles("administrator")
-    public JSONResponse<ArrayList> selectAllRoleAndPermission(){
+    public JSONResponse selectAllRoleAndPermission(){
         try{
             ArrayList<Role> roles=roleService.selectAllRoleAndPermission();
             return JSONResponse.createBySuccess("success",roles);
         }catch (Exception e){
             logger.error("admin/role/permission接口出错");
             return JSONResponse.createByErrorMessage("内部错误");
+        }
+    }
+
+    /**
+     *@author Veng Su 2018/5/7 16:52
+     *方法作用：查询角色
+     **/
+    @RequestMapping("/selectRoles")
+    @ResponseBody
+    public JSONResponse selectRoles(){
+        try {
+            ArrayList<Role> roles= roleService.selectRoles();
+            return JSONResponse.createBySuccess("sucess",roles);
+        }catch (Exception e){
+            return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
 

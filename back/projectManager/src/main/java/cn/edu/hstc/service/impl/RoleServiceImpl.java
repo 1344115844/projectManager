@@ -34,4 +34,19 @@ public class RoleServiceImpl implements RoleService {
             throw e;
         }
     }
+
+    /**
+     *@author Veng Su 2018/5/7 16:52
+     *方法作用：查询所有角色
+     **/
+    @Override
+    public ArrayList<Role> selectRoles() {
+        try {
+            ArrayList<Role> roles= roleMapper.selectRoles();
+            return roles;
+        }catch (Exception e){
+            logger.error("出错了，位置：{}",this.toString());
+            throw e;
+        }
+    }
 }

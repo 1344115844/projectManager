@@ -19,16 +19,11 @@
         </tr>
         <tr class="text-c">
             <th width="25"><input type="checkbox"></th>
-            <th >username</th>
+            <th >管理员账号</th>
             <th >操作</th>
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
-        <tfoot>
-        <tr>
-            <th colspan="24"><div class="box" id="box"></div></th>
-        </tr>
-        </tfoot>
     </table>
 </div>
 #parse("/common/foot.vm")
