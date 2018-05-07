@@ -1,0 +1,82 @@
+
+<html>
+<head>
+
+    #parse("/common/head.vm")
+
+    <title>获奖信息列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员列表 <span
+        class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r"
+                                               style="line-height:1.6em;margin-top:3px"
+                                               href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<table class="table table-border table-bordered table-bg">
+    <thead>
+    <tr>
+        <th scope="col" colspan="24">管理员列表</th>
+    </tr>
+    <tr class="text-c">
+        <th width="25"><input type="checkbox"></th>
+        <th >角色</th>
+        <th >权限</th>
+        <th >操作</th>
+    </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+    <tr>
+        <th colspan="24"><div class="box" id="box"></div></th>
+    </tr>
+    </tfoot>
+</table>
+</div>
+    #parse("/common/foot.vm")
+<script>
+    $(function () {
+        getList();
+    });
+    function getList() {
+        $.ajax({
+            type:"POST",
+            url:"$projectname/admin/role/permission",
+            data:{},
+            success:function (data) {
+                data=JSON.parse(data);
+                if (data.status==200){
+                    setList(data.data);
+                }else {
+                    alert(data.msg);
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败");
+            }
+
+        });
+    }
+    function setList(data) {
+        var str = "";
+        var tbody = window.document.getElementById("tbody");
+        var index = 0;
+        for (i in data) {
+            str += "<tr class='text-c'>" +
+                    "<td  width='25'><input type='checkbox' ></td>" +
+                    "<td name='roleName'width=''>" + data[i].roleName + "</td>" +
+                    "<td name='permissions'>";
+            for (var j=0;j<data[i].permissions.length;j++){
+                str+= "<p>" + data[i].permissions[j].perName+ "</p>";
+            }
+            str+= "</td>"+
+                    "<td>"+
+                    "<button class='editAcad btn btn-primary radius ' value='" + data[i].roleId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
+                    "<button class='deleteAcad btn btn-danger radius ' value='" + data[i].roleId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +
+                    "</td>" +
+                    "</tr>";
+        }
+        tbody.innerHTML = str;
+    }
+</script>
+</body>
+</html>

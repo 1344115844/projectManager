@@ -45,6 +45,8 @@
                 data=JSON.parse(data);
                 if (data.status==200){
                     setList(data.data);
+                }else {
+                    alert(data.msg);
                 }
             },
             error:function () {
