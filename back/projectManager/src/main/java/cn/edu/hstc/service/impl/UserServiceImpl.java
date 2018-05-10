@@ -187,7 +187,19 @@ public class UserServiceImpl implements UserService {
             ArrayList<User> admins=userMapper.selectAllAdmin();
             return  admins;
         }catch (Exception e){
-            logger.error("查詢全部管理員失敗");
+            logger.error("出错了，查詢全部管理員失敗");
+            throw e;
+        }
+    }
+
+    @Override
+    public PageInfo<User> selectUsers(int pageNum, int pageSize) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            ArrayList<User> users=userMapper.selectUsers();
+            return new PageInfo<>(users);
+        }catch (Exception e ){
+            logger.error("出错了，分页查询全部成员失败");
             throw e;
         }
     }

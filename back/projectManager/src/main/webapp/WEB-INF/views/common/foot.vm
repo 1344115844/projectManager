@@ -5,9 +5,15 @@
 
 ##引入表单验证
 <script type="text/javascript" src="$projectname/myjs/validform/Validform_v5.3.2_min.js"></script>
+##基类
 <script type="text/javascript" src="$projectname/myjs/base.js"></script>
+##日期插件
 <script type="text/javascript" src="$projectname/myjs/until/date.js"></script>
+##解析url
 <script type="text/javascript" src="$projectname/myjs/until/parseurl.js"></script>
+##分页插件
+<script type="text/javascript" src="$projectname/myjs/paging/mypage.js"></script>
+
 
 
 

@@ -79,18 +79,8 @@
         </tfoot>
     </table>
 </div>
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
-<script src="$projectname/myjs/paging/academicreport_paging.js"></script>
-<script type="text/javascript" src="$projectname/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="$projectname/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="$projectname/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+    #parse("/common/foot.vm")
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="$projectname/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="$projectname/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="$projectname/lib/laypage/1.2/laypage.js"></script>
-<script type="text/javascript" src="$projectname/myjs/base.js"></script>
 <script type="text/javascript">
 
 
@@ -102,19 +92,7 @@
             success: function (data) {
                 var data = JSON.parse(data);
                 display(data.data.list);
-                var setTotalCount = data.data.total;//总条数
-                var startNumber = data.data.pageNum;//当前页数
-                var totalPages = data.data.navigatepageNums.length;//总页数
-                $('#box').paging({
-                    initPageNo: startNumber, // 初始页码
-                    totalPages: totalPages, //总页数
-                    totalCount: '合计' + setTotalCount + '条数据', // 条目总数
-                    slideSpeed: 600, // 缓动速度。单位毫秒
-                    jump: true, //是否支持跳转
-                    callback: function(page) { // 回调函数
-                        console.log(page);
-                    }
-                });
+                setPage(data.data);
             }
         });
     });
@@ -195,7 +173,7 @@ function jumpDelete(id) {
     }
 
 
-    function testPage(pageNum){
+    function handlePage(pageNum){
         $.ajax({
             type: "POST",
             url: "$projectname/academicreport/selectByUserId.do",

@@ -6,14 +6,19 @@ import cn.edu.hstc.pojo.Role;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.RoleService;
 import cn.edu.hstc.service.UserService;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.spec.ECField;
 import java.util.ArrayList;
 
 /**
@@ -37,17 +42,25 @@ public class AdminController extends BaseController{
      *方法作用：跳转到member-list页面
      **/
     @RequestMapping("/list")
+    @RequiresRoles("administrator")
     public String showMember(){
         return "/admin/admin_list";
     }
 
     @RequestMapping("/permissions/list")
+    @RequiresRoles("administrator")
     public String showPermissions(){
         return "/admin/permissions_list";
     }
     @RequestMapping("/roles/list")
+    @RequiresRoles("administrator")
     public String showRole(){
         return "/admin/role_list";
+    }
+    @RequestMapping("/user/list")
+    @RequiresRoles("administrator")
+    public String showUsers(){
+        return "/admin/user_list";
     }
 
 
@@ -55,13 +68,13 @@ public class AdminController extends BaseController{
     @RequestMapping("/selectAdmin")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse<ArrayList> selectAdmin(){
+    public JSONResponse<ArrayList> selectAdmin(HttpServletRequest request){
         try {
             ArrayList<User> admins= userService.selectAllAdmin();
             return JSONResponse.createBySuccess("success",admins);
         }
         catch (Exception e){
-            logger.error("admincontroller 的selectAdmin 出錯");
+            logger.error("出错了,uri:{}",request.getRequestURL());
             return JSONResponse.createByErrorMessage("內部錯誤");
         }
     }
@@ -73,12 +86,12 @@ public class AdminController extends BaseController{
     @RequestMapping("/selectPermissions")
     @ResponseBody
     @RequiresRoles("administrator")
-    public JSONResponse selectAllRoleAndPermission(){
+    public JSONResponse selectAllRoleAndPermission(HttpServletRequest request){
         try{
             ArrayList<Role> roles=roleService.selectAllRoleAndPermission();
             return JSONResponse.createBySuccess("success",roles);
         }catch (Exception e){
-            logger.error("admin/role/permission接口出错");
+            logger.error("出错了,uri:{}",request.getRequestURL());
             return JSONResponse.createByErrorMessage("内部错误");
         }
     }
@@ -88,25 +101,34 @@ public class AdminController extends BaseController{
      *方法作用：查询角色
      **/
     @RequestMapping("/selectRoles")
+    @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse selectRoles(){
+    public JSONResponse selectRoles(HttpServletRequest request){
         try {
             ArrayList<Role> roles= roleService.selectRoles();
-            return JSONResponse.createBySuccess("sucess",roles);
+            return JSONResponse.createBySuccess("success",roles);
         }catch (Exception e){
+            logger.error("出错了,uri:{}",request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
+    /**
+     *@author Veng Su 2018/5/10 14:32
+     *方法作用：查询所有成员
+     **/
+    @RequestMapping("/selectUsers")
+    @RequiresRoles("administrator")
+    @ResponseBody
+    public JSONResponse selectUsers(HttpServletRequest request,@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize){
+        try {
 
-
-
-
-
-
-
-
-
-
+            PageInfo<User> pageInfo= userService.selectUsers(pageNum,pageSize);
+            return JSONResponse.createBySuccess("success",pageInfo);
+        }catch (Exception e){
+            logger.error("出错了,uri:{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，内部错误");
+        }
+    }
 
 
 }

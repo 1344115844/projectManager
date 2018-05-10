@@ -42,4 +42,6 @@ public interface UserMapper {
     void updatePasswordByUsername(@Param("username") String s,@Param("password")String password);
 
     ArrayList<User> selectAllAdmin();
+
+    ArrayList<User> selectUsers();
 }

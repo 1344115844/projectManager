@@ -1,0 +1,117 @@
+
+<html>
+<head>
+
+    #parse("/common/head.vm")
+
+    <title>获奖信息列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员列表 <span
+        class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r"
+                                               style="line-height:1.6em;margin-top:3px"
+                                               href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="academic_add('添加记录','$projectname/academic/add')"
+               class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
+        </span>
+    <span id="total" class="r"> </span>
+</div>
+<table class="table table-border table-bordered table-bg">
+    <thead>
+    <tr>
+        <th scope="col" colspan="24">成员列表</th>
+    </tr>
+    <tr class="text-c">
+        <th width="25"><input type="checkbox"></th>
+        <th >ID</th>
+        <th >姓名</th>
+        <th >短号</th>
+        <th >邮箱</th>
+        <th >长号</th>
+        <th >职称</th>
+        <th >学历</th>
+        <th >研究方向</th>
+        <th >学术头衔</th>
+        <th >用户账号</th>
+        <th >账号密码</th>
+        <th >操作</th>
+    </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+    <tr>
+        <th colspan="13"><div class="box" id="box"></div></th>
+    </tr>
+    </tfoot>
+</table>
+</div>
+    #parse("/common/foot.vm")
+<script>
+    $(function () {
+        getList();
+    });
+    function getList() {
+        $.ajax({
+            type:"POST",
+            url:"$projectname/admin/selectUsers",
+            data:{},
+            success:function (data) {
+                data=JSON.parse(data);
+                if (data.status==200){
+                    setList(data.data.list);
+                    // setPage(data.data);
+                    setPage(data.data);
+                }else {
+                    alert(data.msg);
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败");
+            }
+
+        });
+    }
+
+    function handlePage(pageNum){
+        $.ajax({
+            type: "POST",
+            url: "$projectname/admin/selectUsers",
+            data:{"pageNum":pageNum},
+            success: function (data) {
+                var data = JSON.parse(data);
+                setList(data.data.list);
+            }
+        });
+    }
+    function setList(data) {
+        var str = "";
+        var tbody = window.document.getElementById("tbody");
+        var index = 0;
+        for (i in data) {
+            str += "<tr class='text-c'>" +
+                    "<td  width='25'><input type='checkbox' ></td>" +
+                    "<td id='userId' name='userId'width=''>" + data[i].userId + "</td>" +
+                    "<td id='name'  name='name'width=''>" + data[i].name + "</td>" +
+                    "<td id='shortPhone'  name='shortPhone'width=''>" + data[i].shortPhone + "</td>" +
+                    "<td id='email'  name='email'width=''>" + data[i].email + "</td>" +
+                    "<td id='phone'  name='phone'width=''>" + data[i].phone + "</td>" +
+                    "<td id='jobTitle'  name='jobTitle'width=''>" + data[i].jobTitle + "</td>" +
+                    "<td id='education'  name='education'width=''>" + data[i].education + "</td>" +
+                    "<td id='researchDirection'  name='researchDirection'width=''>" + data[i].researchDirection + "</td>" +
+                    "<td id='academicTitle'  name='academicTitle'width=''>" + data[i].academicTitle + "</td>" +
+                    "<td id='username'  name='username'width=''>" + data[i].username + "</td>" +
+                    "<td id='password'  name='password'width=''>" + data[i].password + "</td>" +
+                    "<td>"+
+                    "<button class='btn btn-primary radius ' value='" + data[i].userId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
+                    "<button class='btn btn-danger radius ' value='" + data[i].userId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +
+                    "</td>" +
+                    "</tr>";
+        }
+        tbody.innerHTML = str;
+    }
+</script>
+</body>
+</html>

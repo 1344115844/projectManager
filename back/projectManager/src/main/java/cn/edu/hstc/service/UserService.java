@@ -41,4 +41,6 @@ public interface UserService {
     void updatePasswordByUsername(String s,String password);
 
     ArrayList<User> selectAllAdmin();//cx
+
+    PageInfo<User> selectUsers(int pageNum, int pageSize);
 }

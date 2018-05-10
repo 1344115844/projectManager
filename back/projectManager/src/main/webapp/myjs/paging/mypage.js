@@ -101,7 +101,7 @@
             })
 
             function handles(pageIndex) {
-                testPage(pageIndex);
+                handlePage(pageIndex);
                 lis.removeClass('sel-page').eq(pageIndex - 1).addClass('sel-page');
 
                 if (totalPages <= 5) {
@@ -126,26 +126,19 @@
 })(jQuery, window, document);
 
 
-function display(data) {
-    var str = "";
-    var tbody = window.document.getElementById("tbody");
-    var index =0;
-    for (i in data) {
-        var publishTime =FormatDateTime(data[i].publishTime);
-        index=parseInt(i)+1;
-        str += "<tr class='text-c'>" +
-            "<td name='caonima' width='25'><input type='checkbox' ></td>" +
-            "<td name='id' width='40'>" + index + "</td>" +
-            "<td name='bookName'width='150'>" + data[i].bookName + "</td>" +
-            "<td name='editRank' width='130'>" +  data[i].editRank + "</td>" +
-            "<td name='publishTime' width='100'>" + publishTime + "</td>" +
-            "<td name='isbn' width='100'>" + data[i].isbn + "</td>" +
-            "<td name='publishUnit' width='100'>" + data[i].publishUnit + "</td>" +
-            "<td name='byteNum' width='100'>" + data[i].byteNum + "</td>" +
-            "<td ><button  class='btn btn-primary radius ' value='"+data[i].editId+"' onclick="+"jumpEdit(this.value)"+">编辑</button>" +
-            "<button class=' btn btn-danger radius ' value='"+data[i].editId+"' onclick="+"jumpDelete(this.value)"+">删除</button></td>"+
-            "</tr>";
-    }
-
-    tbody.innerHTML = str;
+function setPage(data) {
+    var setTotalCount =data.total;//总条数
+    var startNumber = data.pageNum;//当前页数
+    var totalPages = data.pages;//总页数
+    $('#box').paging({
+        initPageNo: startNumber, // 初始页码
+        totalPages: totalPages, //总页数
+        totalCount: '合计' + setTotalCount + '条',
+        callback: function(page) { // 回调函数据', // 条目总数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+                // jump:true, //是否支持跳转数
+                console.log(page);
+        }
+    });
 }
+

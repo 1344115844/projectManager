@@ -35,13 +35,32 @@
     <select id="selectAll"  resultMap="BaseResultMap">
 SELECT
 	u.user_id,
-	u.name,
+	u.name
 FROM
 	USER AS u
 LEFT JOIN user_role AS ur ON u.user_id = ur.user_id
 WHERE
 	ur.role_id = 1
 
+    </select>
+    <select id="selectUsers"  resultMap="BaseResultMap">
+        SELECT
+            u.user_id,
+            u.`name`,
+            u.short_phone,
+            u.email,
+            u.phone,
+            u.job_title,
+            u.education,
+            u.research_direction,
+            u.academic_title,
+            u.username,
+            u.`password`
+        FROM
+            `user` AS u
+            LEFT JOIN user_role AS ur ON u.user_id = ur.user_id
+        WHERE
+            ur.role_id = 1
     </select>
     <select id="selectAllAdmin"  resultMap="BaseResultMap">
 SELECT
@@ -88,13 +107,13 @@ WHERE
         and password = #{oldpassword}
     </select>
     <select id="selectAllUserList" resultMap="BaseResultMap">
-SELECT
-        <include refid="Base_Column_List"/>
-FROM
-	USER AS u
-LEFT JOIN user_role AS ur ON u.user_id = ur.user_id
-WHERE
-	ur.role_id = 1
+        SELECT
+                <include refid="Base_Column_List"/>
+        FROM
+            USER AS u
+        LEFT JOIN user_role AS ur ON u.user_id = ur.user_id
+        WHERE
+	    ur.role_id = 1
     </select>
 
     <select id="getRoles" parameterType="java.lang.String" resultType="java.lang.String">
