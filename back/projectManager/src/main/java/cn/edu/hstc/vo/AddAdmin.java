@@ -9,7 +9,6 @@ public class AddAdmin {
     private String username;
     private String password;
     private int roleId;
-    private String roleName;
 
     public String getName() {
         return name;
@@ -43,11 +42,4 @@ public class AddAdmin {
         this.roleId = roleId;
     }
 
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
 }

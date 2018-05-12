@@ -22,4 +22,7 @@ public interface RoleService {
      *方法作用：查询所有角色
      **/
     ArrayList<Role> selectRoles();
+
+    ArrayList selectAdminRoles();
+
 }

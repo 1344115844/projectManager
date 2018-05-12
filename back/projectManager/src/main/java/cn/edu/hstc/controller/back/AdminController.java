@@ -146,7 +146,7 @@ public class AdminController extends BaseController{
     @ResponseBody
     public JSONResponse findRoles(HttpServletRequest request){
         try{
-            ArrayList roles =roleService.selectRoles();
+            ArrayList roles =roleService.selectAdminRoles();
             return JSONResponse.createBySuccess("success",roles);
         }catch (Exception e){
             logger.error("出错了，uri{}",request.getRequestURL());

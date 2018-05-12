@@ -42,6 +42,14 @@
         FROM
             role AS r
     </select>
+    <select id="selectAdminRoles" resultMap="roleMap" >
+        SELECT
+        r.role_id AS roleId,
+        r.role_name AS roleName
+        FROM
+        role AS r
+        WHERE role_id!=1
+    </select>
 
 
 </mapper>  

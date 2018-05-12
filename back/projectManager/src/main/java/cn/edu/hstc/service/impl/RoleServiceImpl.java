@@ -48,4 +48,14 @@ public class RoleServiceImpl implements RoleService {
             throw e;
         }
     }
+
+    @Override
+    public ArrayList selectAdminRoles() {
+        try {
+            return roleMapper.selectAdminRoles();
+        }catch (Exception e){
+            logger.error("出错了，位置：{}",this.toString());
+            throw e;
+        }
+    }
 }

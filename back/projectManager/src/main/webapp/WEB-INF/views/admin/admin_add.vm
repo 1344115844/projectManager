@@ -37,7 +37,7 @@
             <label class="form-label col-xs-3">管理员角色：</label>
             <div class="col-xs-6">
             <span class="select-box">
-                <select class="select" size="1" name="roles" id="roles" datatype="*" nullmsg="请选择管理员角色">
+                <select class="select" size="1" name="roleId" id="roleId" datatype="*" nullmsg="请选择管理员角色">
                 </select>
             </span><span class="Validform_checktip"></span>
             </div>
@@ -75,7 +75,7 @@
                 for (i in data){
                     str+="<option value='" +data[i].roleId+"' >"+data[i].roleName+"</option>"
                 }
-                $("#roles").html(str);
+                $("#roleId").html(str);
 
             }
         });
@@ -102,59 +102,28 @@ function checkAndAdd() {
 
  **/
 function post() {
-    var upload_file = document.getElementById("file").files[0];
-    var upload_file = document.getElementById("file").files[0];
-    var formFile = new FormData();
-    formFile.append("upload_file", upload_file);
-    var data = formFile;
-
-    var projectName=$("#projectName").val();
-    var awardName=$("#awardName").val();
-    var awardTime =$("#awardTime").val();
-    awardTime=convertDateFromString(awardTime);
-
-    var awardLevel=$("#awardLevel").val();
-    var awardRank=$("#awardRank").val();
+    var roleId=$("#roleId").val();
+    roleId=parseInt(roleId);
+    var name=$("#name").val();
+    var username =$("#username").val();
+    var password=$("#password").val();
 
 
     $.ajax({
         type:"POST",
-        url: "$projectname/award/uploadAttachment.do",
-        data: data,
-        cache: false,//上传文件无需缓存
-        processData: false,//用于对data参数进行序列化处理 这里必须false
-        contentType: false,
+        url: "$projectname/admin/role/add",
+        data: {
+            "roleId":roleId,"name":name,"username":username,"password":password
+        },
         success: function(data){
-
-            var fileId=null;
             data=JSON.parse(data);
             if(data.status==200){
-                fileId =data.data;
-                fileId=parseInt(fileId);
+                layer.msg(data.data,{icon:1,time:3000});
+                window.parent.location.replace("$projectname/admin/list");
             }
-            $.ajax({
-                type:"POST",
-                url:"$projectname/award/add.do",
-                data:{
-                    "projectName":projectName, "awardName":awardName, "awardTime":awardTime, "awardLevel":awardLevel, "awardRank":awardRank,
-                    "fileId":fileId
-                },
-                success: function (data) {
-                    var user=JSON.parse(data);
-                    if (user.status ==200){
-                        alert(user.msg);
-                        window.parent.location.replace("$projectname/award/list");
-                    }else {
-                        layer.msg(user.msg, {icon: 2, time: 2000});
-                    }
-                },
-                error:function () {
-                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                }
-            });
         },
         error:function () {
-            layer.msg("请求上传文件接口失败，客户端参数错误", {icon: 2, time: 2000});
+            layer.msg("参数错误", {icon: 2, time: 2000});
         }
     });
 }

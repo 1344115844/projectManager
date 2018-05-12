@@ -21,4 +21,5 @@ public interface RoleMapper {
      **/
     ArrayList<Role> selectRoles();
 
+    ArrayList<Role> selectAdminRoles();
 }
