@@ -42,8 +42,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public ArrayList<Role> selectRoles() {
         try {
-            ArrayList<Role> roles= roleMapper.selectRoles();
-            return roles;
+            return roleMapper.selectRoles();
         }catch (Exception e){
             logger.error("出错了，位置：{}",this.toString());
             throw e;

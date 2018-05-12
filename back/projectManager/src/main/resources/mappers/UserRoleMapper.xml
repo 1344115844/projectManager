@@ -28,4 +28,12 @@
       </if>
     </trim>
   </insert>
+  <select id="selectUseridByUserId" parameterType="int" resultType="int">
+    SELECT
+      COUNT(user_id)
+    FROM
+      user_role
+    WHERE
+      user_id = #{userId}
+  </select>
 </mapper>

@@ -14,7 +14,7 @@
         class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <a href="javascript:;" onclick="academic_add('添加记录','$projectname/academic/add')"
+            <a href="javascript:;" onclick="add('添加记录','$projectname/admin/add')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
     <span id="total" class="r"> </span>
@@ -72,6 +72,13 @@
                     "</tr>";
         }
         tbody.innerHTML = str;
+    }
+    /**
+     *@author Veng Su 2018/5/12 16:31
+     *方法作用：跳转add页面
+     **/
+    function add(title, url, w, h) {
+            layer_show(title, url, w, h);
     }
 </script>
 </body>

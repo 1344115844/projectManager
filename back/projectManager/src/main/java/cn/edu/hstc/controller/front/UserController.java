@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class UserController {
      **/
     @RequestMapping("/select/all")
     @ResponseBody
-    public JSONResponse<PageInfo> selectUserListById(int pageNum, int pageSize){
+    public JSONResponse<PageInfo> selectUserListById(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize){
         return userService.selectAllUserList(pageNum,pageSize);
     }
 

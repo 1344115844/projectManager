@@ -1,0 +1,169 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+##引入head.vm
+#parse("/common/head.vm");
+
+<title>添加管理员</title>
+</head>
+<body>
+<article class="page-container">
+	<form  class="form form-horizontal" id="form-award-add">
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员姓名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写管理员姓名" id="name" name="name" datatype="*" nullmsg="请填写管理员姓名">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员账号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写管理员账号" id="username" name="username" datatype="*" nullmsg="请填写管理员账号">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员密码：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写管理员密码" id="password" name="password" datatype="*" nullmsg="请填写管理员密码">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3">管理员角色：</label>
+            <div class="col-xs-6">
+            <span class="select-box">
+                <select class="select" size="1" name="roles" id="roles" datatype="*" nullmsg="请选择管理员角色">
+                </select>
+            </span><span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndAdd()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
+            </div>
+        </div>
+	</form>
+    <br>
+    <br>
+    <div class="text-shadow">
+
+    </div>
+
+</article>
+##引入foot.vm
+#parse("/common/foot.vm");
+
+<script type="text/javascript">
+
+    $(function () {
+       findRoles();
+    });
+    function findRoles() {
+        $.ajax({
+            type:"POST",
+            url:"$projectname/admin/findRoles",
+            success:function (data) {
+                data=JSON.parse(data);
+                data=data.data;
+                var str="<option value=\"\" selected>选择角色</option>";
+                for (i in data){
+                    str+="<option value='" +data[i].roleId+"' >"+data[i].roleName+"</option>"
+                }
+                $("#roles").html(str);
+
+            }
+        });
+    }
+function checkAndAdd() {
+    $("#form-award-add").Validform({
+        btnSubmit: "#submit",
+        tiptype:3,
+        showAllError: true,
+        ignoreHidden: true,
+        ajaxPost: false,
+        beforeSubmit:function(curform){
+            //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+            //这里明确return false的话表单将不会提交;
+            post();
+            return false;
+        },
+    });
+}
+/**
+ *@author Veng Su
+ *@date 2018/4/5 22:21
+ *方法作用：add记录//ajax提交数据
+
+ **/
+function post() {
+    var upload_file = document.getElementById("file").files[0];
+    var upload_file = document.getElementById("file").files[0];
+    var formFile = new FormData();
+    formFile.append("upload_file", upload_file);
+    var data = formFile;
+
+    var projectName=$("#projectName").val();
+    var awardName=$("#awardName").val();
+    var awardTime =$("#awardTime").val();
+    awardTime=convertDateFromString(awardTime);
+
+    var awardLevel=$("#awardLevel").val();
+    var awardRank=$("#awardRank").val();
+
+
+    $.ajax({
+        type:"POST",
+        url: "$projectname/award/uploadAttachment.do",
+        data: data,
+        cache: false,//上传文件无需缓存
+        processData: false,//用于对data参数进行序列化处理 这里必须false
+        contentType: false,
+        success: function(data){
+
+            var fileId=null;
+            data=JSON.parse(data);
+            if(data.status==200){
+                fileId =data.data;
+                fileId=parseInt(fileId);
+            }
+            $.ajax({
+                type:"POST",
+                url:"$projectname/award/add.do",
+                data:{
+                    "projectName":projectName, "awardName":awardName, "awardTime":awardTime, "awardLevel":awardLevel, "awardRank":awardRank,
+                    "fileId":fileId
+                },
+                success: function (data) {
+                    var user=JSON.parse(data);
+                    if (user.status ==200){
+                        alert(user.msg);
+                        window.parent.location.replace("$projectname/award/list");
+                    }else {
+                        layer.msg(user.msg, {icon: 2, time: 2000});
+                    }
+                },
+                error:function () {
+                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+                }
+            });
+        },
+        error:function () {
+            layer.msg("请求上传文件接口失败，客户端参数错误", {icon: 2, time: 2000});
+        }
+    });
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>

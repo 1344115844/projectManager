@@ -4,8 +4,10 @@ import cn.edu.hstc.common.JSONResponse;
 import cn.edu.hstc.controller.base.BaseController;
 import cn.edu.hstc.pojo.Role;
 import cn.edu.hstc.pojo.User;
+import cn.edu.hstc.service.AdminService;
 import cn.edu.hstc.service.RoleService;
 import cn.edu.hstc.service.UserService;
+import cn.edu.hstc.vo.AddAdmin;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
@@ -32,6 +34,8 @@ public class AdminController extends BaseController{
     UserService userService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    AdminService adminService;
     private Logger logger= LoggerFactory.getLogger(getClass());
 
     /**
@@ -61,6 +65,10 @@ public class AdminController extends BaseController{
     @RequiresRoles("administrator")
     public String showUsers(){
         return "/admin/user_list";
+    }
+    @RequestMapping("/add")
+    public String add(){
+        return "/admin/admin_add";
     }
 
 
@@ -129,6 +137,36 @@ public class AdminController extends BaseController{
             return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
+    /**
+     *@author Veng Su 2018/5/12 16:58
+     *方法作用：查找全部角色
+     **/
+    @RequestMapping("/findRoles")
+    @RequiresRoles("administrator")
+    @ResponseBody
+    public JSONResponse findRoles(HttpServletRequest request){
+        try{
+            ArrayList roles =roleService.selectRoles();
+            return JSONResponse.createBySuccess("success",roles);
+        }catch (Exception e){
+            logger.error("出错了，uri{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，内部错误");
+        }
+    }
+
+    @RequestMapping("role/add")
+    @RequiresRoles("administrator")
+    @ResponseBody
+    public JSONResponse addRole(HttpServletRequest request,AddAdmin addAdmin){
+        try {
+            adminService.addRole(addAdmin);
+            return JSONResponse.createBySuccess("success");
+        }catch (Exception e){
+            logger.error("出错了，uri{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，存在脏数据，请与管理员联系");
+        }
+    }
+
 
 
 }
