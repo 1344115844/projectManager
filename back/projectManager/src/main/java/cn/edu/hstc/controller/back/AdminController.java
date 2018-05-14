@@ -71,6 +71,10 @@ public class AdminController extends BaseController{
     public String add(){
         return "/admin/admin_add";
     }
+    @RequestMapping("/roleadd")
+    public String roleadd(){
+        return "/admin/role_add";
+    }
 
 
 
@@ -230,7 +234,6 @@ public class AdminController extends BaseController{
             return JSONResponse.createByErrorMessage("出错了，删除角色失败，内部错误");
         }
     }
-
 
 
 

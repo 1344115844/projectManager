@@ -174,7 +174,7 @@
             url:"$projectname/academic/selectById.do",
             data:{"acadId":acadId},
             success:function (data) {
-                var data = JSON.parse(data);
+                 data = JSON.parse(data);
                 $("#acadId").val(data.data.acadId);
                 $("#authorRank").val(data.data.authorRank);
                 $("#category ").val(data.data.category);

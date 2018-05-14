@@ -14,7 +14,7 @@
         class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <a href="javascript:;" onclick="academic_add('添加记录','$projectname/academic/add')"
+            <a href="javascript:;" onclick="add('添加记录','$projectname/admin/roleadd')"
                class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a>
         </span>
     <span id="total" class="r"> </span>
@@ -39,6 +39,9 @@
     $(function () {
         getList();
     });
+    function add(title, url, w, h) {
+        layer_show(title, url, w, h);
+    }
     function getList() {
         $.ajax({
             type:"POST",
@@ -68,7 +71,6 @@
                     "<td name='roleId'width=''>" + data[i].roleId + "</td>" +
                     "<td name='roleName'width=''>" + data[i].roleName + "</td>" +
                     "<td>"+
-                    "<button class='editAcad btn btn-primary radius ' value='" + data[i].roleId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
                     "<button class='deleteAcad btn btn-danger radius ' value='" + data[i].roleId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +
                     "</td>" +
                     "</tr>";

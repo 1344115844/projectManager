@@ -57,7 +57,7 @@
     <include refid="academic_file_list" />
     FROM
     academic AS acad
-    JOIN filepath AS f ON f.file_id = acad.file_id
+    LEFT JOIN filepath AS f ON f.file_id = acad.file_id
     where acad.acad_id = #{acadId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

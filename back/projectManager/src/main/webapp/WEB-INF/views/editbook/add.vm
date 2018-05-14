@@ -105,7 +105,9 @@
     <br>
     <br>
     <div class="text-shadow">
-
+        <p>说明：</p>
+        <p>证明附件：最大为10m</p>
+        <p>附件格式：支持jpg，jpeg,png,pdf,doc,docx,ppt,pptx</p>
     </div>
 </article>
 <script src="$projectname/lib/jquery/1.9.1/jquery.min.js"></script>
@@ -129,7 +131,7 @@
             beforeSubmit:function(curform){
                 //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
                 //这里明确return false的话表单将不会提交;
-                add();
+                post();
                 return false;
             },
         });
@@ -143,12 +145,35 @@
     laydate.render({
         elem: '#publishTime' //指定元素
     });
-    function add() {
+    function post() {
         var upload_file = document.getElementById("file").files[0];
         var formFile = new FormData();
         formFile.append("upload_file", upload_file);
         var data = formFile;
+        $.ajax({
+            type:"POST",
+            url: "$projectname/editbook/uploadAttachment.do",
+            data: data,
+            cache: false,//上传文件无需缓存
+            processData: false,//用于对data参数进行序列化处理 这里必须false
+            contentType: false,
+            success: function(data){
 
+                var msg=JSON.parse(data);
+                if (msg.status==200){
+                    add(data);
+                }else {
+                    layer.confirm("附件有问题，上传失败，请按照说明检查格式，你可以再编辑中重新上传，确定继续添加记录，取消则不添加",function(){
+                        add(data);
+                    });
+                }
+            },
+            error:function () {
+                layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
+            }
+        });
+    }
+    function add(data) {
         var bookName=$("#bookName").val();
         var isbn=$("#isbn").val();
         var publishUnit=$("#publishUnit").val();
@@ -160,46 +185,29 @@
         publishTime=convertDateFromString(publishTime);
 
         var editRank=$('#editRank').val();
+        data=JSON.parse(data);
+        var fileId=null;
 
-
-
+        if(data.status==200){
+            fileId =data.data;
+            fileId=parseInt(fileId);
+        }
         $.ajax({
             type:"POST",
-            url: "$projectname/editbook/uploadAttachment.do",
-            data: data,
-            cache: false,//上传文件无需缓存
-            processData: false,//用于对data参数进行序列化处理 这里必须false
-            contentType: false,
-            success: function(data){
-                data=JSON.parse(data);
-                var fileId=null;
-
-                if(data.status==200){
-                    fileId =data.data;
-                    fileId=parseInt(fileId);
+            url:"$projectname/editbook/add.do",
+            data:{
+                "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
+                "publishTime":publishTime,"editRank":editRank,
+                "fileId":fileId
+            },
+            success: function (data) {
+                var user=JSON.parse(data);
+                if (user.status ==200){
+                    alert(user.msg);
+                    window.parent.location.replace("$projectname/editbook/list");
+                }else {
+                    layer.msg(user.msg, {icon: 2, time: 2000});
                 }
-                $.ajax({
-                    type:"POST",
-                    url:"$projectname/editbook/add.do",
-                    data:{
-                        "bookName":bookName, "isbn":isbn, "publishUnit":publishUnit, "byteNum":byteNum,
-                        "publishTime":publishTime,"editRank":editRank,
-                        "fileId":fileId
-                    },
-                    success: function (data) {
-                        var user=JSON.parse(data);
-                        if (user.status ==200){
-                            alert(user.msg);
-                            window.parent.location.replace("$projectname/editbook/list");
-                        }else {
-                            layer.msg(user.msg, {icon: 2, time: 2000});
-                        }
-                    },
-                    error:function () {
-                        layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                    }
-                });
-
             },
             error:function () {
                 layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});

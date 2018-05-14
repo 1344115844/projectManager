@@ -131,6 +131,7 @@
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple id="file" name="file" class="input-file" onchange="previewImg(this,'img1')">
 
+
 				</span>
 			</div>
         </div>
@@ -149,6 +150,13 @@
             </div>
         </div>
 	</form>
+    <br>
+    <br>
+    <div class="text-shadow">
+        <p>说明：</p>
+        <p>证明附件：最大为10m</p>
+        <p>附件格式：支持jpg，jpeg,png,pdf,doc,docx,ppt,pptx</p>
+    </div>
 </article>
 
 <!--_footer 作为公共模版分离出去-->
@@ -200,7 +208,14 @@ function upload() {
         processData: false,//用于对data参数进行序列化处理 这里必须false
         contentType: false,
         success:function (data) {
-            add(data);
+            var msg=JSON.parse(data);
+            if (msg.status==200){
+                add(data);
+            }else {
+                layer.confirm("附件有问题，"+msg.msg+",你可以再编辑中重新上传",function(){
+                    add(data);
+                });
+            }
         },
         error:function (data) {
             layer.msg("请求上传文件接口失败",{icon: 2, time: 5000});

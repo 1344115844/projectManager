@@ -132,6 +132,9 @@
         <p>（1）“国际学术会议”指有两个及以上国家的专家学者参加的学术会议，不管在哪举行；</p>
         <p>（2）“港澳台学术会议”指有大陆和港澳台地区专家学者参加，但没有其他国家专家学者参加的学术会议；</p>
         <p>（3）“国内学术会议”指在国内举行，且只有本国专家学者参加的学术会议（含全国性、地区性）；</p>
+        <p>证明附件：最大为10m</p>
+        <p>附件格式：支持jpg，jpeg,png,pdf,doc,docx,ppt,pptx</p>
+
     </div>
 
 </article>
@@ -181,14 +184,7 @@ function post() {
     formFile.append("upload_file", upload_file);
     var data = formFile;
 
-    var conferenceName=$("#conferenceName").val();
-    var paperTitle=$("#paperTitle").val();
-    var time =$("#time").val();
-    time=convertDateFromString(time);
 
-    var place=$("#place").val();
-    var hostUnit=$("#hostUnit").val();
-    var conferenceCategory=$("#conferenceCategory").val();
     $.ajax({
         type:"POST",
         url: "$projectname/attendconference/uploadAttachment.do",
@@ -197,37 +193,55 @@ function post() {
         processData: false,//用于对data参数进行序列化处理 这里必须false
         contentType: false,
         success: function(data){
-
-            var fileId=null;
-            data=JSON.parse(data);
-            if(data.status==200){
-                fileId =data.data;
-                fileId=parseInt(fileId);
+            var msg=JSON.parse(data);
+            if (msg.status==200){
+                add(data);
+            }else {
+                layer.confirm("附件有问题，上传失败，请按照说明检查格式，你可以再编辑中重新上传，确定继续添加记录，取消则不添加",function(){
+                    add(data);
+                });
             }
-            $.ajax({
-                type:"POST",
-                url:"$projectname/attendconference/add.do",
-                data:{
-                    "conferenceName":conferenceName, "paperTitle":paperTitle, "time":time, "place":place, "hostUnit":hostUnit,
-                    "conferenceCategory":conferenceCategory, "fileId":fileId
-                },
-                success: function (data) {
-                    var user=JSON.parse(data);
-                    if (user.status ==200){
-                        alert(user.msg);
-                        window.close();
-                        window.parent.location.replace("$projectname/attendconference/list");
-                    }else {
-                        layer.msg(user.msg, {icon: 2, time: 2000});
-                    }
-                },
-                error:function () {
-                    layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
-                }
-            });
         },
         error:function () {
             layer.msg("请求上传文件接口失败，客户端参数错误", {icon: 2, time: 2000});
+        }
+    });
+}
+function add(data) {
+    var conferenceName=$("#conferenceName").val();
+    var paperTitle=$("#paperTitle").val();
+    var time =$("#time").val();
+    time=convertDateFromString(time);
+
+    var place=$("#place").val();
+    var hostUnit=$("#hostUnit").val();
+    var conferenceCategory=$("#conferenceCategory").val();
+
+    var fileId=null;
+    data=JSON.parse(data);
+    if(data.status==200){
+        fileId =data.data;
+        fileId=parseInt(fileId);
+    }
+    $.ajax({
+        type:"POST",
+        url:"$projectname/attendconference/add.do",
+        data:{
+            "conferenceName":conferenceName, "paperTitle":paperTitle, "time":time, "place":place, "hostUnit":hostUnit,
+            "conferenceCategory":conferenceCategory, "fileId":fileId
+        },
+        success: function (data) {
+            var user=JSON.parse(data);
+            if (user.status ==200){
+                alert(user.msg);
+                window.close();
+                window.parent.location.replace("$projectname/attendconference/list");
+            }else {
+                layer.msg(user.msg, {icon: 2, time: 2000});
+            }
+        },
+        error:function () {
+            layer.msg("请求接口失败，客户端参数错误", {icon: 2, time: 2000});
         }
     });
 }
