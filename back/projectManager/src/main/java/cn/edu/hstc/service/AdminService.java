@@ -9,4 +9,6 @@ import cn.edu.hstc.vo.AddAdmin;
 
 public interface AdminService {
     void addRole(AddAdmin addAdmin);
+
+    void del(int userId);
 }

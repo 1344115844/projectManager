@@ -8,4 +8,6 @@ public interface UserRoleMapper {
     int insertSelective(UserRole record);
 
     int selectUseridByUserId(Integer userId);
+
+    int deleteUserRoleByUserId(int userId);
 }

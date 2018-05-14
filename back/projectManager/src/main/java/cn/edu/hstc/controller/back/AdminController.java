@@ -154,7 +154,11 @@ public class AdminController extends BaseController{
         }
     }
 
-    @RequestMapping("role/add")
+    /**
+     *@author Veng Su 2018/5/14 12:37
+     *方法作用：添加管理员
+     **/
+    @RequestMapping("/add")
     @RequiresRoles("administrator")
     @ResponseBody
     public JSONResponse addRole(HttpServletRequest request,AddAdmin addAdmin){
@@ -166,6 +170,24 @@ public class AdminController extends BaseController{
             return JSONResponse.createByErrorMessage("出错了，存在脏数据，请与管理员联系");
         }
     }
+    /**
+     *@author Veng Su 2018/5/14 12:37
+     *方法作用：删除管理员
+     **/
+    @RequestMapping("/del")
+    @RequiresRoles("administrator")
+    @ResponseBody
+    public JSONResponse delRole(HttpServletRequest request,int userId){
+        try {
+            adminService.del(userId);
+            return JSONResponse.createBySuccess("success");
+        }catch (Exception e){
+            logger.error("出错了，uri{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，删除管理员失败，请与开发者联系吗");
+        }
+    }
+
+
 
 
 
