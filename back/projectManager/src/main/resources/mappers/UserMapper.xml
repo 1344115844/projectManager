@@ -70,7 +70,7 @@ FROM
 	user AS u
 LEFT JOIN user_role AS ur ON u.user_id = ur.user_id
 WHERE
-	ur.role_id = 2
+	ur.role_id >= 2
 
     </select>
 

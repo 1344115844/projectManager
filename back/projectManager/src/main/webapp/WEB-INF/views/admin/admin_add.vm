@@ -111,7 +111,7 @@ function post() {
 
     $.ajax({
         type:"POST",
-        url: "$projectname/admin/role/add",
+        url: "$projectname/admin/addadmin",
         data: {
             "roleId":roleId,"name":name,"username":username,"password":password
         },

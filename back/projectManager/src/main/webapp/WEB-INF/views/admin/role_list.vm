@@ -75,6 +75,25 @@
         }
         tbody.innerHTML = str;
     }
+    function jumpDelete(roleId) {
+        roleId=parseInt(roleId);
+        layer.confirm('确认要删除吗？',function () {
+            $.ajax({
+                type:"POST",
+                url:"$projectname/admin/role/del",
+                data:{"roleId":roleId},
+                success:function (data) {
+                    data=JSON.parse(data);
+                    if(data.status==200){
+                        layer.msg(data.msg, {icon: 1, time: 1000});
+                        javascript:location.replace(location.href);
+                    }else{
+                        layer.msg(data.msg, {icon: 2, time: 1000});
+                    }
+                }
+            });
+        });
+    }
 </script>
 </body>
 </html>

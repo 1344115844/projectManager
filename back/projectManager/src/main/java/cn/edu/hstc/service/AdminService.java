@@ -10,5 +10,5 @@ import cn.edu.hstc.vo.AddAdmin;
 public interface AdminService {
     void addRole(AddAdmin addAdmin);
 
-    void del(int userId);
+    int del(int userId);//return 0表示已经删除了，return 1表示删除成功
 }

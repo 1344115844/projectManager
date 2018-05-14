@@ -58,4 +58,25 @@ public class RoleServiceImpl implements RoleService {
             throw e;
         }
     }
+
+    @Override
+    public void addRole(Role role) {
+        try {
+            roleMapper.insertOne(role);
+        }catch (Exception e){
+            logger.error("出错了，位置：{}",this.toString());
+            throw e;
+        }
+    }
+
+    @Override
+    public int delRole(Role role) {
+        try {
+            int res=roleMapper.deleteOneByRoleId(role.getRoleId());
+            return res;
+        }catch (Exception e){
+            logger.error("出错了，位置：{}",this.toString());
+            throw e;
+        }
+    }
 }

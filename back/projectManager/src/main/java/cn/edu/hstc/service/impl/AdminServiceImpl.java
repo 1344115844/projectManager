@@ -54,14 +54,17 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void del(int userId) {
+    public int del(int userId) {
         try {
             int a=userMapper.deleteByPrimaryKey(userId);
             int b=userRoleMapper.deleteUserRoleByUserId(userId);
             if (a<=0||b<=0){
                 logger.error("删除失败，存在脏数据");
                 throw new Exception("删除失败，存在脏数据");
+            }else if (a==0 && b==0){
+                return 0;
             }
+            return 1;
         }catch (Exception e){
             logger.error("出错了,删除管理员失败");
             throw new RuntimeException();

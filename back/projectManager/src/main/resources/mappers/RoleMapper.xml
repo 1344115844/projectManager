@@ -50,6 +50,29 @@
         role AS r
         WHERE role_id!=1
     </select>
+    <insert id="insertOne" parameterType="cn.edu.hstc.pojo.Role">
+            insert into role
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="roleId != null">
+                    role_id,
+                </if>
+                <if test="roleName != null">
+                    role_name,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="roleId != null">
+                    #{roleId},
+                </if>
+                <if test="roleName != null">
+                    #{roleName},
+                </if>
+            </trim>
+    </insert>
+    <delete id="deleteOneByRoleId" parameterType="int">
+        DELETE FROM role
+        WHERE role_id=#{roleId}
+    </delete>
 
 
 </mapper>  

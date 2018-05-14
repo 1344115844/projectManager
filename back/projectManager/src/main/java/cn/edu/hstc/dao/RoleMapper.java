@@ -22,4 +22,8 @@ public interface RoleMapper {
     ArrayList<Role> selectRoles();
 
     ArrayList<Role> selectAdminRoles();
+
+    int insertOne(Role role);
+
+    int deleteOneByRoleId(int roleId);
 }

@@ -9,6 +9,7 @@ import cn.edu.hstc.service.RoleService;
 import cn.edu.hstc.service.UserService;
 import cn.edu.hstc.vo.AddAdmin;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,11 +159,14 @@ public class AdminController extends BaseController{
      *@author Veng Su 2018/5/14 12:37
      *方法作用：添加管理员
      **/
-    @RequestMapping("/add")
+    @RequestMapping("/addadmin")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse addRole(HttpServletRequest request,AddAdmin addAdmin){
+    public JSONResponse add(HttpServletRequest request,AddAdmin addAdmin){
         try {
+            if (addAdmin==null){
+                throw new Exception("addAdmin为空对象");
+            }
             adminService.addRole(addAdmin);
             return JSONResponse.createBySuccess("success");
         }catch (Exception e){
@@ -177,15 +181,56 @@ public class AdminController extends BaseController{
     @RequestMapping("/del")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse delRole(HttpServletRequest request,int userId){
+    public JSONResponse del(HttpServletRequest request,int userId){
         try {
-            adminService.del(userId);
+            int res=adminService.del(userId);
+            if(res==0){
+                return JSONResponse.createBySuccess("已经删除了，请刷新");
+            }
             return JSONResponse.createBySuccess("success");
         }catch (Exception e){
             logger.error("出错了，uri{}",request.getRequestURL());
-            return JSONResponse.createByErrorMessage("出错了，删除管理员失败，请与开发者联系吗");
+            return JSONResponse.createByErrorMessage("出错了，删除管理员失败，内部错误");
         }
     }
+
+    /**
+     *@author Veng Su 2018/5/14 13:54
+     *方法作用：增加角色、
+     **/
+    @RequestMapping("/role/add")
+    @RequiresRoles("administrator")
+    @ResponseBody
+    public JSONResponse addRole(HttpServletRequest request,Role role){
+        try {
+            roleService.addRole(role);
+            return JSONResponse.createBySuccess("success");
+        }catch (Exception e){
+            logger.error("出错了，uri{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，添加角色失败，内部错误");
+        }
+    }
+
+    /**
+     *@author Veng Su 2018/5/14 13:54
+     *方法作用：删除角色、
+     **/
+    @RequestMapping("/role/del")
+    @RequiresRoles(value = {"administrator","秘书"},logical= Logical.OR)
+    @ResponseBody
+    public JSONResponse delRole(HttpServletRequest request,Role role){
+        try {
+            int res=roleService.delRole(role);
+            if (res==0){
+                return JSONResponse.createBySuccess("已经删除了，请刷新");
+            }
+            return JSONResponse.createBySuccess("success");
+        }catch (Exception e){
+            logger.error("出错了，uri{}",request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，删除角色失败，内部错误");
+        }
+    }
+
 
 
 

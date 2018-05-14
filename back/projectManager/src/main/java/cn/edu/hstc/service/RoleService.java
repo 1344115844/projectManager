@@ -25,4 +25,7 @@ public interface RoleService {
 
     ArrayList selectAdminRoles();
 
+    void addRole(Role role);
+
+    int delRole(Role role);
 }
