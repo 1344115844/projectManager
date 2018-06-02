@@ -84,6 +84,10 @@ public class AdminController extends BaseController {
     public String userEditView() {
         return "/admin/user_edit";
     }
+    @RequestMapping("/user/edit/account/view")
+    public String editAccountView() {
+        return "/admin/account_edit";
+    }
 
 
     @RequestMapping("/selectAdmin")
@@ -263,6 +267,17 @@ public class AdminController extends BaseController {
         try {
             User user=userService.selectUserById(userId);
             return JSONResponse.createBySuccess("success",user);
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，更新用户信息失败，内部错误");
+        }
+    }
+    @RequestMapping("/user/account/edit")
+    @ResponseBody
+    public JSONResponse userAccountEdit(User user,HttpServletRequest request){
+        try {
+            userService.updatePasswordByAdmin(user);
+            return JSONResponse.createBySuccess("success");
         } catch (Exception e) {
             logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，更新用户信息失败，内部错误");

@@ -45,4 +45,7 @@ public interface UserService {
     PageInfo<User> selectUsers(int pageNum, int pageSize);
 
     User selectUserById(int userId);
+
+    void updatePasswordByAdmin(User user);
+
 }

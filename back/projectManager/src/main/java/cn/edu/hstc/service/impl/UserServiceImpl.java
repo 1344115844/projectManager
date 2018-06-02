@@ -213,4 +213,20 @@ public class UserServiceImpl implements UserService {
             throw e;
         }
     }
+
+    @Override
+    public void updatePasswordByAdmin(User user) {
+        try {
+            String username=user.getUsername();
+            String  password=user.getPassword();
+            password=MD5Util.encrypt(username,password);
+            User newUser=userMapper.selectByPrimaryKey(user.getUserId());
+            newUser.setUsername(username);
+            newUser.setPassword(password);
+            userMapper.updateByPrimaryKeySelective(newUser);
+        }catch (Exception e ){
+            logger.error("出错了，查询成员失败");
+            throw e;
+        }
+    }
 }
