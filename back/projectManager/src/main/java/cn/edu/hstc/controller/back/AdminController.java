@@ -30,213 +30,244 @@ import java.util.ArrayList;
  */
 @Controller
 @RequestMapping("admin")
-public class AdminController extends BaseController{
+public class AdminController extends BaseController {
     @Autowired
     UserService userService;
     @Autowired
     RoleService roleService;
     @Autowired
     AdminService adminService;
-    private Logger logger= LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
-     *@author Veng Su
-     *@date 2018/3/31 19:32
-     *@param
-     *@return java.lang.String
-     *方法作用：跳转到member-list页面
+     * @param
+     * @return java.lang.String
+     * 方法作用：跳转到member-list页面
+     * @author Veng Su
+     * @date 2018/3/31 19:32
      **/
     @RequestMapping("/list")
     @RequiresRoles("administrator")
-    public String showMember(){
+    public String showMember() {
         return "/admin/admin_list";
     }
 
     @RequestMapping("/permissions/list")
     @RequiresRoles("administrator")
-    public String showPermissions(){
+    public String showPermissions() {
         return "/admin/permissions_list";
     }
+
     @RequestMapping("/roles/list")
     @RequiresRoles("administrator")
-    public String showRole(){
+    public String showRole() {
         return "/admin/role_list";
     }
+
     @RequestMapping("/user/list")
     @RequiresRoles("administrator")
-    public String showUsers(){
+    public String showUsers() {
         return "/admin/user_list";
     }
+
     @RequestMapping("/add")
-    public String add(){
+    public String add() {
         return "/admin/admin_add";
     }
+
     @RequestMapping("/roleadd")
-    public String roleadd(){
+    public String roleadd() {
         return "/admin/role_add";
     }
 
+    @RequestMapping("/user/edit/view")
+    public String userEditView() {
+        return "/admin/user_edit";
+    }
 
 
     @RequestMapping("/selectAdmin")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse<ArrayList> selectAdmin(HttpServletRequest request){
+    public JSONResponse<ArrayList> selectAdmin(HttpServletRequest request) {
         try {
-            ArrayList<User> admins= userService.selectAllAdmin();
-            return JSONResponse.createBySuccess("success",admins);
-        }
-        catch (Exception e){
-            logger.error("出错了,uri:{}",request.getRequestURL());
+            ArrayList<User> admins = userService.selectAllAdmin();
+            return JSONResponse.createBySuccess("success", admins);
+        } catch (Exception e) {
+            logger.error("出错了,uri:{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("內部錯誤");
         }
     }
 
     /**
-     *@author Veng Su 2018/5/6 22:42
-     *方法作用：查询所有角色和权限
+     * @author Veng Su 2018/5/6 22:42
+     * 方法作用：查询所有角色和权限
      **/
     @RequestMapping("/selectPermissions")
     @ResponseBody
     @RequiresRoles("administrator")
-    public JSONResponse selectAllRoleAndPermission(HttpServletRequest request){
-        try{
-            ArrayList<Role> roles=roleService.selectAllRoleAndPermission();
-            return JSONResponse.createBySuccess("success",roles);
-        }catch (Exception e){
-            logger.error("出错了,uri:{}",request.getRequestURL());
+    public JSONResponse selectAllRoleAndPermission(HttpServletRequest request) {
+        try {
+            ArrayList<Role> roles = roleService.selectAllRoleAndPermission();
+            return JSONResponse.createBySuccess("success", roles);
+        } catch (Exception e) {
+            logger.error("出错了,uri:{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("内部错误");
         }
     }
 
     /**
-     *@author Veng Su 2018/5/7 16:52
-     *方法作用：查询角色
+     * @author Veng Su 2018/5/7 16:52
+     * 方法作用：查询角色
      **/
     @RequestMapping("/selectRoles")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse selectRoles(HttpServletRequest request){
+    public JSONResponse selectRoles(HttpServletRequest request) {
         try {
-            ArrayList<Role> roles= roleService.selectRoles();
-            return JSONResponse.createBySuccess("success",roles);
-        }catch (Exception e){
-            logger.error("出错了,uri:{}",request.getRequestURL());
+            ArrayList<Role> roles = roleService.selectRoles();
+            return JSONResponse.createBySuccess("success", roles);
+        } catch (Exception e) {
+            logger.error("出错了,uri:{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
+
     /**
-     *@author Veng Su 2018/5/10 14:32
-     *方法作用：查询所有成员
+     * @author Veng Su 2018/5/10 14:32
+     * 方法作用：查询所有成员
      **/
     @RequestMapping("/selectUsers")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse selectUsers(HttpServletRequest request,@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize){
+    public JSONResponse selectUsers(HttpServletRequest request, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
         try {
 
-            PageInfo<User> pageInfo= userService.selectUsers(pageNum,pageSize);
-            return JSONResponse.createBySuccess("success",pageInfo);
-        }catch (Exception e){
-            logger.error("出错了,uri:{}",request.getRequestURL());
+            PageInfo<User> pageInfo = userService.selectUsers(pageNum, pageSize);
+            return JSONResponse.createBySuccess("success", pageInfo);
+        } catch (Exception e) {
+            logger.error("出错了,uri:{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
+
     /**
-     *@author Veng Su 2018/5/12 16:58
-     *方法作用：查找全部角色
+     * @author Veng Su 2018/5/12 16:58
+     * 方法作用：查找全部角色
      **/
     @RequestMapping("/findRoles")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse findRoles(HttpServletRequest request){
-        try{
-            ArrayList roles =roleService.selectAdminRoles();
-            return JSONResponse.createBySuccess("success",roles);
-        }catch (Exception e){
-            logger.error("出错了，uri{}",request.getRequestURL());
+    public JSONResponse findRoles(HttpServletRequest request) {
+        try {
+            ArrayList roles = roleService.selectAdminRoles();
+            return JSONResponse.createBySuccess("success", roles);
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，内部错误");
         }
     }
 
     /**
-     *@author Veng Su 2018/5/14 12:37
-     *方法作用：添加管理员
+     * @author Veng Su 2018/5/14 12:37
+     * 方法作用：添加管理员
      **/
     @RequestMapping("/addadmin")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse add(HttpServletRequest request,AddAdmin addAdmin){
+    public JSONResponse add(HttpServletRequest request, AddAdmin addAdmin) {
         try {
-            if (addAdmin==null){
+            if (addAdmin == null) {
                 throw new Exception("addAdmin为空对象");
             }
             adminService.addRole(addAdmin);
             return JSONResponse.createBySuccess("success");
-        }catch (Exception e){
-            logger.error("出错了，uri{}",request.getRequestURL());
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，存在脏数据，请与管理员联系");
         }
     }
+
     /**
-     *@author Veng Su 2018/5/14 12:37
-     *方法作用：删除管理员
+     * @author Veng Su 2018/5/14 12:37
+     * 方法作用：删除管理员
      **/
     @RequestMapping("/del")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse del(HttpServletRequest request,int userId){
+    public JSONResponse del(HttpServletRequest request, int userId) {
         try {
-            int res=adminService.del(userId);
-            if(res==0){
+            int res = adminService.del(userId);
+            if (res == 0) {
                 return JSONResponse.createBySuccess("已经删除了，请刷新");
             }
             return JSONResponse.createBySuccess("success");
-        }catch (Exception e){
-            logger.error("出错了，uri{}",request.getRequestURL());
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，删除管理员失败，内部错误");
         }
     }
 
     /**
-     *@author Veng Su 2018/5/14 13:54
-     *方法作用：增加角色、
+     * @author Veng Su 2018/5/14 13:54
+     * 方法作用：增加角色、
      **/
     @RequestMapping("/role/add")
     @RequiresRoles("administrator")
     @ResponseBody
-    public JSONResponse addRole(HttpServletRequest request,Role role){
+    public JSONResponse addRole(HttpServletRequest request, Role role) {
         try {
             roleService.addRole(role);
             return JSONResponse.createBySuccess("success");
-        }catch (Exception e){
-            logger.error("出错了，uri{}",request.getRequestURL());
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，添加角色失败，内部错误");
         }
     }
 
     /**
-     *@author Veng Su 2018/5/14 13:54
-     *方法作用：删除角色、
+     * @author Veng Su 2018/5/14 13:54
+     * 方法作用：删除角色、
      **/
     @RequestMapping("/role/del")
-    @RequiresRoles(value = {"administrator","秘书"},logical= Logical.OR)
+    @RequiresRoles(value = {"administrator", "秘书"}, logical = Logical.OR)
     @ResponseBody
-    public JSONResponse delRole(HttpServletRequest request,Role role){
+    public JSONResponse delRole(HttpServletRequest request, Role role) {
         try {
-            int res=roleService.delRole(role);
-            if (res==0){
+            int res = roleService.delRole(role);
+            if (res == 0) {
                 return JSONResponse.createBySuccess("已经删除了，请刷新");
             }
             return JSONResponse.createBySuccess("success");
-        }catch (Exception e){
-            logger.error("出错了，uri{}",request.getRequestURL());
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
             return JSONResponse.createByErrorMessage("出错了，删除角色失败，内部错误");
         }
     }
 
+    @RequestMapping("/user/edit")
+    @ResponseBody
+    public JSONResponse editUser(User user, HttpServletRequest request) {
+        try {
+            userService.updateUser(user);
+            return JSONResponse.createBySuccess("success");
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，更新用户信息失败，内部错误");
+        }
+    }
 
-
+    @RequestMapping("/selectUserById")
+    @ResponseBody
+    public JSONResponse selectUserById(int userId,HttpServletRequest request){
+        try {
+            User user=userService.selectUserById(userId);
+            return JSONResponse.createBySuccess("success",user);
+        } catch (Exception e) {
+            logger.error("出错了，uri{}", request.getRequestURL());
+            return JSONResponse.createByErrorMessage("出错了，更新用户信息失败，内部错误");
+        }
+    }
 
 
 }

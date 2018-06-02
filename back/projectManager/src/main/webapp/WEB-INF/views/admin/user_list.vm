@@ -102,7 +102,9 @@
                     "<td id='researchDirection'  name='researchDirection'width=''>" + data[i].researchDirection + "</td>" +
                     "<td id='academicTitle'  name='academicTitle'width=''>" + data[i].academicTitle + "</td>" +
                     "<td id='username'  name='username'width=''>" + data[i].username + "</td>" +
-                    "<td id='password'  name='password'width=''>" + data[i].password + "</td>" +
+                    "<td>"+
+                    "<button class='btn btn-danger radius ' value='" + data[i].userId + "' onclick=" + "updatePassword(this.value)" + ">更新账号</button>" +
+                    "</td>"+
                     "<td>"+
                     "<button class='btn btn-primary radius ' value='" + data[i].userId + "' onclick=" + "jumpEdit(this.value)" + ">编辑</button>" +
                     "<button class='btn btn-danger radius ' value='" + data[i].userId + "' onclick=" + "jumpDelete(this.value)" + ">删除</button>" +
@@ -110,6 +112,10 @@
                     "</tr>";
         }
         tbody.innerHTML = str;
+    }
+    function jumpEdit(id) {
+        var url="$projectname/admin/user/edit/view?id="+id;
+        layer_show('修改', url);
     }
 </script>
 </body>

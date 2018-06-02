@@ -203,4 +203,14 @@ public class UserServiceImpl implements UserService {
             throw e;
         }
     }
+
+    @Override
+    public User selectUserById(int userId) {
+        try {
+            return userMapper.selectByPrimaryKey(userId);
+        }catch (Exception e ){
+            logger.error("出错了，查询成员失败");
+            throw e;
+        }
+    }
 }

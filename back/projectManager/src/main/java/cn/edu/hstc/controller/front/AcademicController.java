@@ -5,6 +5,7 @@ import cn.edu.hstc.pojo.Academic;
 import cn.edu.hstc.pojo.User;
 import cn.edu.hstc.service.AcademicService;
 import cn.edu.hstc.service.FileService;
+import cn.edu.hstc.service.UserService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

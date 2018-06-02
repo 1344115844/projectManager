@@ -1,0 +1,180 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+##引入head.vm
+#parse("/common/head.vm");
+
+<title>添加管理员</title>
+</head>
+<body>
+<article class="page-container">
+	<form  class="form form-horizontal" id="form-award-add">
+
+        <div class="row cl">
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="hidden" class="input-text"   id="userId" name="userId" >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写姓名" id="name" name="name" datatype="*" nullmsg="请填写姓名">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>短号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写短号" id="shortPhone" name="shortPhone" datatype="*" nullmsg="请填写短号">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写邮箱" id="email" name="email" datatype="*" nullmsg="请填写邮箱">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>电话：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写电话" id="phone" name="phone" datatype="*" nullmsg="请填写电话">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>职称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写职称" id="jobTitle" name="jobTitle" datatype="*" nullmsg="请填写职称">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学历：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写学历" id="education" name="education" datatype="*" nullmsg="请填写学历">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>研究方向：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写研究方向" id="researchDirection" name="researchDirection" datatype="*" nullmsg="请填写研究方向">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学术称号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  placeholder="请填写学术称号" id="academicTitle" name="academicTitle" datatype="*" nullmsg="请填写学术称号">
+                <span class="Validform_checktip"></span>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" id="submit" type="submit" onclick="checkAndAdd()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input class="btn btn-primary radius" id="reset" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
+            </div>
+        </div>
+	</form>
+    <br>
+    <br>
+    <div class="text-shadow">
+
+    </div>
+
+</article>
+##引入foot.vm
+#parse("/common/foot.vm");
+
+<script type="text/javascript">
+    $(function () {
+        selectData();
+    })
+    //获取某条记录数据并显示
+    function selectData() {
+        var data = parseUrl();
+        var userId=parseInt(data['id']);
+        $.ajax({
+            type:"POST",
+            url:"$projectname/admin/selectUserById",
+            data:{"userId":userId},
+            success:function (data) {
+                var data = JSON.parse(data);
+                $("#userId").val(data.data.userId);
+                $("#name").val(data.data.name);
+                $("#shortPhone").val(data.data.shortPhone);
+                $("#email").val(data.data.email);
+                $("#phone").val(data.data.phone);
+                $("#jobTitle").val(data.data.jobTitle);
+                $("#education").val(data.data.education);
+                $("#researchDirection").val(data.data.researchDirection);
+                $("#shortPhone").val(data.data.shortPhone);
+                $("#academicTitle").val(data.data.academicTitle);
+                $("#username").val(data.data.username);
+            }
+        });
+    }
+
+
+function checkAndAdd() {
+    $("#form-award-add").Validform({
+        btnSubmit: "#submit",
+        tiptype:3,
+        showAllError: true,
+        ignoreHidden: true,
+        ajaxPost: false,
+        beforeSubmit:function(curform){
+            //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+            //这里明确return false的话表单将不会提交;
+            post();
+            return false;
+        },
+    });
+}
+/**
+ *@author Veng Su
+ *@date 2018/4/5 22:21
+ *方法作用：更新用户信息//ajax提交数据
+
+ **/
+function post() {
+    var userId=$("#userId").val();
+    var name=$("#name").val();
+    var shortPhone=$("#shortPhone").val();
+    var email=$("#email").val();
+    var phone=$("#phone").val();
+    var jobTitle=$("#jobTitle").val();
+    var education=$("#education").val();
+    var researchDirection=$("#researchDirection").val();
+    var academicTitle=$("#academicTitle").val();
+    $.ajax({
+        type:"POST",
+        url: "$projectname/admin/user/edit",
+        data: {
+            "userId":userId,"name":name,"shortPhone":shortPhone,"email":email,"phone":phone,"jobTitle":jobTitle,"education":education,"researchDirection":researchDirection,
+            "academicTitle":academicTitle
+        },
+        success: function(data){
+            data=JSON.parse(data);
+            if(data.status==200){
+                layer.msg(data.data,{icon:1,time:3000});
+                window.parent.location.replace("$projectname/admin/user/list");
+            }
+        },
+        error:function () {
+            layer.msg("参数错误", {icon: 2, time: 2000});
+        }
+    });
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>

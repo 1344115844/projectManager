@@ -43,4 +43,6 @@ public interface UserService {
     ArrayList<User> selectAllAdmin();//cx
 
     PageInfo<User> selectUsers(int pageNum, int pageSize);
+
+    User selectUserById(int userId);
 }
